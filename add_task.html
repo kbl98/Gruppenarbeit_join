@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>add Task</title>
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="css/head.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/add_task.css">
+</head>
+<body onload="includeHTML()">
+    
+  <div w3-include-html="assets/templates/nav.html"></div>
+
+  <div class="rightContent">
+    <div class="header" w3-include-html="assets/templates/head.html"></div>
+    
+    <div class="addTask">
+
+      <div class="addTaskLeft">
+        <h1>Add Task</h1>
+        <div class="column title">
+          <span>Title</span>
+          <input placeholder="Enter a title">
+        </div>
+        <div class="column description">
+          <span>Description</span>
+          <textarea placeholder="Enter a Description"></textarea>
+        </div>
+        <div class="column category">
+          <span>Category</span>
+          <input placeholder="Select task category">
+        </div>
+        <div class="column assigned">
+          <span>Assigned to</span>
+          <input placeholder="Select contaccts to assign">
+        </div>
+      </div>
+
+      <div class="addTaskRight">
+        <div class="column">
+          <span>Due date</span>
+          <input placeholder="date">
+        </div>
+        <div class="column">
+          <span>Prio</span>
+          <div class="buttons">
+            <button>Urgent <img src="assets/img/urgent_newTask.svg"></button>
+            <button>Medium <img src="assets/img/medium_newTask.svg"></button>
+            <button>Low <img src="assets/img/low_newTask.svg"></button>
+          </div>
+        </div>
+        <div class="column">
+          <span>Subtasks</span>
+          <input placeholder="Add new subtask">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+
+
+
+</html>
+
+
