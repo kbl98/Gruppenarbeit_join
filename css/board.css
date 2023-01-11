@@ -13,11 +13,10 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 100px;
-    height: 100vh;
-    margin-left: 282px;
-    margin-top: 160px;
+    position: absolute;
+    left: 282px;
+    top: 160px;
     box-sizing: border-box;
-    max-height: 100vh;
 }
 
 .cont-head {
