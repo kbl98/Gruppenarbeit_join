@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <script src="js/script.js"></script>
+    <script src="js/summary.js"></script>
+   
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="css/summary.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/head.css" />
+    <script src="./mini_backend.js"></script>
+  </head>
+  <body onload="init()">
+   
+        <div w3-include-html="assets/templates/nav.html"></div>
+     
+      <div id="summary-container" class="main-content-container">
+        <div w3-include-html="assets/templates/head.html"></div>
+        
+        <div id="heading">
+            <h1>Summary</h1>
+            <div class="heading-add">Everything is a nutshell</div>
+        </div>
+        <div id="task-container">
+            <div id="task-overview">
+                <div class="progress-container">
+                    <div class="progress box-shadow" id="on-board">
+                        <span id="num-board">3</span>
+                        <p>Tasks in Board</p>
+                    </div>
+                    <div class="progress box-shadow" id="in-progress">
+                        <span id="num-progress">2</span>
+                        <p>Tasks in Progress</p>
+                    </div>
+                    <div class="progress box-shadow" id="at-feedback">
+                        <span id="num-feedback">1</span>
+                        <p>Awaiting Feedback</p>
+                    </div>
+                </div>
+                <div class="important-container box-shadow">
+                    <img src="assets/img/urgent_arrow.svg">
+                    <div class="urgent-container">
+                        <span id="num-urgent">1</span>
+                        <p>Urgent</p>
+                    </div>
+                    <div id="deadline-container" class="">
+                        <span id="deadline">15.Januar 2023, 15 Uhr</span>
+                        <p>Upcoming Deadline</p>
+                    </div>
+
+
+                </div>
+                <div class="todos-container">
+                    <div class="todo box-shadow">
+                        <img src="assets/img/todo.svg">
+                        <div class="column">
+                        <span id="num-do" class="bold">1</span>
+                        <p>to do</p>
+                        </div>
+                    </div>
+                    <div class="todo box-shadow">
+                        <img src="assets/img/done.svg">
+                        <div class="column">
+                        <span id="num-done" class="bold">1</span>
+                        <p>done</p>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="greet-container"><span id="greeting">Good Morning</span>
+            <div id="greet-name">User</div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

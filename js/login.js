@@ -85,3 +85,14 @@ async function getUsers(){
     }*/
     console.log(users);
 }
+
+function saveUser(newUser){
+    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
+    users.push(newUser);
+    
+    let usersAsText=JSON.stringify(users);
+    backend.setItem("users",usersAsText);
+    console.log(users);
+
+    getUsers();
+}
