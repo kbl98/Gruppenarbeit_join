@@ -86,7 +86,6 @@ body{
   h1{
       margin-bottom: 28px;
       font-size: 50px;
-      padding-left:50px;
   }
   
   #blue-line{
@@ -95,21 +94,21 @@ body{
       border-top: solid 2px rgb(10,153,255);
   }
   .mail-input{
-      background-image: url("img/email-icon.svg");
+      background-image: url("/assets/img/email-icon.svg");
       background-position: 420px 10px;
       padding-left: 10px;
       background-repeat: no-repeat;
   }
   
   .password-input{
-      background-image: url("img/password-icon.svg");
+      background-image: url("/assets/img/password-icon.svg");
       background-position: 420px 10px;
       padding-left: 10px;
       background-repeat: no-repeat;
   }
   
   .name-input{
-      background-image: url("img/name.svg");
+      background-image: url("/assets/img/name.svg");
       background-position: 420px 10px;
       padding-left: 10px;
       background-repeat: no-repeat;

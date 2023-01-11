@@ -15,9 +15,11 @@
     <script src="./mini_backend.js"></script>
   </head>
   <body onload="init()">
-   
+<!------------------------------------templates nav and head--------------------------------->
         <div w3-include-html="assets/templates/nav.html"></div>
         <div w3-include-html="assets/templates/head.html"></div>
+
+<!------------------------------------summary of tasks--------------------------------------->
       <div id="summary-container" class="main-content-container">
        
         
@@ -25,44 +27,48 @@
             <h1>Summary</h1>
             <div class="heading-add">Everything is a nutshell</div>
         </div>
+
         <div id="task-container">
+
+<!----------------------------overview of tasks on board----------------------------------->
             <div id="task-overview">
-                <div class="progress-container">
-                    <div class="progress box-shadow" id="on-board">
+                <div class="progress-container" >
+                    <div class="progress box-shadow" id="on-board" onclick="getToBoard()">
                         <span id="num-board">3</span>
                         <p>Tasks in Board</p>
                     </div>
-                    <div class="progress box-shadow" id="in-progress">
+                    <div class="progress box-shadow" id="in-progress" onclick="getToBoard()">
                         <span id="num-progress">2</span>
                         <p>Tasks in Progress</p>
                     </div>
-                    <div class="progress box-shadow" id="at-feedback">
+                    <div class="progress box-shadow" id="at-feedback" onclick="getToBoard()">
                         <span id="num-feedback">1</span>
                         <p>Awaiting Feedback</p>
                     </div>
                 </div>
-                <div class="important-container box-shadow">
+<!-------------------------------------urgent-tasks------------------------------------------->
+                <div class="important-container box-shadow" onclick="getToBoard()">
                     <img src="assets/img/urgent_arrow.svg">
-                    <div class="urgent-container">
+                    <div class="urgent-container" >
                         <span id="num-urgent">1</span>
                         <p>Urgent</p>
                     </div>
-                    <div id="deadline-container" class="">
+                    <div id="deadline-container" class="" onclick="getToBoard()">
                         <span id="deadline">15.Januar 2023, 15 Uhr</span>
                         <p>Upcoming Deadline</p>
                     </div>
 
-
+<!----------------------------container for todos and dones-------------------------------->
                 </div>
                 <div class="todos-container">
-                    <div class="todo box-shadow">
+                    <div class="todo box-shadow" onclick="getToBoard()">
                         <img src="assets/img/todo.svg">
                         <div class="column">
                         <span id="num-do" class="bold">1</span>
                         <p>to do</p>
                         </div>
                     </div>
-                    <div class="todo box-shadow">
+                    <div class="todo box-shadow" onclick="getToBoard()">
                         <img src="assets/img/done.svg">
                         <div class="column">
                         <span id="num-done" class="bold">1</span>
@@ -72,6 +78,8 @@
                 </div>
 
             </div>
+
+        <!--------------Greeting of user  -------------------------------------------->
             <div id="greet-container"><span id="greeting">Good Morning</span>
             <div id="greet-name">User</div>
         </div>

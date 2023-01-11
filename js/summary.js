@@ -1,22 +1,20 @@
-let tasks=[];
-
-async function setMainHTML(){
-    await getTasks();
-    window.location.href='main.html';
-    
+async function setMainHTML() {
+  await getTasks();
+  window.location.href = "main.html";
 }
 
-async function init(){
-    await includeHTML();
-    renderSummary();
+async function init() {
+  await includeHTML();
+  renderSummary();
 }
 
 /**function that fetches tasks from backend and creates a Json */
-async function getTasks(){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
-    let tasksAsText=await backend.getItem("tasks");
-    tasks=JSON.parse(tasksAsText);
-   
+async function getTasks() {
+  setURL(
+    "http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master"
+  );
+  let tasksAsText = await backend.getItem("tasks");
+  all_tasks = JSON.parse(tasksAsText);
 }
 /**function to include the template 
 async function includeHTML() {
@@ -33,8 +31,14 @@ async function includeHTML() {
     }
 }*/
 
-function renderSummary(){
-    let profil_pic=document.getElementById("user-img");
-    profil_pic.setAttribute("src","assets/img/guest_pic.svg");
-    let tasks_in_board=document.getElementById("num-board");
+/**function to render summary with actual tasks */
+function renderSummary() {
+  let profil_pic = document.getElementById("user-img");
+  profil_pic.setAttribute("src", "assets/img/guest_pic.svg");
+  let tasks_in_board = document.getElementById("num-board");
+}
+
+
+function getToBoard(){
+    window.location.href="board.html"
 }

@@ -1,6 +1,3 @@
-let user=[];
-let current_user=[];
-let tasks=[];
 
 /**function for moving the start-logo from center to left corner */
 function moveLogo(){
@@ -21,6 +18,7 @@ function showLogin(){
 function getLogin(){
     setTimeout(moveLogo,500);
 }
+
 
 /**function to show/hide the password by changing type of input */
 function togglePassword(id,id2){
@@ -49,6 +47,7 @@ async function getCurrentUser(){
     setMainHTML()}
 }
 
+/**function to login a guestUser */
 function guestLogin(){
     current_user={
         "img":"assets/img/guest_pic.svg",
@@ -58,13 +57,14 @@ function guestLogin(){
     getDemoSummary();
 }
 
+/**function to get the summary as guest */
 function getDemoSummary(){
     window.location.href = 'summary.html';
     
 }
 
 
-
+/**function to registrate as new User */
 async function sign(){
    /*await getUsers();
    console.log(users);*/
@@ -85,13 +85,14 @@ async function sign(){
     password="";
 }
 
-
+/**funtion to set Location of Storage */
 async function setBackend(){
-    
     setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
     await getUsers();
 }
 
+
+/**function to get all registrated Users from storage */
 async function getUsers(){
     setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
     let usersAsText= await backend.getItem("users");
@@ -103,6 +104,7 @@ async function getUsers(){
     console.log(users);
 }
 
+/**function to save Users at Storage */
 function saveUser(newUser){
     setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
     users.push(newUser);
@@ -112,4 +114,21 @@ function saveUser(newUser){
     console.log(users);
 
     getUsers();
+}
+
+/** function to get to site for resetting password*/
+function newPassword(){
+    window.location.href="reset_password.html";
+}
+
+/**function for setting the new password */
+function set_new_password(){
+    let password1=document.getElementById("reseted-password").value;
+    let password2=document.getElementById("reseted-password2").value;
+
+    if(password1==password2){
+    current_user["password"]=password1;
+    saveUser(current_user);
+    window.location.href="login.html";
+}
 }
