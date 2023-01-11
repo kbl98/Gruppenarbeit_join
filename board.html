@@ -13,10 +13,14 @@
 </head>
 
 <body onload="includeHTML()">
+    
+    
+
+
     <!--includes header and nav bar-->
-    <div w3-include-html="./assets/templates/head.html"></div>
+    <div w3-include-html="./assets/templates/head.html"></div>-->
     <div w3-include-html="./assets/templates/nav.html"></div>
-    <!-- -------------------------------------------- -->
+
     <div class="cont-board-side">
         <!--contains head area "board // search-bar // add task"-->
         <div class="cont-head">
@@ -41,9 +45,10 @@
             <!--todo-->
             <div class="cont-child-todo">
                 <div class="todo-head">
-                    <h2>To do</h2>
+                    <h2 class="todo-header">To do</h2>
                     <img src="./assets/img/board_add_task_button.png" alt="">
                 </div>
+
                 <div class="todo-tasks">
                     <h2 style="background-color: #FF7A00;" class="task-head">Design</h2>
                     <span class="task-titel">Website redesign</span> <br><br>
@@ -69,14 +74,15 @@
             <!--in progress-->
             <div class="cont-child-todo">
                 <div class="todo-head">
-                    <h2>In Progress</h2>
+                    <h2 class="todo-header">In Progress</h2>
                     <img src="./assets/img/board_add_task_button.png" alt="">
                 </div>
+
                 <div class="todo-tasks">
                     <h2 style="background-color: #FC71FF;" class="task-head">Sales</h2>
                     <span class="task-titel">Call potencial clients</span> <br><br>
                     <span class="task-description">Make the product presentation to prospextive buyers</span>
-                    
+
                     <div class="task-footer">
                         <div class="cont-assigned">
                             <div style="background-color: #FFA800;" class="assigned">AS</div>
@@ -91,27 +97,35 @@
             <!--await feedback-->
             <div class="cont-child-todo">
                 <div class="todo-head">
-                    <h2>Awaiting Feedback</h2>
+                    <h2 class="todo-header">Awaiting Feedback</h2>
                     <img src="./assets/img/board_add_task_button.png" alt="">
                 </div>
+
                 <div class="todo-tasks">
                     <h2 style="background-color: #1FD7C1;" class="task-head">Backoffice</h2>
                     <span class="task-titel">Accounting invoices</span> <br><br>
-                    <span class="task-description">Modify the contents of the main website...</span>
-                    <div class="cont-progress">
-                        <div class="progress">
-                            <div style="width: 50% !important;" class="progress-bar">
-                            </div>
-                        </div>
-                        <span>1/2 Done</span>
-                    </div>
+                    <span class="task-description">Write open invoices for customer</span>
+
                     <div class="task-footer">
                         <div class="cont-assigned">
-                            <div style="background-color: #0190E0;" class="assigned">SM</div>
-                            <div style="background-color: #EE00D6;" class="assigned">MV</div>
-                            <div style="background-color: #02CF2F;" class="assigned">EF</div>
+                            <div style="background-color: #FF5C00;" class="assigned">MB</div>
+                            <div style="background-color: #9327FF;" class="assigned">AM</div>
+                            <div style="background-color: #2A3647;" class="assigned">+3</div>
                         </div>
-                        <img class="board-priority" src="./assets/img/priority_low.png" alt="">
+                        <img class="board-priority" src="./assets/img/priority_medium.png" alt="">
+                    </div>
+                </div>
+
+                <div class="todo-tasks">
+                    <h2 style="background-color: #FFC701;" class="task-head">Media</h2>
+                    <span class="task-titel">Video cut</span> <br><br>
+                    <span class="task-description">Edit the new company video</span>
+
+                    <div class="task-footer">
+                        <div class="cont-assigned">
+                            <div style="background-color: #007CEE;" class="assigned">HK</div>
+                        </div>
+                        <img class="board-priority" src="./assets/img/priority_medium.png" alt="">
                     </div>
                 </div>
             </div>
@@ -119,25 +133,25 @@
             <!--done-->
             <div class="cont-child-todo">
                 <div class="todo-head">
-                    <h2>To do</h2>
+                    <h2 class="todo-header">Done</h2>
                     <img src="./assets/img/board_add_task_button.png" alt="">
                 </div>
+
                 <div class="todo-tasks">
-                    <h2 style="background-color: #FF7A00;" class="task-head">Design</h2>
-                    <span class="task-titel">Website redesign</span> <br><br>
-                    <span class="task-description">Modify the contents of the main website...</span>
+                    <h2 style="background-color: #0038FF;" class="task-head">Marketing</h2>
+                    <span class="task-titel">Social media strategy</span> <br><br>
+                    <span class="task-description">Develop an ad campaign for brand positioning</span>
                     <div class="cont-progress">
                         <div class="progress">
-                            <div style="width: 50% !important;" class="progress-bar">
+                            <div style="width: 100% !important;" class="progress-bar">
                             </div>
                         </div>
-                        <span>1/2 Done</span>
+                        <span>3/3 Done</span>
                     </div>
                     <div class="task-footer">
                         <div class="cont-assigned">
-                            <div style="background-color: #0190E0;" class="assigned">SM</div>
-                            <div style="background-color: #EE00D6;" class="assigned">MV</div>
-                            <div style="background-color: #02CF2F;" class="assigned">EF</div>
+                            <div style="background-color: #4E963D;" class="assigned">BZ</div>
+                            <div style="background-color: #32DAFF;" class="assigned">RS</div>
                         </div>
                         <img class="board-priority" src="./assets/img/priority_low.png" alt="">
                     </div>

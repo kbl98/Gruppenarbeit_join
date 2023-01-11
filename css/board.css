@@ -2,6 +2,7 @@
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,7 +14,9 @@ body {
     flex-direction: column;
     row-gap: 200px;
     height: 100vh;
-    margin: 50px 50px 50px;
+    margin-left: 282px;
+    margin-top: 160px;
+    box-sizing: border-box;
 }
 
 .cont-head {
@@ -42,6 +45,7 @@ body {
 .find-task-input {
     border: none;
     font-size: 16px;
+    outline-width: 0;
 }
 
 .find-task-input-img {
@@ -68,6 +72,14 @@ body {
     align-items: center;
     column-gap: 4px;
     font-size: 21px;
+    transition: ease-in-out 150ms;
+    border: unset;
+}
+
+.add-task:hover {
+    background-color: #29ABE2;
+    box-shadow: 2px 2px 10px gray;
+    scale: 1.01;
 }
 
 .add-task-plus-img {
@@ -81,7 +93,8 @@ body {
 
 .todo-head {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     width: 230px;
     font-size: 21px;
 }
@@ -89,6 +102,10 @@ body {
 .todo-head img {
     width: 30px;
     height: 30px;
+}
+
+.todo-header {
+    font-size: 21px;
 }
 
 .todo-tasks {
