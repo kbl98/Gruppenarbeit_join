@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src= "mini_backend.js"></script>
+    
+</head>
+<body onload="setBackend()">
+    
+    <img id="start-pic" class="logo-small" src="assets/img/logo_main.svg">
+   
+    
+    <div id="login-container">
+        <a href="login.html"><img id="arrow-back" src="assets/img/back-arrow.svg"></a>
+        <h1>Sign In</h1>
+        <div id="blue-line"></div>
+        <form onsubmit="sign();return false" >
+        <input id="name-registration" class="name-input" required type="name" placeholder="Name">
+        <input id="mail-registration" class="mail-input" required type="email" placeholder="E-mail">
+        <input id="password-registration" class="password-input" required type="password" placeholder="Passwort">
+        <div class="help-container">
+            <p id="passwordreg-toggle"  onclick="togglePassword('password-registration','passwordreg-toggle')">Passwort zeigen</p>
+        </div>
+        <div id="btn-box">
+        <button id="sign-btn" class="login-btn" > Sign In</button>
+        </div>
+        </form>
+
+
+    </div>
+    
+</body>
+</html>
