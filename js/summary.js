@@ -42,3 +42,7 @@ function renderSummary() {
 function getToBoard(){
     window.location.href="board.html"
 }
+
+function hover(id,src) {
+    document.getElementById(id).setAttribute('src', src);
+  }

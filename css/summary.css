@@ -169,14 +169,11 @@ body{
     transform: scale(1.05);
     background-color: rgb(43,54,71);
     color: white;
-    filter: brightness(0),invert(1);
+   
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.todo:hover img{
-        -webkit-filter: invert(1);
-        filter: brightness(0),invert(1);
-        }
+
 
 .bold{
     font-weight:bold;

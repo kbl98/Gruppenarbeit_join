@@ -61,15 +61,15 @@
 <!----------------------------container for todos and dones-------------------------------->
                 </div>
                 <div class="todos-container">
-                    <div class="todo box-shadow" onclick="getToBoard()">
-                        <img src="assets/img/todo.svg">
+                    <div class="todo box-shadow" onclick="getToBoard()" onmouseover="hover('img-todo','assets/img/todoreverse.svg')">
+                        <img id="img-todo" src="assets/img/todo.svg">
                         <div class="column">
                         <span id="num-do" class="bold">1</span>
                         <p>to do</p>
                         </div>
                     </div>
-                    <div class="todo box-shadow" onclick="getToBoard()">
-                        <img src="assets/img/done.svg">
+                    <div class="todo box-shadow" onclick="getToBoard()" onmouseover="hover('img-done','assets/img/donereverse.svg')">
+                        <img id="img-done" src="assets/img/done.svg">
                         <div class="column">
                         <span id="num-done" class="bold">1</span>
                         <p>done</p>
