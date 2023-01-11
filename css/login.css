@@ -153,6 +153,7 @@ body{
       height:40px;
       padding: 12px;
       font-size: 16px;
+      border:transparent;
   }
   
   #guest-btn{
@@ -162,9 +163,12 @@ body{
       cursor: pointer;
       margin-left: 30px;
       height:40px;
-      padding: 12px;
+      display: flex;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
       font-size: 16px;
-  }
+    }
   
   #newuser-container{
       position:absolute;

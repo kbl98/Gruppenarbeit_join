@@ -1,5 +1,6 @@
 let user=[];
-let current_user
+let current_user=[];
+let tasks=[];
 
 /**function for moving the start-logo from center to left corner */
 function moveLogo(){
@@ -47,6 +48,22 @@ async function getCurrentUser(){
     }else{
     setMainHTML()}
 }
+
+function guestLogin(){
+    current_user={
+        "img":"assets/img/guest_pic.svg",
+        "name":"guest",
+        "email":"guest@guest.de",
+    };
+    getDemoSummary();
+}
+
+function getDemoSummary(){
+    window.location.href = 'summary.html';
+    
+}
+
+
 
 async function sign(){
    /*await getUsers();
