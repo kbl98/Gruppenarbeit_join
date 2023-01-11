@@ -5,16 +5,14 @@ body{
       width:100%;
       margin:0;
       background-color: rgb(246,247,248);
-      display:flex;
-      align-items: center;
-      justify-content: center;
+      
+     
       font-family:'Inter';
   }
 
 .main-content-container{
-    height:100vh;
-    width:100%;
-    
+    padding-left: 232px;
+    padding-top: 90px;
 }
 
 #heading{
