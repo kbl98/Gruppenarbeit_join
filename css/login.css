@@ -1,0 +1,207 @@
+body{
+    top:0;
+    left:0;
+      height:100vh;
+      width:100%;
+      margin:0;
+      background-color: rgb(246,247,248);
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      font-family:'Inter';
+  }
+  
+  /*#overlay-start{
+      transition: all 3000ms ease-in-out;
+      width:100%;
+      height:100vh;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+     
+  }*/
+  
+  
+  /*.left-corner{
+     transform:translate(-700%,-600%);
+      }*/
+  
+  #start-pic{
+      object-fit: contain;
+      transition: all 3000ms ease-in-out;
+  }
+  
+  .logo-big{
+      width:200px;
+      height:200px;
+      position: absolute;
+      top:50vh;
+      left:50%;
+  }
+  
+  .logo-small{
+      width:80px;
+      height:80px;
+      position:absolute;
+      top:20px;
+      left:20px;
+     
+  }
+  
+  .d-none{
+      display: none !important;
+  }
+  
+  #login-container{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items:center ;
+      flex-direction: column;
+      width:600px;
+      height:500px;
+      background-color:white;
+      border-radius: 16px;
+      box-shadow: 0px 2px 8px 0px rgba(128, 128, 128, 0.103);
+      padding:20px;
+  }
+  
+  input{
+      border:solid 2px rgba(128, 128, 128, 0.122);
+      border-radius:4px;
+      height:35px;
+      width:450px;
+      margin-bottom: 20px;
+  }
+  
+  form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-left: 80px;
+      padding-right: 80px;
+  }
+  
+  h1{
+      margin-bottom: 28px;
+      font-size: 50px;
+      padding-left:50px;
+  }
+  
+  #blue-line{
+      height:32px;
+      width:70px;
+      border-top: solid 2px rgb(10,153,255);
+  }
+  .mail-input{
+      background-image: url("img/email-icon.svg");
+      background-position: 420px 10px;
+      padding-left: 10px;
+      background-repeat: no-repeat;
+  }
+  
+  .password-input{
+      background-image: url("img/password-icon.svg");
+      background-position: 420px 10px;
+      padding-left: 10px;
+      background-repeat: no-repeat;
+  }
+  
+  .name-input{
+      background-image: url("img/name.svg");
+      background-position: 420px 10px;
+      padding-left: 10px;
+      background-repeat: no-repeat;
+      margin-top:40px;
+  }
+  
+  .help-container{
+      display:flex;
+      justify-content:space-between;
+  }
+  
+  .password-toggle{
+      color:rgb(43,54,71);
+      font-size:14px;
+      margin-right:20px;
+      cursor: pointer;
+  }
+  
+  #new-password{
+      color:rgb(10,153,255);
+      font-size:14px;
+      margin-left:20px;
+      cursor: pointer;
+      text-decoration: none;
+      display:flex;
+      align-items: center;
+  }
+  
+  
+  #btn-box{
+      display: flex;
+      justify-content: center;
+      margin-top:20px;
+  }
+  
+  .login-btn{
+      background-color: rgb(43,54,71);
+      border-radius:5px;
+      cursor: pointer;
+      color: rgb(245,246,247);
+      height:40px;
+      padding: 12px;
+      font-size: 16px;
+  }
+  
+  #guest-btn{
+      background-color:  rgb(245,246,247);
+      border:solid 1px  rgb(43,54,71);
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 30px;
+      height:40px;
+      padding: 12px;
+      font-size: 16px;
+  }
+  
+  #newuser-container{
+      position:absolute;
+      top:20px;
+      right:20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  #new-question{
+      color:rgb(43,54,71);
+      font-size: 18px;
+      margin-right:16px;
+  }
+  
+  #sign-in{
+      height:32px;
+      background-color: rgb(43,54,71);
+      color:white;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+  }
+  
+  #arrow-back{
+      position: absolute;
+      top:16px;
+      left:16px;
+  }
+  
+  #text-reset{
+      color:rgb(43,54,71);
+      font-size:16px;
+  }
+  
+  
