@@ -14,7 +14,8 @@ body {
     flex-direction: column;
     row-gap: 100px;
     position: absolute;
-    left: 282px;
+    right: 100px;
+    left: 332px;
     top: 160px;
     box-sizing: border-box;
 }
@@ -88,6 +89,7 @@ body {
 
 .cont-todo {
     display: flex;
+    justify-content: space-between;
     column-gap: 50px;
 }
 
