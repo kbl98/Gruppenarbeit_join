@@ -1,11 +1,19 @@
 * {
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
-
+    margin: 0;
 }
 
 body {
     background-color: rgb(246, 247, 248);
+}
+
+.cont-board-side {
+    display: flex;
+    flex-direction: column;
+    row-gap: 200px;
+    height: 100vh;
+    margin: 50px 50px 50px;
 }
 
 .cont-head {
@@ -64,4 +72,110 @@ body {
 
 .add-task-plus-img {
     height: 15px;
+}
+
+.cont-todo {
+    display: flex;
+    column-gap: 50px;
+}
+
+.todo-head {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+    font-size: 21px;
+}
+
+.todo-head img {
+    width: 30px;
+    height: 30px;
+}
+
+.todo-tasks {
+    width: 250px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.task-head {
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 4px 25px;
+    width: min-content;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.task-titel {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.task-description {
+    color: #A8A8A8;
+    word-wrap: break-word;
+}
+
+.cont-progress {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress {
+    width: 60%;
+    background-color: white;
+    border-radius: 100px;
+    height: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    background-color: rgb(41, 171, 226);
+    height: 0.5rem;
+    border-radius: 100px;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cont-assigned {
+    display: flex;
+}
+
+.assigned {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: -8px;
+    border: 2px solid white;
+}
+
+.board-priority {
+    height: 12px;
+    width: 17px;
 }
