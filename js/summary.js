@@ -46,3 +46,7 @@ function getToBoard(){
 function hover(id,src) {
     document.getElementById(id).setAttribute('src', src);
   }
+
+  function unhover(id,src) {
+    document.getElementById(id).setAttribute('src',src);
+  }
