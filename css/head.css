@@ -62,16 +62,14 @@
   }
 
   #popup-logout p{
+    z-index: 3;
     margin-right: 50px;
-    height: 30px;
-    width: 50px;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
     padding: 20px;
     background-color: rgb(43,54,71);
     text-align: center;
-    color: white;
     color: white;
     display: flex;
     align-items: flex-end;
