@@ -75,5 +75,6 @@
     align-items: flex-end;
     font-size: 20px;
     justify-content: flex-end;
+    cursor: pointer;
     
   }
