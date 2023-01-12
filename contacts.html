@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/head.css">
     <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/fonts.css">
     <script src="./js/script.js"></script>
 
 </head>
@@ -18,6 +19,39 @@
     <!--includes header and nav bar-->
     <div w3-include-html="./assets/templates/head.html"></div>-->
     <div w3-include-html="./assets/templates/nav.html"></div>
+
+    <!-- contacts main side -->
+    <div class="outer-cont-contacts-main">
+        <div class="cont-contacts-head">
+            <h1 class="contacts-header">Contacts</h1>
+            <div class="head-parting-line"></div>
+            <p class="head-comment">Better with a team</p>
+        </div>
+
+        <!-- open contact -->
+        <div class="cont-open-contact">
+            <div class="open-contact-head">
+                <div style="background-color: #FF7A00;" class="open-contact-img">AM</div>
+                <div class="open-contact-head-name">
+                    <h2>Anton Mayer</h2>
+                    <span><img src="./assets/img/contact_add_task.png" alt=""> Add Task</span>
+                </div>
+            </div>
+            <div class="open-contact-edit">
+                <span class="contact-information-text">Contact Information</span>
+                <span class="contact-edit-info"><img src="./assets/img/edit_contact.png" alt=""> Edit Contact</span>
+            </div>
+            <div class="open-contact-infos">
+                <span class="contact-information">Email</span>
+                <a class="contact-mail" href="mailto:antom@gmail.com">antom@gmail.com</a>
+                <span class="contact-information">Phone</span>
+                <a class="contact-tel" href="tel:+491111111111">+49 1111 111 11 1</a>
+            </div>
+        </div>
+    </div>
+    <button class="contact-new-contact">New contact <img src="./assets/img/contact_new_contact.png" alt=""></button>
+
+    <!-- -------------------- -->
 
     <!-- all contacts -->
     <div class="outer-cont-contacts">
