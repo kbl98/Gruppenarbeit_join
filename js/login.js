@@ -116,9 +116,17 @@ function saveUser(newUser){
     getUsers();
 }
 
+/**function for opening popup-mail */
+
+function openPopupMail(){
+    document.getElementById("popup-mail").classList.remove("d-none");
+    setTimeout(newPassword,2000);
+}
+
 /** function to get to site for resetting password*/
 function newPassword(){
     window.location.href="reset_password.html";
+    document.getElementById("popup-mail").classList.add("d-none");
 }
 
 /**function for setting the new password */
