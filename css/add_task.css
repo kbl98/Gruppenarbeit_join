@@ -1,24 +1,26 @@
 body {
-  display: flex;
   margin: 0;
   background-color:rgb(246,247,248);
-  font-family: arial;
-  height: 100vH;
+  font-family: 'Inter';
+  font-style: normal;
 }
 .header {
   height: 80px;
 }
-.rightContent {
-  width: 100%;
-}
+
 .rightContent h1 {
   font-size: 61px;
+  margin-bottom: 50px;
 }
 .addTask {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  position: absolute;
+  left: 232px;
+  top: 90px;
+  height: calc(100vH - 90px);
+  width: calc(100% - 232px);
 }
 .column {
   display: flex;
@@ -30,6 +32,9 @@ body {
   font-size: 21px;
   margin-bottom: 5px;
 }
+
+
+/* left */
 .addTaskLeft {
   display: flex;
   flex-direction: column;
@@ -49,7 +54,7 @@ textarea:focus, input:focus {
 }
 textarea {
   width: 380px;
-  height: 119px;
+  height: 80.81px;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   font-family: arial;
@@ -60,9 +65,13 @@ textarea {
 textarea::placeholder {
   color: rgb(220,220,220);
 }
+
+
+/* right */
 .addTaskRight {
   display: flex;
   flex-direction: column;
+  margin-top: -56px;
 }
 .buttons {
   display: flex;
