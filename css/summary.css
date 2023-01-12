@@ -11,18 +11,28 @@ body{
   }
 
 .main-content-container{
-    padding-left: 232px;
-    padding-top: 90px;
+    width: 100%;
+    padding-top: 100px;
+    padding-right: 100px;
+    padding-left: 230px;
+    
 }
+
+
+
 
 #heading{
     font-size:25px ;
     padding-top: 80px;
     padding-left: 150px;
-    padding-right: 400px;
+    padding-right: 200px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+}
+
+.heading-add{
+    margin-left:40px;
 }
 
 
