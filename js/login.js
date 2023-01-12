@@ -9,7 +9,7 @@ function moveLogo(){
 
 /**function for showing the login-box and sign-in */
 function showLogin(){
-    /*setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');*/
+    /*setURL('"http://gruppe-430.developerakademie.net/smallest_backend_ever-master"');*/
     document.getElementById("login-container").classList.remove("d-none");
     document.getElementById("newuser-container").classList.remove("d-none")
 }
@@ -83,18 +83,19 @@ async function sign(){
     username="";
     email="";
     password="";
+    window.location.href="login.html"
 }
 
 /**funtion to set Location of Storage */
 async function setBackend(){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
+    setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     await getUsers();
 }
 
 
 /**function to get all registrated Users from storage */
 async function getUsers(){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
+    setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     let usersAsText= await backend.getItem("users");
     console.log(usersAsText);
     users=JSON.parse(usersAsText);
@@ -106,7 +107,7 @@ async function getUsers(){
 
 /**function to save Users at Storage */
 function saveUser(newUser){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
+    setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     users.push(newUser);
     
     let usersAsText=JSON.stringify(users);
@@ -119,7 +120,17 @@ function saveUser(newUser){
 /**function for opening popup-mail */
 
 function openPopupMail(){
-    document.getElementById("popup-mail").classList.remove("d-none");
+    let popup=document.getElementById("popup-mail");
+    popup.classList.remove("d-none");
+    setTimeout(changeClass,100);
+}
+
+
+/**function to change classname of popup */
+function changeClass(){
+    let popup_p=document.getElementById("popup-mail-p");
+    popup_p.classList.remove("bottom");
+    popup_p.classList.add("center");
     setTimeout(newPassword,2000);
 }
 

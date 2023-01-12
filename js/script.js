@@ -1,7 +1,8 @@
-let all_tasks;
-let users;
-let current_task;
-let current_user;
+let all_tasks=[];
+
+let users=[];
+let current_task=[];
+let current_user=[];
 
 
 async function includeHTML() {
