@@ -14,6 +14,8 @@
     <script src="js/head.js"></script>
     <script src="js/nav.js"></script>
     <script src="./js/script.js"></script>
+    <script src="js/mini_backend.js"></script>
+    <script src="./js/contacts.js"></script>
 
 </head>
 
@@ -21,6 +23,73 @@
     <!--includes header and nav bar-->
     <div w3-include-html="./assets/templates/head.html"></div>-->
     <div w3-include-html="./assets/templates/nav.html"></div>
+
+    <!-- popup create new contact -->
+    <div id="contCreateNewContact" class="new-contact-pup-bgr d-none">
+        <div class="cont-new-contact-pup">
+            <!--close popup-->
+            <img onclick="closeNewContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+
+            <!-- left side from popup create new contact -->
+            <div class="cont-left-contact-pup">
+                <img src="./assets/img/contacts_logo.png" alt="">
+                <h2>Add Contact</h2>
+                <span>Tasks are better with a team!</span>
+                <div></div>
+            </div>
+
+            <!-- right side from popup create new contact -->
+            <div class="cont-right-contact-pup">
+                <div class="cont-create-contact-infos">
+                    <img class="create-contact-pp" src="./assets/img/contact_empty_pp.png" alt="">
+                    <div class="cont-create-contact-input">
+                        <input placeholder="Name" type="text" requierd>
+                        <input placeholder="Email" type="text" requierd>
+                        <input placeholder="Phone" type="text" requierd>
+                        <div class="cont-create-contact-buttons">
+                            <button onclick="closeNewContact()" class="create-new-contact-deny">Cancel <img src="./assets/img/contact_add_task.png"
+                                    alt=""></button>
+                            <button type="submit" class="create-new-contact-check"> Create contact <img
+                                    src="./assets/img/contact_check.png" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------- -->
+
+    <!-- popup edit contact -->
+    <div id="contEditContact" class="new-contact-pup-bgr d-none">
+        <div class="cont-new-contact-pup">
+            <!--close popup-->
+            <img onclick="closeEditContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+
+            <!-- left side from popup edit contact -->
+            <div class="cont-left-contact-pup">
+                <img src="./assets/img/contacts_logo.png" alt="">
+                <h2>Edit Contact</h2>
+                <span>Tasks are better with a team!</span>
+                <div></div>
+            </div>
+
+            <!-- right side from popup edit contact -->
+            <div class="cont-right-contact-pup">
+                <div class="cont-create-contact-infos">
+                    <div style="background-color: #FF7A00;" class="edit-contact-img">AM</div>
+                    <div class="cont-create-contact-input">
+                        <input value="Anton Mayer" placeholder="Name" type="text" requierd>
+                        <input value="antom@gmail.com" placeholder="Email" type="text" requierd>
+                        <input value="+49 1111 111 11 1" placeholder="Phone" type="text" requierd>
+                        <div class="cont-create-contact-buttons">
+                            <button type="submit" class="create-new-contact-check"> Save </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------- -->
 
     <!-- contacts main side -->
     <div class="outer-cont-contacts-main">
@@ -31,7 +100,7 @@
         </div>
 
         <!-- open contact -->
-        <div class="cont-open-contact">
+        <div id="openContact" class="cont-open-contact d-none">
             <div class="open-contact-head">
                 <div style="background-color: #FF7A00;" class="open-contact-img">AM</div>
                 <div class="open-contact-head-name">
@@ -41,7 +110,7 @@
             </div>
             <div class="open-contact-edit">
                 <span class="contact-information-text">Contact Information</span>
-                <span class="contact-edit-info"><img src="./assets/img/edit_contact.png" alt=""> Edit Contact</span>
+                <span onclick="openEditContact()" class="contact-edit-info"><img src="./assets/img/edit_contact.png" alt=""> Edit Contact</span>
             </div>
             <div class="open-contact-infos">
                 <span class="contact-information">Email</span>
@@ -51,9 +120,10 @@
             </div>
         </div>
     </div>
-    <button class="contact-new-contact">New contact <img src="./assets/img/contact_new_contact.png" alt=""></button>
-
     <!-- -------------------- -->
+
+    <!-- button for new contact -->
+    <button onclick="openNewContact()" class="contact-new-contact">New contact <img src="./assets/img/contact_new_contact.png" alt=""></button>
 
     <!-- all contacts -->
     <div class="outer-cont-contacts">
@@ -67,10 +137,10 @@
                 <div class="parting-line"></div>
 
                 <!-- 1 contact -->
-                <div style="background-color: #2A3647;" class="contact">
+                <div onclick="openCloseDetails()" id="contactBgr" style="background-color: none;" class="contact">
                     <div style="background-color: #FF7A00;" class="contact-img">AM</div>
                     <div class="contact-infos">
-                        <span style="color: white;" class="contact-name">Anton Mayer</span>
+                        <span id="contactNameColor" style="color: unset;" class="contact-name">Anton Mayer</span>
                         <a class="contact-mail" href="mailto:antom@gmail.com">antom@gmail.com</a>
                     </div>
                 </div>

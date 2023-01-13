@@ -1,4 +1,6 @@
 
+
+
 /**function for moving the start-logo from center to left corner */
 function moveLogo(){
     let logo=document.getElementById("start-pic");
@@ -9,7 +11,7 @@ function moveLogo(){
 
 /**function for showing the login-box and sign-in */
 function showLogin(){
-    /*setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');*/
+    /*setURL('"https://gruppe-430.developerakademie.net/smallest_backend_ever-master"');*/
     document.getElementById("login-container").classList.remove("d-none");
     document.getElementById("newuser-container").classList.remove("d-none")
 }
@@ -17,6 +19,7 @@ function showLogin(){
 /**function to wait some time before moving logo and getting login-box */
 function getLogin(){
     setTimeout(moveLogo,500);
+    setURL("https://gruppe-430.developerakademie.net/smallest_backend_ever-master");
 }
 
 
@@ -37,6 +40,7 @@ if (type=="password"){
 
 /**function to find the logged User */
 async function getCurrentUser(){
+    /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     let logname=document.getElementById("mail-login");
     let logpassword=document.getElementById("password-login");
     await getUsers();
@@ -44,7 +48,12 @@ async function getCurrentUser(){
     if (!current_user){
         window.location.href='registration.html'
     }else{
-    setMainHTML()}
+    window.location.href="summary.html";
+    setUserImg()}
+}
+
+function setUserImg(){
+    document.getElementById("user-img").setAttribute("src",current_img);
 }
 
 /**function to login a guestUser */
@@ -66,8 +75,8 @@ function getDemoSummary(){
 
 /**function to registrate as new User */
 async function sign(){
-   /*await getUsers();
-   console.log(users);*/
+   await getUsers();
+   console.log(users);
    let username=document.getElementById("name-registration").value;
    console.log(username);
    let email=document.getElementById("mail-registration").value;
@@ -83,30 +92,31 @@ async function sign(){
     username="";
     email="";
     password="";
+    window.location.href="login.html"
 }
 
 /**funtion to set Location of Storage */
 async function setBackend(){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
-    await getUsers();
+    setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+    /*await getUsers();*/
 }
 
 
 /**function to get all registrated Users from storage */
 async function getUsers(){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
+    /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     let usersAsText= await backend.getItem("users");
     console.log(usersAsText);
     users=JSON.parse(usersAsText);
-    /*if (!users){
+    if (!users){
         users=[];
-    }*/
+    }
     console.log(users);
 }
 
 /**function to save Users at Storage */
 function saveUser(newUser){
-    setURL('http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master');
+    /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     users.push(newUser);
     
     let usersAsText=JSON.stringify(users);
@@ -119,7 +129,17 @@ function saveUser(newUser){
 /**function for opening popup-mail */
 
 function openPopupMail(){
-    document.getElementById("popup-mail").classList.remove("d-none");
+    let popup=document.getElementById("popup-mail");
+    popup.classList.remove("d-none");
+    setTimeout(changeClass,100);
+}
+
+
+/**function to change classname of popup */
+function changeClass(){
+    let popup_p=document.getElementById("popup-mail-p");
+    popup_p.classList.remove("bottom");
+    popup_p.classList.add("center");
     setTimeout(newPassword,2000);
 }
 

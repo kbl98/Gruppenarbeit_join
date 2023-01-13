@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    box-sizing: border-box;
 }
 
 #head{
@@ -32,6 +33,10 @@
     margin-right: 50px;
 }
 
+#user-img:hover{
+    cursor: pointer;
+}
+
 .join-name {
     margin-left: 50px;
     font-size: 21px;
@@ -47,19 +52,20 @@
 }
 
 #popup-logout{
+    height:90vh;
     position: absolute;
-    top: 0;
+    top:0;
     right: 0;
     width: 100%;
-    height: 100vh;
     z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(245, 246, 247, 0.495);
+    background-color: transparent;
     justify-content: flex-end;
     align-items: flex-start;
-  }
+    margin-top:90px;
+    }
 
   #popup-logout p{
     z-index: 3;
@@ -75,5 +81,6 @@
     align-items: flex-end;
     font-size: 20px;
     justify-content: flex-end;
-    margin-top: 90px;
+    cursor: pointer;
+    
   }

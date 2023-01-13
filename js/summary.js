@@ -1,3 +1,5 @@
+
+
 async function setMainHTML() {
   await getTasks();
   window.location.href = "main.html";
@@ -5,15 +7,21 @@ async function setMainHTML() {
 
 async function init() {
   await includeHTML();
-  renderSummary();
+  setURL(
+    "http://gruppe-430.developerakademie.net/smallest_backend_ever"
+  );
+ renderSummary();
 }
 
 /**function that fetches tasks from backend and creates a Json */
 async function getTasks() {
   setURL(
-    "http://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master"
+    "http://gruppe-430.developerakademie.net/smallest_backend_ever-master"
   );
   let tasksAsText = await backend.getItem("tasks");
+  if(!tasksAsText){
+    console.log("Keine Tasks")
+  }
   all_tasks = JSON.parse(tasksAsText);
 }
 /**function to include the template 
