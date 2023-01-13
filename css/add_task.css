@@ -161,6 +161,37 @@ textarea::placeholder {
   height: 16px;
   width: 16px;
 }
+#contact:focus {
+  outline: none;
+}
+.paddingRight {
+  padding-right: 21px;
+}
+.selectContact {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+}
+.selectContact input {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.selectContact img {
+  padding-left: 5px;
+}
+/* DUE DATE */
+#datepicker {
+  cursor: pointer;
+}
+
+
+
+
 
 
 
@@ -179,6 +210,7 @@ textarea::placeholder {
   flex-direction: column;
   margin-top: 124px;
 }
+/* PRIO */
 .prioButtons {
   display: flex;
   justify-content: space-between;
@@ -193,10 +225,11 @@ textarea::placeholder {
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   cursor: pointer;
-  background-color: white;
 }
 .prioButtons button:hover {
-  box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.2);
+  border-top: 0;
 }
 
 

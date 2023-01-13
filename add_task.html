@@ -5,14 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>add Task</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="js/script.js"></script>
   <script src="js/add_task.js"></script>
   <script src="js/head.js"></script>
   <script src="js/nav.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/head.css" />
   <link rel="stylesheet" href="css/add_task.css">
   <link rel="stylesheet" href="css/fonts.css">
+  
 </head>
 <body onload="includeHTML()">
     
@@ -81,55 +86,55 @@
         <div class="column contacts">
           <span>Assigned to</span>
           <div class="selectField" id="selectFieldContact" onclick="openCloseContacts()">
-            <div class="selectCategory" id="selectContact">
-              <div class="center">
-                <div id="contact" contenteditable="false">Select contacts to assign</div>
-              </div>
-              <div id="contactImage"><img src="assets/img/arrow_drop.svg"></div>
+            <div class="selectContact" id="selectContact">
+              
+                <input type="email" id="contact" disabled placeholder="Select contacts to assign">
+              
+              <div id="contactImage"><img class="paddingRight" src="assets/img/arrow_drop.svg"></div>
             </div>
             
             <div class="d-none" id="openedContacts" onclick="notOpenCloseContacts(event)">
-              <div class="oneContact" onclick="addContact(1)"><div id="contact1">You</div><button id="contactButton1"></button></div>
-              <div class="oneContact" onclick="addContact(2)"><div id="contact2">Max Wolfberg</div><button id="contactButton2"></button></div>
-              <div class="oneContact" onclick="addNewContact()">New contact</div>
+              <div class="oneContact" onclick="addContact(0)"><div id="contact0">You</div><button id="contactButton0"></button></div>
+              <div class="oneContact" onclick="addContact(1)"><div id="contact1">Max Wolfberg</div><button id="contactButton1"></button></div>
+              <div class="oneContact" onclick="addNewContact()" id="newContact"><div>Invite new contact</div><button><img src="assets/img/contact_icon.svg"></button></div>
             </div>
             
           </div>
-
-          <!-- <div id="categoryColors" class="d-none">
-            <div onclick="changeColor(1)" id="changeColor1" class="color"><img src="assets/img/circle_turquoise.svg"></div>
-            <div onclick="changeColor(2)" id="changeColor2" class="color"><img src="assets/img/circle_pink.svg"></div>
-            <div onclick="changeColor(3)" id="changeColor3" class="color"><img src="assets/img/circle_darkblue.svg"></div>
-            <div onclick="changeColor(4)" id="changeColor4" class="color"><img src="assets/img/circle_orange.svg"></div>
-            <div onclick="changeColor(5)" id="changeColor5" class="color"><img src="assets/img/circle_green.svg"></div>
-            <div onclick="changeColor(6)" id="changeColor6" class="color"><img src="assets/img/circle_red.svg"></div>
-            <div onclick="changeColor(7)" id="changeColor7" class="color"><img src="assets/img/circle_blue.svg"></div>
-          </div> -->
       </div>
+</div>
 
-      <!-- VERTICAL LINE -->
+
+<!-- VERTICAL LINE -->
       <img src="assets/img/line_vertical.svg" class="imageLine">
 
 
-      <div class="addTaskRight">
+      <div class="addTaskRight"> 
+<!-- DUE DATE -->
         <div class="column">
           <span>Due date</span>
-          <input placeholder="date">
+          <input  type="text" placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
         </div>
+<!-- PRIO -->
         <div class="column">
           <span>Prio</span>
           <div class="prioButtons">
-            <button>Urgent <img src="assets/img/urgent_newTask.svg"></button>
-            <button>Medium <img src="assets/img/medium_newTask.svg"></button>
-            <button>Low <img src="assets/img/low_newTask.svg"></button>
+            <button onclick="addPrio(0)" id="prioButton0" style="background-color:white;">Urgent <img src="assets/img/urgent_newTask.svg"></button>
+            <button onclick="addPrio(1)" id="prioButton1" style="background-color:white;">Medium <img src="assets/img/medium_newTask.svg"></button>
+            <button onclick="addPrio(2)" id="prioButton2" style="background-color:white;">Low <img src="assets/img/low_newTask.svg"></button>
           </div>
         </div>
+<!-- SUBTASKS -->
         <div class="column">
           <span>Subtasks</span>
           <input placeholder="Add new subtask">
         </div>
+<!-- BUTTONS -->
+      <div>
+        <button>Clear</button>
+        <button onclick="createTask()">Create Task</button>
       </div>
 
+      </div>
     </div>
   </div>
 </body>
