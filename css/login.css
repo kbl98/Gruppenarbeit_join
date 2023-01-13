@@ -244,8 +244,8 @@ h1 {
 #popup-mail-p {
 padding:20px;
   position: absolute;
-  height: 20px;
-  width: 180px;
+  height: 40px;
+  width: 220px;
   border-radius: 16px;
   background-color: rgb(43, 54, 71);
   text-align: center;
@@ -253,7 +253,33 @@ padding:20px;
   font-size: 20px;
   transition: all 2000ms ease-in-out;
  left:45%;
+ font-size: 18px;
   
  
  
 }
+
+#popup-user-p {
+  padding:20px;
+    position: absolute;
+    height: 60px;
+    width: 220px;
+    border-radius: 16px;
+    background-color: rgb(43, 54, 71);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    transition: all 2000ms ease-in-out;
+   left:45%;
+   font-size: 18px;
+  }
+
+  #popup-user {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    background-color: transparent;
+  }
