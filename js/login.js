@@ -1,4 +1,6 @@
 
+
+
 /**function for moving the start-logo from center to left corner */
 function moveLogo(){
     let logo=document.getElementById("start-pic");
@@ -66,8 +68,8 @@ function getDemoSummary(){
 
 /**function to registrate as new User */
 async function sign(){
-   /*await getUsers();
-   console.log(users);*/
+   await getUsers();
+   console.log(users);
    let username=document.getElementById("name-registration").value;
    console.log(username);
    let email=document.getElementById("mail-registration").value;
@@ -89,7 +91,7 @@ async function sign(){
 /**funtion to set Location of Storage */
 async function setBackend(){
     setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
-    await getUsers();
+    /*await getUsers();*/
 }
 
 
@@ -99,15 +101,15 @@ async function getUsers(){
     let usersAsText= await backend.getItem("users");
     console.log(usersAsText);
     users=JSON.parse(usersAsText);
-    /*if (!users){
+    if (!users){
         users=[];
-    }*/
+    }
     console.log(users);
 }
 
 /**function to save Users at Storage */
 function saveUser(newUser){
-    setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+    /*setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     users.push(newUser);
     
     let usersAsText=JSON.stringify(users);
