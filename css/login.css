@@ -92,21 +92,21 @@ h1 {
   border-top: solid 2px rgb(40, 171, 226);
 }
 .mail-input {
-  background-image: url("/assets/img/email-icon.svg");
+  background-image: url("../assets/img/email-icon.svg");
   background-position: 420px 10px;
   padding-left: 10px;
   background-repeat: no-repeat;
 }
 
 .password-input {
-  background-image: url("/assets/img/password-icon.svg");
+  background-image: url("../assets/img/password-icon.svg");
   background-position: 420px 10px;
   padding-left: 10px;
   background-repeat: no-repeat;
 }
 
 .name-input {
-  background-image: url("/assets/img/name.svg");
+  background-image: url("../assets/img/name.svg");
   background-position: 420px 10px;
   padding-left: 10px;
   background-repeat: no-repeat;
