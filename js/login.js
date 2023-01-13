@@ -11,7 +11,7 @@ function moveLogo(){
 
 /**function for showing the login-box and sign-in */
 function showLogin(){
-    /*setURL('"http://gruppe-430.developerakademie.net/smallest_backend_ever-master"');*/
+    /*setURL('"https://gruppe-430.developerakademie.net/smallest_backend_ever-master"');*/
     document.getElementById("login-container").classList.remove("d-none");
     document.getElementById("newuser-container").classList.remove("d-none")
 }
@@ -90,14 +90,14 @@ async function sign(){
 
 /**funtion to set Location of Storage */
 async function setBackend(){
-    setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+    setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     /*await getUsers();*/
 }
 
 
 /**function to get all registrated Users from storage */
 async function getUsers(){
-    setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+    setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     let usersAsText= await backend.getItem("users");
     console.log(usersAsText);
     users=JSON.parse(usersAsText);
@@ -109,7 +109,7 @@ async function getUsers(){
 
 /**function to save Users at Storage */
 function saveUser(newUser){
-    /*setURL('http://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
+    /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     users.push(newUser);
     
     let usersAsText=JSON.stringify(users);
