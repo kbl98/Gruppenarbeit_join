@@ -378,14 +378,14 @@ body {
     filter: brightness(0);
 }
 
-.create-new-contact-deny:hover { 
+.create-new-contact-deny:hover {
     border-color: #29ABE2;
     color: #29ABE2;
     box-shadow: 2px 2px 10px gray;
     scale: 1.01;
 }
 
-.create-new-contact-deny:hover img{
+.create-new-contact-deny:hover img {
     filter: brightness(1);
 }
 
@@ -412,4 +412,19 @@ body {
     background-color: #29ABE2;
     box-shadow: 2px 2px 10px gray;
     scale: 1.01;
+}
+
+.edit-contact-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 3px solid white;
+    color: white;
+    font-weight: 500;
+    font-size: 47px;
 }

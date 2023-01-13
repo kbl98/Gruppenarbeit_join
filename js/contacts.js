@@ -26,3 +26,14 @@ function closeNewContact() {
     let newContact = document.getElementById('contCreateNewContact');
     newContact.classList.add('d-none');
 }
+
+
+function openEditContact() {
+    let editContact = document.getElementById('contEditContact');
+    editContact.classList.remove('d-none');
+}
+
+function closeEditContact() {
+    let editContact = document.getElementById('contEditContact');
+    editContact.classList.add('d-none');
+}

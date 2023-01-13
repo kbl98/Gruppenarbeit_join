@@ -59,6 +59,38 @@
     </div>
     <!-- ---------------------------------------------------- -->
 
+    <!-- popup edit contact -->
+    <div id="contEditContact" class="new-contact-pup-bgr d-none">
+        <div class="cont-new-contact-pup">
+            <!--close popup-->
+            <img onclick="closeEditContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+
+            <!-- left side from popup edit contact -->
+            <div class="cont-left-contact-pup">
+                <img src="./assets/img/contacts_logo.png" alt="">
+                <h2>Edit Contact</h2>
+                <span>Tasks are better with a team!</span>
+                <div></div>
+            </div>
+
+            <!-- right side from popup edit contact -->
+            <div class="cont-right-contact-pup">
+                <div class="cont-create-contact-infos">
+                    <div style="background-color: #FF7A00;" class="edit-contact-img">AM</div>
+                    <div class="cont-create-contact-input">
+                        <input value="Anton Mayer" placeholder="Name" type="text" requierd>
+                        <input value="antom@gmail.com" placeholder="Email" type="text" requierd>
+                        <input value="+49 1111 111 11 1" placeholder="Phone" type="text" requierd>
+                        <div class="cont-create-contact-buttons">
+                            <button type="submit" class="create-new-contact-check"> Save </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------- -->
+
     <!-- contacts main side -->
     <div class="outer-cont-contacts-main">
         <div class="cont-contacts-head">
@@ -78,7 +110,7 @@
             </div>
             <div class="open-contact-edit">
                 <span class="contact-information-text">Contact Information</span>
-                <span class="contact-edit-info"><img src="./assets/img/edit_contact.png" alt=""> Edit Contact</span>
+                <span onclick="openEditContact()" class="contact-edit-info"><img src="./assets/img/edit_contact.png" alt=""> Edit Contact</span>
             </div>
             <div class="open-contact-infos">
                 <span class="contact-information">Email</span>
@@ -105,10 +137,10 @@
                 <div class="parting-line"></div>
 
                 <!-- 1 contact -->
-                <div onclick="openCloseDetails()" id="contactBgr" style="" class="contact">
+                <div onclick="openCloseDetails()" id="contactBgr" style="background-color: none;" class="contact">
                     <div style="background-color: #FF7A00;" class="contact-img">AM</div>
                     <div class="contact-infos">
-                        <span id="contactNameColor" style="" class="contact-name">Anton Mayer</span>
+                        <span id="contactNameColor" style="color: unset;" class="contact-name">Anton Mayer</span>
                         <a class="contact-mail" href="mailto:antom@gmail.com">antom@gmail.com</a>
                     </div>
                 </div>
