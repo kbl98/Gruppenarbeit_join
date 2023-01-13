@@ -10,8 +10,8 @@ function openCloseDetails() {
         color.style = 'color: white;';
     } else {
         openDetails.classList.add('d-none');
-        bgr.style = '';
-        color.style = '';
+        bgr.style = 'background-color: none;';
+        color.style = 'color: unset;';
     }
 }
 
