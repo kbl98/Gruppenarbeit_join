@@ -15,6 +15,7 @@
     <script src="js/nav.js"></script>
     <script src="./js/script.js"></script>
     <script src="js/mini_backend.js"></script>
+    <script src="./js/contacts.js"></script>
 
 </head>
 
@@ -32,7 +33,7 @@
         </div>
 
         <!-- open contact -->
-        <div class="cont-open-contact">
+        <div id="openContact" class="cont-open-contact d-none">
             <div class="open-contact-head">
                 <div style="background-color: #FF7A00;" class="open-contact-img">AM</div>
                 <div class="open-contact-head-name">
@@ -68,10 +69,10 @@
                 <div class="parting-line"></div>
 
                 <!-- 1 contact -->
-                <div style="background-color: #2A3647;" class="contact">
+                <div onclick="openCloseDetails()" id="contactBgr" style="" class="contact">
                     <div style="background-color: #FF7A00;" class="contact-img">AM</div>
                     <div class="contact-infos">
-                        <span style="color: white;" class="contact-name">Anton Mayer</span>
+                        <span id="contactNameColor" style="" class="contact-name">Anton Mayer</span>
                         <a class="contact-mail" href="mailto:antom@gmail.com">antom@gmail.com</a>
                     </div>
                 </div>

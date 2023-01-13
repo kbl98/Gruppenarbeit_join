@@ -241,3 +241,7 @@ body {
     border: 1px solid white;
     margin: 0 20px 0;
 }
+
+.d-none {
+    display: none;
+}
