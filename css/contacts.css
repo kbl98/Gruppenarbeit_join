@@ -429,3 +429,20 @@ body {
     font-weight: 500;
     font-size: 47px;
 }
+
+.cont-success-message {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    width: 326px;
+    height: 74px;
+    background-color: #2A3647;
+    border-radius: 20px;
+    color: white;
+    font-weight: 400;
+    font-size: 21px;
+}
