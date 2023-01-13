@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    box-sizing: border-box;
 }
 
 #head{
@@ -51,9 +52,9 @@
 }
 
 #popup-logout{
-    height:100vh;
+    height:90vh;
     position: absolute;
-    top: 0;
+    top:0;
     right: 0;
     width: 100%;
     z-index: 3;
@@ -63,8 +64,8 @@
     background-color: transparent;
     justify-content: flex-end;
     align-items: flex-start;
-    margin-top: 90px;
-  }
+    margin-top:90px;
+    }
 
   #popup-logout p{
     z-index: 3;

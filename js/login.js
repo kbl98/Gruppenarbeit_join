@@ -19,6 +19,7 @@ function showLogin(){
 /**function to wait some time before moving logo and getting login-box */
 function getLogin(){
     setTimeout(moveLogo,500);
+    setURL("https://gruppe-430.developerakademie.net/smallest_backend_ever-master");
 }
 
 
@@ -39,6 +40,7 @@ if (type=="password"){
 
 /**function to find the logged User */
 async function getCurrentUser(){
+    /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     let logname=document.getElementById("mail-login");
     let logpassword=document.getElementById("password-login");
     await getUsers();
@@ -46,7 +48,12 @@ async function getCurrentUser(){
     if (!current_user){
         window.location.href='registration.html'
     }else{
-    setMainHTML()}
+    window.location.href="summary.html";
+    setUserImg()}
+}
+
+function setUserImg(){
+    document.getElementById("user-img").setAttribute("src",current_img);
 }
 
 /**function to login a guestUser */
@@ -97,7 +104,7 @@ async function setBackend(){
 
 /**function to get all registrated Users from storage */
 async function getUsers(){
-    setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+    /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
     let usersAsText= await backend.getItem("users");
     console.log(usersAsText);
     users=JSON.parse(usersAsText);

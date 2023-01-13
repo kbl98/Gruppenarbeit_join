@@ -1,5 +1,5 @@
 let all_tasks=[];
-
+let current_img;
 let users=[];
 let current_task=[];
 let current_user=[];

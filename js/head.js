@@ -1,6 +1,7 @@
 /**function to go to login-window */
 function logout(){
     document.getElementById("popup-logout").classList.add("d-none");
+    resetUser();
     window.location.href="login.html"
 }
 
@@ -12,6 +13,15 @@ function showLogout(){
     else{
         logout.classList.add("d-none");}
     }
+
+function resetUser(){
+     all_tasks=[];
+ current_img="./assets/img/user_prototype.png";
+ users=[];
+ current_task=[];
+ current_user=[];
+
+}
 
 
 
