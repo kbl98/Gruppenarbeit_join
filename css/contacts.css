@@ -141,6 +141,7 @@ body {
     background-color: #29ABE2;
     box-shadow: 2px 2px 10px gray;
     scale: 1.01;
+    cursor: pointer;
 }
 
 .open-contact-img {
