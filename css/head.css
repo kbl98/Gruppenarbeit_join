@@ -32,6 +32,10 @@
     margin-right: 50px;
 }
 
+#user-img:hover{
+    cursor: pointer;
+}
+
 .join-name {
     margin-left: 50px;
     font-size: 21px;
@@ -47,6 +51,7 @@
 }
 
 #popup-logout{
+    height:100vh;
     position: absolute;
     top: 0;
     right: 0;
