@@ -35,8 +35,7 @@ all_tasks = [
 
 contacts = [
     {
-        "firstName": "firstName",
-        "lastName": "lastName",
+        "name": "name",
         "email": "email",
         "phone": "phone"
     },
