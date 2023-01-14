@@ -233,16 +233,16 @@ h1 {
   background-color: transparent;
 }
 
-.center{
-    bottom:500px;
+.center {
+  bottom: 500px;
 }
 
-.bottom{
-    bottom:0;
+.bottom {
+  bottom: 0;
 }
 
 #popup-mail-p {
-padding:20px;
+  padding: 20px;
   position: absolute;
   height: 40px;
   width: 220px;
@@ -252,37 +252,76 @@ padding:20px;
   color: white;
   font-size: 20px;
   transition: all 2000ms ease-in-out;
- left:45%;
- font-size: 18px;
-  
- 
- 
+  left: 45%;
+  font-size: 18px;
 }
 
 #popup-user-p {
-  padding:20px;
-    height: 500px;
-    width: 500px;
-    border-radius: 16px;
-    background-color: rgb(43, 54, 71);
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    font-size: 18px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+  padding: 20px;
+  height: 500px;
+  width: 500px;
+  border-radius: 16px;
+  background-color: rgb(43, 54, 71);
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-user {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+  input {
+    width: 350px;
   }
 
-  #popup-user {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 3;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  #login-container {
+    width: 400px;
   }
+
+  form {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .help-container p {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  input {
+    width: 250px;
+  }
+
+  #login-container {
+    margin: 20px;
+    justify-content: flex-start;
+  }
+
+  #new-password {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+}

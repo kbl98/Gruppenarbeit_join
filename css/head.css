@@ -84,3 +84,13 @@
     cursor: pointer;
     
   }
+
+
+  @media screen and (max-width:1000px){
+
+    .join-name {
+    margin-left: 50px;
+    font-size: 18px;
+    font-weight: 400;
+}
+  }
