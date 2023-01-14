@@ -1,5 +1,7 @@
-let selectedTitle = [];
-let selectedDescription = [];
+let allTasks = []; 
+
+let selectedTitle;
+let selectedDescription;
 let selectedCategory = [];
 let selectedContactNames = [];
 let invitedContacts = [];
@@ -14,6 +16,7 @@ function addTitle() {
   selectedTitle = [];
   selectedTitle.push(title.value);
 }
+
 
 //Description
 function addDescription() {
@@ -277,4 +280,30 @@ function resetPrioButtons() {
 
 function createTask() {
   addDate();
+  let task = {
+    'title': selectedTitle,
+    'description': selectedDescription,
+    'category': selectedCategory,
+    'contactNames':selectedContactNames,
+    'invitedContacts': invitedContacts,
+    'date': selectedDate,
+    'prio': selectedPrio,
+    'subtasks': allSubtasks
+  };
+  allTasks.push(task);
+  save();
+}
+
+
+function save() {
+  let allTasksAsString = JSON.stringify(allTasks);
+  localStorage.setItem('allTasks', allTasksAsString);
+}
+
+
+function load() {
+  let allTasksAsString = localStorage.getItem('allTasks');
+  if (allTasksAsString) {
+    allTasks = JSON.parse(allTasksAsString);
+  }
 }

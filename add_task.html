@@ -20,133 +20,14 @@
   <link rel="stylesheet" href="css/fonts.css">
   
 </head>
-<body onload="includeHTML()">
+<body onload="includeHTML(), load()">
     
   <div w3-include-html="assets/templates/nav.html"></div>
 
   <div class="rightContent">
     <div class="header" w3-include-html="assets/templates/head.html"></div>
+    <div w3-include-html="assets/templates/task_template.html"></div>
     
-    <div class="addTask">
-
-      <div class="addTaskLeft">
-        <h1>Add Task</h1>
-<!-- TITLE -->
-<form>
-        <div class="column title">
-          <span>Title</span>
-          <input required placeholder="Enter a title" type="text" onkeyup="addTitle()" id="titleInput">
-        </div>
-
-
-<!-- DESCRIPTION -->
-        <div class="column description">
-          <span>Description</span>
-          <textarea required placeholder="Enter a Description" type="text" onkeyup="addDescription()" id="descriptionTextarea"></textarea>
-        </div>
-
-
-<!-- CATEGORY -->
-        <div class="column category">
-          <span>Category</span>
-          <div class="selectField" id="selectField" onclick="openCloseCategories()">
-            <div class="selectCategory" id="selectCategory">
-              <div class="center">
-                <div id="category" contenteditable="false" style="color: #dcdcdc;">Select task category</div>
-                <div id="categoryColor">
-                </div>
-              </div>
-              <div id="categoryImage"><img src="assets/img/arrow_drop.svg"></div>
-            </div>
-            
-            <div class="d-none" id="openedCategories" onclick="notOpenCloseCategories(event)">
-              <div class="oneCategory" onclick="addNewCategory()">New category</div>
-              <div class="oneCategory" onclick="addCategory(1)"><div class="center"><div id="category1">Sales</div><div id="imageCat1"><img src="assets/img/circle_pink.svg"></div></div></div>
-              <div class="oneCategory" onclick="addCategory(2)"><div class="center"><div id="category2">Backoffice</div><div id="imageCat2"><img src="assets/img/circle_turquoise.svg"></div></div></div>
-              <div class="oneCategory" onclick="addCategory(3)"><div class="center"><div id="category3">Test1</div><div id="imageCat3"><img src="assets/img/circle_darkblue.svg"></div></div></div>
-              <div class="oneCategory" onclick="addCategory(4)"><div class="center"><div id="category4">Test2</div><div id="imageCat4"><img src="assets/img/circle_orange.svg"></div></div></div>
-              <div class="oneCategory" onclick="addCategory(5)"><div class="center"><div id="category5">Test3</div><div id="imageCat5"><img src="assets/img/circle_green.svg"></div></div></div>
-              <div class="oneCategory" onclick="addCategory(6)"><div class="center"><div id="category6">Test4</div><div id="imageCat6"><img src="assets/img/circle_red.svg"></div></div></div>
-              <div class="oneCategory" onclick="addCategory(7)"><div class="center"><div id="category7">Test5</div><div id="imageCat7"><img src="assets/img/circle_blue.svg"></div></div></div>
-            </div>
-            
-          </div>
-
-          <div id="categoryColors" class="d-none">
-            <div onclick="changeColor(1)" id="changeColor1" class="color"><img src="assets/img/circle_turquoise.svg"></div>
-            <div onclick="changeColor(2)" id="changeColor2" class="color"><img src="assets/img/circle_pink.svg"></div>
-            <div onclick="changeColor(3)" id="changeColor3" class="color"><img src="assets/img/circle_darkblue.svg"></div>
-            <div onclick="changeColor(4)" id="changeColor4" class="color"><img src="assets/img/circle_orange.svg"></div>
-            <div onclick="changeColor(5)" id="changeColor5" class="color"><img src="assets/img/circle_green.svg"></div>
-            <div onclick="changeColor(6)" id="changeColor6" class="color"><img src="assets/img/circle_red.svg"></div>
-            <div onclick="changeColor(7)" id="changeColor7" class="color"><img src="assets/img/circle_blue.svg"></div>
-          </div>
-        </div>
-
-
-<!-- ASSIGNED TO-->
-        <div class="column contacts">
-          <span>Assigned to</span>
-          <div class="selectField" id="selectFieldContact" onclick="openCloseContacts()">
-            <div class="selectContact" id="selectContact">
-              
-                <input type="email" id="contact" disabled placeholder="Select contacts to assign">
-              
-              <div id="contactImage"><img class="paddingRight" src="assets/img/arrow_drop.svg"></div>
-            </div>
-            
-            <div class="d-none" id="openedContacts" onclick="notOpenCloseContacts(event)">
-              <div class="oneContact" onclick="addContact(0)"><div id="contact0">You</div><button id="contactButton0"></button></div>
-              <div class="oneContact" onclick="addContact(1)"><div id="contact1">Max Wolfberg</div><button id="contactButton1"></button></div>
-              <div class="oneContact" onclick="addNewContact()" id="newContact"><div>Invite new contact</div><button><img src="assets/img/contact_icon.svg"></button></div>
-            </div>
-            
-          </div>
-      </div>
-</div>
-
-
-<!-- VERTICAL LINE -->
-      <img src="assets/img/line_vertical.svg" class="imageLine">
-
-      <div class="addTaskRight"> 
-<!-- DUE DATE -->
-        <div class="column">
-          <span>Due date</span>
-          <input required placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
-        </div>
-<!-- PRIO -->
-        <div class="column">
-          <span>Prio</span>
-          <div class="prioButtons">
-            <button onclick="addPrio(0)" id="prioButton0" style="background-color:white;">Urgent <img src="assets/img/urgent_newTask.svg"></button>
-            <button onclick="addPrio(1)" id="prioButton1" style="background-color:white;">Medium <img src="assets/img/medium_newTask.svg"></button>
-            <button onclick="addPrio(2)" id="prioButton2" style="background-color:white;">Low <img src="assets/img/low_newTask.svg"></button>
-          </div>
-        </div>
-<!-- SUBTASKS -->
-        <!-- <div class="column">
-          <span>Subtasks</span>
-          <input type="text" placeholder="Add new subtask" style="background: url('assets/img/subtask_plus.svg') no-repeat 95%; background-color: white;">
-        </div> -->
-        <div class="column">
-          <span>Subtasks</span>
-          <div class="selectField">
-            <div class="selectContact" >
-              <input type="text" placeholder="Add new subtask" id="newSubtaskInput">
-            <div id="contactImage"><img class="paddingRight" src="assets/img/subtask_plus.svg" onclick="addNewSubtask()"></div>
-          </div>
-          </div>
-          <div id="newSubtasks"></div>
-        </div>
-<!-- BUTTONS -->
-      <div class="ccButtons">
-        <button onclick="clearTask()">Clear<img src="assets/img/button_cross.svg"></button>
-        <button type="submit" onclick="createTask()">Create Task<img src="assets/img/button_ok.svg"></button>
-      </div>
-      </div>
-</form>
-    </div>
   </div>
 </body>
 
