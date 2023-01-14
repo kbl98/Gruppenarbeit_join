@@ -4,7 +4,7 @@ body {
   font-family: 'Inter';
 }
 .header {
-  height: 80px;
+  height: 90px;
 }
 
 .rightContent h1 {
@@ -13,13 +13,12 @@ body {
 }
 .addTask {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
   position: absolute;
-  left: 232px;
-  top: 90px;
-  height: calc(100vH - 140px);
-  width: calc(100% - 232px);
+  left: calc(232px + 10%);
+  height: calc(100vH - 90px);
+  width: calc(100% - 232px - 10% - 10%);
   padding-top: 50px;
 }
 .column {
@@ -62,7 +61,7 @@ textarea:focus, input:focus, select:focus {
 
 /* Description */
 textarea {
-  width: 380px;
+  width: 422px;
   height: 80.81px;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
@@ -79,7 +78,7 @@ textarea::placeholder {
 
 /* Category */
 .selectField {
-  height: 49px;
+  height: 51px;
   font-size: 21px;
   border-radius: 10px;
   border: 1px solid #D1D1D1;
@@ -89,6 +88,7 @@ textarea::placeholder {
   overflow: auto;
 }
 .selectCategory {
+  height: 49px;
   position: sticky;
   top: 0;
   display: flex;
@@ -144,6 +144,8 @@ textarea::placeholder {
 .color {
   width: 22px;
 }
+
+
 /* ASSIGNED TO */
 .oneContact {
   display: flex;
@@ -184,15 +186,24 @@ textarea::placeholder {
 .selectContact img {
   padding-left: 5px;
 }
+
+
 /* DUE DATE */
 #datepicker {
   cursor: pointer;
 }
 
 
-
-
-
+/* SUBTASK */
+.newSubtask {
+  font-size: 14px !important;
+  margin: 0 !important;
+}
+.newSubtasks {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
 
 
 /* middle */
@@ -203,13 +214,14 @@ textarea::placeholder {
 }
 
 
-
 /* right */
 .addTaskRight {
   display: flex;
   flex-direction: column;
   margin-top: 124px;
 }
+
+
 /* PRIO */
 .prioButtons {
   display: flex;
@@ -231,6 +243,31 @@ textarea::placeholder {
   box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.2);
   border-top: 0;
 }
+
+/* BUTTONS CLEAR CREATE */
+.ccButtons {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+}
+.ccButtons button {
+  height: 61px;
+  font-size: 21px;
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.ccButtons button:nth-child(2) {
+  background-color: #2a3647;
+  color: white;
+  margin-left: 20px;
+}
+.ccButtons img {
+  margin-left: 15px;
+}
+
 
 
 .d-none {

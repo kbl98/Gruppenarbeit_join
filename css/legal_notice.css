@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  background-color:rgb(246,247,248);
+  font-family: 'Inter';
+}
+.header {
+  height: 90px;
+}
+.rightContent h1 {
+  font-size: 61px;
+  margin-bottom: 50px;
+}
+.rightContent h2 {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+p {
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+.legalNotice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  left: calc(232px + 10%);
+  height: calc(100vH - 90px);
+  width: calc(100% - 232px - 10% - 10%);
+  padding-top: 50px;
+}

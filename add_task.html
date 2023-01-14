@@ -11,12 +11,9 @@
   <script src="js/add_task.js"></script>
   <script src="js/head.js"></script>
   <script src="js/nav.js"></script>
-<<<<<<< HEAD
+  <script src="js/mini_backend.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-=======
-  <script src="js/mini_backend.js"></script>
->>>>>>> 86292509e3445c563b8922ba9e5730cc0576f37c
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/head.css" />
   <link rel="stylesheet" href="css/add_task.css">
@@ -35,16 +32,17 @@
       <div class="addTaskLeft">
         <h1>Add Task</h1>
 <!-- TITLE -->
+<form>
         <div class="column title">
           <span>Title</span>
-          <input placeholder="Enter a title" type="text" onkeyup="addTitle()" id="titleInput">
+          <input required placeholder="Enter a title" type="text" onkeyup="addTitle()" id="titleInput">
         </div>
 
 
 <!-- DESCRIPTION -->
         <div class="column description">
           <span>Description</span>
-          <textarea placeholder="Enter a Description" type="text" onkeyup="addDescription()" id="descriptionTextarea"></textarea>
+          <textarea required placeholder="Enter a Description" type="text" onkeyup="addDescription()" id="descriptionTextarea"></textarea>
         </div>
 
 
@@ -54,7 +52,7 @@
           <div class="selectField" id="selectField" onclick="openCloseCategories()">
             <div class="selectCategory" id="selectCategory">
               <div class="center">
-                <div id="category" contenteditable="false">Select task category</div>
+                <div id="category" contenteditable="false" style="color: #dcdcdc;">Select task category</div>
                 <div id="categoryColor">
                 </div>
               </div>
@@ -111,12 +109,11 @@
 <!-- VERTICAL LINE -->
       <img src="assets/img/line_vertical.svg" class="imageLine">
 
-
       <div class="addTaskRight"> 
 <!-- DUE DATE -->
         <div class="column">
           <span>Due date</span>
-          <input  type="text" placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
+          <input required placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
         </div>
 <!-- PRIO -->
         <div class="column">
@@ -128,17 +125,27 @@
           </div>
         </div>
 <!-- SUBTASKS -->
+        <!-- <div class="column">
+          <span>Subtasks</span>
+          <input type="text" placeholder="Add new subtask" style="background: url('assets/img/subtask_plus.svg') no-repeat 95%; background-color: white;">
+        </div> -->
         <div class="column">
           <span>Subtasks</span>
-          <input placeholder="Add new subtask">
+          <div class="selectField">
+            <div class="selectContact" >
+              <input type="text" placeholder="Add new subtask" id="newSubtaskInput">
+            <div id="contactImage"><img class="paddingRight" src="assets/img/subtask_plus.svg" onclick="addNewSubtask()"></div>
+          </div>
+          </div>
+          <div id="newSubtasks"></div>
         </div>
 <!-- BUTTONS -->
-      <div>
-        <button>Clear</button>
-        <button onclick="createTask()">Create Task</button>
+      <div class="ccButtons">
+        <button onclick="clearTask()">Clear<img src="assets/img/button_cross.svg"></button>
+        <button type="submit" onclick="createTask()">Create Task<img src="assets/img/button_ok.svg"></button>
       </div>
-
       </div>
+</form>
     </div>
   </div>
 </body>
