@@ -25,6 +25,7 @@ all_tasks = [
         "assignedTo": "assignedTo",
         "date": "date",
         "prio": "prio",
+        "progress":"todo" oder "done" oder "awaiting Feedback" oder "in Process",
     },
     {
         ...
