@@ -261,17 +261,17 @@ padding:20px;
 
 #popup-user-p {
   padding:20px;
-    position: absolute;
-    height: 60px;
-    width: 220px;
+    height: 500px;
+    width: 500px;
     border-radius: 16px;
     background-color: rgb(43, 54, 71);
     text-align: center;
     color: white;
     font-size: 20px;
-    transition: all 2000ms ease-in-out;
-   left:45%;
-   font-size: 18px;
+    font-size: 18px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
 
   #popup-user {
@@ -282,4 +282,7 @@ padding:20px;
     height: 100vh;
     z-index: 3;
     background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

@@ -20,7 +20,8 @@ function resetUser(){
  users=[];
  current_task=[];
  current_user=[];
-
+ current_user=[];
+ localStorage.removeItem("current_user");
 }
 
 
