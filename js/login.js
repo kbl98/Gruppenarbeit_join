@@ -67,8 +67,16 @@ async function getCurrentUser(){
     if (!current_user){
         window.location.href='registration.html'
     }else{
+        setCurrentUserToLocal(current_user);
     window.location.href="summary.html";
-    setUserImg()}
+    /*setUserImg()*/;
+}
+}
+
+/**function to storage current User local */
+function setCurrentUserToLocal(currentUser){
+let currentUserAsText=JSON.stringify(currentUser);
+localStorage.setItem("current_user",currentUserAsText);
 }
 
 function setUserImg(){
@@ -192,6 +200,7 @@ function newPassword(){
     document.getElementById("popup-mail").classList.add("d-none");
 }
 
+/**function to generate the passwort-reset*/
 function generateResetPassword(){
     return `
     <h1>Reset your password</h1>
