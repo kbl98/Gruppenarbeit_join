@@ -1,3 +1,28 @@
+let currentContacts = [];
+
+async function initContacts() {
+    setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+    loadContactsFromBackend();
+}
+
+
+async function loadContactsFromBackend() {
+    await downloadFromServer();
+    currentContacts = JSON.parse(backend.getItem("contacts"));
+    if(!currentContacts){
+        currentContacts=[];
+    };
+
+    console.log(currentContacts);
+}
+
+
+async function saveContactsToBackend() {
+    let contactAsText=JSON.stringify(contacts);
+    console.log(contactAsText);
+    await downloadFromServer();
+    await backend.setItem("contacts",contactAsText);
+}
 
 
 function openCloseDetails() {

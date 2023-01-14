@@ -1,5 +1,9 @@
 
 
+function loadTasks() {
+    
+}
+
 function openBoardTask() {
     let openPopup = document.getElementById('boardPopupTask');
     openPopup.classList.remove('d-none');

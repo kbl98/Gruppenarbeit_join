@@ -5,6 +5,42 @@
 {\"name\":\"Eva Fischer\",\"email\":\"eva@gmail.com\",\"phone\":\"0163/77735798\"},
 {\"name\":\"Marcel Bauer\",\"email\":\"bauer@gmail.com\",\"phone\":\"05341/83578\"},
 {\"name\":\"Tatjana Wolf\",\"email\":\"wolf@gmail.com\",\"phone\":\"089/250721\"}]"}}
+users = [
+    {
+        "username": "name",
+        "email": "email",
+        "password": "password"
+    },
+    {
+        ...
+        ...
+    }
+]
 
+all_tasks = [
+    {
+        "titel": "titel",
+        "description": "description",
+        "category": "category",
+        "assignedTo": "assignedTo",
+        "date": "date",
+        "prio": "prio",
+    },
+    {
+        ...
+        ...
+    }
+]
 
+contacts = [
+    {
+        "name": "name",
+        "email": "email",
+        "phone": "phone"
+    },
+    {
+        ...
+        ...
+    }
+]
 
