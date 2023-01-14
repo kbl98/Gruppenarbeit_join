@@ -1,11 +1,11 @@
+<form onsubmit="createTask()">
 <div class="addTask">
-
   <div class="addTaskLeft">
     <h1>Add Task</h1>
 
 
 <!-- TITLE -->
-<form onsubmit="createTask()">
+
     <div class="column title">
       <span>Title</span>
       <input required placeholder="Enter a title" type="text" onkeyup="addTitle()" id="titleInput">
@@ -69,56 +69,57 @@
         </div>
         
         <div class="d-none" id="openedContacts" onclick="notOpenCloseContacts(event)">
-          <div class="oneContact" onclick="addContact(0)"><div id="contact0">You</div><button id="contactButton0"></button></div>
-          <div class="oneContact" onclick="addContact(1)"><div id="contact1">Max Wolfberg</div><button id="contactButton1"></button></div>
-          <div class="oneContact" onclick="addNewContact()" id="newContact"><div>Invite new contact</div><button><img src="assets/img/contact_icon.svg"></button></div>
+          <div class="oneContact" onclick="addContact(0)"><div id="contact0">You</div><div class="contactButton" id="contactButton0"></div></div>
+          <div class="oneContact" onclick="addContact(1)"><div id="contact1">Max Wolfberg</div><div class="contactButton" id="contactButton1"></div></div>
+          <div class="oneContact" onclick="addNewContact()" id="newContact"><div>Invite new contact</div><div><img src="assets/img/contact_icon.svg"></div></div>
         </div>
         
       </div>
   </div>
-</div>
 
 
 <!-- VERTICAL LINE -->
-  <img src="assets/img/line_vertical.svg" class="imageLine">
+  <img src="assets/img/line_vertical.svg" class="imageLine"/>
+</div>
+  <div class="addTaskRight">
 
-  <div class="addTaskRight"> 
+
 <!-- DUE DATE -->
     <div class="column">
       <span>Due date</span>
       <input required placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
     </div>
+
+
 <!-- PRIO -->
     <div class="column">
       <span>Prio</span>
       <div class="prioButtons">
-        <div onclick="addPrio(0)" id="prioButton0" style="background-color:white;">Urgent <img src="assets/img/urgent_newTask.svg"></div>
-        <div onclick="addPrio(1)" id="prioButton1" style="background-color:white;">Medium <img src="assets/img/medium_newTask.svg"></div>
-        <div onclick="addPrio(2)" id="prioButton2" style="background-color:white;">Low <img src="assets/img/low_newTask.svg"></div>
+        <div onclick="addPrio(0)" id="prioButton0" style="background-color:white;">Urgent <img id="prioImage0" src="assets/img/urgent_newTask.svg"></div>
+        <div onclick="addPrio(1)" id="prioButton1" style="background-color:white;">Medium <img id="prioImage1" src="assets/img/medium_newTask.svg"></div>
+        <div onclick="addPrio(2)" id="prioButton2" style="background-color:white;">Low <img id="prioImage2" src="assets/img/low_newTask.svg"></div>
       </div>
     </div>
+
+
 <!-- SUBTASKS -->
-    <!-- <div class="column">
-      <span>Subtasks</span>
-      <input type="text" placeholder="Add new subtask" style="background: url('assets/img/subtask_plus.svg') no-repeat 95%; background-color: white;">
-    </div> -->
     <div class="column">
       <span>Subtasks</span>
       <div class="selectField">
         <div class="selectContact" >
           <input type="text" placeholder="Add new subtask" id="newSubtaskInput">
-        <div id="contactImage"><img class="paddingRight" src="assets/img/subtask_plus.svg" onclick="addNewSubtask()"></div>
+        <div><img class="paddingRight" src="assets/img/subtask_plus.svg" onclick="addNewSubtask()"></div>
       </div>
       </div>
       <div id="newSubtasks"></div>
     </div>
+
+
 <!-- BUTTONS -->
   <div class="ccButtons">
     <div onclick="clearTask()">Clear<img src="assets/img/button_cross.svg"></div>
     <button>Create Task<img src="assets/img/button_ok.svg"></button>
   </div>
   </div>
-
-</form>
-
 </div>
+</form>

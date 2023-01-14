@@ -156,12 +156,13 @@ textarea::placeholder {
 .oneContact:hover {
   background-color: rgb(194, 194, 194);
 }
-.oneContact button {
+.contactButton {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 16px;
   width: 16px;
+  border: 1px solid black;
 }
 #contact:focus {
   outline: none;
@@ -204,7 +205,9 @@ textarea::placeholder {
   align-items: center;
   margin-top: 5px;
 }
-
+.newSubtasks img {
+  height: 15px;
+}
 
 /* middle */
 .imageLine {

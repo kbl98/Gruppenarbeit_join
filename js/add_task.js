@@ -8,7 +8,7 @@ let invitedContacts = [];
 let selectedDate;
 let selectedPrio;
 let allSubtasks = [];
-
+let selectedSubtasks = [];
 
 //Title
 function addTitle() {
@@ -193,9 +193,11 @@ function addPrio(i) {
       for (let y = 0; y < 3; y++) {
         document.getElementById('prioButton'+y).style.backgroundColor = 'white';
         document.getElementById('prioButton'+y).style.color = 'black';
+        document.getElementById('prioImage'+y).style.filter = 'brightness(1) invert(0)';
       };
       id.style.backgroundColor = colors[x];
       id.style.color = 'white';
+      document.getElementById('prioImage'+i).style.filter = 'brightness(0) invert(1)';
       selectedPrio = prios[x];
     }
   }
@@ -205,25 +207,39 @@ function addPrio(i) {
 //SUBTASKS
 function addNewSubtask(){
   let newSubtaskInput = document.getElementById('newSubtaskInput');
-  allSubtasks.push(newSubtaskInput.value);
   document.getElementById('newSubtasks').innerHTML = '';
+  if (!newSubtaskInput.value== '') {
+    allSubtasks.push(newSubtaskInput.value);
   for (let i = 0; i < allSubtasks.length; i++) {
-    const newSubtask = allSubtasks[i];
+    let newSubtask = allSubtasks[i];
+    let src = "assets/img/subtask_rectangle.svg";
+    if (selectedSubtasks.includes(newSubtask)) {
+      src = "assets/img/subtask_ok.png";
+    }
   document.getElementById('newSubtasks').innerHTML += `
   <div class="newSubtasks">
-    <img src="assets/img/subtask_rectangle.svg" class="paddingRight" id="checkbox${i}" onclick="checkmark(${i})"><span class="newSubtask">${newSubtask}</span>
+    <img src=${src} class="paddingRight" id="checkbox${i}" onclick="checkmark(${i})"><span class="newSubtask">${newSubtask}</span>
   </div>
-  `;
+  `;}
+  }
+  newSubtaskInput.value = '';
+}
 
-}
-}
-//NICHT FERTIG
+
 function checkmark(i) {
-  document.getElementById('checkbox'+i).src='assets/img/subtask_ok.svg';
+  let newSubtask = allSubtasks[i];
+  let index = selectedSubtasks.indexOf(newSubtask);
+  if (index == -1) {
+    document.getElementById('checkbox'+i).src='assets/img/subtask_ok.png';
+    selectedSubtasks.push(newSubtask);
+  } else {
+    document.getElementById('checkbox'+i).src='assets/img/subtask_rectangle.svg';
+    selectedSubtasks.splice(index,1);
+  };
 }
 
 
-
+//CLEAR BUTTON
 function clearTask() {
   resetVariables();
   resetContent();
@@ -277,7 +293,7 @@ function resetPrioButtons() {
   };
 }
 
-
+//CREATE BUTTON
 function createTask() {
   addDate();
   let task = {
@@ -291,17 +307,17 @@ function createTask() {
     'subtasks': allSubtasks
   };
   allTasks.push(task);
-  save();
+  saveAllTasks();
 }
 
 
-function save() {
+function saveAllTasks() {
   let allTasksAsString = JSON.stringify(allTasks);
   localStorage.setItem('allTasks', allTasksAsString);
 }
 
 
-function load() {
+function loadAllTasks() {
   let allTasksAsString = localStorage.getItem('allTasks');
   if (allTasksAsString) {
     allTasks = JSON.parse(allTasksAsString);
