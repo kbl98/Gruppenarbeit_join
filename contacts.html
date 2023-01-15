@@ -26,72 +26,13 @@
 
     <!-- popup create new contact -->
     <div id="contCreateNewContact" class="new-contact-pup-bgr d-none">
-        <div class="cont-new-contact-pup">
-            <!--close popup-->
-            <img onclick="closeNewContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
-
-            <!-- left side from popup create new contact -->
-            <div class="cont-left-contact-pup">
-                <img src="./assets/img/contacts_logo.png" alt="">
-                <h2>Add Contact</h2>
-                <span>Tasks are better with a team!</span>
-                <div></div>
-            </div>
-
-            <!-- right side from popup create new contact -->
-            <div class="cont-right-contact-pup">
-                <div class="cont-create-contact-infos">
-                    <img class="create-contact-pp" src="./assets/img/contact_empty_pp.png" alt="">
-
-                    <form onsubmit="createNewContact();return false" class="cont-create-contact-input">
-                        <input required placeholder="Name" type="text" />
-                        <input required placeholder="Email" type="email" />
-                        <input required placeholder="Phone" type="tel" />
-                        <div class="cont-create-contact-buttons">
-                            <button type="reset" onclick="closeNewContact()" class="create-new-contact-deny">
-                                Cancel <img src="./assets/img/contact_add_task.png" alt="">
-                            </button>
-                            <button type="submit" class="create-new-contact-check">
-                                Create contact <img src="./assets/img/contact_check.png" alt="">
-                            </button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
+        
     </div>
     <!-- ---------------------------------------------------- -->
 
     <!-- popup edit contact -->
     <div id="contEditContact" class="new-contact-pup-bgr d-none">
-        <div class="cont-new-contact-pup">
-            <!--close popup-->
-            <img onclick="closeEditContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
-
-            <!-- left side from popup edit contact -->
-            <div class="cont-left-contact-pup">
-                <img src="./assets/img/contacts_logo.png" alt="">
-                <h2>Edit Contact</h2>
-                <span>Tasks are better with a team!</span>
-                <div></div>
-            </div>
-
-            <!-- right side from popup edit contact -->
-            <div class="cont-right-contact-pup">
-                <div class="cont-create-contact-infos">
-                    <div style="background-color: #FF7A00;" class="edit-contact-img">AM</div>
-                    <form class="cont-create-contact-input">
-                        <input required value="Anton Mayer" placeholder="Name" type="text">
-                        <input required value="antom@gmail.com" placeholder="Email" type="email">
-                        <input required value="+49 1111 111 11 1" placeholder="Phone" type="tel">
-                        <div class="cont-create-contact-buttons">
-                            <button type="submit" class="create-new-contact-check"> Save </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
     </div>
     <!-- ---------------------------------------------------- -->
 
@@ -105,24 +46,7 @@
 
         <!-- open contact -->
         <div id="openContact" class="cont-open-contact d-none">
-            <div class="open-contact-head">
-                <div style="background-color: #FF7A00;" class="open-contact-img">AM</div>
-                <div class="open-contact-head-name">
-                    <h2>Anton Mayer</h2>
-                    <span><img src="./assets/img/contact_add_task.png" alt=""> Add Task</span>
-                </div>
-            </div>
-            <div class="open-contact-edit">
-                <span class="contact-information-text">Contact Information</span>
-                <span onclick="openEditContact()" class="contact-edit-info"><img src="./assets/img/edit_contact.png"
-                        alt=""> Edit Contact</span>
-            </div>
-            <div class="open-contact-infos">
-                <span class="contact-information">Email</span>
-                <a class="contact-mail" href="mailto:antom@gmail.com">antom@gmail.com</a>
-                <span class="contact-information">Phone</span>
-                <a class="contact-tel" href="tel:+491111111111">+49 1111 111 11 1</a>
-            </div>
+            
         </div>
     </div>
     <!-- -------------------- -->
@@ -133,7 +57,7 @@
     </button>
 
     <!-- success message -->
-    <div class="cont-success-message d-none">
+    <div class="cont-success-message" style="transform: translateY(200%); display: none;">
         <span>Contact succesfully created</span>
     </div>
 
