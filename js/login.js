@@ -75,6 +75,7 @@ async function getCurrentUser() {
 function setCurrentUserToLocal(currentUser) {
   let currentUserAsText = JSON.stringify(currentUser);
   localStorage.setItem("current_user", currentUserAsText);
+  console.log(currentUser["username"]);
 }
 
 function setUserImg() {
@@ -85,9 +86,10 @@ function setUserImg() {
 function guestLogin() {
   current_user = {
     img: "assets/img/guest_pic.svg",
-    name: "guest",
+    username: "Guest",
     email: "guest@guest.de",
   };
+  setCurrentUserToLocal(current_user);
   getDemoSummary();
 }
 
