@@ -25,3 +25,28 @@ function resetUser() {
   current_user = [];
   localStorage.removeItem("current_user");
 }
+
+function setUserImg() {
+  if (current_user["img"]) {
+    document
+      .getElementById("user-img")
+      .setAttribute("src", current_user["img"]);
+  } else {
+    document.getElementById("real-img").classList.add("d-none");
+    let user_img = document.getElementById("user-img");
+    user_img.setAttribute("background-color", "grey");
+    user_img.innerHTML = createUserPic();
+  }
+}
+
+function createUserPic() {
+  let name_part = current_user["username"].split(" ");
+  for (let i = 0; i < name_part.length; i++) {
+    let part1 = name_part[i].charAt(0).toUpperCase();
+    let part2;
+    if (name_part[1]) {
+      part2 = name_part[1].charAt(0).toUpperCase();
+    }
+    return `${part1}${part2}`;
+  }
+}

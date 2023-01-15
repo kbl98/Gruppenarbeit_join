@@ -23,7 +23,6 @@ async function getUsers() {
   if (!users) {
     users = [];
   }
-
   console.log(users);
 }
 
@@ -79,7 +78,16 @@ function setCurrentUserToLocal(currentUser) {
 }
 
 function setUserImg() {
-  document.getElementById("user-img").setAttribute("src", current_img);
+  if (current_user["img"]) {
+    document
+      .getElementById("user-img")
+      .setAttribute("src", current_user["img"]);
+  } else {
+    document.getElementById("real-img").classList.add("d-none");
+    let user_img = document.getElementById("user-img");
+    user_img.setAttribute("background-color", "grey");
+    user_img.innerHTML = createUserPic();
+  }
 }
 
 /**function to login a guestUser */
@@ -258,15 +266,3 @@ function openPopup() {
 function locateToLogin() {
   window.location.href = "login.html";
 }
-
-/*function changeClass2(){
-    let popup_p=document.getElementById("popup-user-p");
-    popup_p.classList.remove("bottom");
-    popup_p.classList.add("center");
-    setTimeout(userKnowen,3000);
-}
-
-function userKnowen(){
-    window.location.href="login.html";
-    document.getElementById("popup-user").classList.add("d-none");
-}*/

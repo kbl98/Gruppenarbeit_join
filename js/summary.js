@@ -20,6 +20,7 @@ async function init() {
   }
   console.log(all_tasks);
   await getCurrentUserFromStorage();
+  setUserImg()
   renderSummary();
 }
 
@@ -201,7 +202,28 @@ async function getCurrentUserFromStorage() {
   }
 }
 
+function getPartOfDay(){
+  let greet;
+  let date=new Date();
+  let time=date.getHours();
+  if(time<11&& time>0){
+    greet="Good Morning,"
+  }
+  if(time>=11 && time<17){
+    greet="Hello,"
+  }else{
+    greet="Good Evening,"
+  }
+   return greet 
+  }
+    
+  
+
+
+
 function greetCurrentUser() {
+  let greet=document.getElementById("greeting");
+  greet.innerHTML=getPartOfDay();
   let greetname = document.getElementById("greet-name");
   greetname.innerHTML = current_user["username"];
 }
