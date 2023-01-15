@@ -105,7 +105,7 @@ body {
 }
 
 .important-container {
-  height: 170px;
+  
   border-radius: 10px;
   background-color: white;
   color: rgb(43, 54, 71);
@@ -129,17 +129,26 @@ body {
   padding: 20px;
 }
 
-#deadline-container {
+#deadline-container-box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-left: solid 2px rgb(245, 246, 247);
+}
+
+.deadline-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 65%;
-  border-left: solid 2px rgb(245, 246, 247);
+  padding: 20px;
   height: 100px;
+  text-align: center;
+  margin-bottom:20px;
 }
 
-#deadline {
+.deadline {
   font-weight: bold;
   font-size: 25px;
 }
@@ -209,10 +218,6 @@ body {
     font-size: 16px;
   }
 
-  .important-container {
-    height: 150px;
-  }
-
   .todo {
     height: 150px;
     width: 200px;
@@ -249,8 +254,8 @@ body {
 
   .progress {
     height: 150px;
-    width: 135px;
-    padding: 0px;
+    width: 140px;
+    padding: 20px;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -279,9 +284,7 @@ body {
     padding: 0px;
   }
 
-  .important-container {
-    height: 140px;
-  }
+  
 
   .todo {
     height: 140px;
