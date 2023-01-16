@@ -13,6 +13,7 @@ async function init() {
   );
   await downloadFromServer();
   all_tasks = JSON.parse(backend.getItem("all_tasks"));
+  console.log(all_tasks)
   if (!all_tasks) {
     all_tasks = [];
   } else {
@@ -91,10 +92,13 @@ function sortAllUrgentTasks() {
       return new Date(v.date) - new Date(u.date);
     });
   }
+  dates.reverse();
   let urgentSorted = [];
+  console.log(dates);
   for (let i = 0; i < dates.length; i++) {
     urgentSorted.push(urgent_tasks.find((t) => t["date"] == dates[i]));
   }
+  
   urgent_tasks = urgentSorted;
   console.log(urgent_tasks);
 }
@@ -158,7 +162,10 @@ function generateUrgentHTML(i, taskdate) {
 
 function constructDate(date) {
   let d = new Date(date);
+  console.log(d);
   let weekday = d.getDay();
+  console.log(weekday);
+  console.log(d.getMonth());
   let m = [
     "January",
     "February",
@@ -181,16 +188,19 @@ function constructDate(date) {
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday"
   ];
   let taskdate =
-    days[weekday - 1] +
+    days[weekday] +
     ", " +
-    d.getDay() +
+    d.getDate() +
     "." +
     m[d.getMonth() - 1] +
     " " +
     d.getFullYear();
+    console.log(taskdate)
   return taskdate;
+  
 }
 
 async function getCurrentUserFromStorage() {
