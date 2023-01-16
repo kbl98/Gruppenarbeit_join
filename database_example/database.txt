@@ -19,12 +19,14 @@ users = [
 
 all_tasks = [
     {
-        "titel": "titel",
-        "description": "description",
-        "category": "category",
-        "assignedTo": "assignedTo",
-        "date": "date",
-        "prio": "prio",
+        "title": "selectedTitle",
+        "description": "selectedDescription",
+        "category": "selectedCategory",
+        "contactNames: "selectedContactNames",
+        "invitedContacts": "invitedContacts",
+        "date": "selectedDate",
+        "prio": "selectedPrio",
+        "subtasks": "selectedSubtasks",
         "progress":"todo" oder "done" oder "awaiting Feedback" oder "in Process",
     },
     {

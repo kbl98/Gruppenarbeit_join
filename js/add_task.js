@@ -323,7 +323,8 @@ function createTask() {
     'invitedContacts': invitedContacts,
     'date': selectedDate,
     'prio': selectedPrio,
-    'subtasks': allSubtasks
+    'subtasks': selectedSubtasks,
+    'progress': 'todo',
   };
  
   saveAllTasks(task);
