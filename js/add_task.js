@@ -200,9 +200,9 @@ function notOpenCloseContacts(event) {
 
 
 //DUE DATE
-$( function() {
-  $( "#datepicker" ).datepicker();
-} );
+// $( function() {
+//   $( "#datepicker" ).datepicker();
+// } );
 
 
 function addDate() {
@@ -327,30 +327,34 @@ function resetPrioButtons() {
 function createTask() {
   addDate();
   let task = {
-    'title': selectedTitle,
-    'description': selectedDescription,
-    'category': selectedCategory,
-    'contactNames': selectedContactNames,
-    'invitedContacts': invitedContacts,
-    'date': selectedDate,
-    'prio': selectedPrio,
-    'subtasks': selectedSubtasks,
-    'progress': 'todo'
+    title: selectedTitle,
+    description: selectedDescription,
+    category: selectedCategory,
+    contactNames: selectedContactNames,
+    invitedContacts: invitedContacts,
+    date: selectedDate,
+    prio: selectedPrio,
+    subtasks: selectedSubtasks,
+    progress: 'todo'
   };
   saveAllTasks(task);
 }
 
 
-function saveAllTasks(task) {
-  all_tasks.push(task);
-  backend.setItem('all_Tasks', JSON.stringify(all_tasks));
-}
 
-
-async function loadAllTasks() {
+async function loadTasks() {
+  setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
   await downloadFromServer();
   all_tasks = JSON.parse(backend.getItem('all_tasks')) || [];
-  console.log(all_tasks);
+  console.log('Alle Aufgaben:', all_tasks);
 }
+
+
+async function saveAllTasks(task) {
+  all_tasks.push(task);
+  await backend.setItem('all_tasks', JSON.stringify(all_tasks));
+  loadTasks();
+}
+
 
 
