@@ -110,7 +110,7 @@ function determineProxySettings() {
 }
 
 
-let users = [];
+/*let users = [];
 setURL('http://developerakademie.com/smallest_backend_ever');
 
 async function init() {
@@ -122,4 +122,5 @@ async function init() {
 function addUser() {
     users.push(username.value);
     backend.setItem('users', JSON.stringify(users));
-}
+}*/
+
