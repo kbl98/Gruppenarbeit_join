@@ -135,6 +135,7 @@ body {
     position: absolute;
     bottom: 150px;
     right: 150px;
+    gap: 5px;
 }
 
 .contact-new-contact:hover {
@@ -208,6 +209,18 @@ body {
     align-items: center;
     margin-bottom: 10px;
     cursor: pointer;
+}
+
+.contact-out {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+
 }
 
 .contact-infos {
@@ -445,4 +458,6 @@ body {
     color: white;
     font-weight: 400;
     font-size: 21px;
+    transition: all ease-in-out 1s;
+    transform: translateY(200%);
 }

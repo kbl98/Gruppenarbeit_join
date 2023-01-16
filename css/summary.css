@@ -1,196 +1,291 @@
-body{
-    top:0;
-    left:0;
-      height:100vh;
-      width:100%;
-      margin:0;
-      background-color: rgb(246,247,248);
+body {
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-color: rgb(246, 247, 248);
 
-     
-      font-family:'Inter';
-  }
-
-  *{
-    box-sizing: border-box;
-  }
-
-
-.main-content-container{
-   width: 100%;
-    height: 100vh;
-    padding-top: 90px;
-    padding-right: 100px;
-    padding-left: 230px;
+  font-family: "Inter";
 }
 
+* {
+  box-sizing: border-box;
+}
 
+.main-content-container {
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 200px;
+  padding-right: 50px;
+  padding-left: 230px;
+}
 
+#heading {
+  font-size: 25px;
+  padding-top: 80px;
+  padding-left: 100px;
+  padding-right: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
-#heading{
-    font-size:25px ;
+.heading-add {
+  margin-left: 40px;
+}
+
+#task-container {
+  display: flex;
+}
+
+#task-overview {
+  width: 70%;
+  display: flex;
+  padding-left: 100px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#greet-container {
+  padding: 2%;
+  font-size: 50px;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+#greet-name {
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(40, 171, 226);
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.progress {
+  height: 170px;
+  width: 170px;
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(43, 54, 71);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  transition: all 100ms ease-in-out;
+}
+
+.progress:hover {
+  transform: scale(1.05);
+  background-color: rgb(43, 54, 71);
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.progress span {
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.progress p {
+  text-align: center;
+}
+
+.important-container {
+  margin-bottom: 50px;
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(43, 54, 71);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  transition: all 100ms ease-in-out;
+}
+
+.important-container:hover {
+  background-color: rgb(43, 54, 71);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#num-urgent {
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+#deadline-container-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-left: solid 2px rgb(245, 246, 247);
+}
+
+.deadline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  height: 100px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.deadline {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.todos-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.column {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-direction: column;
+}
+
+.todo {
+  height: 170px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(43, 54, 71);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  transition: all 100ms ease-in-out;
+}
+
+.todo:hover {
+  transform: scale(1.05);
+  background-color: rgb(43, 54, 71);
+  color: white;
+
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+@media screen and (max-width: 1260px) {
+  .main-content-container {
+    width: 100%;
+    padding-right: 40px;
+  }
+
+  #heading {
+    font-size: 22px;
+  }
+
+  .progress {
+    height: 150px;
+    width: 140px;
+    padding: 20px;
+  }
+
+  .progress span {
+    padding: 10px;
+  }
+
+  .progress p {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .todo {
+    height: 150px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1170px) {
+  #task-overview {
+    width: 80%;
+    padding-left: 50px;
+  }
+
+  #heading {
+    font-size: 25px;
     padding-top: 80px;
-    padding-left: 150px;
+    padding-left: 50px;
     padding-right: 200px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
+  }
 
-.heading-add{
-    margin-left:40px;
-}
+  h1 {
+    font-size: 45px;
+  }
+  #greet-container {
+    padding: 1%;
+    font-size: 45px;
+  }
 
+  #greet-name {
+    font-size: 45px;
+  }
 
-#task-container{
-    display: flex;
-}
-
-#task-overview{
-    width: 70%;
-    display: flex;
-    padding-left: 150px;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 600px;
-}
-
-#greet-container{
-    padding: 2%;
-    font-size: 50px;
-    display: flex;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-}
-
-#greet-name{
-    font-size: 50px;
-    font-weight: bold;
-    color:rgb(40,171,226);
-}
-
-.progress-container{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    margin-top:50px;
-}
-
-.progress{
-    height:150px;
-    width:150px;
-    border-radius: 10px;
-    background-color: white;
-    color:rgb(43,54,71);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
-    transition: all 100ms ease-in-out;
-}
-
-.progress:hover{
-    transform: scale(1.05);
-    background-color: rgb(43,54,71);
-    color: white;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-.progress span{
-    font-size: 50px;
-    font-weight: bold;
-    padding: 20px;
-}
-
-.progress p{
-    text-align: center;
-}
-
-.important-container{
-    height:150px;
-    border-radius: 10px;
-    background-color: white;
-    color:rgb(43,54,71);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    transition: all 100ms ease-in-out;
-}
-
-.important-container:hover{
-    background-color: rgb(43,54,71);
-    color:white;
-    transform: scale(1.05);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-
-
-#num-urgent{
-    font-size: 50px;
-    font-weight: bold;
-    padding: 20px;
-}
-
-#deadline-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width:65%;
-    border-left:solid 2px rgb(245,246,247);
-    height:100px;
-}
-
-#deadline{
-    font-weight:bold;
-    font-size:25px;
-}
-
-.todos-container{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.column{
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    flex-direction: column;
-}
-
-.todo{
+  .progress {
     height: 150px;
-    width: 150px;
-    border-radius: 10px;
-    background-color: white;
-    color: rgb(43,54,71);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 30px;
-    padding-left: 30px;
-    transition: all 100ms ease-in-out;
+    width: 140px;
+    padding: 20px;
+  }
 }
+@media screen and (max-width: 1000px) {
+  #heading {
+    font-size: 20px;
+    padding-top: 60px;
+    padding-right: 0;
+  }
 
-.todo:hover{
-    transform: scale(1.05);
-    background-color: rgb(43,54,71);
-    color: white;
-   
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  h1 {
+    font-size: 40px !important;
+  }
+
+  #greet-container {
+    padding: 1%;
+    font-size: 40px;
+  }
+
+  #greet-name {
+    font-size: 40px;
+  }
+
+  .progress {
+    height: 140px;
+    width: 110px;
+    padding: 0px;
+  }
+
+  .todo {
+    height: 140px;
+    width: 140px;
+  }
 }
-
-
-
-.bold{
-    font-weight:bold;
-    font-size: 50px;
-}
-
