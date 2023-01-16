@@ -83,6 +83,7 @@ textarea::placeholder {
   background-color: white;
   transition: all 150ms ease-in-out;
   overflow: auto;
+  z-index: 999;
 }
 .selectCategory {
   height: 49px;
@@ -95,7 +96,15 @@ textarea::placeholder {
   background-color: white;
 }
 .selectCategory img {
-  padding-left: 5px;
+  padding-right: 5px;
+}
+.selectCategory input {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.selectCategory input:nth-child(1) {
+  width: 30px;
 }
 .oneCategory {
   display: flex;
@@ -106,7 +115,7 @@ textarea::placeholder {
   padding-left: 21px;
 }
 .oneCategory img {
-  margin-left: 5px;
+  margin-right: 5px;
 }
 .oneCategory:hover {
   background-color: rgb(194, 194, 194);
@@ -127,7 +136,6 @@ textarea::placeholder {
   width: 240px;
 }
 #categoryColors img {
-  margin-right: 5px;
   cursor: pointer;
 }
 #categoryColor {
@@ -141,7 +149,11 @@ textarea::placeholder {
 .color {
   width: 22px;
 }
-
+.imageCat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* ASSIGNED TO */
 .oneContact {
@@ -192,6 +204,29 @@ textarea::placeholder {
 }
 
 
+/* PRIO */
+.prioButtons {
+  display: flex;
+  justify-content: space-between;
+}
+.prioButtons div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 21px;
+  height: 51px;
+  width: 136px;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.prioButtons div:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.2);
+  border-top: 0;
+}
+
+
 /* SUBTASK */
 .newSubtask {
   font-size: 14px !important;
@@ -221,28 +256,6 @@ textarea::placeholder {
   margin-top: 124px;
 }
 
-
-/* PRIO */
-.prioButtons {
-  display: flex;
-  justify-content: space-between;
-}
-.prioButtons div {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 21px;
-  height: 51px;
-  width: 136px;
-  border: 1px solid #D1D1D1;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.prioButtons div:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.2);
-  border-top: 0;
-}
 
 /* BUTTONS CLEAR CREATE */
 .ccButtons {

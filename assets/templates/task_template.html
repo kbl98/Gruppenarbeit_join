@@ -1,4 +1,4 @@
-<form onsubmit="createTask()">
+<form onsubmit="createTask();return false">
 <div class="addTask">
   <div class="addTaskLeft">
     <h1>Add Task</h1>
@@ -24,22 +24,24 @@
       <div class="selectField" id="selectField" onclick="openCloseCategories()">
         <div class="selectCategory" id="selectCategory">
           <div class="center">
-            <div id="category" contenteditable="false" style="color: #dcdcdc;">Select task category</div>
             <div id="categoryColor">
             </div>
+            <input maxlength="15" id="category" required style="color: #dcdcdc;" placeholder="Select task category">
+            <!-- <input id="categoryColor" type="image" required style="color: #dcdcdc;" placeholder="co" onclick="disableInput()"> -->
+            
           </div>
           <div id="categoryImage"><img src="assets/img/arrow_drop.svg"></div>
         </div>
         
         <div class="d-none" id="openedCategories" onclick="notOpenCloseCategories(event)">
           <div class="oneCategory" onclick="addNewCategory()">New category</div>
-          <div class="oneCategory" onclick="addCategory(1)"><div class="center"><div id="category1">Sales</div><div id="imageCat1"><img src="assets/img/circle_pink.svg"></div></div></div>
-          <div class="oneCategory" onclick="addCategory(2)"><div class="center"><div id="category2">Backoffice</div><div id="imageCat2"><img src="assets/img/circle_turquoise.svg"></div></div></div>
-          <div class="oneCategory" onclick="addCategory(3)"><div class="center"><div id="category3">Test1</div><div id="imageCat3"><img src="assets/img/circle_darkblue.svg"></div></div></div>
-          <div class="oneCategory" onclick="addCategory(4)"><div class="center"><div id="category4">Test2</div><div id="imageCat4"><img src="assets/img/circle_orange.svg"></div></div></div>
-          <div class="oneCategory" onclick="addCategory(5)"><div class="center"><div id="category5">Test3</div><div id="imageCat5"><img src="assets/img/circle_green.svg"></div></div></div>
-          <div class="oneCategory" onclick="addCategory(6)"><div class="center"><div id="category6">Test4</div><div id="imageCat6"><img src="assets/img/circle_red.svg"></div></div></div>
-          <div class="oneCategory" onclick="addCategory(7)"><div class="center"><div id="category7">Test5</div><div id="imageCat7"><img src="assets/img/circle_blue.svg"></div></div></div>
+          <div class="oneCategory" onclick="addCategory(1)"><div class="center"><div id="imageCat1" class="imageCat"><img src="assets/img/circle_pink.svg"></div><div id="category1">Sales</div></div></div>
+          <div class="oneCategory" onclick="addCategory(2)"><div class="center"><div id="imageCat2" class="imageCat"><img src="assets/img/circle_turquoise.svg"></div><div id="category2">Backoffice</div></div></div>
+          <div class="oneCategory" onclick="addCategory(3)"><div class="center"><div id="imageCat3" class="imageCat"><img src="assets/img/circle_darkblue.svg"></div><div id="category3">Test1</div></div></div>
+          <div class="oneCategory" onclick="addCategory(4)"><div class="center"><div id="imageCat4" class="imageCat"><img src="assets/img/circle_orange.svg"></div><div id="category4">Test2</div></div></div>
+          <div class="oneCategory" onclick="addCategory(5)"><div class="center"><div id="imageCat5" class="imageCat"><img src="assets/img/circle_green.svg"></div><div id="category5">Test3</div></div></div>
+          <div class="oneCategory" onclick="addCategory(6)"><div class="center"><div id="imageCat6" class="imageCat"><img src="assets/img/circle_red.svg"></div><div id="category6">Test4</div></div></div>
+          <div class="oneCategory" onclick="addCategory(7)"><div class="center"><div id="imageCat7" class="imageCat"><img src="assets/img/circle_blue.svg"></div><div id="category7">Test5</div></div></div>
         </div>
         
       </div>
@@ -82,11 +84,12 @@
 </div>
   <div class="addTaskRight">
 
-
+    
 <!-- DUE DATE -->
     <div class="column">
       <span>Due date</span>
-      <input required placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
+      <input type="text" required placeholder="dd/mm/yyyy" id="datepicker" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
+      
     </div>
 
 

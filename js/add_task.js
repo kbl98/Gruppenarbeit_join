@@ -32,33 +32,45 @@ function addDescription() {
 
 
 //Category
+function disableInput () {
+  if (document.getElementById('category').disabled = true) {
+    document.getElementById('category').disabled = false;
+  } else {
+    document.getElementById('category').disabled = true;
+  }
+}
+
+
 /**
  * function to add a existing category and its color to the array "selectedCategory"
- * 
- * @param {number} i - 
+ *
+ * @param {number} i - number to get de correct category-ID
  */
 function addCategory(i) {
   let categoryName = document.getElementById('category');
   let categoryColor = document.getElementById('categoryColor');
   categoryName.style.color = 'black';
-  document.getElementById('category').innerHTML = document.getElementById('category' + i).innerHTML;
+  document.getElementById('category').value = document.getElementById('category' + i).innerHTML;
   document.getElementById('categoryColor').innerHTML = document.getElementById('imageCat' + i).innerHTML;
   document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
   openCloseCategories();
   selectedCategory = [];
   selectedCategory.push({
-    "name": categoryName.innerHTML,
+    "name": categoryName.value,
     "color": categoryColor.innerHTML
   });
 }
 
 
+/**
+ * function to make the container editable that you can write in your own category and select a color
+ */
 function addNewCategory() {
   let categoryName = document.getElementById('category');
-  categoryName.contentEditable = "true";
   openCloseCategories();
-  categoryName.innerHTML = '';
+  categoryName.value = '';
   categoryName.style.color = 'black';
+
   document.getElementById('categoryImage').innerHTML = `<div  onclick="notOpenCloseCategories(event)"><img src="assets/img/cross.svg" onclick="cancelNewCategory()"> <img src="assets/img/finish.svg" onclick="acceptNewCategory()"></div>`;
   document.getElementById('categoryColors').classList.remove('d-none');
   document.getElementById('selectField').removeAttribute('onclick');
@@ -75,8 +87,8 @@ function changeColor(i) {
 
 function cancelNewCategory() {
   let categoryName = document.getElementById('category');
-  categoryName.innerHTML = 'Select task category';
-  categoryName.contentEditable = "false";
+  categoryName.value = '';
+  categoryName.placholder = 'Select task category';
   categoryName.style.color = '#dcdcdc';
   document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
   document.getElementById('categoryColors').classList.add('d-none');
@@ -86,16 +98,15 @@ function cancelNewCategory() {
 
 
 function acceptNewCategory() {
-  if (!document.getElementById('category').innerHTML == '' && !document.getElementById('categoryColor').innerHTML == '') {
+  if (!document.getElementById('category').value == '' && !document.getElementById('categoryColor').innerHTML == '') {
     let categoryName = document.getElementById('category');
     let categoryColor = document.getElementById('categoryColor');
-    document.getElementById('category').contentEditable = "false";
     document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
     document.getElementById('selectField').setAttribute('onclick', 'openCloseCategories()');
     document.getElementById('categoryColors').classList.add('d-none');
     selectedCategory = [];
     selectedCategory.push({
-      "name": categoryName.innerHTML,
+      "name": categoryName.value,
       "color": categoryColor.innerHTML
     });
   }
@@ -114,10 +125,11 @@ function openCloseCategories() {
       document.getElementById('openedCategories').classList.remove('d-none');
     }, 150)
   }
+  disableInput();
 }
 
 /**
- * 
+ *
  * this function will prevent to open or close the category-field
  */
 function notOpenCloseCategories(event) {
@@ -144,7 +156,7 @@ function addNewContact() {
   openCloseContacts();
   contact.placeholder = 'Contact E-Mail';
   contact.disabled = false;
-  document.getElementById('contactImage').innerHTML = `<div onclick="notOpenCloseContacts(event)" class="paddingRight"><img src="assets/img/cross.svg" onclick="cancelNewContact()"> <img src="assets/img/finish.svg" onclick="acceptNewContact()"></div>`;
+  document.getElementById('contactImage').innerHTML = `<div onclick="notOpenCloseContacts(event)" class="paddingRight"><img src="assets/img/cross.svg" onclick="cancelNewContact()"><img src="assets/img/finish.svg" onclick="acceptNewContact()"></div>`;
   document.getElementById('selectFieldContact').removeAttribute('onclick');
 }
 
@@ -188,10 +200,9 @@ function notOpenCloseContacts(event) {
 
 
 //DUE DATE
-$(function () {
-  $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
-})
-  ;
+$( function() {
+  $( "#datepicker" ).datepicker();
+} );
 
 
 function addDate() {
@@ -324,9 +335,8 @@ function createTask() {
     'date': selectedDate,
     'prio': selectedPrio,
     'subtasks': selectedSubtasks,
-    'progress': 'todo',
+    'progress': 'todo'
   };
- 
   saveAllTasks(task);
 }
 
@@ -340,4 +350,7 @@ function saveAllTasks(task) {
 async function loadAllTasks() {
   await downloadFromServer();
   all_tasks = JSON.parse(backend.getItem('all_tasks')) || [];
+  console.log(all_tasks);
 }
+
+
