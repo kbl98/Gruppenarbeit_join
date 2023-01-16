@@ -44,9 +44,12 @@ function createUserPic() {
   for (let i = 0; i < name_part.length; i++) {
     let part1 = name_part[i].charAt(0).toUpperCase();
     let part2;
+    console.log(name_part)
     if (name_part[1]) {
       part2 = name_part[1].charAt(0).toUpperCase();
+      return `${part1}${part2}`
+    }else{
+    return `${part1}`;
+        }
     }
-    return `${part1}${part2}`;
-  }
 }

@@ -1,9 +1,14 @@
 let urgent_tasks = [];
 
-async function setMainHTML() {
+/**
+ * functions for getting Items from server and include templates from here
+ */
+
+/*async function setMainHTML() {
   await getTasks();
   window.location.href = "main.html";
-}
+}*/
+
 
 /**function that fetches tasks from backend and creates a Json */
 async function init() {
@@ -13,7 +18,6 @@ async function init() {
   );
   await downloadFromServer();
   all_tasks = JSON.parse(backend.getItem("all_tasks"));
-  console.log(all_tasks)
   if (!all_tasks) {
     all_tasks = [];
   } else {
@@ -21,9 +25,10 @@ async function init() {
   }
   console.log(all_tasks);
   await getCurrentUserFromStorage();
-  setUserImg()
+  setUserImg();
   renderSummary();
 }
+
 
 /**function to include the template */
 async function includeHTML() {
@@ -39,6 +44,11 @@ async function includeHTML() {
     }
   }
 }
+
+
+/**
+ * functions to render task properties from here
+ */
 
 /**function to render summary with actual tasks */
 function renderSummary() {
@@ -61,20 +71,15 @@ function renderSummary() {
   greetCurrentUser();
 }
 
+
+/**function to count all tasks on board */
 function countTasksOnBoard() {
   let onBoard = all_tasks.length;
   return onBoard;
 }
 
-function formateDate(tasks) {
-  for (let i = 0; i < all_tasks.length; i++) {
-    let [day, mo, ye] = tasks[i]["date"].split("/");
-    let d = new Date(+ye, +mo, +day);
-    tasks[i]["date"] = d;
-    console.log(d);
-  }
-}
 
+/**function to find urgent tasks */
 function getAllUrgentTasks() {
   for (let i = 0; i < all_tasks.length; i++) {
     if (all_tasks[i]["prio"] == "urgent") {
@@ -84,25 +89,8 @@ function getAllUrgentTasks() {
   sortAllUrgentTasks();
 }
 
-function sortAllUrgentTasks() {
-  let dates = [];
-  for (let i = 0; i < urgent_tasks.length; i++) {
-    dates.push(urgent_tasks[i]["date"]);
-    dates.sort(function (u, v) {
-      return new Date(v.date) - new Date(u.date);
-    });
-  }
-  dates.reverse();
-  let urgentSorted = [];
-  console.log(dates);
-  for (let i = 0; i < dates.length; i++) {
-    urgentSorted.push(urgent_tasks.find((t) => t["date"] == dates[i]));
-  }
-  
-  urgent_tasks = urgentSorted;
-  console.log(urgent_tasks);
-}
 
+/**function to count tasks that are in process */
 function countTasksInProcess() {
   let in_process = 0;
   for (let i = 0; i < all_tasks.length; i++) {
@@ -113,6 +101,8 @@ function countTasksInProcess() {
   return in_process;
 }
 
+
+/**function to count tasks that are awaiting feedback */
 function countTasksAwaitingFeedback() {
   let awaiting_feedback = 0;
   for (let i = 0; i < all_tasks.length; i++) {
@@ -123,6 +113,8 @@ function countTasksAwaitingFeedback() {
   return awaiting_feedback;
 }
 
+
+/**function to count tasks that are done */
 function countTasksDone() {
   let done = 0;
   for (let i = 0; i < all_tasks.length; i++) {
@@ -133,6 +125,8 @@ function countTasksDone() {
   return done;
 }
 
+
+/**function to count tasks that are done */
 function countTasksTodo() {
   let todo = 0;
   for (let i = 0; i < all_tasks.length; i++) {
@@ -143,9 +137,18 @@ function countTasksTodo() {
   return todo;
 }
 
+
+/**
+ * functions for creating urgent tasks from here
+ */
+
+/**function to render all urgent tasks on summary*/
 function createUrgentBox() {
   let urgenttasks_container = document.getElementById("deadline-container-box");
   urgenttasks_container.innerHTML = "";
+  if(!urgent_tasks){
+    urgenttasks_container.innerHTML = generateUrgentNullHTML();
+  }
   for (let i = 0; i < urgent_tasks.length; i++) {
     let taskdate = constructDate(urgent_tasks[i]["date"]);
     console.log(taskdate);
@@ -153,6 +156,24 @@ function createUrgentBox() {
   }
 }
 
+
+/**function to sort the tasks referring to their date */
+function sortAllUrgentTasks() {
+  let dates = [];
+  for (let i = 0; i < urgent_tasks.length; i++) {
+    dates.push(urgent_tasks[i]["date"]);
+  }
+  dates.sort(compareDate);
+  dates.reverse();
+  let urgentSorted = [];
+  for (let i = 0; i < dates.length; i++) {
+    urgentSorted.push(urgent_tasks.find((t) => t["date"] == dates[i]));
+  }
+  urgent_tasks = urgentSorted;
+}
+
+
+/**function that writes HTML for rendering one urgent Task on summary */
 function generateUrgentHTML(i, taskdate) {
   return `<div id="deadline-container${i}" class="deadline-container" onclick="getToBoard()">
   <span id="deadline${i}" class="deadline">${taskdate}</span>
@@ -160,6 +181,39 @@ function generateUrgentHTML(i, taskdate) {
 </div>`;
 }
 
+function generateUrgentNullHTML(){
+  return `<div class="deadline-container" onclick="getToBoard()">
+  <span class="deadline"></span>
+  <p>No urgent-deadline</p>
+</div>`;
+}
+
+
+/**
+ * functions for date formate from here
+ */
+
+
+/**function to formate the taskdate to regular form*/
+function formateDate(tasks) {
+  for (let i = 0; i < all_tasks.length; i++) {
+    let [day, mo, ye] = tasks[i]["date"].split("/");
+    let d = new Date(+ye, +mo, +day);
+    tasks[i]["date"] = d;
+    console.log(d);
+  }
+}
+
+
+/**function to compare to dates to get difference */
+function compareDate(date1, date2) {
+  d1 = new Date(date1);
+  d2 = new Date(date2);
+  return d2.getTime() - d1.getTime();
+}
+
+
+/**function to get the output-formate of the dates that are rendered on summary */
 function constructDate(date) {
   let d = new Date(date);
   console.log(d);
@@ -188,7 +242,7 @@ function constructDate(date) {
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday"
+    "Sunday",
   ];
   let taskdate =
     days[weekday] +
@@ -198,11 +252,17 @@ function constructDate(date) {
     m[d.getMonth() - 1] +
     " " +
     d.getFullYear();
-    console.log(taskdate)
+  console.log(taskdate);
   return taskdate;
-  
 }
 
+
+/**
+ * functions for user-greeting from here
+ */
+
+
+/**function to get the user, who is logged in */
 async function getCurrentUserFromStorage() {
   let currentUserAsText = localStorage.getItem("current_user");
   if (!currentUserAsText) {
@@ -212,39 +272,50 @@ async function getCurrentUserFromStorage() {
   }
 }
 
-function getPartOfDay(){
+
+/**function that fix the greeting according time of day */
+function getPartOfDay() {
   let greet;
-  let date=new Date();
-  let time=date.getHours();
-  if(time<11&& time>0){
-    greet="Good Morning,"
+  let date = new Date();
+  let time = date.getHours();
+  if (time < 11 && time > 0) {
+    greet = "Good Morning,";
   }
-  if(time>=11 && time<17){
-    greet="Hello,"
-  }else{
-    greet="Good Evening,"
+  if (time >= 11 && time < 17) {
+    greet = "Hello,";
+  } else {
+    greet = "Good Evening,";
   }
-   return greet 
-  }
-    
-  
+  return greet;
+}
 
 
-
+/**function to set the logged user name on summary-greeting */
 function greetCurrentUser() {
-  let greet=document.getElementById("greeting");
-  greet.innerHTML=getPartOfDay();
+  let greet = document.getElementById("greeting");
+  greet.innerHTML = getPartOfDay();
   let greetname = document.getElementById("greet-name");
   greetname.innerHTML = current_user["username"];
 }
 
+
+/**
+ * common functions from here
+ */
+
+
+/**function to get on to Board-Window */
 function getToBoard() {
   window.location.href = "board.html";
 }
 
+
+/**functions to change the attribute (img) on hovering the done/todo containers on summary */
+
 function hover(id, src) {
   document.getElementById(id).setAttribute("src", src);
 }
+
 
 function unhover(id, src) {
   document.getElementById(id).setAttribute("src", src);

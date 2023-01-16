@@ -1,3 +1,7 @@
+/**
+ * functions before showing content
+ */
+
 /**function for moving the start-logo from center to left corner */
 function moveLogo() {
   let logo = document.getElementById("start-pic");
@@ -6,12 +10,38 @@ function moveLogo() {
   setTimeout(showLogin, 3000);
 }
 
+
+/**function to wait some time before moving logo and getting login-box */
+async function getLogin() {
+  setTimeout(moveLogo, 500);
+  await setBackend();
+  await downloadFromServer();
+  users = JSON.parse(backend.getItem("users")) || [];
+  /*users=JSON.parse(backend.getItem("users")) || [];*/
+  console.log(users);
+}
+
+
+/**funtion to set Location of Storage */
+async function setBackend() {
+  setURL(
+    "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
+  );
+}
+
+
+/**
+ * functions for login user from here
+ */
+
+
 /**function for showing the login-box and sign-in */
 function showLogin() {
   /*setURL('"https://gruppe-430.developerakademie.net/smallest_backend_ever-master"');*/
   document.getElementById("login-container").classList.remove("d-none");
   document.getElementById("newuser-container").classList.remove("d-none");
 }
+
 
 /**function to get all registrated Users from storage */
 async function getUsers() {
@@ -26,31 +56,6 @@ async function getUsers() {
   console.log(users);
 }
 
-/**function to wait some time before moving logo and getting login-box */
-async function getLogin() {
-  setTimeout(moveLogo, 500);
-  setURL(
-    "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
-  );
-  await downloadFromServer();
-  users = JSON.parse(backend.getItem("users")) || [];
-  /*users=JSON.parse(backend.getItem("users")) || [];*/
-  console.log(users);
-}
-
-/**function to show/hide the password by changing type of input */
-function togglePassword(id, id2) {
-  let input_password = document.getElementById(id);
-  let type = input_password.getAttribute("type");
-  let text = document.getElementById(id2);
-  if (type == "password") {
-    input_password.setAttribute("type", "text");
-    text.innerHTML = `Passwort verbergen`;
-  } else {
-    input_password.setAttribute("type", "password");
-    text.innerHTML = `Passwort zeigen`;
-  }
-}
 
 /**function to find the logged User */
 async function getCurrentUser() {
@@ -70,12 +75,6 @@ async function getCurrentUser() {
   }
 }
 
-/**function to storage current User local */
-function setCurrentUserToLocal(currentUser) {
-  let currentUserAsText = JSON.stringify(currentUser);
-  localStorage.setItem("current_user", currentUserAsText);
-  console.log(currentUser["username"]);
-}
 
 function setUserImg() {
   if (current_user["img"]) {
@@ -90,6 +89,35 @@ function setUserImg() {
   }
 }
 
+
+/**function to storage current User local */
+function setCurrentUserToLocal(currentUser) {
+  let currentUserAsText = JSON.stringify(currentUser);
+  localStorage.setItem("current_user", currentUserAsText);
+  console.log(currentUser["username"]);
+}
+
+
+/**function to show/hide the password by changing type of input */
+function togglePassword(id, id2) {
+  let input_password = document.getElementById(id);
+  let type = input_password.getAttribute("type");
+  let text = document.getElementById(id2);
+  if (type == "password") {
+    input_password.setAttribute("type", "text");
+    text.innerHTML = `Passwort verbergen`;
+  } else {
+    input_password.setAttribute("type", "password");
+    text.innerHTML = `Passwort zeigen`;
+  }
+}
+
+
+/**
+ * functions for guest-user from here
+ */
+
+
 /**function to login a guestUser */
 function guestLogin() {
   current_user = {
@@ -101,10 +129,17 @@ function guestLogin() {
   getDemoSummary();
 }
 
+
 /**function to get the summary as guest */
 function getDemoSummary() {
   window.location.href = "summary.html";
 }
+
+
+/**
+ * functions for registration new user from here
+ */
+
 
 /**function to registrate as new User */
 async function sign() {
@@ -128,6 +163,7 @@ async function sign() {
   }
 }
 
+
 async function checknewUser(newUser) {
   let isNewUser = true;
   for (let i = 0; i < users.length; i++) {
@@ -143,12 +179,11 @@ async function checknewUser(newUser) {
   return isNewUser;
 }
 
-/**funtion to set Location of Storage */
-async function setBackend() {
-  setURL(
-    "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
-  );
-}
+
+/**
+ * functions to save users to backend from here
+ */
+
 
 /**function to save all Users at Storage */
 async function saveUsers() {
@@ -157,6 +192,7 @@ async function saveUsers() {
   await downloadFromServer();
   await backend.setItem("users", usersAsText);
 }
+
 
 /**function to save Users at Storage */
 async function saveUser(newUser) {
@@ -172,7 +208,18 @@ async function saveUser(newUser) {
   await backend.setItem("users", usersAsText);
 }
 
-/**function for opening popup-mail */
+
+/**
+ * functions for opening popups
+ */
+
+
+function openPopup() {
+  let popup = document.getElementById("popup-user");
+  popup.classList.remove("d-none");
+  setTimeout(locateToLogin, 2000);
+}
+
 
 function openPopupMail() {
   let currentmail = document.getElementById("mail-registration").value;
@@ -186,6 +233,7 @@ function openPopupMail() {
   }
 }
 
+
 /**function to change classname of popup */
 function changeClass() {
   let popup_p = document.getElementById("popup-mail-p");
@@ -193,6 +241,12 @@ function changeClass() {
   popup_p.classList.add("center");
   setTimeout(newPassword, 3000);
 }
+
+
+/**
+ * functions for password from here
+ */
+
 
 /** function to get to site for resetting password*/
 function newPassword() {
@@ -203,6 +257,7 @@ function newPassword() {
   /*window.location.href="reset_password.html";*/
   document.getElementById("popup-mail").classList.add("d-none");
 }
+
 
 /**function to generate the passwort-reset*/
 function generateResetPassword() {
@@ -240,6 +295,7 @@ function generateResetPassword() {
     </form>`;
 }
 
+
 /**function for setting the new password */
 async function set_new_password() {
   let password1 = document.getElementById("reseted-password").value;
@@ -257,12 +313,12 @@ async function set_new_password() {
   }
 }
 
-function openPopup() {
-  let popup = document.getElementById("popup-user");
-  popup.classList.remove("d-none");
-  setTimeout(locateToLogin, 2000);
-}
 
+/**
+ * common functions
+ */
+
+/**function to change window */
 function locateToLogin() {
   window.location.href = "login.html";
 }

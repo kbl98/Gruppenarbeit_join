@@ -14,11 +14,14 @@ body {
 }
 
 .main-content-container {
-  width: 100%;
-  min-height: 100vh;
-  margin-top: 200px;
-  padding-right: 50px;
-  padding-left: 230px;
+    padding-top: 280px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    padding-left: 232px;
 }
 
 #heading {
@@ -40,7 +43,6 @@ body {
 }
 
 #task-overview {
-  width: 70%;
   display: flex;
   padding-left: 100px;
   flex-direction: column;
@@ -56,6 +58,10 @@ body {
   align-items: center;
   text-align: center;
   flex-direction: column;
+}
+
+#greeting {
+  text-align: -webkit-center;
 }
 
 #greet-name {
@@ -122,13 +128,23 @@ body {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
+.urgent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #num-urgent {
   font-size: 50px;
   font-weight: bold;
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #deadline-container-box {
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
