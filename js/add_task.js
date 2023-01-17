@@ -225,17 +225,16 @@ function notOpenCloseContacts(event) {
 
 
 //DUE DATE
-// $( function() {
-//   $( "#datepicker" ).datepicker();
-// } );
+
+$( function() {
+  $( "#datepicker" ).datepicker();
+} );
+
 
 /**
  * function to add the selected date to the array "selectedDate"
  */
-function addDate() {
-  let date = document.getElementById('datepicker');
-  selectedDate = date.value;
-}
+
 
 
 //PRIO
