@@ -40,6 +40,8 @@ body {
 
 #task-container {
   display: flex;
+  width:100%;
+  justify-content: space-between;
 }
 
 #task-overview {
@@ -50,7 +52,6 @@ body {
 }
 
 #greet-container {
-  padding: 2%;
   font-size: 50px;
   display: flex;
   font-weight: bold;

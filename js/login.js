@@ -233,6 +233,19 @@ function openPopupMail() {
   }
 }
 
+function popupPassChange(){
+    let popup = document.getElementById("popup-pw");
+    popup.classList.remove("d-none");
+    setTimeout(changeClass2, 100);
+}
+
+function changeClass2() {
+    let popup_p = document.getElementById("popup-pw-p");
+    popup_p.classList.remove("bottom");
+    popup_p.classList.add("center");
+    setTimeout(locateToLogin, 3000);
+  }
+
 
 /**function to change classname of popup */
 function changeClass() {
@@ -309,7 +322,8 @@ async function set_new_password() {
       }
     }
     await saveUsers();
-    window.location.href = "login.html";
+    popupPassChange();
+   
   }
 }
 
