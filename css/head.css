@@ -89,10 +89,38 @@
   cursor: pointer;
 }
 
+#logo-head-mobil{
+    display:none;
+}
+
 @media screen and (max-width: 1000px) {
   .join-name {
     margin-left: 50px;
     font-size: 18px;
     font-weight: 400;
   }
+
+  #head{
+    left: 0;
+  right: 0;
+  padding-right:20px;
+  padding-left:20px;
+  }
+
+  #head p{
+    display: none;
+  }
+
+  #questiontag{
+    display: none;
+  }
+
+  #user-img{
+    margin:0
+  }
+
+#logo-head-mobil{
+    display:unset;
+    width:50px;
+}
 }
