@@ -7,6 +7,7 @@ let selectedDate;
 let selectedPrio;
 let allSubtasks = [];
 let selectedSubtasks = [];
+let subtaskImageSrc = [];
 
 
 //Title
@@ -32,6 +33,9 @@ function addDescription() {
 
 
 //Category
+/**
+ * function to disable and enable the category-inputfield
+ */
 function disableInput () {
   if (document.getElementById('category').disabled = true) {
     document.getElementById('category').disabled = false;
@@ -44,7 +48,7 @@ function disableInput () {
 /**
  * function to add a existing category and its color to the array "selectedCategory"
  *
- * @param {number} i - number to get de correct category-ID
+ * @param {number} i - number to get the correct ID
  */
 function addCategory(i) {
   let categoryName = document.getElementById('category');
@@ -70,7 +74,6 @@ function addNewCategory() {
   openCloseCategories();
   categoryName.value = '';
   categoryName.style.color = 'black';
-
   document.getElementById('categoryImage').innerHTML = `<div  onclick="notOpenCloseCategories(event)"><img src="assets/img/cross.svg" onclick="cancelNewCategory()"> <img src="assets/img/finish.svg" onclick="acceptNewCategory()"></div>`;
   document.getElementById('categoryColors').classList.remove('d-none');
   document.getElementById('selectField').removeAttribute('onclick');
@@ -78,13 +81,19 @@ function addNewCategory() {
   categoryName.focus();
 }
 
-
+/**
+ * function to add the selected color to the new category
+ * 
+ * @param {number} i - number to get the correct color
+ */
 function changeColor(i) {
   document.getElementById('categoryColor').innerHTML = document.getElementById('changeColor' + i).innerHTML;
   document.getElementById('category').focus();
 }
 
-
+/**
+ * function to delete the new category and reset the category-field
+ */
 function cancelNewCategory() {
   let categoryName = document.getElementById('category');
   categoryName.value = '';
@@ -96,7 +105,9 @@ function cancelNewCategory() {
   document.getElementById('categoryColor').innerHTML = '';
 }
 
-
+/**
+ * function to add the new category and its color to the array "selectedCategory"
+ */
 function acceptNewCategory() {
   if (!document.getElementById('category').value == '' && !document.getElementById('categoryColor').innerHTML == '') {
     let categoryName = document.getElementById('category');
@@ -113,7 +124,7 @@ function acceptNewCategory() {
 }
 
 /**
- * function to open or close the category-field when click on it
+ * function to open or close the category-field by clicking on it
  */
 function openCloseCategories() {
   if (document.getElementById('selectField').style.height == '192px') {
@@ -129,8 +140,7 @@ function openCloseCategories() {
 }
 
 /**
- *
- * this function will prevent to open or close the category-field
+ * function to prevent to open or close the category-field
  */
 function notOpenCloseCategories(event) {
   event.stopPropagation();
@@ -138,6 +148,11 @@ function notOpenCloseCategories(event) {
 
 
 //ASSIGNED TO
+/**
+ * function to add/delete a existing contact to/from the array ""selectedContactNames"
+ * 
+ * @param {number} i - number to get the correct contact
+ */
 function addContact(i) {
   let contactID = document.getElementById('contact' + i);
   let index = selectedContactNames.indexOf(contactID.innerHTML);
@@ -150,7 +165,9 @@ function addContact(i) {
   }
 }
 
-
+/**
+ * function to make the container editable that you can write in an e-mail adress of the contact you want to invite
+ */
 function addNewContact() {
   let contact = document.getElementById('contact');
   openCloseContacts();
@@ -160,7 +177,9 @@ function addNewContact() {
   document.getElementById('selectFieldContact').removeAttribute('onclick');
 }
 
-
+/**
+ * function to delete the e-mail adress and reset the contact-field
+ */
 function cancelNewContact() {
   let contact = document.getElementById('contact');
   contact.placeholder = 'Select contacts to assign';
@@ -169,7 +188,9 @@ function cancelNewContact() {
   document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
 }
 
-
+/**
+ * function to add the e-mail adress to the array "invitedContacts"
+ */
 function acceptNewContact() {
   let contact = document.getElementById('contact');
   invitedContacts.push(contact.value);
@@ -180,7 +201,9 @@ function acceptNewContact() {
   document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
 }
 
-
+/**
+ * function to open or close the contacts-field by clicking on it
+ */
 function openCloseContacts() {
   if (document.getElementById('selectFieldContact').style.height == '192px') {
     document.getElementById('selectFieldContact').style.height = '51px';
@@ -193,7 +216,9 @@ function openCloseContacts() {
   }
 }
 
-
+/**
+ * function to prevent to open or close the category-field
+ */
 function notOpenCloseContacts(event) {
   event.stopPropagation();
 }
@@ -204,7 +229,9 @@ function notOpenCloseContacts(event) {
 //   $( "#datepicker" ).datepicker();
 // } );
 
-
+/**
+ * function to add the selected date to the array "selectedDate"
+ */
 function addDate() {
   let date = document.getElementById('datepicker');
   selectedDate = date.value;
@@ -212,17 +239,18 @@ function addDate() {
 
 
 //PRIO
+/**
+ * function to change the colors of all prio-buttons and add its priority to the array "selectedPriod"
+ * 
+ * @param {number} i - number to get the correct Button
+ */
 function addPrio(i) {
   let id = document.getElementById('prioButton' + i);
   let colors = ['#ff3d00', '#ffa800', '#7ae229'];
   let prios = ['urgent', 'medium', 'low'];
   for (let x = 0; x < 3; x++) {
     if (i == x && id.style.backgroundColor == 'white') {
-      for (let y = 0; y < 3; y++) {
-        document.getElementById('prioButton' + y).style.backgroundColor = 'white';
-        document.getElementById('prioButton' + y).style.color = 'black';
-        document.getElementById('prioImage' + y).style.filter = 'brightness(1) invert(0)';
-      };
+      changePrioColors();
       id.style.backgroundColor = colors[x];
       id.style.color = 'white';
       document.getElementById('prioImage' + i).style.filter = 'brightness(0) invert(1)';
@@ -232,29 +260,69 @@ function addPrio(i) {
 }
 
 
+/**
+ * function to change the colors of all buttons
+ */
+function changePrioColors() {
+  for (let y = 0; y < 3; y++) {
+    document.getElementById('prioButton' + y).style.backgroundColor = 'white';
+    document.getElementById('prioButton' + y).style.color = 'black';
+    document.getElementById('prioImage' + y).style.filter = 'brightness(1) invert(0)';
+  };
+}
+
+
 //SUBTASKS
+/**
+ * function to add a new subtask to the container under the inputfield
+ */
 function addNewSubtask() {
   let newSubtaskInput = document.getElementById('newSubtaskInput');
-  document.getElementById('newSubtasks').innerHTML = '';
-  if (!newSubtaskInput.value == '') {
-    allSubtasks.push(newSubtaskInput.value);
+  document.getElementById('newSubtasks').innerHTML = ''; //alle subtasks löschen
+  if (!newSubtaskInput.value == '') { //wenn inputfeld nicht leer dann ....
+    allSubtasks.push(newSubtaskInput.value); //... füge das vom input in allsubtasks ein
     for (let i = 0; i < allSubtasks.length; i++) {
       let newSubtask = allSubtasks[i];
-      let src = "assets/img/subtask_rectangle.svg";
-      if (selectedSubtasks.includes(newSubtask)) {
-        src = "assets/img/subtask_ok.png";
-      }
-      document.getElementById('newSubtasks').innerHTML += `
-  <div class="newSubtasks">
-    <img src=${src} class="paddingRight" id="checkbox${i}" onclick="checkmark(${i})"><span class="newSubtask">${newSubtask}</span>
-  </div>
-  `;
+      changeImage(newSubtask);
+      document.getElementById('newSubtasks').innerHTML += showSubtask(i, newSubtask);
     }
   }
   newSubtaskInput.value = '';
 }
 
 
+/**
+ * function to load the correct Image left to the subtasks (rectangle with or without a checkmark)
+ * 
+ * @param {String} newSubtask - a subtask in the array "allSubtasks"
+ */
+function changeImage (newSubtask) {
+  subtaskImageSrc = "assets/img/subtask_rectangle.svg";
+  if (selectedSubtasks.includes(newSubtask)) {
+    subtaskImageSrc = "assets/img/subtask_ok.png";
+  }
+}
+
+
+/**
+ * function to show the new subtask and the correct image left to it (rectangle with or without a checkmark)
+ * 
+ * @param {number} i - number to checkmark the correct subtask
+ * @param {String} newSubtask - subtask which was written in the inputfield
+ */
+function showSubtask (i, newSubtask) {
+ return `
+  <div class="newSubtasks">
+    <img src=${subtaskImageSrc} class="paddingRight" id="checkbox${i}" onclick="checkmark(${i})"><span class="newSubtask">${newSubtask}</span>
+  </div>
+  `;
+}
+
+/**
+ * function to add or remove the checkmark next to the subtask
+ * 
+ * @param {number} i - number to checkmark the correct subtask 
+ */
 function checkmark(i) {
   let newSubtask = allSubtasks[i];
   let index = selectedSubtasks.indexOf(newSubtask);
@@ -269,12 +337,17 @@ function checkmark(i) {
 
 
 //CLEAR BUTTON
+/**
+ * function to reset the page by clicking on the clear-button
+ */
 function clearTask() {
   resetVariables();
   resetContent();
 }
 
-
+/**
+ * function to reset all variables
+ */
 function resetVariables() {
   selectedTitle = [];
   selectedDescription = [];
@@ -284,9 +357,12 @@ function resetVariables() {
   selectedDate = [];
   selectedPrio = [];
   allSubtasks = [];
+  selectedSubtasks = [];
 }
 
-
+/**
+ * function to reset the content of the page
+ */
 function resetContent() {
   document.getElementById('titleInput').value = '';
   document.getElementById('descriptionTextarea').value = '';
@@ -302,19 +378,25 @@ function resetContent() {
 
 }
 
-
+/**
+ * function to close the opened-categories-field
+ */
 function closeCategories() {
   document.getElementById('selectField').style.height = '51px';
   document.getElementById('openedCategories').classList.add('d-none');
 }
 
-
+/**
+ * function to close the opened-contacts-field
+ */
 function closeContacts() {
   document.getElementById('selectFieldContact').style.height = '51px';
   document.getElementById('openedContacts').classList.add('d-none');
 }
 
-
+/**
+ * function to change the color of the prio-buttons to white
+ */
 function resetPrioButtons() {
   for (let i = 0; i < 3; i++) {
     document.getElementById('prioButton' + i).style.backgroundColor = 'white';
@@ -324,6 +406,9 @@ function resetPrioButtons() {
 
 
 //CREATE BUTTON
+/**
+ * function to create a new task
+ */
 function createTask() {
   addDate();
   let task = {
@@ -341,7 +426,9 @@ function createTask() {
 }
 
 
-
+/**
+ * function to load all tasks which are saved on the server
+ */
 async function loadTasks() {
   setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
   await downloadFromServer();
@@ -349,7 +436,11 @@ async function loadTasks() {
   console.log('Alle Aufgaben:', all_tasks);
 }
 
-
+/**
+ * function to add a task to the array "all_tasks" and save it on the server
+ * 
+ * @param {JSON} task - contains all informations for a task
+ */
 async function saveAllTasks(task) {
   all_tasks.push(task);
   await backend.setItem('all_tasks', JSON.stringify(all_tasks));
