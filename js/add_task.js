@@ -16,7 +16,7 @@ let subtaskImageSrc = [];
  */
 function addTitle() {
   let title = document.getElementById('titleInput');
-  selectedTitle = [];
+  selectedTitle = '';
   selectedTitle.push(title.value);
 }
 
@@ -27,7 +27,7 @@ function addTitle() {
  */
 function addDescription() {
   let description = document.getElementById('descriptionTextarea');
-  selectedDescription = [];
+  selectedDescription = '';
   selectedDescription.push(description.value);
 }
 
@@ -349,13 +349,13 @@ function clearTask() {
  * function to reset all variables
  */
 function resetVariables() {
-  selectedTitle = [];
-  selectedDescription = [];
+  selectedTitle = '';
+  selectedDescription = '';
   selectedCategory = [];
   selectedContactNames = [];
   invitedContacts = [];
-  selectedDate = [];
-  selectedPrio = [];
+  selectedDate = '';
+  selectedPrio = '';
   allSubtasks = [];
   selectedSubtasks = [];
 }
@@ -423,6 +423,7 @@ function createTask() {
     progress: 'todo'
   };
   saveAllTasks(task);
+  clearTask();
 }
 
 
