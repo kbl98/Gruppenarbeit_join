@@ -83,7 +83,7 @@ textarea::placeholder {
   background-color: white;
   transition: all 150ms ease-in-out;
   overflow: auto;
-  z-index: 1;
+  z-index: 800;
 }
 .selectCategory {
   height: 49px;
@@ -201,7 +201,9 @@ textarea::placeholder {
 /* DUE DATE */
 #datepicker {
   cursor: pointer;
-  z-index: 999;
+}
+#ui-datepicker-div {
+  z-index: 999 !important;
 }
 
 

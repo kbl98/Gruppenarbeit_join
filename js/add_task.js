@@ -8,14 +8,30 @@ let selectedPrio;
 let allSubtasks = [];
 let selectedSubtasks = [];
 let subtaskImageSrc = [];
-
+let jsontest= [
+  {
+      "title": "dasIstEinTitel",
+      "description": "dasIstEineBeschreibung",
+      "category": [{"name":"backoffice", "color": "blue"}],
+      "contactNames": ["You","Max Wolfberg"],
+      "invitedContacts": ["johanna@gmx.at","caro@gmx.at"],
+      "date": "22/03/2023",
+      "prio": "urgent",
+      "subtasks": ["subtask1","subtask2"],
+      "progress":"todo"
+  },];
 
 async function init() {
   await includeHTML();
   loadTasks();
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
+  datepicker();
+}
+
+
+async function testjson() {
+await downloadFromServer();
+let testjsonText = JSON.stringify(jsontest);
+await backend.setItem('all_tasks', testjsonText);
 }
 
 
@@ -91,6 +107,7 @@ function addNewCategory() {
   categoryName.focus();
 }
 
+
 /**
  * function to add the selected color to the new category
  * 
@@ -100,6 +117,7 @@ function changeColor(i) {
   document.getElementById('categoryColor').innerHTML = document.getElementById('changeColor' + i).innerHTML;
   document.getElementById('category').focus();
 }
+
 
 /**
  * function to delete the new category and reset the category-field
@@ -114,6 +132,7 @@ function cancelNewCategory() {
   document.getElementById('selectField').setAttribute('onclick', 'openCloseCategories()');
   document.getElementById('categoryColor').innerHTML = '';
 }
+
 
 /**
  * function to add the new category and its color to the array "selectedCategory"
@@ -134,6 +153,7 @@ function acceptNewCategory() {
   }
 }
 
+
 /**
  * function to open or close the category-field by clicking on it
  */
@@ -149,6 +169,7 @@ function openCloseCategories() {
   }
   disableInput();
 }
+
 
 /**
  * function to prevent to open or close the category-field
@@ -176,6 +197,7 @@ function addContact(i) {
   }
 }
 
+
 /**
  * function to make the container editable that you can write in an e-mail adress of the contact you want to invite
  */
@@ -188,6 +210,7 @@ function addNewContact() {
   document.getElementById('selectFieldContact').removeAttribute('onclick');
 }
 
+
 /**
  * function to delete the e-mail adress and reset the contact-field
  */
@@ -198,6 +221,7 @@ function cancelNewContact() {
   document.getElementById('contactImage').innerHTML = `<img class="paddingRight" src="assets/img/arrow_drop.svg">`;
   document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
 }
+
 
 /**
  * function to add the e-mail adress to the array "invitedContacts"
@@ -211,6 +235,7 @@ function acceptNewContact() {
   document.getElementById('contactImage').innerHTML = `<img class="paddingRight" src="assets/img/arrow_drop.svg">`;
   document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
 }
+
 
 /**
  * function to open or close the contacts-field by clicking on it
@@ -227,6 +252,7 @@ function openCloseContacts() {
   }
 }
 
+
 /**
  * function to prevent to open or close the category-field
  */
@@ -239,8 +265,11 @@ function notOpenCloseContacts(event) {
 /**
  * function to open the jquery-datepicker 
  */
-
-
+function datepicker() {
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+}
 
 /**
  * function to add the selected date to the array "selectedDate"
