@@ -10,6 +10,15 @@ let selectedSubtasks = [];
 let subtaskImageSrc = [];
 
 
+async function init() {
+  await includeHTML();
+  loadTasks();
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+}
+
+
 //Title
 /**
  * function to add the entered title from the inputfield to the variable called "selectedTitle"
@@ -17,7 +26,7 @@ let subtaskImageSrc = [];
 function addTitle() {
   let title = document.getElementById('titleInput');
   selectedTitle = '';
-  selectedTitle.push(title.value);
+  selectedTitle = title.value;
 }
 
 
@@ -28,7 +37,7 @@ function addTitle() {
 function addDescription() {
   let description = document.getElementById('descriptionTextarea');
   selectedDescription = '';
-  selectedDescription.push(description.value);
+  selectedDescription = description.value;
 }
 
 
@@ -59,9 +68,10 @@ function addCategory(i) {
   document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
   openCloseCategories();
   selectedCategory = [];
+  let categoryColorCut = categoryColor.innerHTML.substring(28).slice(0,-6);
   selectedCategory.push({
     "name": categoryName.value,
-    "color": categoryColor.innerHTML
+    "color": categoryColorCut
   });
 }
 
@@ -116,9 +126,10 @@ function acceptNewCategory() {
     document.getElementById('selectField').setAttribute('onclick', 'openCloseCategories()');
     document.getElementById('categoryColors').classList.add('d-none');
     selectedCategory = [];
+    let categoryColorCut = categoryColor.innerHTML.substring(28).slice(0,-6);
     selectedCategory.push({
       "name": categoryName.value,
-      "color": categoryColor.innerHTML
+      "color": categoryColorCut
     });
   }
 }
@@ -225,16 +236,18 @@ function notOpenCloseContacts(event) {
 
 
 //DUE DATE
+/**
+ * function to open the jquery-datepicker 
+ */
 
-$( function() {
-  $( "#datepicker" ).datepicker();
-} );
 
 
 /**
  * function to add the selected date to the array "selectedDate"
  */
-
+function addDate() {
+  selectedDate = document.getElementById('datepicker').value;
+}
 
 
 //PRIO
@@ -247,15 +260,16 @@ function addPrio(i) {
   let id = document.getElementById('prioButton' + i);
   let colors = ['#ff3d00', '#ffa800', '#7ae229'];
   let prios = ['urgent', 'medium', 'low'];
-  for (let x = 0; x < 3; x++) {
-    if (i == x && id.style.backgroundColor == 'white') {
+    changePrioColors();
+    if (selectedPrio == prios[i]) {
       changePrioColors();
-      id.style.backgroundColor = colors[x];
-      id.style.color = 'white';
-      document.getElementById('prioImage' + i).style.filter = 'brightness(0) invert(1)';
-      selectedPrio = prios[x];
-    }
-  }
+      selectedPrio = '';
+    } else {
+    id.style.backgroundColor = colors[i];
+    id.style.color = 'white';
+    document.getElementById('prioImage' + i).style.filter = 'brightness(0) invert(1)';
+    selectedPrio = prios[i];
+    };
 }
 
 
