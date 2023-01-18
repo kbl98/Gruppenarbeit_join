@@ -39,7 +39,6 @@ async function setBackend() {
 
 /**function for showing the login-box and sign-in */
 function showLogin() {
-  /*setURL('"https://gruppe-430.developerakademie.net/smallest_backend_ever-master"');*/
   document.getElementById("login-container").classList.remove("d-none");
   document.getElementById("newuser-container").classList.remove("d-none");
 }
@@ -67,10 +66,8 @@ async function getUsers() {
 
 /**function to find the logged User */
 async function getCurrentUser() {
-  /*setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');*/
   let logname = document.getElementById("mail-login");
   let logpassword = document.getElementById("password-login");
-  /*await getUsers();*/
   current_user = users.find(
     (u) => u.password == logpassword.value && u.email == logname.value
   );
@@ -79,7 +76,6 @@ async function getCurrentUser() {
   } else {
     setCurrentUserToLocal(current_user);
     window.location.href = "summary.html";
-    /*setUserImg()*/
   }
 }
 
@@ -129,7 +125,6 @@ function togglePassword(id, id2) {
 /**function to login a guestUser */
 function guestLogin() {
   current_user = {
-    img: "assets/img/guest_pic.svg",
     username: "Guest",
     email: "guest@guest.de",
   };

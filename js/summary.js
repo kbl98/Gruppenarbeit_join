@@ -4,11 +4,6 @@ let urgent_tasks = [];
  * functions for getting Items from server and include templates from here
  */
 
-/*async function setMainHTML() {
-  await getTasks();
-  window.location.href = "main.html";
-}*/
-
 
 /**function that fetches tasks from backend and creates a Json */
 async function init() {
@@ -150,9 +145,14 @@ function createUrgentBox() {
     urgenttasks_container.innerHTML = generateUrgentNullHTML();
   }
   for (let i = 0; i < urgent_tasks.length; i++) {
+    let isOver=compareIfOver(urgent_tasks[i]["date"]);
+    console.log(urgent_tasks[i]["date"]);
+    if(!isOver){
     let taskdate = constructDate(urgent_tasks[i]["date"]);
     console.log(taskdate);
     urgenttasks_container.innerHTML += generateUrgentHTML(i, taskdate);
+    break
+    }
   }
 }
 
@@ -170,6 +170,18 @@ function sortAllUrgentTasks() {
     urgentSorted.push(urgent_tasks.find((t) => t["date"] == dates[i]));
   }
   urgent_tasks = urgentSorted;
+}
+
+/**function to check if urgent task is already over */
+function compareIfOver(date){
+  let isOver=false;
+  let d=new Date(date);
+  console.log(d);
+  let today=new Date();
+  if ((d.getTime()-today.getTime)<0 ){
+   isOver=true;
+  }
+  return isOver;
 }
 
 
@@ -216,7 +228,7 @@ function compareDate(date1, date2) {
 /**function to get the output-formate of the dates that are rendered on summary */
 function constructDate(date) {
   let d = new Date(date);
-  console.log(d);
+  console.log(date);
   let weekday = d.getDay();
   let time=d.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
   console.log(time);
@@ -250,7 +262,7 @@ function constructDate(date) {
     ", " +
     d.getDate() +
     "." +
-    m[d.getMonth() - 1] +
+    m[d.getMonth()] +
     " " +
     d.getFullYear();
   console.log(taskdate);

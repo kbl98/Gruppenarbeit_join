@@ -85,7 +85,16 @@
     font-weight: 400;
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:1000px){
+#nav-container{
+    width:200px;
+}
+
+
+}
+
+@media screen and (max-width:500px)
+{
     #nav-container {
         background-color: #2A3647;
         color: white;
