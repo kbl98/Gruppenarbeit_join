@@ -36,6 +36,7 @@ body {
 
 .heading-add {
   margin-left: 40px;
+  margin-bottom: 28px;
 }
 
 #task-container {
@@ -68,7 +69,7 @@ body {
 }
 
 #greeting {
-  text-align: -webkit-center;
+  text-align: left;
 }
 
 #greet-name {
@@ -239,35 +240,32 @@ body {
 
   .todo {
     height: 150px;
-    width: 200px;
   }
 }
 
 @media screen and (max-width: 1170px) {
-  #task-overview {
+
+    #heading{
+    padding-left:60px;
+    }
+    #task-overview {
     width: 80%;
-    padding-left: 50px;
-  }
+    padding-left: 0;
+    }
 
-  #heading {
-    font-size: 25px;
-    padding-top: 80px;
-    padding-left: 50px;
-    padding-right: 200px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
+    #task-container {
+   padding-left:60px;
+    }
 
-  h1 {
+    h1 {
     font-size: 45px;
-  }
-  #greet-container {
+    }
+    #greet-container {
     padding: 1%;
     font-size: 45px;
-  }
+    }
 
-  #greet-name {
+    #greet-name {
     font-size: 45px;
   }
 
@@ -277,11 +275,12 @@ body {
     padding: 20px;
   }
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
   #heading {
     font-size: 20px;
     padding-top: 60px;
     padding-right: 0;
+    padding-left: 60px;
   }
 
   h1 {
@@ -299,12 +298,61 @@ body {
 
   .progress {
     height: 140px;
-    width: 110px;
+   
     padding: 0px;
   }
 
   .todo {
     height: 140px;
-    width: 140px;
   }
+}
+
+@media screen and (max-width: 1000px){
+
+    #heading{
+        padding-left:60px;
+    }
+
+    .main-content-container {
+       padding-left: 200px;
+    }
+
+    .progress{
+        width:110px;
+    }
+
+    .todo {
+        width: 150px;
+      }
+    #img-todo{
+        transform:scale(0.7);
+    }
+
+    #img-done{
+        transform:scale(0.7);
+    }
+
+    .important-container img{
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-width: 900px){
+h1{
+    font-size: 35px !important;
+}
+
+
+#greeting{
+    font-size: 35px;
+}
+
+#greet-name{
+    font-size: 35px
+}
+
+.heading-add{
+    font-size:22px;
+}
+
 }
