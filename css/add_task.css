@@ -83,7 +83,7 @@ textarea::placeholder {
   background-color: white;
   transition: all 150ms ease-in-out;
   overflow: auto;
-  z-index: 999;
+  z-index: 1;
 }
 .selectCategory {
   height: 49px;
@@ -199,9 +199,10 @@ textarea::placeholder {
 
 
 /* DUE DATE */
-/* #datepicker {
+#datepicker {
   cursor: pointer;
-} */
+  z-index: 999;
+}
 
 
 /* PRIO */

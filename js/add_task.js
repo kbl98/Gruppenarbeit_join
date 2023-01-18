@@ -10,6 +10,15 @@ let selectedSubtasks = [];
 let subtaskImageSrc = [];
 
 
+async function init() {
+  await includeHTML();
+  loadTasks();
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+}
+
+
 //Title
 /**
  * function to add the entered title from the inputfield to the variable called "selectedTitle"
@@ -230,9 +239,7 @@ function notOpenCloseContacts(event) {
 /**
  * function to open the jquery-datepicker 
  */
-$( function() {
-  $( "#datepicker" ).datepicker();
-} );
+
 
 
 /**
