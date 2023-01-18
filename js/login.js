@@ -1,3 +1,5 @@
+let loadedContacts=[]
+
 /**
  * functions before showing content
  */
@@ -43,7 +45,7 @@ function showLogin() {
 }
 
 
-/**function to get all registrated Users from storage */
+/**function to get all registrated Users and Contacts from storage */
 async function getUsers() {
   setURL(
     "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
@@ -53,8 +55,14 @@ async function getUsers() {
   if (!users) {
     users = [];
   }
+  loadedContacts = JSON.parse(backend.getItem("contacts"));
+  if (!loadedContacts) {
+      loadedContacts = [];
+  };
   console.log(users);
+  console.log(loadedContacts)
 }
+
 
 
 /**function to find the logged User */
@@ -154,6 +162,10 @@ async function sign() {
   let isNewUser = await checknewUser(newUser);
   if (isNewUser) {
     await saveUser(newUser);
+    let isNewContact=await checkifContact(newUser)
+    if(isNewContact){
+    await createNewContactFromUser(newUser)
+    }
     username = "";
     email = "";
     password = "";
@@ -165,19 +177,54 @@ async function sign() {
 
 
 async function checknewUser(newUser) {
-  let isNewUser = true;
-  for (let i = 0; i < users.length; i++) {
-    if (
-      newUser["email"] == users[i]["email"] ||
-      newUser["username"] == users[i]["username"]
-    ) {
-      isNewUser = false;
-      console.log("isUser");
-      break;
+    let isNewUser = true;
+    for (let i = 0; i < users.length; i++) {
+      if (
+        newUser["email"] == users[i]["email"] ||
+        newUser["username"] == users[i]["username"]
+      ) {
+        isNewUser = false;
+        console.log("isUser");
+        break;
+      }
     }
+    return isNewUser;
   }
-  return isNewUser;
+    
+
+/**
+ * functions to set a new user to contacts (without phone) from here
+ */
+
+async function checkifContact(newUser) {
+    let isNewContact = true;
+    for (let i = 0; i < loadedContacts.length; i++) {
+      if (
+        newUser["email"] == loadedContacts[i]["email"] 
+      ) {
+        isNewContact = false;
+        console.log("is Contact");
+        break;
+      }
+    }
+    return isNewContact;
+  }
+
+async function createNewContactFromUser(newUser) {
+    let newName = newUser["username"];
+    let newMail = newUser["email"];
+    let newPhone="";
+    let newObjekt = { name: newName, email: newMail, phone: newPhone };
+    loadedContacts.push(newObjekt);
+    await saveContactsToBackend();
 }
+
+async function saveContactsToBackend() {
+    await downloadFromServer();
+    let contactAsText = JSON.stringify(loadedContacts);
+    await backend.setItem("contacts", contactAsText);
+}
+
 
 
 /**
