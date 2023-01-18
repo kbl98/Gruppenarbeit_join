@@ -218,7 +218,8 @@ function constructDate(date) {
   let d = new Date(date);
   console.log(d);
   let weekday = d.getDay();
-  console.log(weekday);
+  let time=d.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+  console.log(time);
   console.log(d.getMonth());
   let m = [
     "January",
