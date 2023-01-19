@@ -343,14 +343,42 @@ h1 {
   }
 
   #login-container {
-    margin: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
     justify-content: flex-start;
+    padding-top:10px;
+    height:400px;
   }
 
   #new-password {
     margin: 0;
   }
+
+  #help-container{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 20px;
+
+  }
+  .help-container p{
+    margin:0;
+    padding: 10px;
+  }
 }
 
 @media screen and (max-width: 350px) {
+#new-question {
+font-size: 14px;
+}
+
+#sign-in {
+  font-size: 14px;
+  }
+
+  #mail-login{
+    
+  }
+
+
+ 
 }
