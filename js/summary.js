@@ -26,6 +26,11 @@ async function init() {
   setUserImg();
   renderSummary();
   handleMediaSize();
+  storeSession();
+}
+
+function storeSession(){
+  sessionStorage.setItem("session",true)
 }
 
 
@@ -343,6 +348,11 @@ function unhover(id, src) {
 /**function on media query */
 function showGreetOnMobil(){
   let greetcontainer=document.getElementById("greet-container");
+  greetcontainer.classList.remove("d-none");
+}
+
+function closeGreetOnMobil(){
+  let greetcontainer=document.getElementById("greet-container");
   greetcontainer.classList.add("d-none");
 }
 
@@ -351,19 +361,28 @@ function timeGreet(){
 }
 
 function handleMediaSize(){
-  if (window.innerWidth < 800) 
-  setTimeout(showGreetOnMobil,2000)
+  let session=sessionStorage.getItem("session");
+  if (window.innerWidth < 850){
+    if(!session){
+  showGreetOnMobil()
+  setTimeout(resizeElements())}
+  else{
+    resizeElements()
+  }
+  }else{
+    showGreetOnMobil()
+  }
 }
 
 function resizeElements(){
   let greetcontainer=document.getElementById("greet-container");
   if(!greetcontainer.classList.contains("d-none")){
-    if(window.innerWidth<800 )
+    if(window.innerWidth<850){
    greetcontainer.classList.add("d-none")
   }else{
-    if(window.innerWidth>800 ){
+    if(window.innerWidth>850 ){
       greetcontainer.classList.remove("d-none")
     }
   }
-  
+}else
 }

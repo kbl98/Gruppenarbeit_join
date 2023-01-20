@@ -49,6 +49,7 @@ body {
   justify-content: space-between;
   padding-bottom: 50px;
   height: 100%;
+  padding-left:100px;
 }
 
 #task-overview {
@@ -369,29 +370,25 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-  #task-overview {
+  /*#task-overview {
     width: 100%;
-  }
+  }*/
 
   #heading {
-    padding-left: 40px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+   
   }
 
-  #heading h1 {
-    margin-bottom: 15px;
-  }
+
 
   .heading-add {
-    margin-bottom: 20px;
+   
   }
 
-  #task-container {
+  /*#task-container {
     padding-left: 40px;
-  }
+  }*/
 
-  .greet-container {
+  /*.greet-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -400,9 +397,9 @@ body {
     z-index: 16;
     background-color: rgb(246, 247, 248);
     margin: unset;
-  }
+  }*/
 
-  #greeting {
+ /* #greeting {
     margin-left: auto;
     margin-right: auto;
   }
@@ -410,10 +407,37 @@ body {
   #greet-name {
     margin-left: auto;
     margin-right: auto;
-  }
+  }*/
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 850px) {
+
+    .greet-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        background-color: rgb(246, 247, 248);
+        margin: unset;
+    }
+
+    #greeting {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    
+      #greet-name {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+
+    #heading h1 {
+        margin-bottom: 15px;
+      }
+
   .main-content-container {
     padding-left: 20px !important;
     padding-right: 20px;
@@ -429,6 +453,9 @@ body {
   }
 
   #heading {
+    
+    margin-top: 15px;
+    margin-bottom: 15px;
     padding: 0;
     flex-direction: column;
     align-items: flex-start;
@@ -437,6 +464,7 @@ body {
 
   .heading-add {
     margin-left: 0;
+    margin-bottom: 20px;
   }
 
   #task-container {
