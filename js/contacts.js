@@ -9,6 +9,8 @@ async function initContacts() {
     setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     await loadContactsFromBackend();
     renderContacts();
+    await getCurrentUserFromStorage();
+    setUserImg();
 }
 
 
