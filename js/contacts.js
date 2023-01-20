@@ -1,6 +1,19 @@
 let loadedContacts = [];
 let letters = [];
 
+function checkForColor() {
+    for (let i = 0; i < loadedContacts.length; i++) {
+        let currentContact = loadedContacts[i];
+        if (!currentContact.color) {
+            let name = currentContact.name;
+            let email = currentContact.email;
+            let phone = currentContact.phone;
+            let randomColor = getRandomColor();
+            let newObjekt = { name: name, email: email, phone: phone, color: randomColor };
+            loadedContacts.splice(i, 1, newObjekt);
+        }
+    }
+}
 
 
 /**
@@ -9,6 +22,7 @@ let letters = [];
 async function initContacts() {
     setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     await loadContactsFromBackend();
+    checkForColor();
     renderContacts();
     await getCurrentUserFromStorage();
     setUserImg();
@@ -221,7 +235,7 @@ async function createNewContact() {
     let newMail = document.getElementById('newContactMailValue').value;
     let newPhone = document.getElementById('newContactPhoneValue').value;
     let randomColor = getRandomColor();
-    let newObjekt = { name: newName, email: newMail, phone: newPhone, color:  randomColor};
+    let newObjekt = { name: newName, email: newMail, phone: newPhone, color: randomColor };
     loadedContacts.push(newObjekt);
     await saveContactsToBackend();
     closeNewContact();
