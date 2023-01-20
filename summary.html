@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="css/login.css" />
     </head>
-  <body onload="init()">
+  <body onload="init()" onresize="resizeElements()">
 <!------------------------------------templates nav and head--------------------------------->
         <div w3-include-html="assets/templates/nav.html"></div>
         <div w3-include-html="assets/templates/head.html"></div>
@@ -28,7 +28,7 @@
 <!------------------------------------summary of tasks--------------------------------------->
       <div id="summary-container" class="main-content-container">
        
-        
+        <div id="subhead">Kanban Management Tool</div>
         <div id="heading">
             <h1>Summary</h1>
             <div class="heading-add">Everything is a nutshell</div>
@@ -54,11 +54,13 @@
                 </div>
 <!-------------------------------------urgent-tasks------------------------------------------->
                 <div class="important-container box-shadow" onclick="getToBoard()">
+                    <div id="urgent-box">
                     <img src="assets/img/urgent_arrow.svg">
                     <div class="urgent-container" >
                         <span id="num-urgent">1</span>
                         <p>Urgent</p>
                     </div>
+                </div>
                     <div id="deadline-container-box">
                     <div id="" class="deadline-container" onclick="getToBoard()">
                         <span id="" class="deadline">15.Januar 2023, 15 Uhr</span>
@@ -88,7 +90,7 @@
             </div>
 
         <!--------------Greeting of user  -------------------------------------------->
-            <div id="greet-container"><span id="greeting">Good Morning</span>
+            <div id="greet-container" class="greet-container d-none"><span id="greeting">Good Morning</span>
             <div id="greet-name">User</div>
         </div>
         </div>

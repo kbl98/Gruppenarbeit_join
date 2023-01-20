@@ -1,4 +1,7 @@
 let urgent_tasks = [];
+let mediaQuery = window.matchMedia('(max-width: 800px)');
+
+/*window.addEventListener('resize',resizeElements)*/
 
 /**
  * functions for getting Items from server and include templates from here
@@ -22,6 +25,12 @@ async function init() {
   await getCurrentUserFromStorage();
   setUserImg();
   renderSummary();
+  handleMediaSize();
+  storeSession();
+}
+
+function storeSession(){
+  sessionStorage.setItem("session",true)
 }
 
 
@@ -291,12 +300,14 @@ function getPartOfDay() {
   let greet;
   let date = new Date();
   let time = date.getHours();
+  console.log(time)
   if (time < 11 && time > 0) {
     greet = "Good Morning,";
   }
-  if (time >= 11 && time < 17) {
+  else if (time >= 11 && time < 17) {
     greet = "Hello,";
-  } else {
+  } 
+  else {
     greet = "Good Evening,";
   }
   return greet;
@@ -332,4 +343,46 @@ function hover(id, src) {
 
 function unhover(id, src) {
   document.getElementById(id).setAttribute("src", src);
+}
+
+/**function on media query */
+function showGreetOnMobil(){
+  let greetcontainer=document.getElementById("greet-container");
+  greetcontainer.classList.remove("d-none");
+}
+
+function closeGreetOnMobil(){
+  let greetcontainer=document.getElementById("greet-container");
+  greetcontainer.classList.add("d-none");
+}
+
+function timeGreet(){
+  setTimeout(showGreetOnMobil,2000)
+}
+
+function handleMediaSize(){
+  let session=sessionStorage.getItem("session");
+  if (window.innerWidth < 850){
+    if(!session){
+  showGreetOnMobil()
+  setTimeout(resizeElements())}
+  else{
+    resizeElements()
+  }
+  }else{
+    showGreetOnMobil()
+  }
+}
+
+function resizeElements(){
+  let greetcontainer=document.getElementById("greet-container");
+  if(!greetcontainer.classList.contains("d-none")){
+    if(window.innerWidth<850){
+   greetcontainer.classList.add("d-none")
+  }else{
+    if(window.innerWidth>850 ){
+      greetcontainer.classList.remove("d-none")
+    }
+  }
+}else
 }

@@ -11,31 +11,34 @@ body {
   font-family: "Inter";
 }
 
-/*#overlay-start{
-      transition: all 3000ms ease-in-out;
-      width:100%;
-      height:100vh;
-      display:flex;
-      align-items: center;
-      justify-content: center;
-     
-  }*/
-
-/*.left-corner{
-     transform:translate(-700%,-600%);
-      }*/
-
 #start-pic {
+  z-index: 10;
   object-fit: contain;
-  transition: all 3000ms ease-in-out;
+  transition: all 450ms ease-in-out;
+}
+
+#start-background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  transition: all 75ms ease-in-out;
+}
+
+.start {
+  opacity: 1;
+  background-color: white;
+}
+
+.stop {
+  opacity: 0;
 }
 
 .logo-big {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   position: absolute;
-  top: 50vh;
-  left: 50%;
+  left: 47%;
+  top: 47%;
 }
 
 .logo-small {
@@ -93,21 +96,21 @@ h1 {
 }
 .mail-input {
   background-image: url("../assets/img/email-icon.svg");
-  background-position: 420px 10px;
+  background-position: 95% 50%;
   padding-left: 10px;
   background-repeat: no-repeat;
 }
 
 .password-input {
   background-image: url("../assets/img/password-icon.svg");
-  background-position: 420px 10px;
+  background-position: 95% 50%;
   padding-left: 10px;
   background-repeat: no-repeat;
 }
 
 .name-input {
   background-image: url("../assets/img/name.svg");
-  background-position: 420px 10px;
+  background-position: 95% 50%;
   padding-left: 10px;
   background-repeat: no-repeat;
   margin-top: 40px;
@@ -115,20 +118,19 @@ h1 {
 
 .help-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 300px;
 }
 
 .password-toggle {
   color: rgb(43, 54, 71);
   font-size: 14px;
-  margin-right: 20px;
   cursor: pointer;
 }
 
 #new-password {
   color: rgb(40, 171, 226);
   font-size: 14px;
-  margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
   display: flex;
@@ -137,8 +139,9 @@ h1 {
 
 #btn-box {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 20px;
+  width: 300px;
 }
 
 .login-btn {
@@ -150,6 +153,7 @@ h1 {
   padding: 12px;
   font-size: 16px;
   border: transparent;
+  width: 100px;
 }
 
 .login-btn:hover {
@@ -163,7 +167,7 @@ h1 {
   border: solid 1px rgb(43, 54, 71);
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 30px;
+  width: 100px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -279,11 +283,10 @@ h1 {
   transition: all 2000ms ease-in-out;
   left: 45%;
   font-size: 18px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 #popup-user-p {
   padding: 20px;
@@ -313,23 +316,95 @@ h1 {
   align-items: center;
 }
 
+button {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
+  .start {
+    opacity: 1;
+    background-color: gray;
+  }
+
+  .logo-big {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    position: absolute;
+    margin: auto;
+  }
+
+  .logo-small {
+    margin: 0;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+  #newuser-container {
+    transform: scale(0.8);
+    left: 0;
+    top: unset;
+    bottom: 20px;
+  }
+
+  #start-pic {
+    transform: scale(0.7);
+  }
+
   input {
-    width: 350px;
+    width: -webkit-fill-available;
   }
 
   #login-container {
     width: 400px;
+    max-height: 400px;
   }
 
   form {
     padding-left: 0;
     padding-right: 0;
+    align-items: flex-start;
+    margin-top: 20px;
   }
 
   .help-container p {
     font-size: 14px;
     padding: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+  }
+
+  #new-password {
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+  .help-container {
+    flex-direction: column;
+  }
+
+  #login-btn {
+    transform: scale(0.9);
+  }
+
+  #btn-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-top: 20px;
+    width: unset;
+  }
+
+  #guest-btn {
+    margin-left: 0;
+    margin-top: 10px;
+    transform: scale(0.9);
   }
 }
 
@@ -338,19 +413,39 @@ h1 {
     font-size: 30px;
   }
 
-  input {
-    width: 250px;
-  }
-
   #login-container {
-    margin: 20px;
-    justify-content: flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: center;
+    width: 230px;
   }
 
   #new-password {
-    margin: 0;
+    margin-left: 10px;
+  }
+
+  form {
+    padding-left: 0;
+    padding-right: 0;
+    align-items: flex-start;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 350px) {
+  #login-container {
+    transform: scale(0.8);
+  }
+
+  #newuser-container {
+    transform: scale(0.8);
+  }
+
+  #new-question {
+    font-size: 14px;
+  }
+
+  #sign-in {
+    font-size: 14px;
+  }
 }

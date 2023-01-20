@@ -15,7 +15,7 @@
   background-color: white;
   height: 90px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
-  z-index: 5;
+  z-index: 10;
 }
 
 #user-container {
@@ -25,17 +25,17 @@
 }
 
 #user-img {
-    background-color:rgb(43, 54, 71); 
-    color:white;
-    display: flex;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: solid 2px #2a3647;
-    margin-left: 20px;
-    margin-right: 50px;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(43, 54, 71);
+  color: white;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 2px #2a3647;
+  margin-left: 20px;
+  margin-right: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 #user-img:hover {
@@ -89,45 +89,76 @@
   cursor: pointer;
 }
 
-#logo-head-mobil{
-    display:none;
+#logo-head-mobil {
+  display: none;
 }
 
+@media screen and (max-width: 1000px) {
+  #head {
+    left: 200px;
+  }
+}
 
-@media screen and (max-width:1000px){
-    #head{
-        left:200px;
+@media screen and (max-width: 1000px) {
+  #head {
+    left: 160px;
+  }
+}
+@media screen and (max-width: 850px) {
+    #popup-logout {
+        margin-top: 70px;
     }
 
-}
-@media screen and (max-width: 500px) {
+    #popup-logout p{
+        margin: unset;
+    }
+
+  .logo-big {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+  }
+
+  .logo-small {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+  }
+
   .join-name {
     margin-left: 50px;
     font-size: 18px;
     font-weight: 400;
   }
 
-  #head{
+  #head {
+    height: 70px;
+    width: 100%;
     left: 0;
-  right: 0;
-  padding-right:20px;
-  padding-left:20px;
+    right: 0;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
-  #head p{
+  #head p {
     display: none;
   }
 
-  #questiontag{
+  #questiontag {
     display: none;
   }
 
-  #user-img{
-    margin:0
+  #user-img {
+    margin: 0;
   }
 
-#logo-head-mobil{
-    display:unset;
-    width:50px;
-}
+  #logo-head-mobil {
+    display: unset;
+    width: 50px;
+  }
 }

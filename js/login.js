@@ -7,9 +7,21 @@ let loadedContacts=[]
 /**function for moving the start-logo from center to left corner */
 function moveLogo() {
   let logo = document.getElementById("start-pic");
+  backgroundOpacity();
   logo.classList.remove("logo-big");
   logo.classList.add("logo-small");
-  setTimeout(showLogin, 3000);
+  showLogin();
+  setTimeout(removeStartbackground,100)
+}
+
+function removeStartbackground(){
+    document.getElementById("start-background").classList.add("d-none");
+}
+
+function backgroundOpacity(){
+    let bg = document.getElementById("start-background");
+    bg.classList.remove("start");
+    bg.classList.add("stop");
 }
 
 

@@ -14,14 +14,14 @@ body {
 }
 
 .main-content-container {
-    padding-top: 90px;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
-    justify-content: flex-start;
-    padding-left: 232px;
+  padding-top: 90px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 232px;
 }
 
 #heading {
@@ -34,6 +34,10 @@ body {
   align-items: center;
 }
 
+#subhead {
+  display: none;
+}
+
 .heading-add {
   margin-left: 40px;
   margin-bottom: 28px;
@@ -41,31 +45,32 @@ body {
 
 #task-container {
   display: flex;
-  width:100%;
-  justify-content:space-between;
-  padding-left:100px;
+  width: 100%;
+  justify-content: space-between;
   padding-bottom: 50px;
-  height:100%;
+  height: 100%;
+  padding-left:100px;
 }
 
 #task-overview {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width:70%;
+  width: 70%;
+  height: 100%;
 }
 
-#greet-container {
-  width:30%;
+.greet-container {
+  width: 30%;
   font-size: 50px;
   display: flex;
   font-weight: bold;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   text-align: center;
   flex-direction: column;
-  margin-left:60px;
-  padding-right:100px;
+  margin-left: 60px;
+  padding-right: 100px;
 }
 
 #greeting {
@@ -82,11 +87,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 30%;
 }
 
 .progress {
-  height: 170px;
-  width: 170px;
+  height: 100%;
+  width: 30%;
   border-radius: 10px;
   background-color: white;
   color: rgb(43, 54, 71);
@@ -116,14 +122,15 @@ body {
 }
 
 .important-container {
+  height: 30%;
   border-radius: 10px;
   background-color: white;
   color: rgb(43, 54, 71);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   transition: all 100ms ease-in-out;
+  padding: 30px;
 }
 
 .important-container:hover {
@@ -140,6 +147,19 @@ body {
   justify-content: center;
 }
 
+#urgent-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: solid 2px rgb(245, 246, 247);
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  
+}
+
 #num-urgent {
   font-size: 50px;
   font-weight: bold;
@@ -154,7 +174,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-left: solid 2px rgb(245, 246, 247);
 }
 
 .deadline-container {
@@ -174,6 +193,7 @@ body {
 }
 
 .todos-container {
+  height: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -182,21 +202,20 @@ body {
 .column {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   flex-direction: column;
 }
 
 .todo {
-  height: 170px;
-  width: 200px;
+  padding: 30px;
+  height: 100%;
+  width: 45%;
   border-radius: 10px;
   background-color: white;
   color: rgb(43, 54, 71);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
-  padding-left: 20px;
   transition: all 100ms ease-in-out;
 }
 
@@ -224,9 +243,6 @@ body {
   }
 
   .progress {
-    height: 150px;
-    width: 140px;
-    padding: 20px;
   }
 
   .progress span {
@@ -239,40 +255,35 @@ body {
   }
 
   .todo {
-    height: 150px;
   }
 }
 
 @media screen and (max-width: 1170px) {
-
-    #heading{
-    padding-left:60px;
-    }
-    #task-overview {
+  #heading {
+    padding-left: 60px;
+  }
+  #task-overview {
     width: 80%;
     padding-left: 0;
-    }
+  }
 
-    #task-container {
-   padding-left:60px;
-    }
+  #task-container {
+    padding-left: 60px;
+  }
 
-    h1 {
+  h1 {
     font-size: 45px;
-    }
-    #greet-container {
+  }
+  .greet-container {
     padding: 1%;
     font-size: 45px;
-    }
+  }
 
-    #greet-name {
+  #greet-name {
     font-size: 45px;
   }
 
   .progress {
-    height: 150px;
-    width: 140px;
-    padding: 20px;
   }
 }
 @media screen and (max-width: 1100px) {
@@ -280,14 +291,13 @@ body {
     font-size: 20px;
     padding-top: 60px;
     padding-right: 0;
-    padding-left: 60px;
   }
 
   h1 {
     font-size: 40px !important;
   }
 
-  #greet-container {
+  .greet-container {
     padding: 1%;
     font-size: 40px;
   }
@@ -297,62 +307,315 @@ body {
   }
 
   .progress {
-    height: 140px;
-   
-    padding: 0px;
   }
 
   .todo {
-    height: 140px;
   }
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1000px) {
+  #heading {
+  }
 
-    #heading{
-        padding-left:60px;
+  .main-content-container {
+    padding-left: 160px;
+  }
+
+  .progress {
+  }
+
+  .todo {
+    padding: 30px;
+  }
+
+  #urgent-box {
+  }
+
+  #img-todo {
+    transform: scale(0.7);
+  }
+
+  #img-done {
+    transform: scale(0.7);
+  }
+
+  .important-container img {
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: 35px !important;
+  }
+
+  .todo {
+    padding: 30px;
+  }
+
+  #urgent-box {
+  }
+
+  #greeting {
+    font-size: 35px;
+  }
+
+  #greet-name {
+    font-size: 35px;
+  }
+
+  .heading-add {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  /*#task-overview {
+    width: 100%;
+  }*/
+
+  #heading {
+   
+  }
+
+
+
+  .heading-add {
+   
+  }
+
+  /*#task-container {
+    padding-left: 40px;
+  }*/
+
+  /*.greet-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 16;
+    background-color: rgb(246, 247, 248);
+    margin: unset;
+  }*/
+
+ /* #greeting {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #greet-name {
+    margin-left: auto;
+    margin-right: auto;
+  }*/
+}
+
+@media screen and (max-width: 850px) {
+
+    .greet-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        background-color: rgb(246, 247, 248);
+        margin: unset;
     }
 
-    .main-content-container {
-       padding-left: 200px;
-    }
+    #greeting {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    
+      #greet-name {
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-    .progress{
-        width:110px;
+
+    #heading h1 {
+        margin-bottom: 15px;
+      }
+
+  .main-content-container {
+    padding-left: 20px !important;
+    padding-right: 20px;
+    padding-top: 70px;
+    padding-bottom: 110px;
+    width: 100%;
+  }
+
+  #subhead {
+    margin-top: 20px;
+    display: unset;
+    font-size: 18px;
+  }
+
+  #heading {
+    
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .heading-add {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  #task-container {
+    padding-left: 0;
+    padding-bottom: 0;
+    height: 100%;
+    align-items: center;
+  }
+
+  #task-overview {
+    width: 100%;
+    height: 100%;
+  }
+
+  #urgent-box {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .progress {
+    padding: 8px;
+  }
+
+  .progress span {
+    font-size: 35px;
+  }
+
+  
+
+  #num-urgent {
+    font-size: 35px;
+  }
+
+  .column span {
+    font-size: 35px;
+  }
+
+  
+
+  .deadline-container {
+    padding-bottom: 0;
+    padding-top: 0;
+    margin: 0;
+  }
+  .deadline-container span {
+    font-size: 16px;
+  }
+
+  .deadline-container p {
+    font-size: 12px;
+  }
+
+  .important-container {
+    padding: 15px;
+  }
+
+  .todo {
+    padding: 10px;
+}
+
+  #urgent-box {
+    padding-right: 15px;
+  }
+
+  #logo-head-mobil {
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 350px) {
+
+    #urgent-box {
+        width: 50%;
     }
 
     .todo {
-        width: 150px;
+        padding: 3px;
+    }
+    .urgent-container p {
+        font-size: 14px;
       }
-    #img-todo{
-        transform:scale(0.7);
-    }
 
-    #img-done{
-        transform:scale(0.7);
-    }
+    .column p {
+        font-size: 14px;
+      }
 
-    .important-container img{
-        transform: scale(0.7);
-    }
-}
+    .deadline-container p {
+        font-size: 14px;
+      }
+    .progress p {
+        font-size: 14px;
+      }
 
-@media screen and (max-width: 900px){
-h1{
-    font-size: 35px !important;
-}
+  .progress span {
+    font-size: 18px;
+  }
 
+  .progress p {
+    font-size: 14px;
+  }
 
-#greeting{
-    font-size: 35px;
-}
+  .progress p {
+    font-size: 14px;
+  }
 
-#greet-name{
-    font-size: 35px
-}
+  #num-urgent {
+    font-size: 20px;
+  }
 
-.heading-add{
-    font-size:22px;
-}
+  .column span {
+    font-size: 16px;
+  }
 
+  .deadline-container span {
+    font-size: 14px;
+  }
+
+  .deadline-container p {
+    font-size: 14px;
+  }
+
+  .important-container {
+    padding: 5px;
+  }
+
+  .deadline-container {
+    padding: 0;
+  }
+
+  .todo {
+    width: 49%;
+    justify-content: center;
+  }
+
+  .urgent-container {
+    padding: 5px;
+  }
+
+  #urgent-box {
+  }
+
+  #img-todo {
+    transform: scale(0.5);
+  }
+
+  #img-done {
+    transform: scale(0.5);
+  }
+
+  .important-container img {
+    transform: scale(0.5);
+  }
 }
