@@ -1,4 +1,4 @@
-let loadedContacts = [];
+let loadedContacts=[];
 let letters = [];
 
 
