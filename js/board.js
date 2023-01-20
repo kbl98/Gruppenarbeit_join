@@ -20,8 +20,9 @@ function dragStart(id) {
 }
 
 
-function drop(progress) {
+async function drop(progress) {
     loadedBoard[currentDragElement]['progress'] = progress;
+    await boardSaveToBackend()
     renderBoard();
 }
 
