@@ -26,32 +26,32 @@
           <div class="center">
             <div id="categoryColor">
             </div>
-            <input maxlength="15" id="category" required style="color: #dcdcdc;" placeholder="Select task category">
+            <input maxlength="20" id="category" required style="color: #dcdcdc;" placeholder="Select task category">
           </div>
           <div id="categoryImage"><img src="assets/img/arrow_drop.svg"></div>
         </div>
         
         <div class="d-none" id="openedCategories" onclick="notOpenCloseCategories(event)">
           <div class="oneCategory" onclick="addNewCategory()">New category</div>
-          <div class="oneCategory" onclick="addCategory(1)"><div class="center"><div id="imageCat1" class="imageCat"><img src="assets/img/circle_pink.svg"></div><div id="category1">Sales</div></div></div>
-          <div class="oneCategory" onclick="addCategory(2)"><div class="center"><div id="imageCat2" class="imageCat"><img src="assets/img/circle_turquoise.svg"></div><div id="category2">Backoffice</div></div></div>
-          <div class="oneCategory" onclick="addCategory(3)"><div class="center"><div id="imageCat3" class="imageCat"><img src="assets/img/circle_darkblue.svg"></div><div id="category3">Test1</div></div></div>
-          <div class="oneCategory" onclick="addCategory(4)"><div class="center"><div id="imageCat4" class="imageCat"><img src="assets/img/circle_orange.svg"></div><div id="category4">Test2</div></div></div>
-          <div class="oneCategory" onclick="addCategory(5)"><div class="center"><div id="imageCat5" class="imageCat"><img src="assets/img/circle_green.svg"></div><div id="category5">Test3</div></div></div>
-          <div class="oneCategory" onclick="addCategory(6)"><div class="center"><div id="imageCat6" class="imageCat"><img src="assets/img/circle_red.svg"></div><div id="category6">Test4</div></div></div>
-          <div class="oneCategory" onclick="addCategory(7)"><div class="center"><div id="imageCat7" class="imageCat"><img src="assets/img/circle_blue.svg"></div><div id="category7">Test5</div></div></div>
+          <div class="oneCategory" onclick="addCategory(0)"><div class="center"><div id="imageCat0" class="imageCat"><img src="assets/img/circle_pink.svg"></div><div id="category0">Marketing</div></div></div>
+          <div class="oneCategory" onclick="addCategory(1)"><div class="center"><div id="imageCat1" class="imageCat"><img src="assets/img/circle_turquoise.svg"></div><div id="category1">Backoffice</div></div></div>
+          <div class="oneCategory" onclick="addCategory(2)"><div class="center"><div id="imageCat2" class="imageCat"><img src="assets/img/circle_darkblue.svg"></div><div id="category2">Sales</div></div></div>
+          <div class="oneCategory" onclick="addCategory(3)"><div class="center"><div id="imageCat3" class="imageCat"><img src="assets/img/circle_orange.svg"></div><div id="category3">Engineering</div></div></div>
+          <div class="oneCategory" onclick="addCategory(4)"><div class="center"><div id="imageCat4" class="imageCat"><img src="assets/img/circle_green.svg"></div><div id="category4">Manufacturing</div></div></div>
+          <div class="oneCategory" onclick="addCategory(5)"><div class="center"><div id="imageCat5" class="imageCat"><img src="assets/img/circle_red.svg"></div><div id="category5">Customer service</div></div></div>
+          <div class="oneCategory" onclick="addCategory(6)"><div class="center"><div id="imageCat6" class="imageCat"><img src="assets/img/circle_blue.svg"></div><div id="category6">IT</div></div></div>
         </div>
         
       </div>
 
       <div id="categoryColors" class="d-none">
-        <div onclick="changeColor(1)" id="changeColor1" class="color"><img src="assets/img/circle_turquoise.svg"></div>
-        <div onclick="changeColor(2)" id="changeColor2" class="color"><img src="assets/img/circle_pink.svg"></div>
-        <div onclick="changeColor(3)" id="changeColor3" class="color"><img src="assets/img/circle_darkblue.svg"></div>
-        <div onclick="changeColor(4)" id="changeColor4" class="color"><img src="assets/img/circle_orange.svg"></div>
-        <div onclick="changeColor(5)" id="changeColor5" class="color"><img src="assets/img/circle_green.svg"></div>
-        <div onclick="changeColor(6)" id="changeColor6" class="color"><img src="assets/img/circle_red.svg"></div>
-        <div onclick="changeColor(7)" id="changeColor7" class="color"><img src="assets/img/circle_blue.svg"></div>
+        <div onclick="changeColor(0)" id="changeColor1" class="color"><img src="assets/img/circle_pink.svg"></div>
+        <div onclick="changeColor(1)" id="changeColor0" class="color"><img src="assets/img/circle_turquoise.svg"></div>
+        <div onclick="changeColor(2)" id="changeColor2" class="color"><img src="assets/img/circle_darkblue.svg"></div>
+        <div onclick="changeColor(3)" id="changeColor3" class="color"><img src="assets/img/circle_orange.svg"></div>
+        <div onclick="changeColor(4)" id="changeColor4" class="color"><img src="assets/img/circle_green.svg"></div>
+        <div onclick="changeColor(5)" id="changeColor5" class="color"><img src="assets/img/circle_red.svg"></div>
+        <div onclick="changeColor(6)" id="changeColor6" class="color"><img src="assets/img/circle_blue.svg"></div>
       </div>
     </div>
 
@@ -61,19 +61,13 @@
       <span>Assigned to</span>
       <div class="selectField" id="selectFieldContact" onclick="openCloseContacts()">
         <div class="selectContact" id="selectContact">
-          
-            <input type="email" id="contact" disabled placeholder="Select contacts to assign">
-          
+          <input id="contact" required placeholder="Select contacts to assign">
           <div id="contactImage"><img class="paddingRight" src="assets/img/arrow_drop.svg"></div>
         </div>
-        
         <div class="d-none" id="openedContacts" onclick="notOpenCloseContacts(event)">
-          <div class="oneContact" onclick="addContact(0)"><div id="contact0">You</div><div class="contactButton" id="contactButton0"></div></div>
-          <div class="oneContact" onclick="addContact(1)"><div id="contact1">Max Wolfberg</div><div class="contactButton" id="contactButton1"></div></div>
-          <div class="oneContact" onclick="addNewContact()" id="newContact"><div>Invite new contact</div><div><img src="assets/img/contact_icon.svg"></div></div>
         </div>
-        
       </div>
+      <div id="addedContacts"></div>
   </div>
 
 

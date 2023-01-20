@@ -5,6 +5,7 @@ function logout() {
   window.location.href = "login.html";
 }
 
+
 /**function that toogles the display of logout-opportunity*/
 function showLogout() {
   let logout = document.getElementById("popup-logout");
@@ -14,6 +15,7 @@ function showLogout() {
     logout.classList.add("d-none");
   }
 }
+
 
 /**function to clear variables at logout */
 function resetUser() {
@@ -25,6 +27,7 @@ function resetUser() {
   current_user = [];
   localStorage.removeItem("current_user");
 }
+
 
 function setUserImg() {
   if (current_user["img"]) {
@@ -38,6 +41,7 @@ function setUserImg() {
     user_img.innerHTML = createUserPic();
   }
 }
+
 
 function createUserPic() {
   let name_part = current_user["username"].split(" ");
