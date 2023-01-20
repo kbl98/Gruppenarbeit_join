@@ -89,9 +89,12 @@
 #nav-container{
     width:200px;
 }
-
-
 }
+
+@media screen and (max-width:1000px){
+    #nav-container{
+        width:160px;
+    }
 
 @media screen and (max-width:700px){
 

@@ -1,4 +1,7 @@
 let urgent_tasks = [];
+let mediaQuery = window.matchMedia('(max-width: 800px)');
+
+window.addEventListener('resize',handleMediaSize)
 
 /**
  * functions for getting Items from server and include templates from here
@@ -22,6 +25,7 @@ async function init() {
   await getCurrentUserFromStorage();
   setUserImg();
   renderSummary();
+  handleMediaSize();
 }
 
 
@@ -332,4 +336,19 @@ function hover(id, src) {
 
 function unhover(id, src) {
   document.getElementById(id).setAttribute("src", src);
+}
+
+/**function on media query */
+function showGreetOnMobil(){
+  let greetcontainer=document.getElementById("greet-container");
+  greetcontainer.classList.add("d-none");
+}
+
+function timeGreet(){
+  setTimeout(showGreetOnMobil,2000)
+}
+
+function handleMediaSize(){
+  if (window.innerWidth < 900) 
+  setTimeout(showGreetOnMobil,2000)
 }
