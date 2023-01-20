@@ -384,5 +384,5 @@ function resizeElements(){
       greetcontainer.classList.remove("d-none")
     }
   }
-}else
+}
 }
