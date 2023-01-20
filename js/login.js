@@ -4,7 +4,9 @@ let loadedContacts=[]
  * functions before showing content
  */
 
-/**function for moving the start-logo from center to left corner */
+/**
+ *function for moving the start-logo from center to left corner 
+ */
 function moveLogo() {
   let logo = document.getElementById("start-pic");
   backgroundOpacity();
@@ -14,10 +16,16 @@ function moveLogo() {
   setTimeout(removeStartbackground,100)
 }
 
+/**
+ * function for undisplay the startbackground by adding class
+ */
 function removeStartbackground(){
     document.getElementById("start-background").classList.add("d-none");
 }
 
+/**
+ * function to change background-opacity bei class-change
+ */
 function backgroundOpacity(){
     let bg = document.getElementById("start-background");
     bg.classList.remove("start");
@@ -25,7 +33,9 @@ function backgroundOpacity(){
 }
 
 
-/**function to wait some time before moving logo and getting login-box */
+/**
+ *function to wait some time before moving logo and getting login-box 
+ */
 async function getLogin() {
   setTimeout(moveLogo, 500);
   await setBackend();
@@ -36,7 +46,9 @@ async function getLogin() {
 }
 
 
-/**funtion to set Location of Storage */
+/**
+ * funtion to set Location of Storage 
+ */
 async function setBackend() {
   setURL(
     "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
@@ -49,14 +61,18 @@ async function setBackend() {
  */
 
 
-/**function for showing the login-box and sign-in */
+/**
+ * function for showing the login-box and sign-in 
+ */
 function showLogin() {
   document.getElementById("login-container").classList.remove("d-none");
   document.getElementById("newuser-container").classList.remove("d-none");
 }
 
 
-/**function to get all registrated Users and Contacts from storage */
+/**
+ * function to get all registrated Users and Contacts from storage 
+ */
 async function getUsers() {
   setURL(
     "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
@@ -76,7 +92,9 @@ async function getUsers() {
 
 
 
-/**function to find the logged User */
+/**
+ * function to find the logged User 
+*/
 async function getCurrentUser() {
   let logname = document.getElementById("mail-login");
   let logpassword = document.getElementById("password-login");
@@ -91,7 +109,9 @@ async function getCurrentUser() {
   }
 }
 
-
+/**
+ * function to set the image of current-user to head
+ */
 function setUserImg() {
   if (current_user["img"]) {
     document
@@ -106,7 +126,9 @@ function setUserImg() {
 }
 
 
-/**function to storage current User local */
+/**
+ * function to storage current User local 
+ */
 function setCurrentUserToLocal(currentUser) {
   let currentUserAsText = JSON.stringify(currentUser);
   localStorage.setItem("current_user", currentUserAsText);
@@ -114,7 +136,12 @@ function setCurrentUserToLocal(currentUser) {
 }
 
 
-/**function to show/hide the password by changing type of input */
+/**
+ * function to show/hide the password by changing type of input 
+ * 
+ * @param {string} id -Parameter contains id of input-field
+ * @param {string} id2 -Parameter contains id of button, which is used to get action on input-field
+ * */
 function togglePassword(id, id2) {
   let input_password = document.getElementById(id);
   let type = input_password.getAttribute("type");
@@ -134,7 +161,9 @@ function togglePassword(id, id2) {
  */
 
 
-/**function to login a guestUser */
+/**
+ * function to login a guestUser 
+ */
 function guestLogin() {
   current_user = {
     username: "Guest",
@@ -145,7 +174,9 @@ function guestLogin() {
 }
 
 
-/**function to get the summary as guest */
+/**
+ * function to get the summary as guest 
+ */
 function getDemoSummary() {
   window.location.href = "summary.html";
 }
@@ -156,7 +187,9 @@ function getDemoSummary() {
  */
 
 
-/**function to registrate as new User */
+/**
+ * function to registrate as new User 
+ */
 async function sign() {
   let username = document.getElementById("name-registration").value;
   let email = document.getElementById("mail-registration").value;
@@ -183,6 +216,11 @@ async function sign() {
 }
 
 
+/**
+ * function checks if user, who wants to registrate, is new
+ * @param {string} newUser -Parameter is name of user,who wants to registrate
+ * @returns {boolean} -true if user is new
+ */
 async function checknewUser(newUser) {
     let isNewUser = true;
     for (let i = 0; i < users.length; i++) {
@@ -200,9 +238,15 @@ async function checknewUser(newUser) {
     
 
 /**
+ * 
  * functions to set a new user to contacts (without phone) from here
  */
 
+/**
+ * function checks if new user is already in contacts
+ * @param {string} newUser -Parameter is name of registrating user
+ * @returns {boolean} - true if user is not in contacts yet
+ */
 async function checkifContact(newUser) {
     let isNewContact = true;
     for (let i = 0; i < loadedContacts.length; i++) {
@@ -217,6 +261,10 @@ async function checkifContact(newUser) {
     return isNewContact;
   }
 
+/**
+ * functions creates a contact from userdates
+ * @param {string} newUser - Parameter is name of registrating user
+ */
 async function createNewContactFromUser(newUser) {
     let newName = newUser["username"];
     let newMail = newUser["email"];
@@ -226,6 +274,9 @@ async function createNewContactFromUser(newUser) {
     await saveContactsToBackend();
 }
 
+/**
+ * function saves all contacts to backend
+ */
 async function saveContactsToBackend() {
     await downloadFromServer();
     let contactAsText = JSON.stringify(loadedContacts);
@@ -239,7 +290,9 @@ async function saveContactsToBackend() {
  */
 
 
-/**function to save all Users at Storage */
+/**
+ * function to save all Users at backend
+ */
 async function saveUsers() {
   let usersAsText = JSON.stringify(users);
   console.log(usersAsText);
@@ -248,14 +301,12 @@ async function saveUsers() {
 }
 
 
-/**function to save Users at Storage */
+/**
+ * function to save Users at Storage
+ * @param {string} newUser-Parameter is name of new user
+ */
 async function saveUser(newUser) {
-  console.log(users);
-  console.log(newUser);
-
   users.push(newUser);
-  console.log(users);
-
   let usersAsText = JSON.stringify(users);
   console.log(usersAsText);
   await downloadFromServer();
@@ -287,12 +338,18 @@ function openPopupMail() {
   }
 }
 
+/**
+*function to change classname of popup 
+*/
 function popupPassChange(){
     let popup = document.getElementById("popup-pw");
     popup.classList.remove("d-none");
     setTimeout(changeClass2, 100);
 }
 
+/**
+*function to change classname of popup 
+*/
 function changeClass2() {
     let popup_p = document.getElementById("popup-pw-p");
     popup_p.classList.remove("bottom");
@@ -301,7 +358,9 @@ function changeClass2() {
   }
 
 
-/**function to change classname of popup */
+/**
+*function to change classname of popup 
+*/
 function changeClass() {
   let popup_p = document.getElementById("popup-mail-p");
   popup_p.classList.remove("bottom");
@@ -315,18 +374,20 @@ function changeClass() {
  */
 
 
-/** function to get to site for resetting password*/
+/** 
+ * function to render site for resetting password
+ */
 function newPassword() {
   let password_content = document.getElementById("login-container");
   password_content.innerHTML = "";
   password_content.innerHTML = generateResetPassword();
-
-  /*window.location.href="reset_password.html";*/
   document.getElementById("popup-mail").classList.add("d-none");
 }
 
 
-/**function to generate the passwort-reset*/
+/**
+ * function to generate the passwort-reset
+ */
 function generateResetPassword() {
   return `
     <h1>Reset your password</h1>
@@ -363,11 +424,12 @@ function generateResetPassword() {
 }
 
 
-/**function for setting the new password */
+/**
+ * function for setting the new password 
+ */
 async function set_new_password() {
   let password1 = document.getElementById("reseted-password").value;
   let password2 = document.getElementById("reseted-password2").value;
-
   if (password1 == password2) {
     current_user["password"] = password1;
     for (let i = 0; i < users.length; i++) {

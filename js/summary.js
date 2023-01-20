@@ -1,7 +1,6 @@
 let urgent_tasks = [];
 let mediaQuery = window.matchMedia('(max-width: 800px)');
 
-/*window.addEventListener('resize',resizeElements)*/
 
 /**
  * functions for getting Items from server and include templates from here
@@ -21,7 +20,6 @@ async function init() {
   } else {
     formateDate(all_tasks);
   }
-  console.log(all_tasks);
   await getCurrentUserFromStorage();
   setUserImg();
   renderSummary();
@@ -182,7 +180,12 @@ function sortAllUrgentTasks() {
   urgent_tasks = urgentSorted;
 }
 
-/**function to check if urgent task is already over */
+
+/**
+ * function to check if urgent task is already over
+ * @param {date} date -Parameter is date to be checked against actual time
+ * @returns {boolean}-Returns true if date is over
+  */
 function compareIfOver(date){
   let isOver=false;
   let d=new Date(date);
@@ -216,7 +219,10 @@ function generateUrgentNullHTML(){
  */
 
 
-/**function to formate the taskdate to regular form*/
+/**
+ * function to formate the taskdate to regular form
+ * @param {JSON} tasks -Parameter is JSON of several tasks including dates
+ */
 function formateDate(tasks) {
   for (let i = 0; i < all_tasks.length; i++) {
     let [day, mo, ye] = tasks[i]["date"].split("/");
@@ -227,7 +233,12 @@ function formateDate(tasks) {
 }
 
 
-/**function to compare to dates to get difference */
+/**
+ * function to compare  two dates 
+ * @param {date} date1 - first date in row
+ * @param {date} date2 -second date in row
+ * @returns {number}-positiv oder negativ number
+ */
 function compareDate(date1, date2) {
   d1 = new Date(date1);
   d2 = new Date(date2);
@@ -235,14 +246,15 @@ function compareDate(date1, date2) {
 }
 
 
-/**function to get the output-formate of the dates that are rendered on summary */
+/**
+ * function to get the output-formate of the dates that are rendered on summary
+ * @param {date} date -Parameter is a date
+ * @returns {string}-Return is the rendered date with day,month as word and year
+ */
 function constructDate(date) {
   let d = new Date(date);
-  console.log(date);
   let weekday = d.getDay();
   let time=d.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
-  console.log(time);
-  console.log(d.getMonth());
   let m = [
     "January",
     "February",
@@ -275,7 +287,6 @@ function constructDate(date) {
     m[d.getMonth()] +
     " " +
     d.getFullYear();
-  console.log(taskdate);
   return taskdate;
 }
 
@@ -337,14 +348,24 @@ function getToBoard() {
 
 /**functions to change the attribute (img) on hovering the done/todo containers on summary */
 
+/**
+ * function to change img-src on hover
+ * @param {string} id -Parameter is id of img where source changes
+ * @param {string} src-Parameter is path of img-source
+ */
 function hover(id, src) {
   document.getElementById(id).setAttribute("src", src);
 }
 
-
+/**
+ * function to change img-src on unhover
+ * @param {string} id -Parameter is id of img where source changes
+ * @param {string} src-Parameter is path of img-source
+ */
 function unhover(id, src) {
   document.getElementById(id).setAttribute("src", src);
 }
+
 
 /**
  * functions for greet on media query 
@@ -355,14 +376,17 @@ function showGreet(){
   greetcontainer.classList.remove("d-none");
 }
 
+
 function closeGreetOnMobil(){
   let greetcontainer=document.getElementById("greet-container");
   greetcontainer.classList.add("d-none");
 }
 
+
 function timeGreet(){
   setTimeout(showGreetOnMobil,2000)
 }
+
 
 function handleMediaSize(){
   let session=sessionStorage.getItem("session");
@@ -379,6 +403,7 @@ function handleMediaSize(){
     showGreet()
   }
 }
+
 
 function resizeElements(){
   let greetcontainer=document.getElementById("greet-container");
