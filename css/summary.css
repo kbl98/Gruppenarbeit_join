@@ -49,7 +49,7 @@ body {
   justify-content: space-between;
   padding-bottom: 50px;
   height: 100%;
-  padding-left:100px;
+  padding-left: 100px;
 }
 
 #task-overview {
@@ -109,6 +109,7 @@ body {
   background-color: rgb(43, 54, 71);
   color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  cursor: pointer;
 }
 
 .progress span {
@@ -138,6 +139,7 @@ body {
   color: white;
   transform: scale(1.05);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  cursor: pointer;
 }
 
 .urgent-container {
@@ -157,7 +159,6 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  
 }
 
 #num-urgent {
@@ -222,7 +223,7 @@ body {
   transform: scale(1.05);
   background-color: rgb(43, 54, 71);
   color: white;
-
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -241,9 +242,6 @@ body {
     font-size: 22px;
   }
 
-  .progress {
-  }
-
   .progress span {
     padding: 10px;
   }
@@ -253,8 +251,6 @@ body {
     font-size: 16px;
   }
 
-  .todo {
-  }
 }
 
 @media screen and (max-width: 1170px) {
@@ -282,8 +278,6 @@ body {
     font-size: 45px;
   }
 
-  .progress {
-  }
 }
 @media screen and (max-width: 1100px) {
   #heading {
@@ -304,30 +298,16 @@ body {
   #greet-name {
     font-size: 40px;
   }
-
-  .progress {
-  }
-
-  .todo {
-  }
 }
 
 @media screen and (max-width: 1000px) {
-  #heading {
-  }
-
+ 
   .main-content-container {
     padding-left: 160px;
   }
 
-  .progress {
-  }
-
   .todo {
     padding: 30px;
-  }
-
-  #urgent-box {
   }
 
   #img-todo {
@@ -352,9 +332,6 @@ body {
     padding: 30px;
   }
 
-  #urgent-box {
-  }
-
   #greeting {
     font-size: 35px;
   }
@@ -368,37 +345,20 @@ body {
   }
 }
 
-@media screen and (max-width: 800px) {
-  /*#task-overview {
-    width: 100%;
-  }*/
 
-  #heading {
-   
-  }
-
-
-
-  .heading-add {
-   
-  }
-
-  /*#task-container {
-    padding-left: 40px;
-  }*/
-
-  /*.greet-container {
+@media screen and (max-width: 850px) {
+  .greet-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 16;
+    z-index: 9;
     background-color: rgb(246, 247, 248);
     margin: unset;
-  }*/
+  }
 
- /* #greeting {
+  #greeting {
     margin-left: auto;
     margin-right: auto;
   }
@@ -406,36 +366,11 @@ body {
   #greet-name {
     margin-left: auto;
     margin-right: auto;
-  }*/
-}
+  }
 
-@media screen and (max-width: 850px) {
-
-    .greet-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9;
-        background-color: rgb(246, 247, 248);
-        margin: unset;
-    }
-
-    #greeting {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    
-      #greet-name {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-
-    #heading h1 {
-        margin-bottom: 15px;
-      }
+  #heading h1 {
+    margin-bottom: 15px;
+  }
 
   .main-content-container {
     padding-left: 20px !important;
@@ -452,7 +387,6 @@ body {
   }
 
   #heading {
-    
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 0;
@@ -492,8 +426,6 @@ body {
     font-size: 35px;
   }
 
-  
-
   #num-urgent {
     font-size: 35px;
   }
@@ -501,8 +433,6 @@ body {
   .column span {
     font-size: 35px;
   }
-
-  
 
   .deadline-container {
     padding-bottom: 0;
@@ -523,7 +453,7 @@ body {
 
   .todo {
     padding: 10px;
-}
+  }
 
   #urgent-box {
     padding-right: 15px;
@@ -535,28 +465,27 @@ body {
 }
 
 @media screen and (max-width: 350px) {
+  #urgent-box {
+    width: 50%;
+  }
 
-    #urgent-box {
-        width: 50%;
-    }
+  .todo {
+    padding: 3px;
+  }
+  .urgent-container p {
+    font-size: 14px;
+  }
 
-    .todo {
-        padding: 3px;
-    }
-    .urgent-container p {
-        font-size: 14px;
-      }
+  .column p {
+    font-size: 14px;
+  }
 
-    .column p {
-        font-size: 14px;
-      }
-
-    .deadline-container p {
-        font-size: 14px;
-      }
-    .progress p {
-        font-size: 14px;
-      }
+  .deadline-container p {
+    font-size: 14px;
+  }
+  .progress p {
+    font-size: 14px;
+  }
 
   .progress span {
     font-size: 18px;
@@ -601,9 +530,6 @@ body {
 
   .urgent-container {
     padding: 5px;
-  }
-
-  #urgent-box {
   }
 
   #img-todo {
