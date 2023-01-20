@@ -75,6 +75,7 @@ body {
     font-size: 21px;
     transition: ease-in-out 150ms;
     border: unset;
+    cursor: pointer;
 }
 
 .add-task:hover {
@@ -328,4 +329,8 @@ body {
 
 .d-none {
     display: none;
+}
+
+#todo, #inProcess, #awaitingFeedback, #done {
+    height: 500px;
 }
