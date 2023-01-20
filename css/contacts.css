@@ -227,6 +227,9 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+    max-width: 160px;
+    overflow: hidden;
+    word-break: unset;
 }
 
 .contact-name {
