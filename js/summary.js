@@ -150,9 +150,9 @@ function countTasksTodo() {
 function createUrgentBox() {
   let urgenttasks_container = document.getElementById("deadline-container-box");
   urgenttasks_container.innerHTML = "";
-  if(!urgent_tasks){
+  if(urgent_tasks.length==0){
     urgenttasks_container.innerHTML = generateUrgentNullHTML();
-  }
+  }else{
   for (let i = 0; i < urgent_tasks.length; i++) {
     let isOver=compareIfOver(urgent_tasks[i]["date"]);
     console.log(urgent_tasks[i]["date"]);
@@ -163,6 +163,7 @@ function createUrgentBox() {
     break
     }
   }
+}
 }
 
 
@@ -205,7 +206,7 @@ function generateUrgentHTML(i, taskdate) {
 function generateUrgentNullHTML(){
   return `<div class="deadline-container" onclick="getToBoard()">
   <span class="deadline"></span>
-  <p>No urgent-deadline</p>
+  <p><b>No urgent-deadline</b></p>
 </div>`;
 }
 
@@ -345,8 +346,11 @@ function unhover(id, src) {
   document.getElementById(id).setAttribute("src", src);
 }
 
-/**function on media query */
-function showGreetOnMobil(){
+/**
+ * functions for greet on media query 
+*/
+
+function showGreet(){
   let greetcontainer=document.getElementById("greet-container");
   greetcontainer.classList.remove("d-none");
 }
@@ -364,25 +368,25 @@ function handleMediaSize(){
   let session=sessionStorage.getItem("session");
   if (window.innerWidth < 850){
     if(!session){
-  showGreetOnMobil()
-  setTimeout(resizeElements())}
+  showGreet()
+  setTimeout(resizeElements,2000)
+}
   else{
     resizeElements()
   }
-  }else{
-    showGreetOnMobil()
+  }
+  else{
+    showGreet()
   }
 }
 
 function resizeElements(){
   let greetcontainer=document.getElementById("greet-container");
-  if(!greetcontainer.classList.contains("d-none")){
-    if(window.innerWidth<850){
-   greetcontainer.classList.add("d-none")
-  }else{
-    if(window.innerWidth>850 ){
+  if(greetcontainer.classList.contains("d-none") && window.innerWidth>850){
       greetcontainer.classList.remove("d-none")
     }
+    if(!greetcontainer.classList.contains("d-none") && window.innerWidth<=850){
+      greetcontainer.classList.add("d-none")
   }
-}else
 }
+
