@@ -99,7 +99,7 @@ function addDescription() {
  */
 function datepicker() {
   $( function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
   } );
 }
 
