@@ -62,6 +62,7 @@ contacts = [
         "name": "name",
         "email": "email",
         "phone": "phone"
+        "color": "color"
     },
     {
         ...

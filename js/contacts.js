@@ -1,6 +1,20 @@
 let loadedContacts=[];
 let letters = [];
 
+function checkForColor() {
+    for (let i = 0; i < loadedContacts.length; i++) {
+        let currentContact = loadedContacts[i];
+        if (!currentContact.color) {
+            let name = currentContact.name;
+            let email = currentContact.email;
+            let phone = currentContact.phone;
+            let randomColor = getRandomColor();
+            let newObjekt = { name: name, email: email, phone: phone, color: randomColor };
+            loadedContacts.splice(i, 1, newObjekt);
+        }
+    }
+}
+
 
 /**
  * all funktions for load all contacts from backend and render them from here
@@ -8,6 +22,7 @@ let letters = [];
 async function initContacts() {
     setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
     await loadContactsFromBackend();
+    checkForColor();
     renderContacts();
     await getCurrentUserFromStorage();
     setUserImg();
@@ -65,11 +80,11 @@ function renderContactsInSection(currentLetter, x) {
         let contactName = loadedContacts[i]['name'];
         let contactMail = loadedContacts[i]['email'];
         let contactPhone = loadedContacts[i]['phone'];
-        let randomColor = getRandomColor();
+        let contactColor = loadedContacts[i]['color'];
         let bothFirstLetters = splitName(contactName);
         let contactFirstLetter = contactName.charAt(0).toLowerCase();
         if (contactFirstLetter.includes(currentLetter)) {
-            contactId.innerHTML += renderContactsInSectionTemp(randomColor, bothFirstLetters, contactName, contactMail, contactPhone, outerId, innerId);
+            contactId.innerHTML += renderContactsInSectionTemp(contactColor, bothFirstLetters, contactName, contactMail, contactPhone, outerId, innerId);
         }
     }
 }
@@ -85,16 +100,6 @@ function filterFirstLetters() {
         }
     }
 
-}
-
-
-function getRandomColor() {
-    let letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
 }
 
 
@@ -118,15 +123,15 @@ function splitName(fullName) {
  * @param {number} i id from outer section
  * @param {number} j id from inner section
  */
-function openCloseDetails(randomColor, contact, contactMail, contactPhone, bothFirstLetters, outerId, innerId) {
+function openCloseDetails(contactColor, contact, contactMail, contactPhone, bothFirstLetters, outerId, innerId) {
     checkIfOneOpen(outerId, innerId);
-    renderDetails(contact, contactMail, randomColor, contactPhone, bothFirstLetters);
+    renderDetails(contact, contactMail, contactColor, contactPhone, bothFirstLetters);
 }
 
 
-function renderDetails(contact, contactMail, randomColor, contactPhone, bothFirstLetters) {
+function renderDetails(contact, contactMail, contactColor, contactPhone, bothFirstLetters) {
     let openContact = document.getElementById('openContact');
-    openContact.innerHTML = renderDetailsTemp(contact, contactMail, randomColor, contactPhone, bothFirstLetters);
+    openContact.innerHTML = renderDetailsTemp(contact, contactMail, contactColor, contactPhone, bothFirstLetters);
 }
 
 
@@ -171,14 +176,14 @@ function resetAllBgrColors() {
  * 
  * @param {string} contactName contains Name
  * @param {string} contactMail contains Email
- * @param {string} randomColor contains Color
+ * @param {string} contactColor contains Color
  * @param {string} contactPhone contains Phonenumber
  * @param {string} bothFirstLetters Contains example (AM) for "Anton Mayer"
  */
-function openEditContact(contactName, contactMail, randomColor, contactPhone, bothFirstLetters) {
+function openEditContact(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     let editContact = document.getElementById('contEditContact');
     editContact.classList.remove('d-none');
-    editContact.innerHTML = openEditContactTemp(contactName, contactMail, randomColor, contactPhone, bothFirstLetters);
+    editContact.innerHTML = openEditContactTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters);
 }
 
 
@@ -229,13 +234,24 @@ async function createNewContact() {
     let newName = document.getElementById('newContactNameValue').value;
     let newMail = document.getElementById('newContactMailValue').value;
     let newPhone = document.getElementById('newContactPhoneValue').value;
-    let newObjekt = { name: newName, email: newMail, phone: newPhone };
+    let randomColor = getRandomColor();
+    let newObjekt = { name: newName, email: newMail, phone: newPhone, color: randomColor };
     loadedContacts.push(newObjekt);
     await saveContactsToBackend();
     closeNewContact();
     closeDetail();
     initContacts();
     showDivWithTransition();
+}
+
+
+function getRandomColor() {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
 
 
@@ -259,6 +275,16 @@ function showDivWithTransition() {
 function closeNewContact() {
     let newContact = document.getElementById('contCreateNewContact');
     newContact.classList.add('d-none');
+}
+
+
+async function getCurrentUserFromStorage() {
+    let currentUserAsText = localStorage.getItem("current_user");
+    if (!currentUserAsText) {
+        window.location.href = "login.html";
+    } else {
+        current_user = JSON.parse(currentUserAsText);
+    }
 }
 
 
@@ -305,7 +331,7 @@ function openNewContactTemp() {
 }
 
 
-function openEditContactTemp(contactName, contactMail, randomColor, contactPhone, bothFirstLetters) {
+function openEditContactTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
     <div class="cont-new-contact-pup">
         <!--close popup-->
@@ -322,7 +348,7 @@ function openEditContactTemp(contactName, contactMail, randomColor, contactPhone
         <!-- right side from popup edit contact -->
         <div class="cont-right-contact-pup">
             <div class="cont-create-contact-infos">
-                <div style="background-color: ${randomColor};" class="edit-contact-img">${bothFirstLetters}</div>
+                <div style="background-color: ${contactColor};" class="edit-contact-img">${bothFirstLetters}</div>
                 <form onsubmit="editContactSave('${contactName}', '${contactMail}', '${contactPhone}');return false" class="cont-create-contact-input">
                     <input id="editContactNameValue" required value="${contactName}" placeholder="Name" type="text">
                     <input id="editContactMailValue" required value="${contactMail}" placeholder="Email" type="email">
@@ -338,10 +364,10 @@ function openEditContactTemp(contactName, contactMail, randomColor, contactPhone
 }
 
 
-function renderDetailsTemp(contactName, contactMail, randomColor, contactPhone, bothFirstLetters) {
+function renderDetailsTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
     <div class="open-contact-head">
-        <div style="background-color: ${randomColor};" class="open-contact-img">${bothFirstLetters}</div>
+        <div style="background-color: ${contactColor};" class="open-contact-img">${bothFirstLetters}</div>
         <div class="open-contact-head-name">
             <h2>${contactName}</h2>
             <span><img src="./assets/img/contact_add_task.png" alt="">Add Task</span>
@@ -349,7 +375,7 @@ function renderDetailsTemp(contactName, contactMail, randomColor, contactPhone, 
     </div>
     <div class="open-contact-edit">
         <span class="contact-information-text">Contact Information</span>
-        <span onclick="openEditContact('${contactName}', '${contactMail}', '${randomColor}', '${contactPhone}', '${bothFirstLetters}')" class="contact-edit-info"><img src="./assets/img/edit_contact.png"
+        <span onclick="openEditContact('${contactName}', '${contactMail}', '${contactColor}', '${contactPhone}', '${bothFirstLetters}')" class="contact-edit-info"><img src="./assets/img/edit_contact.png"
                 alt=""> Edit Contact</span>
     </div>
     <div class="open-contact-infos">
@@ -378,10 +404,10 @@ function renderLetterSectionLayOut(bigLetter, i) {
 }
 
 
-function renderContactsInSectionTemp(randomColor, bothFirstLetters, contact, contactMail, contactPhone, outerId, innerId) {
+function renderContactsInSectionTemp(contactColor, bothFirstLetters, contact, contactMail, contactPhone, outerId, innerId) {
     return `
-    <div onclick="openCloseDetails('${randomColor}', '${contact}', '${contactMail}', '${contactPhone}', '${bothFirstLetters}', '${outerId}', '${innerId}')" class="contact" id="contactBgr${outerId}${innerId}">
-    <div style="background-color: ${randomColor};" class="contact-img">${bothFirstLetters}</div>
+    <div onclick="openCloseDetails('${contactColor}', '${contact}', '${contactMail}', '${contactPhone}', '${bothFirstLetters}', '${outerId}', '${innerId}')" class="contact" id="contactBgr${outerId}${innerId}">
+    <div style="background-color: ${contactColor};" class="contact-img">${bothFirstLetters}</div>
     <div class="contact-infos">
         <span id="contactNameColor${outerId}${innerId}" class="contact-name">${contact}</span>
         <a class="contact-mail" href="mailto:${contactMail}">${contactMail}</a>
