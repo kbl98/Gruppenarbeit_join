@@ -1,38 +1,74 @@
 let selectedTitle;
 let selectedDescription;
-let selectedCategory = [];
-let selectedContactNames = [];
-let invitedContacts = [];
 let selectedDate;
 let selectedPrio;
 let allSubtasks = [];
 let selectedSubtasks = [];
 let subtaskImageSrc = [];
-let jsontest= [
-  {
-      "title": "dasIstEinTitel",
-      "description": "dasIstEineBeschreibung",
-      "category": [{"name":"backoffice", "color": "blue"}],
-      "contactNames": ["You","Max Wolfberg"],
-      "invitedContacts": ["johanna@gmx.at","caro@gmx.at"],
-      "date": "22/03/2023",
-      "prio": "urgent",
-      "subtasks": ["subtask1","subtask2"],
-      "progress":"todo"
-  },];
 
+
+
+// let jsontest= [
+//     {
+//       "title": "das ist ein Titel",
+//       "description": "das ist eine Beschreibung",
+//       "category": "das ist eine Kategorie",
+//       "color": "#ffffff",
+//       "contactNames": ["You","Max Wolfberg"],
+//       "date": "22/03/2023",
+//       "prio": "urgent",
+//       "subtasks": ["subtask1","subtask2"],
+//       "progress":"todo"
+//      },
+//   ];
+
+  
 async function init() {
   await includeHTML();
-  loadTasks();
+  await loadTasks();
+  await loadContacts();
+  getLocalCurrentUser();
+  renderContacts();
   datepicker();
+  addPrio(0);
+}
+
+function getLocalCurrentUser() {
+  let currentUserAsText = localStorage.getItem('current_user');
+  if (currentUserAsText) {
+    current_user = JSON.parse(currentUserAsText);
+  }
 }
 
 
-async function testjson() {
-await downloadFromServer();
-let testjsonText = JSON.stringify(jsontest);
-await backend.setItem('all_tasks', testjsonText);
+/**
+ * function to load all tasks which are saved on the server
+ */
+async function loadTasks() {
+  setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
+  await downloadFromServer();
+  all_tasks = JSON.parse(backend.getItem('all_tasks')) || [];
+  console.log('Alle Aufgaben:', all_tasks);
 }
+
+
+/**
+ * function to add a task to the array "all_tasks" and save it on the server
+ * 
+ * @param {JSON} task - contains all informations for a task
+ */
+async function saveAllTasks(task) {
+  all_tasks.push(task);
+  await backend.setItem('all_tasks', JSON.stringify(all_tasks));
+  loadTasks();
+}
+
+
+// async function testjson() {
+// await downloadFromServer();
+// let testjsonText = JSON.stringify(jsontest);
+// await backend.setItem('all_tasks', testjsonText);
+// }
 
 
 //Title
@@ -57,217 +93,13 @@ function addDescription() {
 }
 
 
-//Category
-/**
- * function to disable and enable the category-inputfield
- */
-function disableInput () {
-  if (document.getElementById('category').disabled = true) {
-    document.getElementById('category').disabled = false;
-  } else {
-    document.getElementById('category').disabled = true;
-  }
-}
-
-
-/**
- * function to add a existing category and its color to the array "selectedCategory"
- *
- * @param {number} i - number to get the correct ID
- */
-function addCategory(i) {
-  let categoryName = document.getElementById('category');
-  let categoryColor = document.getElementById('categoryColor');
-  categoryName.style.color = 'black';
-  document.getElementById('category').value = document.getElementById('category' + i).innerHTML;
-  document.getElementById('categoryColor').innerHTML = document.getElementById('imageCat' + i).innerHTML;
-  document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
-  openCloseCategories();
-  selectedCategory = [];
-  let categoryColorCut = categoryColor.innerHTML.substring(28).slice(0,-6);
-  selectedCategory.push({
-    "name": categoryName.value,
-    "color": categoryColorCut
-  });
-}
-
-
-/**
- * function to make the container editable that you can write in your own category and select a color
- */
-function addNewCategory() {
-  let categoryName = document.getElementById('category');
-  openCloseCategories();
-  categoryName.value = '';
-  categoryName.style.color = 'black';
-  document.getElementById('categoryImage').innerHTML = `<div  onclick="notOpenCloseCategories(event)"><img src="assets/img/cross.svg" onclick="cancelNewCategory()"> <img src="assets/img/finish.svg" onclick="acceptNewCategory()"></div>`;
-  document.getElementById('categoryColors').classList.remove('d-none');
-  document.getElementById('selectField').removeAttribute('onclick');
-  document.getElementById('categoryColor').innerHTML = '';
-  categoryName.focus();
-}
-
-
-/**
- * function to add the selected color to the new category
- * 
- * @param {number} i - number to get the correct color
- */
-function changeColor(i) {
-  document.getElementById('categoryColor').innerHTML = document.getElementById('changeColor' + i).innerHTML;
-  document.getElementById('category').focus();
-}
-
-
-/**
- * function to delete the new category and reset the category-field
- */
-function cancelNewCategory() {
-  let categoryName = document.getElementById('category');
-  categoryName.value = '';
-  categoryName.placholder = 'Select task category';
-  categoryName.style.color = '#dcdcdc';
-  document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
-  document.getElementById('categoryColors').classList.add('d-none');
-  document.getElementById('selectField').setAttribute('onclick', 'openCloseCategories()');
-  document.getElementById('categoryColor').innerHTML = '';
-}
-
-
-/**
- * function to add the new category and its color to the array "selectedCategory"
- */
-function acceptNewCategory() {
-  if (!document.getElementById('category').value == '' && !document.getElementById('categoryColor').innerHTML == '') {
-    let categoryName = document.getElementById('category');
-    let categoryColor = document.getElementById('categoryColor');
-    document.getElementById('categoryImage').innerHTML = `<img src="assets/img/arrow_drop.svg">`;
-    document.getElementById('selectField').setAttribute('onclick', 'openCloseCategories()');
-    document.getElementById('categoryColors').classList.add('d-none');
-    selectedCategory = [];
-    let categoryColorCut = categoryColor.innerHTML.substring(28).slice(0,-6);
-    selectedCategory.push({
-      "name": categoryName.value,
-      "color": categoryColorCut
-    });
-  }
-}
-
-
-/**
- * function to open or close the category-field by clicking on it
- */
-function openCloseCategories() {
-  if (document.getElementById('selectField').style.height == '192px') {
-    document.getElementById('selectField').style.height = '51px';
-    document.getElementById('openedCategories').classList.add('d-none');
-  } else {
-    document.getElementById('selectField').style.height = '192px';
-    setTimeout(function () {
-      document.getElementById('openedCategories').classList.remove('d-none');
-    }, 150)
-  }
-  disableInput();
-}
-
-
-/**
- * function to prevent to open or close the category-field
- */
-function notOpenCloseCategories(event) {
-  event.stopPropagation();
-}
-
-
-//ASSIGNED TO
-/**
- * function to add/delete a existing contact to/from the array ""selectedContactNames"
- * 
- * @param {number} i - number to get the correct contact
- */
-function addContact(i) {
-  let contactID = document.getElementById('contact' + i);
-  let index = selectedContactNames.indexOf(contactID.innerHTML);
-  if (index > -1) { //wenn Name bereits enthalten dann...
-    document.getElementById('contactButton' + i).innerHTML = ''; //... entferne Bild im Button
-    selectedContactNames.splice(index, 1); //entferne Name
-  } else { //wenn Name noch nicht enthalten dann...
-    document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`; //... füge Bild im Button hinzu
-    selectedContactNames.push(contactID.innerHTML); //füge Name hinzu
-  }
-}
-
-
-/**
- * function to make the container editable that you can write in an e-mail adress of the contact you want to invite
- */
-function addNewContact() {
-  let contact = document.getElementById('contact');
-  openCloseContacts();
-  contact.placeholder = 'Contact E-Mail';
-  contact.disabled = false;
-  document.getElementById('contactImage').innerHTML = `<div onclick="notOpenCloseContacts(event)" class="paddingRight"><img src="assets/img/cross.svg" onclick="cancelNewContact()"><img src="assets/img/finish.svg" onclick="acceptNewContact()"></div>`;
-  document.getElementById('selectFieldContact').removeAttribute('onclick');
-}
-
-
-/**
- * function to delete the e-mail adress and reset the contact-field
- */
-function cancelNewContact() {
-  let contact = document.getElementById('contact');
-  contact.placeholder = 'Select contacts to assign';
-  contact.disabled = true;
-  document.getElementById('contactImage').innerHTML = `<img class="paddingRight" src="assets/img/arrow_drop.svg">`;
-  document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
-}
-
-
-/**
- * function to add the e-mail adress to the array "invitedContacts"
- */
-function acceptNewContact() {
-  let contact = document.getElementById('contact');
-  invitedContacts.push(contact.value);
-  contact.value = '';
-  contact.placeholder = 'Select contacts to assign';
-  contact.disabled = true;
-  document.getElementById('contactImage').innerHTML = `<img class="paddingRight" src="assets/img/arrow_drop.svg">`;
-  document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
-}
-
-
-/**
- * function to open or close the contacts-field by clicking on it
- */
-function openCloseContacts() {
-  if (document.getElementById('selectFieldContact').style.height == '192px') {
-    document.getElementById('selectFieldContact').style.height = '51px';
-    document.getElementById('openedContacts').classList.add('d-none');
-  } else {
-    document.getElementById('selectFieldContact').style.height = '192px';
-    setTimeout(function () {
-      document.getElementById('openedContacts').classList.remove('d-none');
-    }, 150)
-  }
-}
-
-
-/**
- * function to prevent to open or close the category-field
- */
-function notOpenCloseContacts(event) {
-  event.stopPropagation();
-}
-
-
 //DUE DATE
 /**
  * function to open the jquery-datepicker 
  */
 function datepicker() {
   $( function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
   } );
 }
 
@@ -290,15 +122,11 @@ function addPrio(i) {
   let colors = ['#ff3d00', '#ffa800', '#7ae229'];
   let prios = ['urgent', 'medium', 'low'];
     changePrioColors();
-    if (selectedPrio == prios[i]) {
-      changePrioColors();
-      selectedPrio = '';
-    } else {
     id.style.backgroundColor = colors[i];
     id.style.color = 'white';
     document.getElementById('prioImage' + i).style.filter = 'brightness(0) invert(1)';
     selectedPrio = prios[i];
-    };
+
 }
 
 
@@ -451,43 +279,21 @@ function resetPrioButtons() {
 /**
  * function to create a new task
  */
-function createTask() {
+async function createTask() {
   addDate();
   let task = {
     title: selectedTitle,
     description: selectedDescription,
     category: selectedCategory,
+    color: selectedColor,
     contactNames: selectedContactNames,
-    invitedContacts: invitedContacts,
     date: selectedDate,
     prio: selectedPrio,
     subtasks: selectedSubtasks,
     progress: 'todo'
   };
-  saveAllTasks(task);
+  await saveAllTasks(task);
   clearTask();
-}
-
-
-/**
- * function to load all tasks which are saved on the server
- */
-async function loadTasks() {
-  setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
-  await downloadFromServer();
-  all_tasks = JSON.parse(backend.getItem('all_tasks')) || [];
-  console.log('Alle Aufgaben:', all_tasks);
-}
-
-/**
- * function to add a task to the array "all_tasks" and save it on the server
- * 
- * @param {JSON} task - contains all informations for a task
- */
-async function saveAllTasks(task) {
-  all_tasks.push(task);
-  await backend.setItem('all_tasks', JSON.stringify(all_tasks));
-  loadTasks();
 }
 
 
