@@ -156,7 +156,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  margin-right: 30px;
+  
 }
 
 #num-urgent {
@@ -461,19 +461,11 @@ body {
     padding: 8px;
   }
 
-  .todo {
-  }
-
-  .important-container {
-  }
-
   .progress span {
     font-size: 35px;
   }
 
-  .progress p {
-    font-size: 12px;
-  }
+  
 
   #num-urgent {
     font-size: 35px;
@@ -483,9 +475,7 @@ body {
     font-size: 35px;
   }
 
-  .column p {
-    font-size: 12px;
-  }
+  
 
   .deadline-container {
     padding-bottom: 0;
@@ -500,22 +490,16 @@ body {
     font-size: 12px;
   }
 
-  .urgent-container p {
-    font-size: 12px;
-  }
-
-  .todo {
-    padding: 15px;
-  }
-
   .important-container {
     padding: 15px;
   }
-  #urgent-box {
-    margin-right: 15px;
 
-    padding-top: 15px;
-    padding-top: 15px;
+  .todo {
+    padding: 10px;
+}
+
+  #urgent-box {
+    padding-right: 15px;
   }
 
   #logo-head-mobil {
@@ -524,19 +508,43 @@ body {
 }
 
 @media screen and (max-width: 350px) {
+
+    #urgent-box {
+        width: 50%;
+    }
+
+    .todo {
+        padding: 3px;
+    }
+    .urgent-container p {
+        font-size: 14px;
+      }
+
+    .column p {
+        font-size: 14px;
+      }
+
+    .deadline-container p {
+        font-size: 14px;
+      }
+    .progress p {
+        font-size: 14px;
+      }
+
   .progress span {
     font-size: 18px;
   }
 
-  .progress {
+  .progress p {
+    font-size: 14px;
   }
 
   .progress p {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   #num-urgent {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .column span {
@@ -548,7 +556,7 @@ body {
   }
 
   .deadline-container p {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .important-container {
@@ -572,14 +580,14 @@ body {
   }
 
   #img-todo {
-    transform: scale(0.3);
+    transform: scale(0.5);
   }
 
   #img-done {
-    transform: scale(0.3);
+    transform: scale(0.5);
   }
 
   .important-container img {
-    transform: scale(0.3);
+    transform: scale(0.5);
   }
 }

@@ -1,7 +1,7 @@
 let urgent_tasks = [];
 let mediaQuery = window.matchMedia('(max-width: 800px)');
 
-window.addEventListener('resize',handleMediaSize)
+/*window.addEventListener('resize',resizeElements)*/
 
 /**
  * functions for getting Items from server and include templates from here
@@ -295,12 +295,14 @@ function getPartOfDay() {
   let greet;
   let date = new Date();
   let time = date.getHours();
+  console.log(time)
   if (time < 11 && time > 0) {
     greet = "Good Morning,";
   }
-  if (time >= 11 && time < 17) {
+  else if (time >= 11 && time < 17) {
     greet = "Hello,";
-  } else {
+  } 
+  else {
     greet = "Good Evening,";
   }
   return greet;
@@ -349,6 +351,19 @@ function timeGreet(){
 }
 
 function handleMediaSize(){
-  if (window.innerWidth < 900) 
+  if (window.innerWidth < 800) 
   setTimeout(showGreetOnMobil,2000)
+}
+
+function resizeElements(){
+  let greetcontainer=document.getElementById("greet-container");
+  if(!greetcontainer.classList.contains("d-none")){
+    if(window.innerWidth<800 )
+   greetcontainer.classList.add("d-none")
+  }else{
+    if(window.innerWidth>800 ){
+      greetcontainer.classList.remove("d-none")
+    }
+  }
+  
 }

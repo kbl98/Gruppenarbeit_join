@@ -25,17 +25,17 @@
 }
 
 #user-img {
-    background-color:rgb(43, 54, 71); 
-    color:white;
-    display: flex;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: solid 2px #2a3647;
-    margin-left: 20px;
-    margin-right: 50px;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(43, 54, 71);
+  color: white;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 2px #2a3647;
+  margin-left: 20px;
+  margin-right: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 #user-img:hover {
@@ -89,43 +89,46 @@
   cursor: pointer;
 }
 
-#logo-head-mobil{
-    display:none;
+#logo-head-mobil {
+  display: none;
 }
 
-
-@media screen and (max-width:1000px){
-    #head{
-        left:200px;
-    }
-
+@media screen and (max-width: 1000px) {
+  #head {
+    left: 200px;
+  }
 }
 
-@media screen and (max-width:1000px){
-    #head{
-        left:160px;
-    }
-
+@media screen and (max-width: 1000px) {
+  #head {
+    left: 160px;
+  }
 }
 @media screen and (max-width: 700px) {
+    #popup-logout {
+        margin-top: 70px;
+    }
 
-    .logo-big {
-        width: 200px;
-        height: 200px;
-        position: absolute;
-        top: 50vh;
-        left: 50%;
-      }
-      
-      .logo-small {
-        width: 80px;
-        height: 80px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index:10;
-      }
+    #popup-logout p{
+        margin: unset;
+    }
 
+  .logo-big {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+  }
+
+  .logo-small {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+  }
 
   .join-name {
     margin-left: 50px;
@@ -133,29 +136,29 @@
     font-weight: 400;
   }
 
-  #head{
-    height:70px;
-    width:100%;
+  #head {
+    height: 70px;
+    width: 100%;
     left: 0;
-  right: 0;
-  padding-right:20px;
-  padding-left:20px;
+    right: 0;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
-  #head p{
-    display:none;
-  }
-
-  #questiontag{
+  #head p {
     display: none;
   }
 
-  #user-img{
-    margin:0
+  #questiontag {
+    display: none;
   }
 
-#logo-head-mobil{
-    display:unset;
-    width:50px;
-}
+  #user-img {
+    margin: 0;
+  }
+
+  #logo-head-mobil {
+    display: unset;
+    width: 50px;
+  }
 }
