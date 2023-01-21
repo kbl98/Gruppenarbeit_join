@@ -24,47 +24,7 @@
 
     <!-- popup for tasks -->
     <div id="boardPopupTask" class="popup-board-task-bgr d-none">
-        <div class="cont-popup-board-task">
-            <!--buttons-->
-            <img onclick="closeBoardTask()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
-            <button onclick="editPopupTask()" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
-                    alt=""></button>
-            <!--Head area-->
-            <h2 style="background-color: #FF7A00;" class="task-head">Design</h2>
-            <span class="popup-task-titel">Website redesign</span>
-            <span class="popup-task-description">Modify the contents of the main website...</span>
-            <!--Date-->
-            <div class="cont-popup-details">
-                <span class="popup-details">Due date:</span>
-                <span class="popup-date">05-08-2022</span>
-            </div>
-            <!--Priority-->
-            <div class="cont-popup-details">
-                <span class="popup-details">Priority:</span>
-                <h2 style="background-color: #FF3D00;" class="popup-priority">
-                    Urgent
-                    <img class="board-priority" src="./assets/img/priority_urgent.png" alt="">
-                </h2>
-            </div>
-            <!--Assigned To-->
-            <span class="popup-details">Assigned To:</span>
-            <div class="popup-assigned-to-contacts">
-                <div style="background-color: #9327FF;" class="popup-assigned">DE</div>
-                <span>David Eisenberg</span>
-            </div>
-            <div class="popup-assigned-to-contacts">
-                <div style="background-color: #FFA800;" class="popup-assigned">BZ</div>
-                <span>Benedikt Ziegler</span>
-            </div>
-            <div class="popup-assigned-to-contacts">
-                <div style="background-color: #0223CF;" class="popup-assigned">MB</div>
-                <span>Marcel Bauer</span>
-            </div>
-            <div class="popup-assigned-to-contacts">
-                <div style="background-color: #CB02CF;" class="popup-assigned">SF</div>
-                <span>Stefanie Farber</span>
-            </div>
-        </div>
+        
     </div>
     <!-- -------------------------------------------- -->
 
@@ -74,7 +34,7 @@
             <h1 class="header-board">Board</h1>
             <div class="cont-find-task">
                 <div class="find-task">
-                    <input class="find-task-input" type="text" placeholder="Find Task">
+                    <input id="filterTasks" onkeyup="filterTasks()" class="find-task-input" type="text" placeholder="Find Task">
                     <div class="cont-find-task-right">
                         <div class="find-task-stripe"></div>
                         <img class="find-task-input-img" src="./assets/img/board_find_task_lupe.png" alt="">
@@ -93,7 +53,7 @@
             <div class="cont-child-todo">
                 <div class="todo-head">
                     <h2 class="todo-header">To do</h2>
-                    <img src="./assets/img/board_add_task_button.png" alt="">
+                    <img class="add-task-button" src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
                 <div ondrop="drop('todo')" ondragover="allowDrop(event)" id="todo">
@@ -105,7 +65,7 @@
             <div class="cont-child-todo">
                 <div class="todo-head">
                     <h2 class="todo-header">In Progress</h2>
-                    <img src="./assets/img/board_add_task_button.png" alt="">
+                    <img class="add-task-button" src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
                 <div ondrop="drop('in Process')" ondragover="allowDrop(event)" id="inProcess">
@@ -117,7 +77,7 @@
             <div class="cont-child-todo">
                 <div class="todo-head">
                     <h2 class="todo-header">Awaiting Feedback</h2>
-                    <img src="./assets/img/board_add_task_button.png" alt="">
+                    <img class="add-task-button" src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
                 <div ondrop="drop('awaiting Feedback')" ondragover="allowDrop(event)" id="awaitingFeedback">
@@ -129,7 +89,7 @@
             <div class="cont-child-todo">
                 <div class="todo-head">
                     <h2 class="todo-header">Done</h2>
-                    <img src="./assets/img/board_add_task_button.png" alt="">
+                    <img class="add-task-button" src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
                 <div ondrop="drop('done')" ondragover="allowDrop(event)" id="done">

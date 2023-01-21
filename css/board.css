@@ -272,8 +272,11 @@ body {
 }
 
 .popup-details {
+    display: flex;
+    flex-direction: column;
     font-weight: 700;
     font-size: 21px;
+    gap: 10px;
 }
 
 .popup-date {
@@ -333,4 +336,16 @@ body {
 
 #todo, #inProcess, #awaitingFeedback, #done {
     height: 500px;
+}
+
+.add-task-button {
+    transition: ease-in-out 150ms;
+    filter: brightness(0);
+}
+
+.add-task-button:hover {
+    filter: brightness(1);
+    color: #29abe2;
+    scale: 1.01;
+    cursor: pointer;
 }

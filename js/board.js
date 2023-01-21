@@ -6,7 +6,7 @@ let currentDragElement;
 
 async function initBoard() {
     setURL('https://gruppe-430.developerakademie.net/smallest_backend_ever-master');
-    await loadAllTaskForBoard();
+    await loadAllTaskFromBackend();
     await loadContactsFromBackend();
     await getCurrentUserFromStorage();
     renderBoard();
@@ -22,8 +22,8 @@ function dragStart(id) {
 
 async function drop(progress) {
     loadedBoard[currentDragElement]['progress'] = progress;
-    await boardSaveToBackend()
     renderBoard();
+    await boardSaveToBackend()
 }
 
 
@@ -39,14 +39,12 @@ async function boardSaveToBackend() {
 }
 
 
-async function loadAllTaskForBoard() {
+async function loadAllTaskFromBackend() {
     await downloadFromServer();
     loadedBoard = JSON.parse(backend.getItem("all_tasks"));
     if (!loadedBoard) {
         loadedBoard = [];
     };
-
-    console.log('All Tasks', loadedBoard);
 }
 
 
@@ -56,8 +54,33 @@ async function loadContactsFromBackend() {
     if (!loadedContacts) {
         loadedContacts = [];
     };
+}
 
-    console.log('Alle Kontakte', loadedContacts);
+
+function filterTasks() {
+    let search = document.getElementById('filterTasks').value;
+    search = search.toLowerCase();
+    clearRender();
+    for (let i = 0; i < loadedBoard.length; i++) {
+        let contact = loadedBoard[i];
+        let contactTitel = contact['title'].toLowerCase();
+        let contactDescription = contact['description'].toLowerCase();
+        let contactProgress = contact.progress;
+        let progressId = getProgressWithoutSpace(contactProgress);
+        if (contactTitel.includes(search) || contactDescription.includes(search)) {
+            renderSearchedTasks(contactProgress, progressId);
+        }
+    }
+}
+
+
+function renderSearchedTasks(contactProgress, progressId) {
+    for (let i = 0; i < loadedBoard.length; i++) {
+        const currentProgress = loadedBoard[i]['progress'];
+        if (currentProgress.includes(contactProgress)) {
+            renderBoardFiltered(i, progressId);
+        }
+    }
 }
 
 
@@ -109,7 +132,7 @@ function renderAssignedTo(assignedToLength, assignedTo, assignedToId) {
         for (let x = 0; x < 2; x++) {
             let currentName = assignedTo[x];
             let bothFirstLetters = splitName(currentName);
-            let color = getContactColor(assignedToLength, assignedTo, x);
+            let color = getContactColor(currentName);
             assignedToId.innerHTML += `<div style="background-color: ${color};" class="assigned">${bothFirstLetters}</div>`;
         }
         let numberOf = assignedToLength - 2;
@@ -118,10 +141,65 @@ function renderAssignedTo(assignedToLength, assignedTo, assignedToId) {
         for (let x = 0; x < assignedToLength; x++) {
             let currentName = assignedTo[x];
             let bothFirstLetters = splitName(currentName);
-            let color = getContactColor(assignedToLength, assignedTo, x);
+            let color = getContactColor(currentName);
             assignedToId.innerHTML += `<div style="background-color: ${color};" class="assigned">${bothFirstLetters}</div>`;
 
         }
+    }
+}
+
+
+function openBoardTask(color, category, title, description, date, priority, assignedTo) {
+    let openPopup = document.getElementById('boardPopupTask');
+    let priorityColor = getPriorityColor(priority);
+    let assignedToArray = stringToArray(assignedTo)
+    openPopup.classList.remove('d-none');
+
+    openPopup.innerHTML = openBoardTaskTemp(color, category, title, description, date, priority, priorityColor);
+    openTaskAssignedTo(assignedToArray);
+}
+
+
+function openTaskAssignedTo(assignedTo) {
+    let openTaskAssignedTo = document.getElementById('openTaskAssignedTo');
+    for (let i = 0; i < assignedTo.length; i++) {
+        let contact = assignedTo[i];
+        let bothFirstLetters = splitName(contact);
+        let nameColor = getContactColor(contact);
+        openTaskAssignedTo.innerHTML += openTaskAssignedToTemp(contact, bothFirstLetters, nameColor);
+    }
+}
+
+
+function closeBoardTask() {
+    let closePopup = document.getElementById('boardPopupTask');
+    closePopup.classList.add('d-none');
+}
+
+
+function getProgressWithoutSpace(contactProgress) {
+    let str = contactProgress;
+    str = str.replace(/\s+/g, '');
+    return str;
+}
+
+
+function stringToArray(string) {
+    return string.split(",").map(function (name) {
+        return name.trim();
+    });
+}
+
+
+function getPriorityColor(priority) {
+    if (priority == 'low') {
+        return '#7AE229';
+    }
+    else if (priority == 'medium') {
+        return '#FFA800';
+    }
+    else if (priority == 'urgent') {
+        return '#FF3D00';
     }
 }
 
@@ -138,20 +216,18 @@ function getTaskLength(progress) {
 }
 
 
-function getContactColor(assignedToLength, assignedTo, j) {
-    for (let x = j; x < assignedToLength; x++) {
-        let currentName = assignedTo[x];
-        for (let i = 0; i < loadedContacts.length; i++) {
-            let contact = loadedContacts[i].name;
-            if (currentName.toLowerCase().includes("you")) {
-                currentName = current_user.username;
-            }
-            if (contact.includes(currentName)) {
-                return loadedContacts[i].color;
-            }
+function getContactColor(currentName) {
+    for (let i = 0; i < loadedContacts.length; i++) {
+        let contact = loadedContacts[i].name;
+        if (currentName.toLowerCase().includes("you")) {
+            currentName = current_user.username;
+        }
+        if (contact.includes(currentName)) {
+            return loadedContacts[i].color;
         }
     }
 }
+
 
 
 function getTaskInfos(task) {
@@ -176,18 +252,6 @@ function splitName(fullName) {
     return bothFirstLetters
     // console.log(firstName); Output: "David"
     // console.log(lastName); Output: "Eisenberg"
-}
-
-
-function openBoardTask() {
-    let openPopup = document.getElementById('boardPopupTask');
-    openPopup.classList.remove('d-none');
-}
-
-
-function closeBoardTask() {
-    let closePopup = document.getElementById('boardPopupTask');
-    closePopup.classList.add('d-none');
 }
 
 
@@ -228,6 +292,47 @@ function renderBoardTemp(color, category, title, description, date, priority, as
             </div>
             <img class="board-priority" src="./assets/img/priority_${priority}.png" alt="">
         </div>
+    </div>
+    `;
+}
+
+
+function openBoardTaskTemp(color, category, title, description, date, priority, priorityColor) {
+    return `
+    <div class="cont-popup-board-task">
+        <!--buttons-->
+        <img onclick="closeBoardTask()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+        <button onclick="editPopupTask()" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
+                alt=""></button>
+        <!--Head area-->
+        <h2 style="background-color: ${color};" class="task-head">${category}</h2>
+        <span class="popup-task-titel">${title}n</span>
+        <span class="popup-task-description">${description}</span>
+        <!--Date-->
+        <div class="cont-popup-details">
+            <span class="popup-details">Due date:</span>
+            <span class="popup-date">${date}</span>
+        </div>
+        <!--Priority-->
+        <div class="cont-popup-details">
+            <span class="popup-details">Priority:</span>
+            <h2 style="background-color: ${priorityColor};" class="popup-priority">
+            ${priority}
+                <img class="board-priority" src="./assets/img/priority_${priority}.png" alt="">
+            </h2>
+        </div>
+        <!--Assigned To-->
+        <span id="openTaskAssignedTo" class="popup-details">Assigned To:</span>
+
+    </div>
+    `;
+}
+
+function openTaskAssignedToTemp(contact, bothFirstLetters, nameColor) {
+    return `
+    <div class="popup-assigned-to-contacts">
+        <div style="background-color: ${nameColor};" class="popup-assigned">${bothFirstLetters}</div>
+        <span>${contact}</span>
     </div>
     `;
 }
