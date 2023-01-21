@@ -26,7 +26,7 @@
           <div class="center">
             <div id="categoryColor">
             </div>
-            <input maxlength="20" id="category" required style="color: #dcdcdc;" placeholder="Select task category">
+            <input maxlength="16" id="category" required style="color: #dcdcdc;" placeholder="Select task category">
           </div>
           <div id="categoryImage"><img src="assets/img/arrow_drop.svg"></div>
         </div>
@@ -96,11 +96,11 @@
 
 
 <!-- SUBTASKS -->
-    <div class="column">
+    <div class="column subtask">
       <span>Subtasks</span>
       <div class="selectField">
         <div class="selectContact" >
-          <input type="text" placeholder="Add new subtask" id="newSubtaskInput">
+          <input maxlength="16" type="text" placeholder="Add new subtask" id="newSubtaskInput">
         <div><img class="paddingRight" src="assets/img/subtask_plus.svg" onclick="addNewSubtask()"></div>
       </div>
       </div>

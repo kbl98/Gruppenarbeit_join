@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  background-color:rgb(246,247,248);
+  font-family: 'Inter';
+}
+.header {
+  height: 90px;
+}
+.rightContent h1 {
+  font-size: 61px;
+  margin-bottom: 50px;
+}
+.rightContent h2 {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+.legalNotice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  left: calc(232px + 10%);
+  width: calc(100% - 232px - 10% - 10%);
+  padding-top: 50px;
+}
+.legalNotice p {
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+.subtitle {
+  margin-bottom: 40px;
+}
+li {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+li span {
+  font-size: 14px;
+  font-weight:500;
+  padding-left: 30px;
+}

@@ -2,11 +2,11 @@ body {
   margin: 0;
   background-color:rgb(246,247,248);
   font-family: 'Inter';
+
 }
 .header {
   height: 90px;
 }
-
 .rightContent h1 {
   font-size: 61px;
   margin-bottom: 50px;
@@ -203,6 +203,7 @@ textarea::placeholder {
 }
 #addedContacts {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 15px;
 }
 .firstLetters {
@@ -212,6 +213,7 @@ textarea::placeholder {
   height: 35px;
   width: 35px;
   margin-right: 10px;
+  margin-bottom: 10px;
   border-radius: 100%;
   font-size: 18px !important;
   background-color: rgb(134, 134, 134);
@@ -317,7 +319,84 @@ textarea::placeholder {
 }
 
 
-
 .d-none {
   display: none !important;
+}
+
+
+@media (max-width: 1400px) {
+  /* fields */
+  .column {
+    width: 300px;
+  }
+  textarea {
+    width: 300px;    
+  }
+.prioButtons div {
+  font-size: 18px;
+  width: 95px;
+  }
+.prioButtons img {
+  height: 15px;
+  width: 15px;
+}
+.category input {
+  width: 170px;
+}
+.contacts input {
+  width: 245px;
+}
+.addTask span {
+  font-size: 18px;
+}
+input {
+  font-size: 18px;
+}
+textarea {
+  font-size: 18px;
+}
+.selectField {
+  font-size: 18px;
+}
+.subtask input {
+  width: 200px;
+}
+}
+@media (max-width: 1100px) {
+  .addTask {
+    left: calc(232px + 5%);
+    width: calc(100% - 232px - 5% - 5%);
+  }
+}
+@media (max-width: 1000px) {
+  .addTask {
+    left: calc(160px + 3%);
+    width: calc(100% - 160px - 3% - 3%);
+  }
+}
+@media (max-width: 850px) {
+  .addTask {
+    left: 5%;
+    width: calc(100% - 5% - 5%);
+  }
+  .ccButtons {
+    bottom: 100px;
+  }
+}
+@media (max-width: 690px) {
+  .addTask {
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+  .addTaskLeft {
+    height: 440px;
+  }
+  .ccButtons {
+    display: flex;
+    position: relative;
+    bottom: 0px;
+    right: 0;
+  }
 }
