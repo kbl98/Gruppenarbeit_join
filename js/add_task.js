@@ -28,9 +28,9 @@ async function init() {
   await loadTasks();
   await loadContacts();
   getLocalCurrentUser();
-  renderContacts();
-  datepicker();
+  await renderContacts();
   addPrio(0);
+  datepicker();
 }
 
 function getLocalCurrentUser() {

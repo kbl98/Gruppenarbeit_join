@@ -2,10 +2,12 @@ body {
   margin: 0;
   background-color:rgb(246,247,248);
   font-family: 'Inter';
-
 }
 .header {
   height: 90px;
+}
+.rightContent {
+  max-height: 100vH !important;
 }
 .rightContent h1 {
   font-size: 61px;
@@ -17,7 +19,7 @@ body {
   align-items: flex-start;
   position: absolute;
   left: calc(232px + 10%);
-  height: calc(100vH - 90px);
+  max-height: calc(100vH - 90px);
   width: calc(100% - 232px - 10% - 10%);
   padding-top: 50px;
 }
@@ -268,8 +270,8 @@ textarea::placeholder {
 
 /* middle */
 .imageLine {
-  height: 200px;
-  width: 2px;
+  height: 450px;
+  width: 10px;
   margin-top: 120px;
 }
 
@@ -385,13 +387,20 @@ textarea {
 }
 @media (max-width: 690px) {
   .addTask {
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: absolute;
+    left: 0;
     height: 100%;
+    width: 100%;
+    padding-top: 50px;
   }
   .addTaskLeft {
-    height: 440px;
+    height: auto;
+  }
+  .addTaskRight {
+    margin: 0;
   }
   .ccButtons {
     display: flex;

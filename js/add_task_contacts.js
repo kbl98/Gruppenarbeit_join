@@ -9,6 +9,7 @@ async function loadContacts() {
   allContacts = JSON.parse(backend.getItem("contacts")) || [];
   sortAllContacts();
   getFirstLetters();
+  
 }
 
 
