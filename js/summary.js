@@ -284,7 +284,7 @@ function constructDate(date) {
     ", " +
     d.getDate() +
     "." +
-    m[d.getMonth()] +
+    m[d.getMonth()-1] +
     " " +
     d.getFullYear();
   return taskdate;

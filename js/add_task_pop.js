@@ -1,17 +1,18 @@
 /**function to open the add task popup on contacts */
-
 async function openAddTask() {
-  createTaskAddToContact();
+  /*createTaskAddToContact();*/
   await loadTasks();
   await loadContacts();
   getLocalCurrentUser();
   await renderContactsToAssigned();
   addPrio(0);
   datepicker();
+  document.getElementById("addTaskPopup").classList.add("outside");
+  document.getElementById("close").classList.remove("d-none");
   let bg = document.getElementById("contAddTaskToContact");
   bg.classList.remove("d-none");
   setTimeout(easein, 500);
-  selectedContactNames.push()
+  /*selectedContactNames.push()*/
 }
 
 /**function to ease the popup in by changing classnames */
@@ -26,8 +27,6 @@ function closeTaskCreator() {
   let task_popup = document.getElementById("addTaskPopup");
   let bg = document.getElementById("contAddTaskToContact");
   bg.classList.add("d-none");
-  task_popup.classList.remove("inside");
-  task_popup.classList.add("outside");
 }
 
 /**function to render the possible contacts you can choose the assign from */
@@ -44,9 +43,9 @@ async function renderContactsToAssigned() {
 }
 
 /**function to render the html of the add task popup */
-function createTaskAddToContact() {
+/*function createTaskAddToContact() {
   let popup_task = document.getElementById("contAddTaskToContact");
-  popup_task.innerHTML = `
+    popup_task.innerHTML = `
     <form onsubmit="createTask(),closeTaskCreator();return false;">
         <div id="addTaskPopup" class="outside">
           <div id="close" onclick="closeTaskCreator()">X</div>
@@ -297,4 +296,4 @@ function createTaskAddToContact() {
         </div>
       </form>
       `;
-}
+}*/
