@@ -25,14 +25,15 @@ function sortAllContacts() {
 function getFirstLetters() {
   for (let i = 0; i < allContacts.length; i++) {
     let contact = allContacts[i]['name'];
+    let color = allContacts[i]['color'];
     let splitNames = contact.split(' ');
     let bothLetters = splitNames[0].charAt(0)+splitNames[1].charAt(0);
-    firstLetters.push(bothLetters);
+    firstLetters.push({bothLetters, color});
   }
 }
 
 
-function renderContacts() {
+function renderAllContacts() {
   for (let i = 0; i < allContacts.length; i++) {
     const contact = allContacts[i]['name'];
     document.getElementById('openedContacts').innerHTML += `
@@ -53,7 +54,7 @@ function renderContacts() {
 function addContact(i) {
   let contactID = document.getElementById('contact' + i);
   let index = selectedContactNames.indexOf(contactID.innerHTML);
-  let index2 = selectedLetters.indexOf(firstLetters[i]);
+  let index2 = selectedLetters['bothLetters'].indexOf(firstLetters[i]);
   if (index > -1) { //wenn Name bereits enthalten dann...
     resetSelect(index, index2,i);
   } else { //wenn Name noch nicht enthalten dann...
@@ -69,11 +70,11 @@ function addContact(i) {
 
 function resetSelect(index, index2, i) {
   document.getElementById('contactButton' + i).innerHTML = ''; //... entferne Punkt im Button
-  selectedLetters.splice(index2,1);
   selectedContactNames.splice(index, 1); //entferne Name
+  selectedLetters['bothLetters'].splice(index2,1); //
   document.getElementById('addedContacts').innerHTML = '';
-  for (let x = 0; x < selectedLetters.length; x++) {
-    const selectedLetter = selectedLetters[x];
+  for (let x = 0; x < selectedLetters['bothLetters'].length; x++) {
+    const selectedLetter = selectedLetters['bothLetters'][x];
     document.getElementById('addedContacts').innerHTML += `<div class="firstLetters">${selectedLetter}</div>`;
   }
 }
@@ -82,10 +83,10 @@ function resetSelect(index, index2, i) {
 function select(contactID, i) {
   document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`; //... füge Punkt im Button hinzu
   selectedContactNames.push(contactID.innerHTML); //füge Name hinzu
-  selectedLetters.push(firstLetters[i]);
+  selectedLetters['bothLetters'].push(firstLetters[i]);
   document.getElementById('addedContacts').innerHTML = '';
-  for (let x = 0; x < selectedLetters.length; x++) {
-    const selectedLetter = selectedLetters[x];
+  for (let x = 0; x < selectedLetters['bothLetters'].length; x++) {
+    const selectedLetter = selectedLetters['bothLetters'][x];
     document.getElementById('addedContacts').innerHTML += `<div class="firstLetters">${selectedLetter}</div>`;
   }
 }
