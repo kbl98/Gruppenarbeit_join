@@ -8,7 +8,7 @@ let mediaQuery = window.matchMedia('(max-width: 800px)');
 
 
 /**function that fetches tasks from backend and creates a Json */
-async function init() {
+async function initSum() {
   await includeHTML();
   setURL(
     "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
@@ -284,7 +284,7 @@ function constructDate(date) {
     ", " +
     d.getDate() +
     "." +
-    m[d.getMonth()] +
+    m[d.getMonth()-1] +
     " " +
     d.getFullYear();
   return taskdate;

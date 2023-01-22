@@ -2,7 +2,12 @@
 function logout() {
   document.getElementById("popup-logout").classList.add("d-none");
   resetUser();
+  unstoreSession();
   window.location.href = "login.html";
+}
+
+function unstoreSession(){
+  sessionStorage.removeItem("session")
 }
 
 
@@ -28,7 +33,7 @@ function resetUser() {
   localStorage.removeItem("current_user");
 }
 
-
+/**function to set the user color as background head pic */
 function setUserImg() {
   if (current_user["img"]) {
     document
@@ -37,12 +42,12 @@ function setUserImg() {
   } else {
     document.getElementById("real-img").classList.add("d-none");
     let user_img = document.getElementById("user-img");
-    user_img.setAttribute("background-color", "grey");
+    user_img.style.backgroundColor=current_user["color"];
     user_img.innerHTML = createUserPic();
   }
 }
 
-
+/**function to create first letters to head pic */
 function createUserPic() {
   let name_part = current_user["username"].split(" ");
   for (let i = 0; i < name_part.length; i++) {

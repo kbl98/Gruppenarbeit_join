@@ -311,7 +311,7 @@ function openNewContactTemp() {
                 <img class="create-contact-pp" src="./assets/img/contact_empty_pp.png" alt="">
 
                 <form onsubmit="createNewContact();return false" class="cont-create-contact-input">
-                    <input id="newContactNameValue" required placeholder="Name" type="text" />
+                    <input id="newContactNameValue" required placeholder="Vorname Nachname" pattern="[A-ZÄÜÖ][a-zäüö]* +[A-ZÄÜÖ][a-zäüö]*"  type="text" />
                     <input id="newContactMailValue" required placeholder="Email" type="email" />
                     <input id="newContactPhoneValue" required placeholder="Phone" type="tel" />
                     <div class="cont-create-contact-buttons">
@@ -350,7 +350,7 @@ function openEditContactTemp(contactName, contactMail, contactColor, contactPhon
             <div class="cont-create-contact-infos">
                 <div style="background-color: ${contactColor};" class="edit-contact-img">${bothFirstLetters}</div>
                 <form onsubmit="editContactSave('${contactName}', '${contactMail}', '${contactPhone}');return false" class="cont-create-contact-input">
-                    <input id="editContactNameValue" required value="${contactName}" placeholder="Name" type="text">
+                    <input id="editContactNameValue" required value="${contactName}"  type="name" placeholder="Vorname Nachname" pattern="[A-ZÄÜÖ][a-zäüö]* +[A-ZÄÜÖ][a-zäüö]*" >
                     <input id="editContactMailValue" required value="${contactMail}" placeholder="Email" type="email">
                     <input id="editContactPhoneValue" required value="${contactPhone}" placeholder="Phone" type="tel">
                     <div class="cont-create-contact-buttons">
@@ -366,11 +366,12 @@ function openEditContactTemp(contactName, contactMail, contactColor, contactPhon
 
 function renderDetailsTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
+    <div id="backarrow" onclick="closeDetail()"><-</div>
     <div class="open-contact-head">
         <div style="background-color: ${contactColor};" class="open-contact-img">${bothFirstLetters}</div>
         <div class="open-contact-head-name">
             <h2>${contactName}</h2>
-            <span><img src="./assets/img/contact_add_task.png" alt="">Add Task</span>
+            <span onclick="openAddTask()"><img src="./assets/img/contact_add_task.png" alt="">Add Task</span>
         </div>
     </div>
     <div class="open-contact-edit">
@@ -415,3 +416,5 @@ function renderContactsInSectionTemp(contactColor, bothFirstLetters, contact, co
     </div>
     `;
 }
+
+

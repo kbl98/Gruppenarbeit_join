@@ -1,5 +1,6 @@
 <form onsubmit="createTask();return false;">
-<div class="addTask">
+<div id="addTaskPopup" class="addTask">
+  <div id="close" class="d-none" onclick="closeTaskCreator()">X</div>
   <div class="addTaskLeft">
     <h1>Add Task</h1>
 
@@ -83,7 +84,7 @@
       <span>Due date</span>
       <input type="text" required placeholder="dd/mm/yyyy" id="datepicker" pattern="\d{1,2}\/\d{1,2}\/\d{4}" style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;" >
     </div>
-
+<!-- -->
 
 <!-- PRIO -->
     <div class="column">

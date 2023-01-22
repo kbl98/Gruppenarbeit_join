@@ -31,6 +31,7 @@ async function init() {
   await renderAllContacts();
   addPrio(0);
   datepicker();
+  setUserImg();
 }
 
 function getLocalCurrentUser() {

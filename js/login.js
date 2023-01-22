@@ -109,21 +109,6 @@ async function getCurrentUser() {
   }
 }
 
-/**
- * function to set the image of current-user to head
- */
-function setUserImg() {
-  if (current_user["img"]) {
-    document
-      .getElementById("user-img")
-      .setAttribute("src", current_user["img"]);
-  } else {
-    document.getElementById("real-img").classList.add("d-none");
-    let user_img = document.getElementById("user-img");
-    user_img.setAttribute("background-color", "grey");
-    user_img.innerHTML = createUserPic();
-  }
-}
 
 
 /**
@@ -168,6 +153,7 @@ function guestLogin() {
   current_user = {
     username: "Guest",
     email: "guest@guest.de",
+    color:"grey"
   };
   setCurrentUserToLocal(current_user);
   getDemoSummary();
@@ -194,10 +180,12 @@ async function sign() {
   let username = document.getElementById("name-registration").value;
   let email = document.getElementById("mail-registration").value;
   let password = document.getElementById("password-registration").value;
+  let color=getRandomColor();
   let newUser = {
     username: username,
     email: email,
     password: password,
+    color:color
   };
   let isNewUser = await checknewUser(newUser);
   if (isNewUser) {
@@ -251,7 +239,7 @@ async function checkifContact(newUser) {
     let isNewContact = true;
     for (let i = 0; i < loadedContacts.length; i++) {
       if (
-        newUser["email"] == loadedContacts[i]["email"] 
+        newUser["email"] == loadedContacts[i]["email"]
       ) {
         isNewContact = false;
         console.log("is Contact");
@@ -269,9 +257,24 @@ async function createNewContactFromUser(newUser) {
     let newName = newUser["username"];
     let newMail = newUser["email"];
     let newPhone="";
-    let newObjekt = { name: newName, email: newMail, phone: newPhone };
+    let color = newUser["color"];
+    let newObjekt = { name: newName, email: newMail, phone: newPhone, color: color};
     loadedContacts.push(newObjekt);
     await saveContactsToBackend();
+}
+
+
+/**
+ * function creates a random color to new user
+ */
+
+function getRandomColor() {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 /**
