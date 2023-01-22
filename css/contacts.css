@@ -463,6 +463,52 @@ body {
   transform: translateY(200%);
 }
 
+/* CSS for addTak Popup*/
+
+#contAddTaskToContact{
+  position: absolute;
+ width:100%;
+ height: 100vw;
+ background-color: #a8a8a895;
+ top:0;
+ left:0;
+ z-index:13 !important;
+}
+
+#addTaskPopup{
+  padding:50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: absolute;
+    left: calc(232px + 10%);
+    max-height: calc(100vH - 90px);
+    width: calc(100% - 232px - 10% - 10%);
+    padding-top: 50px;
+    border-radius:16px;
+    z-index:15;
+    background-color: white;
+    transition: all 175ms ease-in-out;
+    
+}
+
+.outside{
+  transform: translateX(200%);
+}
+
+.inside{
+  transform: translateX(0);
+}
+
+#close{
+  position:absolute;
+  right:10px;
+  top:10px;
+  font-size: 30px;
+  z-index:16 !important;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1200px) {
   .outer-cont-contacts-main {
     left: 232px;

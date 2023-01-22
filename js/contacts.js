@@ -370,7 +370,7 @@ function renderDetailsTemp(contactName, contactMail, contactColor, contactPhone,
         <div style="background-color: ${contactColor};" class="open-contact-img">${bothFirstLetters}</div>
         <div class="open-contact-head-name">
             <h2>${contactName}</h2>
-            <span><img src="./assets/img/contact_add_task.png" alt="">Add Task</span>
+            <span onclick="openAddTask()"><img src="./assets/img/contact_add_task.png" alt="">Add Task</span>
         </div>
     </div>
     <div class="open-contact-edit">
@@ -415,3 +415,5 @@ function renderContactsInSectionTemp(contactColor, bothFirstLetters, contact, co
     </div>
     `;
 }
+
+
