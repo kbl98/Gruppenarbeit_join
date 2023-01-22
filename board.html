@@ -40,7 +40,7 @@
 
     <!-- popup add task board -->
     <div id="popupAddTaskBoard" class="popup-board-task-bgr d-none">
-        <form onsubmit="createTaskBoard();return false;" class="contPopupAddTaskBoard">
+        <form id="popupAddTastBoardForm" onsubmit="createTaskBoard();return false;" class="contPopupAddTaskBoard">
             <!-- header -->
             <div class="popupAddTaskBoardHead">
                 <h1>Add Task</h1>
@@ -203,8 +203,6 @@
             </div>
             <img onclick="closeAddTaskBoard()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
         </form>
-    </div>
-    </div>
     </div>
     <!-- ---------------------------------------------------- -->
 

@@ -109,7 +109,9 @@ function renderSearchedTasks(contactProgress, progressId) {
  */
 function renderBoard() {
     clearRender();
-    for (let i = 0; i < loadedBoard.length; i++) {
+    let length = loadedBoard.length - 1;
+    for (let i = length; i >= 0; i--) {
+        console.log(i);
         const currentProgress = loadedBoard[i]['progress'];
         if (currentProgress.includes('todo')) {
             renderBoardFiltered(i, 'todo');
@@ -234,16 +236,11 @@ function closeBoardTask() {
 
 function addTaskBoard(param) {
     let addTaskId = document.getElementById('popupAddTaskBoard');
+    let formId = document.getElementById('popupAddTastBoardForm');
     addTaskId.classList.remove('d-none');
-    //addTaskId.innerHTML = addTaskBoardTemp(param);
+    formId.setAttribute("onsubmit", "createTaskBoard('"+ param +"');return false;");
 }
 
-
-function submitedAddTaskBoard() {
-    let addTaskId = document.getElementById('popupAddTaskBoard');
-    addTaskId.classList.add('d-none');
-    showDivWithTransition();
-}
 
 
 function closeAddTaskBoard() {
@@ -252,7 +249,10 @@ function closeAddTaskBoard() {
 }
 
 
-async function createTaskBoard() {
+async function createTaskBoard(param) {
+    if (param == 'undefined') {
+        param = 'todo'
+    }
     addDate();
     let jsonObj = {
         title: selectedTitle,
@@ -263,7 +263,7 @@ async function createTaskBoard() {
         date: selectedDate,
         prio: selectedPrio,
         subtasks: selectedSubtasks,
-        progress: 'todo'
+        progress: param
     };
     loadedBoard.push(jsonObj);
     await boardSaveToBackend();
