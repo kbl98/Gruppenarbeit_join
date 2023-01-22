@@ -80,8 +80,11 @@ function filterTasks() {
         let contactDescription = contact['description'].toLowerCase();
         let contactProgress = contact.progress;
         let progressId = getProgressWithoutSpace(contactProgress);
-        if (contactTitel.includes(search) || contactDescription.includes(search)) {
-            renderSearchedTasks(contactProgress, progressId);
+        if (search == "") {
+            renderBoard();
+        }
+        else if (contactTitel.includes(search) || contactDescription.includes(search)) {
+            renderSearchedTasks(contactProgress, progressId, search);
         }
     }
 }
@@ -93,10 +96,13 @@ function filterTasks() {
  * @param {string} contactProgress includes progress of task
  * @param {string} progressId includes progress of task without space between 2 words
  */
-function renderSearchedTasks(contactProgress, progressId) {
-    for (let i = 0; i < loadedBoard.length; i++) {
+function renderSearchedTasks(contactProgress, progressId, search) {
+    let length = loadedBoard.length - 1;
+    for (let i = length; i >= 0; i--) {
         const currentProgress = loadedBoard[i]['progress'];
-        if (currentProgress.includes(contactProgress)) {
+        let contactTitel = loadedBoard[i]['title'];
+        let contactDescription = loadedBoard[i]['description'];
+        if (currentProgress.includes(contactProgress) && contactTitel.includes(search) || contactDescription.includes(search)) {
             renderBoardFiltered(i, progressId);
         }
     }
@@ -111,7 +117,6 @@ function renderBoard() {
     clearRender();
     let length = loadedBoard.length - 1;
     for (let i = length; i >= 0; i--) {
-        console.log(i);
         const currentProgress = loadedBoard[i]['progress'];
         if (currentProgress.includes('todo')) {
             renderBoardFiltered(i, 'todo');
@@ -201,13 +206,13 @@ function renderAssignedTo(assignedToLength, assignedTo, assignedToId) {
  * @param {string} priority includes task priority
  * @param {string} assignedTo includes task assigned to names
  */
-function openBoardTask(color, category, title, description, date, priority, assignedTo) {
+function openBoardTask(color, category, title, description, date, priority, assignedTo, progress, index) {
     let openPopup = document.getElementById('boardPopupTask');
     let priorityColor = getPriorityColor(priority);
     let assignedToArray = stringToArray(assignedTo)
     openPopup.classList.remove('d-none');
 
-    openPopup.innerHTML = openBoardTaskTemp(color, category, title, description, date, priority, priorityColor);
+    openPopup.innerHTML = openBoardTaskTemp(color, category, title, description, date, priority, priorityColor, progress, index);
     openTaskAssignedTo(assignedToArray);
 }
 
@@ -234,6 +239,22 @@ function closeBoardTask() {
 }
 
 
+function editPopupTask(color, category, title, description, date, priority, priorityColor, progress, index) {
+    let openPopup = document.getElementById('boardPopupTask');
+    let currentTask = loadedBoard[index];
+    let prioIndex = getPrioIndexEdit(currentTask);
+    openPopup.innerHTML = editPopupTaskTemp(color, category, title, description, date, priority, priorityColor, progress, index);
+    datepicker();
+    addPrio(prioIndex);
+}
+
+
+function closeEditTaskBoard() {
+    let closePopup = document.getElementById('boardPopupTask');
+    closePopup.classList.add('d-none');
+}
+
+
 function addTaskBoard(param) {
     let addTaskId = document.getElementById('popupAddTaskBoard');
     let formId = document.getElementById('popupAddTastBoardForm');
@@ -246,6 +267,22 @@ function addTaskBoard(param) {
 function closeAddTaskBoard() {
     let addTaskId = document.getElementById('popupAddTaskBoard');
     addTaskId.classList.add('d-none');
+}
+
+
+function getPrioIndexEdit(currentTask) {
+    let prio = currentTask['prio'];
+    let prioIndex;
+    if (prio.includes('urgent')) {
+        prioIndex = 0
+    }
+    if (prio.includes('medium')) {
+        prioIndex = 1
+    }
+    if (prio.includes('low')) {
+        prioIndex = 2
+    }
+    return prioIndex;
 }
 
 
@@ -391,16 +428,9 @@ function checkForColor() {
 }
 
 
-function addTaskBoardTemp(param) {
-    return `
-    
-    `;
-}
-
-
 function renderBoardTemp(color, category, title, description, date, priority, assignedTo, progress, index) {
     return `
-    <div draggable="true" ondragstart="dragStart(${index})" onclick="openBoardTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${assignedTo}', '${progress}')" class="todo-tasks">
+    <div draggable="true" ondragstart="dragStart(${index})" onclick="openBoardTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${assignedTo}', '${progress}', '${index}')" class="todo-tasks">
         <h2 style="background-color: ${color};" class="task-head">${category}</h2>
         <span class="task-titel">${title}</span> <br><br>
         <span class="task-description">${description}</span>
@@ -415,12 +445,12 @@ function renderBoardTemp(color, category, title, description, date, priority, as
 }
 
 
-function openBoardTaskTemp(color, category, title, description, date, priority, priorityColor) {
+function openBoardTaskTemp(color, category, title, description, date, priority, priorityColor, progress, index) {
     return `
     <div class="cont-popup-board-task">
         <!--buttons-->
         <img onclick="closeBoardTask()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
-        <button onclick="editPopupTask()" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
+        <button onclick="editPopupTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${priorityColor}', '${progress}', '${index}')" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
                 alt=""></button>
         <!--Head area-->
         <h2 style="background-color: ${color};" class="task-head">${category}</h2>
@@ -452,5 +482,59 @@ function openTaskAssignedToTemp(contact, bothFirstLetters, nameColor) {
         <div style="background-color: ${nameColor};" class="popup-assigned">${bothFirstLetters}</div>
         <span>${contact}</span>
     </div>
+    `;
+}
+
+
+function editPopupTaskTemp(color, category, title, description, date, priority, assignedTo, progress, index, urgent, medium, low) {
+    return `
+    <form onsubmit="openBoardTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${assignedTo}', '${progress}', '${index}')" class="contPopupEditTaskBoard" style="overflow: hidden;">
+        <!-- title -->
+        <div class="column title">
+            <span>Title</span>
+            <input value="${title}" required placeholder="Enter a title" type="text" onkeyup="addTitle()" id="titleInput">
+        </div>
+        <!-- description -->
+        <div class="column description">
+            <span>Description</span>
+            <textarea required placeholder="Enter a Description" type="text" onkeyup="addDescription()"
+                id="descriptionTextarea">${description}</textarea>
+        </div>
+        <!-- due date -->
+        <div class="column">
+            <span>Due date</span>
+            <input value="${date}" type="text" required placeholder="dd/mm/yyyy" id="datepicker"
+                pattern="\d{1,2}\/\d{1,2}\/\d{4}"
+                style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;">
+        </div>
+        <!-- prio -->
+        <div class="column">
+            <span>Prio</span>
+            <div class="prioButtons">
+                <div onclick="addPrio(0)" id="prioButton0" style="background-color:white;">Urgent <img
+                        id="prioImage0" src="assets/img/urgent_newTask.svg"></div>
+                <div onclick="addPrio(1)" id="prioButton1" style="background-color:white;">Medium <img
+                        id="prioImage1" src="assets/img/medium_newTask.svg"></div>
+                <div onclick="addPrio(2)" id="prioButton2" style="background-color:white;">Low <img
+                        id="prioImage2" src="assets/img/low_newTask.svg"></div>
+            </div>
+        </div>
+        <div class="column contacts">
+            <span>Assigned to</span>
+            <div class="selectField" id="selectFieldContact" onclick="openCloseContacts()">
+                <div class="selectContact" id="selectContact">
+                    <input id="contact" required placeholder="Select contacts to assign">
+                    <div id="contactImage"><img class="paddingRight" src="assets/img/arrow_drop.svg"></div>
+                </div>
+                <div class="d-none" id="openedContacts" onclick="notOpenCloseContacts(event)">
+                </div>
+            </div>
+            <div id="addedContacts"></div>
+        </div>
+        <button type="submit" class="create-new-contact-check">
+            OK <img src="./assets/img/contact_check.png" alt="">
+        </button>
+        <img onclick="closeEditTaskBoard()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+    </form>
     `;
 }
