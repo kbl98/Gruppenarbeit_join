@@ -2,7 +2,12 @@
 function logout() {
   document.getElementById("popup-logout").classList.add("d-none");
   resetUser();
+  unstoreSession();
   window.location.href = "login.html";
+}
+
+function unstoreSession(){
+  sessionStorage.removeItem("session")
 }
 
 
