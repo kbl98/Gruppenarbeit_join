@@ -287,7 +287,7 @@ textarea::placeholder {
 /* BUTTONS CLEAR CREATE */
 .ccButtons {
   display: flex;
-  position: absolute;
+  margin-top: 30px;
   bottom: 40px;
   right: 0;
 }
