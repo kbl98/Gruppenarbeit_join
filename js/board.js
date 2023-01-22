@@ -9,12 +9,18 @@ async function initBoard() {
     await loadAllTaskFromBackend();
     await loadContactsFromBackend();
     await getCurrentUserFromStorage();
+    await loadTasks();
+    await loadContacts();
+    renderContacts()
     renderBoard();
     setUserImg();
     checkForColor();
+    addPrio(0);
+    datepicker();
 }
 
 
+// drag and drop funktion
 function dragStart(id) {
     currentDragElement = id;
 }
@@ -30,8 +36,10 @@ async function drop(progress) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
+// -----
 
 
+// load and upload to backend
 async function boardSaveToBackend() {
     await downloadFromServer();
     let JSONAsText = JSON.stringify(loadedBoard);
@@ -55,8 +63,13 @@ async function loadContactsFromBackend() {
         loadedContacts = [];
     };
 }
+// -----
 
 
+/**
+ * filter all task with searchBar
+ * 
+ */
 function filterTasks() {
     let search = document.getElementById('filterTasks').value;
     search = search.toLowerCase();
@@ -74,6 +87,12 @@ function filterTasks() {
 }
 
 
+/**
+ * Render all filtered tasks
+ * 
+ * @param {string} contactProgress includes progress of task
+ * @param {string} progressId includes progress of task without space between 2 words
+ */
 function renderSearchedTasks(contactProgress, progressId) {
     for (let i = 0; i < loadedBoard.length; i++) {
         const currentProgress = loadedBoard[i]['progress'];
@@ -84,6 +103,10 @@ function renderSearchedTasks(contactProgress, progressId) {
 }
 
 
+/**
+ * Render all tasks
+ * 
+ */
 function renderBoard() {
     clearRender();
     for (let i = 0; i < loadedBoard.length; i++) {
@@ -103,6 +126,10 @@ function renderBoard() {
 }
 
 
+/**
+ * clear entire area
+ * 
+ */
 function clearRender() {
     let todo = document.getElementById('todo');
     let inProcess = document.getElementById('inProcess');
@@ -115,6 +142,12 @@ function clearRender() {
 }
 
 
+/**
+ * Render funktion
+ * 
+ * @param {string} index includes progress of task
+ * @param {string} id includes progress of task without space between 2 words
+ */
 function renderBoardFiltered(index, id) {
     let progress = document.getElementById(id);
     let task = loadedBoard[index];
@@ -126,7 +159,13 @@ function renderBoardFiltered(index, id) {
 }
 
 
-
+/**
+ * render assigned to names
+ * 
+ * @param {number} assignedToLength includes count of names
+ * @param {string} assignedTo includes names
+ * @param {string} assignedToId id for innerHTML
+ */
 function renderAssignedTo(assignedToLength, assignedTo, assignedToId) {
     if (assignedToLength > 3) {
         for (let x = 0; x < 2; x++) {
@@ -149,6 +188,17 @@ function renderAssignedTo(assignedToLength, assignedTo, assignedToId) {
 }
 
 
+/**
+ * opens and render current task by clicking on it
+ * 
+ * @param {number} color includes #code
+ * @param {string} category includes task category
+ * @param {string} title includes task title
+ * @param {string} description includes task description
+ * @param {string} date includes task date
+ * @param {string} priority includes task priority
+ * @param {string} assignedTo includes task assigned to names
+ */
 function openBoardTask(color, category, title, description, date, priority, assignedTo) {
     let openPopup = document.getElementById('boardPopupTask');
     let priorityColor = getPriorityColor(priority);
@@ -160,6 +210,11 @@ function openBoardTask(color, category, title, description, date, priority, assi
 }
 
 
+/**
+ * render assigned to names in openBoardTask()
+ * 
+ * @param {string} assignedTo includes task assigned to names
+ */
 function openTaskAssignedTo(assignedTo) {
     let openTaskAssignedTo = document.getElementById('openTaskAssignedTo');
     for (let i = 0; i < assignedTo.length; i++) {
@@ -174,6 +229,65 @@ function openTaskAssignedTo(assignedTo) {
 function closeBoardTask() {
     let closePopup = document.getElementById('boardPopupTask');
     closePopup.classList.add('d-none');
+}
+
+
+function addTaskBoard(param) {
+    let addTaskId = document.getElementById('popupAddTaskBoard');
+    addTaskId.classList.remove('d-none');
+    //addTaskId.innerHTML = addTaskBoardTemp(param);
+}
+
+
+function submitedAddTaskBoard() {
+    let addTaskId = document.getElementById('popupAddTaskBoard');
+    addTaskId.classList.add('d-none');
+    showDivWithTransition();
+}
+
+
+function closeAddTaskBoard() {
+    let addTaskId = document.getElementById('popupAddTaskBoard');
+    addTaskId.classList.add('d-none');
+}
+
+
+async function createTaskBoard() {
+    addDate();
+    let jsonObj = {
+        title: selectedTitle,
+        description: selectedDescription,
+        category: selectedCategory,
+        color: selectedColor,
+        contactNames: selectedContactNames,
+        date: selectedDate,
+        prio: selectedPrio,
+        subtasks: selectedSubtasks,
+        progress: 'todo'
+    };
+    loadedBoard.push(jsonObj);
+    await boardSaveToBackend();
+    clearTask();
+    closeAddTaskBoard();
+    showDivWithTransition();
+    initBoard();
+}
+
+
+function showDivWithTransition() {
+    setTimeout(function () {
+        var div = document.querySelector('.cont-success-message');
+        div.style.display = "flex";
+        setTimeout(function () {
+            div.style.transform = "translateY(0)";
+            setTimeout(function () {
+                div.style.transform = "translateY(200%)";
+                setTimeout(function () {
+                    div.style.display = "none";
+                }, 1000);
+            }, 5000);
+        }, 1000);
+    }, 1000);
 }
 
 
@@ -244,14 +358,11 @@ function getTaskInfos(task) {
 
 
 function splitName(fullName) {
-    // let fullName = "David Eisenberg";
     let nameParts = fullName.split(" ");
     let firstName = nameParts[0];
     let lastName = nameParts[nameParts.length - 1];
     let bothFirstLetters = firstName.charAt(0) + lastName.charAt(0);
     return bothFirstLetters
-    // console.log(firstName); Output: "David"
-    // console.log(lastName); Output: "Eisenberg"
 }
 
 
@@ -277,6 +388,13 @@ function checkForColor() {
             loadedContacts.splice(i, 1, newObjekt);
         }
     }
+}
+
+
+function addTaskBoardTemp(param) {
+    return `
+    
+    `;
 }
 
 

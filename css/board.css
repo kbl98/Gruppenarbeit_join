@@ -206,7 +206,7 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 10;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -334,7 +334,10 @@ body {
     display: none;
 }
 
-#todo, #inProcess, #awaitingFeedback, #done {
+#todo,
+#inProcess,
+#awaitingFeedback,
+#done {
     height: 500px;
 }
 
@@ -349,3 +352,66 @@ body {
     scale: 1.01;
     cursor: pointer;
 }
+
+.contPopupAddTaskBoard {
+    position: relative;
+    background-color: white;
+    width: 1116px;
+    height: 914px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.popupAddTaskBoardMain span {
+    font-size: 21px;
+    padding-bottom: 10px;
+}
+
+.popupAddTaskBoardMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.popupAddTaskBoardLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.popupAddTaskBoardRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contPopupAddTaskBoardHead h1 {
+    font-weight: 700;
+    font-size: 61px;
+}
+
+.dividingBar {
+    height: 669px;
+    width: 1px;
+    border-right: 2px solid #D1D1D1;
+}
+
+.popupBoardButtonsPosition {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+.popup-close {
+    position: absolute;
+    width: 21.65px;
+    height: 21.65px;
+    right: 34px !important;
+    left: unset !important;
+    top: 34px;
+    cursor: pointer;
+  }
