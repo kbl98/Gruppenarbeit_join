@@ -18,15 +18,23 @@ async function openAddTask() {
 /**function to ease the popup in by changing classnames */
 function easein() {
   let task_popup = document.getElementById("addTaskPopup");
+  let bg = document.getElementById("contAddTaskToContact");
   task_popup.classList.remove("outside");
   task_popup.classList.add("inside");
+  bg.classList.remove("opacity-none");
+  bg.classList.add("opacity");
+  bg.classList.remove("d-none");
 }
 
 /**function to undisplay the creator */
 function closeTaskCreator() {
   let task_popup = document.getElementById("addTaskPopup");
   let bg = document.getElementById("contAddTaskToContact");
+  bg.classList.add("opacity-none");
   bg.classList.add("d-none");
+  bg.classList.remove("opacity");
+  task_popup.classList.remove("inside");
+  task_popup.classList.add("outside");
 }
 
 /**function to render the possible contacts you can choose the assign from */

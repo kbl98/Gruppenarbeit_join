@@ -25,6 +25,7 @@ async function initSum() {
   renderSummary();
   handleMediaSize();
   storeSession();
+  console.log(all_tasks)
 }
 
 function storeSession(){
@@ -172,12 +173,12 @@ function sortAllUrgentTasks() {
     dates.push(urgent_tasks[i]["date"]);
   }
   dates.sort(compareDate);
-  dates.reverse();
   let urgentSorted = [];
   for (let i = 0; i < dates.length; i++) {
     urgentSorted.push(urgent_tasks.find((t) => t["date"] == dates[i]));
   }
   urgent_tasks = urgentSorted;
+  console.log(urgent_tasks)
 }
 
 
@@ -188,10 +189,9 @@ function sortAllUrgentTasks() {
   */
 function compareIfOver(date){
   let isOver=false;
-  let d=new Date(date);
-  console.log(d);
+  console.log(date);
   let today=new Date();
-  if ((d.getTime()-today.getTime)<0 ){
+  if ((date.getTime()-today.getTime())<0 ){
    isOver=true;
   }
   return isOver;
@@ -226,9 +226,8 @@ function generateUrgentNullHTML(){
 function formateDate(tasks) {
   for (let i = 0; i < all_tasks.length; i++) {
     let [day, mo, ye] = tasks[i]["date"].split("/");
-    let d = new Date(+ye, +mo, +day);
+    let d = new Date(+ye, +mo-1, +day);
     tasks[i]["date"] = d;
-    console.log(d);
   }
 }
 
@@ -240,9 +239,7 @@ function formateDate(tasks) {
  * @returns {number}-positiv oder negativ number
  */
 function compareDate(date1, date2) {
-  d1 = new Date(date1);
-  d2 = new Date(date2);
-  return d2.getTime() - d1.getTime();
+  return date1.getTime() - date2.getTime();
 }
 
 
@@ -252,9 +249,8 @@ function compareDate(date1, date2) {
  * @returns {string}-Return is the rendered date with day,month as word and year
  */
 function constructDate(date) {
-  let d = new Date(date);
-  let weekday = d.getDay();
-  let time=d.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+  let weekday = date.getDay();
+  let time=date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
   let m = [
     "January",
     "February",
@@ -282,11 +278,11 @@ function constructDate(date) {
   let taskdate =
     days[weekday] +
     ", " +
-    d.getDate() +
+    date.getDate() +
     "." +
-    m[d.getMonth()-1] +
+    m[date.getMonth()] +
     " " +
-    d.getFullYear();
+    date.getFullYear();
   return taskdate;
 }
 
