@@ -176,7 +176,6 @@ textarea::placeholder {
   width: 16px;
   border: 1px solid black;
 }
-
 #contact:focus {
   outline: none;
 }
@@ -267,6 +266,7 @@ textarea::placeholder {
   height: 15px;
 }
 
+
 /* middle */
 .imageLine {
   height: 450px;
@@ -312,7 +312,6 @@ textarea::placeholder {
   color: white;
   margin-left: 20px;
 }
-
 .ccButtons img {
   margin-left: 15px;
 }
@@ -325,12 +324,12 @@ textarea::placeholder {
 
 @media (max-width: 1400px) {
   /* fields */
-  .column {
+.column {
     width: 300px;
-  }
-  textarea {
+}
+textarea {
     width: 300px;    
-  }
+}
 .prioButtons div {
   font-size: 18px;
   width: 95px;
@@ -361,24 +360,32 @@ textarea {
   width: 200px;
 }
 }
+
+
 @media (max-width: 1100px) {
   .addTask {
     left: calc(232px + 5%);
     width: calc(100% - 232px - 5% - 5%);
   }
 }
+
+
 @media (max-width: 1000px) {
   .addTask {
     left: calc(160px + 3%);
     width: calc(100% - 160px - 3% - 3%);
   }
 }
+
+
 @media (max-width: 850px) {
   .addTask {
     left: 5%;
     width: calc(100% - 5% - 5%);
   }
 }
+
+
 @media (max-width: 690px) {
   .addTask {
     display: flex;

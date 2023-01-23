@@ -55,9 +55,9 @@ function addContact(i) {
   let contactID = document.getElementById('contact' + i);
   let index = selectedContactNames.indexOf(contactID.innerHTML);
   let index2 = selectedLetters.findIndex(obj => obj.bothLetters==firstLetters[i]['bothLetters']);
-  if (index > -1) { //wenn Name bereits enthalten dann...
+  if (index > -1) {
     resetSelect(index, index2,i);
-  } else { //wenn Name noch nicht enthalten dann...
+  } else {
     select(contactID, i);
   };
   if (!(selectedContactNames == '')) {
@@ -69,9 +69,9 @@ function addContact(i) {
 
 
 function resetSelect(index, index2, i) {
-  document.getElementById('contactButton' + i).innerHTML = ''; //... entferne Punkt im Button
-  selectedContactNames.splice(index, 1); //entferne Name
-  selectedLetters.splice(index2,1); //
+  document.getElementById('contactButton' + i).innerHTML = '';
+  selectedContactNames.splice(index, 1);
+  selectedLetters.splice(index2,1); 
   document.getElementById('addedContacts').innerHTML = '';
   for (let x = 0; x < selectedLetters.length; x++) {
     const selectedLetter = selectedLetters[x]['bothLetters'];
@@ -81,8 +81,8 @@ function resetSelect(index, index2, i) {
 
 
 function select(contactID, i) {
-  document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`; //... füge Punkt im Button hinzu
-  selectedContactNames.push(contactID.innerHTML); //füge Name hinzu
+  document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`;
+  selectedContactNames.push(contactID.innerHTML);
   selectedLetters.push(firstLetters[i]);
   document.getElementById('addedContacts').innerHTML = '';
   for (let x = 0; x < selectedLetters.length; x++) {

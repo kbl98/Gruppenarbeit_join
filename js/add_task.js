@@ -6,29 +6,13 @@ let allSubtasks = [];
 let selectedSubtasks = [];
 let subtaskImageSrc = [];
 
-
-
-// let jsontest= [
-//     {
-//       "title": "das ist ein Titel",
-//       "description": "das ist eine Beschreibung",
-//       "category": "das ist eine Kategorie",
-//       "color": "#ffffff",
-//       "contactNames": ["You","Max Wolfberg"],
-//       "date": "22/03/2023",
-//       "prio": "urgent",
-//       "subtasks": ["subtask1","subtask2"],
-//       "progress":"todo"
-//      },
-//   ];
-
   
 async function init() {
   await includeHTML();
   await loadTasks();
   await loadContacts();
   getLocalCurrentUser();
-  await renderAllContacts();
+  renderAllContacts();
   addPrio(0);
   datepicker();
   setUserImg();
@@ -65,13 +49,6 @@ async function saveAllTasks(task) {
 }
 
 
-// async function testjson() {
-// await downloadFromServer();
-// let testjsonText = JSON.stringify(jsontest);
-// await backend.setItem('all_tasks', testjsonText);
-// }
-
-
 //Title
 /**
  * function to add the entered title from the inputfield to the variable called "selectedTitle"
@@ -103,6 +80,7 @@ function datepicker() {
     $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
   } );
 }
+
 
 /**
  * function to add the selected date to the array "selectedDate"
@@ -189,6 +167,7 @@ function showSubtask (i, newSubtask) {
   `;
 }
 
+
 /**
  * function to add or remove the checkmark next to the subtask
  * 
@@ -216,15 +195,17 @@ function clearTask() {
   resetContent();
 }
 
+
 /**
  * function to reset all variables
  */
 function resetVariables() {
   selectedTitle = '';
   selectedDescription = '';
-  selectedCategory = [];
+  selectedCategory = '';
+  selectedColor = '';
   selectedContactNames = [];
-  invitedContacts = [];
+  selectedLetters = [];
   selectedDate = '';
   selectedPrio = '';
   allSubtasks = [];
@@ -240,13 +221,15 @@ function resetContent() {
   cancelNewCategory();
   closeCategories();
   closeContacts();
-  document.getElementById('contactButton0').innerHTML = '';
-  document.getElementById('contactButton1').innerHTML = '';
+  for (let i = 0; i < allContacts.length; i++) {
+    document.getElementById('contactButton'+i).innerHTML = '';
+  }
+  document.getElementById('addedContacts').innerHTML = '';
   document.getElementById('datepicker').value = '';
   resetPrioButtons();
   document.getElementById('newSubtasks').innerHTML = '';
   document.getElementById('newSubtaskInput').value = '';
-
+ 
 }
 
 /**
@@ -296,6 +279,3 @@ async function createTask() {
   await saveAllTasks(task);
   clearTask();
 }
-
-
-
