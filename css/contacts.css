@@ -272,6 +272,7 @@ body {
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
+  
 }
 
 .cont-new-contact-pup {
@@ -504,6 +505,7 @@ body {
   cursor: pointer;
 }
 
+
 @media screen and (max-width: 1300px) {
   .outer-cont-contacts {
     width: 360px;
@@ -534,8 +536,67 @@ body {
   h2 {
     font-size: 35px;
   }
+
+
+  .cont-right-contact-pup{
+    width:60%
+  }
+
+  .cont-new-contact-pup {
+    width: 980px;
+    height: 500px;
 }
 
+.cont-create-contact-infos {
+  gap: 20px;
+  width:90%;
+}
+
+.cont-create-contact-input input {
+  width:100%;
+}
+
+.cont-create-contact-input{
+  width:70%;
+}
+
+.create-contact-pp {
+  width: 90px;
+  height: auto;
+}
+
+.create-new-contact-deny{
+  font-size:18px;
+  width:33%;
+}
+
+.create-new-contact-check {
+  font-size:18px;
+  width:57%;
+}
+
+.cont-create-contact-buttons{
+  width:100%;
+  justify-content: space-between;
+  gap:unset;
+}
+
+.cont-new-contact-pup{
+  width:90%;
+}
+
+.cont-left-contact-pup h2{
+  font-size: 50px;;
+}
+
+.popup-close{
+  left:95%;
+}
+
+.cont-left-contact-pup{
+  width:40%;
+}
+}
 @media screen and (max-width: 1150px) {
   .outer-cont-contacts-main {
     top: 0;
@@ -591,8 +652,17 @@ body {
   .outer-cont-contacts {
     left: 160px;
   }
+
+  .create-new-contact-check {
+    font-size: 14px;
+    padding: 2px;
 }
 
+.create-new-contact-deny{
+  font-size:14px;
+  padding: 2px;
+}
+}
 @media screen and (max-width: 850px) {
   .cont-contacts-head {
     display: none !important;
@@ -620,5 +690,72 @@ body {
   #addTaskPopup {
     top:0;
   }
+
+  .cont-new-contact-pup{
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+.cont-left-contact-pup{
+width: 100%;
+    height: 40%;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 0;
+}
+
+.cont-left-contact-pup img{
+  display: none;
+}
+
+.cont-right-contact-pup {
+  width: 100%;
+  height: 60%;
+}
+
+.cont-create-contact-infos{
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.create-contact-pp{
+  margin-top:-60px;
+}
+
+.contact-new-contact{
+  z-index:12;
+  top:10%;
+}
+
+.new-contact-pup-bgr{
+  z-index:13;
+}
+
+.popup-close {
+  left: 90%;
+  filter: invert(1);
+}
+
+.create-new-contact-deny{
+  display: none;
+}
+
+.cont-create-contact-buttons{
+  justify-content: center;
+}
+
+.cont-create-contact-buttons img {
+  display: none;
+}
+  }
+
+  @media screen and (max-width: 400px) {
+
+
+
+  }
 

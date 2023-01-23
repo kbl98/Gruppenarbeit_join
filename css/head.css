@@ -62,7 +62,7 @@
   top: 0;
   right: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 14;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,13 +105,13 @@
   }
 }
 @media screen and (max-width: 850px) {
-    #popup-logout {
-        margin-top: 70px;
-    }
+  #popup-logout {
+    margin-top: 70px;
+  }
 
-    #popup-logout p{
-        margin: unset;
-    }
+  #popup-logout p {
+    margin: unset;
+  }
 
   .logo-big {
     width: 200px;

@@ -32,16 +32,18 @@ function backgroundOpacity(){
     bg.classList.add("stop");
 }
 
-
 /**
  *function to wait some time before moving logo and getting login-box 
  */
 async function getLogin() {
-  setTimeout(moveLogo, 500);
+  
+  setTimeout(moveLogo, 500)
+  
   /*await setBackend();
   await downloadFromServer();*/
-  users = JSON.parse(backend.getItem("users")) || [];
+  /*users = JSON.parse(backend.getItem("users")) || [];*/
   /*users=JSON.parse(backend.getItem("users")) || [];*/
+ 
   getUsers();
   console.log(users);
 }
@@ -516,7 +518,9 @@ function tryOneMore(){
 }
 }
 
-/**function to give warning about trys */
+/**
+ * functions to give warning about trys 
+ */
  function openInfoTrys(){
   let popup=document.getElementById("popup-trys");
   popup.classList.remove("d-none");

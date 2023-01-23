@@ -302,7 +302,7 @@ function openNewContactTemp() {
     return `
     <div class="cont-new-contact-pup">
         <!--close popup-->
-        <img onclick="closeNewContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+    <img onclick="closeNewContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
 
         <!-- left side from popup create new contact -->
         <div class="cont-left-contact-pup">
@@ -340,7 +340,7 @@ function openNewContactTemp() {
 
 function openEditContactTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
-    <div class="cont-new-contact-pup">
+    <div id="cont-new-contact-pup" class="cont-new-contact-pup translated">
         <!--close popup-->
         <img onclick="closeEditContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
 
