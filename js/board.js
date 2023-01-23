@@ -11,7 +11,7 @@ async function initBoard() {
     await getCurrentUserFromStorage();
     await loadTasks();
     await loadContacts();
-    renderContacts()
+    renderAllContacts()
     renderBoard();
     setUserImg();
     checkForColor();
