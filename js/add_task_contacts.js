@@ -54,7 +54,7 @@ function renderAllContacts() {
 function addContact(i) {
   let contactID = document.getElementById('contact' + i);
   let index = selectedContactNames.indexOf(contactID.innerHTML);
-  let index2 = selectedLetters['bothLetters'].indexOf(firstLetters[i]);
+  let index2 = selectedLetters.findIndex(obj => obj.bothLetters==firstLetters[i]['bothLetters']);
   if (index > -1) { //wenn Name bereits enthalten dann...
     resetSelect(index, index2,i);
   } else { //wenn Name noch nicht enthalten dann...
@@ -71,11 +71,11 @@ function addContact(i) {
 function resetSelect(index, index2, i) {
   document.getElementById('contactButton' + i).innerHTML = ''; //... entferne Punkt im Button
   selectedContactNames.splice(index, 1); //entferne Name
-  selectedLetters['bothLetters'].splice(index2,1); //
+  selectedLetters.splice(index2,1); //
   document.getElementById('addedContacts').innerHTML = '';
-  for (let x = 0; x < selectedLetters['bothLetters'].length; x++) {
-    const selectedLetter = selectedLetters['bothLetters'][x];
-    document.getElementById('addedContacts').innerHTML += `<div class="firstLetters">${selectedLetter}</div>`;
+  for (let x = 0; x < selectedLetters.length; x++) {
+    const selectedLetter = selectedLetters[x]['bothLetters'];
+    document.getElementById('addedContacts').innerHTML += `<div class="firstLetters" style="background-color: ${selectedLetters[x]['color']};">${selectedLetter}</div>`;
   }
 }
 
@@ -83,11 +83,11 @@ function resetSelect(index, index2, i) {
 function select(contactID, i) {
   document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`; //... füge Punkt im Button hinzu
   selectedContactNames.push(contactID.innerHTML); //füge Name hinzu
-  selectedLetters['bothLetters'].push(firstLetters[i]);
+  selectedLetters.push(firstLetters[i]);
   document.getElementById('addedContacts').innerHTML = '';
-  for (let x = 0; x < selectedLetters['bothLetters'].length; x++) {
-    const selectedLetter = selectedLetters['bothLetters'][x];
-    document.getElementById('addedContacts').innerHTML += `<div class="firstLetters">${selectedLetter}</div>`;
+  for (let x = 0; x < selectedLetters.length; x++) {
+    const selectedLetter = selectedLetters[x]['bothLetters'];
+    document.getElementById('addedContacts').innerHTML += `<div class="firstLetters" style="background-color: ${selectedLetters[x]['color']};">${selectedLetter}</div>`;
   }
 }
 
@@ -123,42 +123,3 @@ function disableInputContact () {
 function notOpenCloseContacts(event) {
   event.stopPropagation();
 }
-
-
-/**
- * function to make the container editable that you can write in an e-mail adress of the contact you want to invite
- */
-// function addNewContact() {
-//   let contact = document.getElementById('contact');
-//   openCloseContacts();
-//   contact.placeholder = 'Contact E-Mail';
-//   contact.disabled = false;
-//   document.getElementById('contactImage').innerHTML = `<div onclick="notOpenCloseContacts(event)" class="paddingRight"><img src="assets/img/cross.svg" onclick="cancelNewContact()"><img src="assets/img/finish.svg" onclick="acceptNewContact()"></div>`;
-//   document.getElementById('selectFieldContact').removeAttribute('onclick');
-// }
-
-
-/**
- * function to delete the e-mail adress and reset the contact-field
- */
-// function cancelNewContact() {
-//   let contact = document.getElementById('contact');
-//   contact.placeholder = 'Select contacts to assign';
-//   contact.disabled = true;
-//   document.getElementById('contactImage').innerHTML = `<img class="paddingRight" src="assets/img/arrow_drop.svg">`;
-//   document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
-// }
-
-
-/**
- * function to add the e-mail adress to the array "invitedContacts"
- */
-// function acceptNewContact() {
-//   let contact = document.getElementById('contact');
-//   invitedContacts.push(contact.value);
-//   contact.value = '';
-//   contact.placeholder = 'Select contacts to assign';
-//   contact.disabled = true;
-//   document.getElementById('contactImage').innerHTML = `<img class="paddingRight" src="assets/img/arrow_drop.svg">`;
-//   document.getElementById('selectFieldContact').setAttribute('onclick', 'openCloseContacts()');
-// }
