@@ -44,7 +44,7 @@ function addNewCategory() {
   categoryName.style.color = 'black';
   selectedCategory = '';
   selectedColor = '';
-  document.getElementById('categoryImage').innerHTML = `<div  onclick="notOpenCloseCategories(event)"><img src="assets/img/cross.svg" onclick="cancelNewCategory()"> <img src="assets/img/finish.svg" onclick="acceptNewCategory()"></div>`;
+  document.getElementById('categoryImage').innerHTML = `<div onclick="notOpenCloseCategories(event)" class="crossAndCheck"><img src="assets/img/cross.svg" onclick="cancelNewCategory()"> <img src="assets/img/finish.svg" onclick="acceptNewCategory()"></div>`;
   document.getElementById('categoryColors').classList.remove('d-none');
   document.getElementById('selectField').removeAttribute('onclick');
   document.getElementById('categoryColor').innerHTML = '';

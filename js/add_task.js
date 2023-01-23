@@ -207,7 +207,7 @@ function resetVariables() {
   selectedContactNames = [];
   selectedLetters = [];
   selectedDate = '';
-  selectedPrio = '';
+  addPrio(0);
   allSubtasks = [];
   selectedSubtasks = [];
 }
@@ -226,7 +226,6 @@ function resetContent() {
   }
   document.getElementById('addedContacts').innerHTML = '';
   document.getElementById('datepicker').value = '';
-  resetPrioButtons();
   document.getElementById('newSubtasks').innerHTML = '';
   document.getElementById('newSubtaskInput').value = '';
  
@@ -246,16 +245,6 @@ function closeCategories() {
 function closeContacts() {
   document.getElementById('selectFieldContact').style.height = '51px';
   document.getElementById('openedContacts').classList.add('d-none');
-}
-
-/**
- * function to change the color of the prio-buttons to white
- */
-function resetPrioButtons() {
-  for (let i = 0; i < 3; i++) {
-    document.getElementById('prioButton' + i).style.backgroundColor = 'white';
-    document.getElementById('prioButton' + i).style.color = 'black';
-  };
 }
 
 

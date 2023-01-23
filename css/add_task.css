@@ -156,6 +156,9 @@ textarea::placeholder {
   justify-content: center;
   align-items: center;
 }
+#categoryImage img {
+  padding-right: 0 !important;
+}
 
 
 /* ASSIGNED TO */
@@ -179,7 +182,7 @@ textarea::placeholder {
 #contact:focus {
   outline: none;
 }
-.paddingRight {
+.paddingRight{
   padding-right: 21px;
 }
 .selectContact {
@@ -205,7 +208,6 @@ textarea::placeholder {
 #addedContacts {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
 }
 .firstLetters {
   display: flex;
@@ -213,8 +215,7 @@ textarea::placeholder {
   align-items: center;
   height: 35px;
   width: 35px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin: 15px 15px 15px 0;
   border-radius: 100%;
   font-size: 18px !important;
 }
@@ -396,7 +397,12 @@ textarea {
     left: 0;
     height: 100% !important;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 20px;
+  }
+  .addTask h1 {
+    font-size: 55px;
+    text-align: center;
+    margin-bottom: 20px;
   }
   /* .addTaskRight {
     height: 500px !important;
@@ -411,8 +417,88 @@ textarea {
   }
   .ccButtons {
     position: relative;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    justify-content: space-between;
+    margin-top: 0px;
+    margin-bottom: 80px;
   }
+  .ccButtons button {
+    height: 50px;
+  }
+  .ccButtons div {
+    height: 50px;
+  }
+}
+
+
+@media (max-width: 340px) {
+.column {
+  width: 240px;
+}
+/* PRIO BUTTONS */
+/* CATEGORY */
+textarea {
+  width: 240px;
+  padding: 10px 12px 10px 12px; 
+}
+.prioButtons div {
+  font-size: 14px;
+  width: 77px;
+  }
+.prioButtons img {
+  height: 13px;
+  width: 13px;
+}
+.category input {
+  width: 150px;
+}
+.selectCategory {
+  padding: 10px 12px 10px 12px; 
+}
+.contacts input {
+  width: 190px;
+  padding: 0 0 0 12px;
+}
+.crossAndCheck img {
+  height: 12px !important;
+}
+#categoryColors {
+  width: 180px;
+}
+.paddingRight {
+  padding-right: 12px;
+}
+.addTask span {
+  font-size: 18px;
+}
+input {
+  font-size: 16px;
+}
+textarea {
+  font-size: 16px;
+}
+.selectField {
+  font-size: 16px;
+}
+.subtask input {
+  width: 200px;
+}
+.addTask h1 {
+  font-size: 45px;
+}
+.ccButtons button {
+  height: 40px;
+  font-size: 16px;
+  width: 130px;
+}
+.ccButtons img {
+  height: 12px;
+  margin-left: 5px;
+}
+.ccButtons div {
+  height: 40px;
+  font-size: 16px;
+}
+.addTaskRight {
+  align-items: center;
+}
 }
