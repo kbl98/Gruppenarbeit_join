@@ -171,6 +171,13 @@ function resetAllBgrColors() {
     }
 }
 
+
+/**function for closing addTask unfilled */
+function closeAddTask(){
+    closeDetail();
+    resetAllBgrColors();
+}
+
 /**
  * all funktions from edit contact from here
  * 
@@ -366,7 +373,7 @@ function openEditContactTemp(contactName, contactMail, contactColor, contactPhon
 
 function renderDetailsTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
-    <div id="backarrow" onclick="closeDetail()"><-</div>
+    <div id="backarrow" onclick="closeAddTask()"><-</div>
     <div class="open-contact-head">
         <div style="background-color: ${contactColor};" class="open-contact-img">${bothFirstLetters}</div>
         <div class="open-contact-head-name">
