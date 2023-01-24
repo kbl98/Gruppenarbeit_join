@@ -505,7 +505,36 @@ body {
   z-index: 16 !important;
   cursor: pointer;
 }
-
+#newContactNameValue {
+  background-image: url('../assets/img/ImageHuman.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+#newContactMailValue {
+  background-image: url('../assets/img/ImageLetter.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+#newContactPhoneValue {
+  background-image: url('../assets/img/ImagePhone.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+#editContactNameValue {
+  background-image: url('../assets/img/ImageHuman.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+#editContactMailValue {
+  background-image: url('../assets/img/ImageLetter.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+#editContactPhoneValue {
+  background-image: url('../assets/img/ImagePhone.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
 
 @media screen and (max-width: 1300px) {
   .outer-cont-contacts {
