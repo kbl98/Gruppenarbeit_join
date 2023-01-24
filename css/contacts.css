@@ -497,7 +497,7 @@ body {
   transform: translateX(0);
 }
 
-#close {
+#close-taskpop {
   position: absolute;
   right: 10px;
   top: 10px;

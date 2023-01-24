@@ -8,7 +8,7 @@ async function openAddTask() {
   addPrio(0);
   datepicker();
   document.getElementById("addTaskPopup").classList.add("outside");
-  document.getElementById("close").classList.remove("d-none");
+  document.getElementById("close-taskpop").classList.remove("d-none");
   let bg = document.getElementById("contAddTaskToContact");
   bg.classList.remove("d-none");
   setTimeout(easein, 50);
