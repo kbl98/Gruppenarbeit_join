@@ -478,7 +478,6 @@ body {
   top: 0;
   left: 0;
   z-index: 13 !important;
-  transition: all 175ms ease-in-out;
 }
 
 #addTaskPopup {
@@ -496,14 +495,6 @@ body {
 
 .inside {
   transform: translateX(0);
-}
-
-.opacity-none{
-  z-index:-5;
-}
-
-.opacity{
-  z-index:13;
 }
 
 #close {
