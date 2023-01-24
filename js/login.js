@@ -32,16 +32,19 @@ function backgroundOpacity(){
     bg.classList.add("stop");
 }
 
-
 /**
  *function to wait some time before moving logo and getting login-box 
  */
 async function getLogin() {
-  setTimeout(moveLogo, 500);
-  await setBackend();
-  await downloadFromServer();
-  users = JSON.parse(backend.getItem("users")) || [];
+  
+  setTimeout(moveLogo, 500)
+  
+  /*await setBackend();
+  await downloadFromServer();*/
+  /*users = JSON.parse(backend.getItem("users")) || [];*/
   /*users=JSON.parse(backend.getItem("users")) || [];*/
+ 
+  getUsers();
   console.log(users);
 }
 
@@ -74,9 +77,7 @@ function showLogin() {
  * function to get all registrated Users and Contacts from storage 
  */
 async function getUsers() {
-  setURL(
-    "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
-  );
+  await setBackend();
   await downloadFromServer();
   users = JSON.parse(backend.getItem("users"));
   if (!users) {
@@ -86,8 +87,13 @@ async function getUsers() {
   if (!loadedContacts) {
       loadedContacts = [];
   };
-  console.log(users);
-  console.log(loadedContacts)
+  let email=getJustRegistratedEmail();
+  let pw=getJustRegistratedPW();
+  if(pw){
+    document.getElementById("mail-login").value=email;
+    document.getElementById("password-login").value=pw;
+    removeJustRegistrated();
+  }
 }
 
 
@@ -102,14 +108,21 @@ async function getCurrentUser() {
     (u) => u.password == logpassword.value && u.email == logname.value
   );
   if (!current_user) {
-    window.location.href = "registration.html";
+    tryOneMore();
+    /*window.location.href = "registration.html";*/
   } else {
+    removeTrys();
     setCurrentUserToLocal(current_user);
     window.location.href = "summary.html";
   }
 }
 
+/**function to reset value of loginfields */
+function resetLogin(){
+  document.getElementById("mail-login").value="";
+  document.getElementById("password-login").value="";
 
+}
 
 /**
  * function to storage current User local 
@@ -197,10 +210,31 @@ async function sign() {
     username = "";
     email = "";
     password = "";
+    setJustRegistratedToSessStore(newUser)
     window.location.href = "login.html";
   } else {
     openPopup();
   }
+}
+
+function setJustRegistratedToSessStore(newUser){
+  sessionStorage.setItem("just_reg_email",newUser["email"]);
+  sessionStorage.setItem("just_reg_pw",newUser["password"]);
+}
+
+function removeJustRegistrated(){
+  sessionStorage.removeItem("just_reg_email");
+  sessionStorage.removeItem("just_reg_pw");
+}
+
+function getJustRegistratedEmail(){
+  let email=sessionStorage.getItem("just_reg_email");
+  return email
+}
+
+function getJustRegistratedPW(){
+  let pw=sessionStorage.getItem("just_reg_pw");
+  return pw
 }
 
 
@@ -451,7 +485,59 @@ async function set_new_password() {
  * common functions
  */
 
-/**function to change window */
+/**functions to change window */
 function locateToLogin() {
   window.location.href = "login.html";
 }
+
+/**function to change window */
+function locateToSignin() {
+  window.location.href = "registration.html";
+}
+
+/**function to count on session Storage*/
+function getNumberOfTry(){
+  let tryNumber=sessionStorage.getItem("trynumber");
+  if (tryNumber){
+  return tryNumber}
+  else{
+    return 0
+  }
+}
+
+/**function to count Trys of Login */
+function tryOneMore(){
+  let n=getNumberOfTry();
+  n++;
+  if(n<3){
+  sessionStorage.setItem("trynumber",n);
+  openInfoTrysOneMore()
+}else{
+  removeTrys();
+  openInfoTrys();
+}
+}
+
+/**
+ * functions to give warning about trys 
+ */
+ function openInfoTrys(){
+  let popup=document.getElementById("popup-trys");
+  popup.classList.remove("d-none");
+  setTimeout(locateToSignin,1000)
+}
+
+function openInfoTrysOneMore(){
+  let popup=document.getElementById("popup-try-again");
+  popup.classList.remove("d-none");
+  setTimeout(locateToLogin,1000);
+}
+
+
+function removeTrys(){
+  sessionStorage.removeItem("trynumber");
+}
+
+
+
+

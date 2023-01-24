@@ -171,6 +171,13 @@ function resetAllBgrColors() {
     }
 }
 
+
+/**function for closing addTask unfilled */
+function closeAddTask(){
+    closeDetail();
+    resetAllBgrColors();
+}
+
 /**
  * all funktions from edit contact from here
  * 
@@ -295,7 +302,7 @@ function openNewContactTemp() {
     return `
     <div class="cont-new-contact-pup">
         <!--close popup-->
-        <img onclick="closeNewContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+    <img onclick="closeNewContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
 
         <!-- left side from popup create new contact -->
         <div class="cont-left-contact-pup">
@@ -333,7 +340,7 @@ function openNewContactTemp() {
 
 function openEditContactTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
-    <div class="cont-new-contact-pup">
+    <div id="cont-new-contact-pup" class="cont-new-contact-pup translated">
         <!--close popup-->
         <img onclick="closeEditContact()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
 
@@ -366,7 +373,7 @@ function openEditContactTemp(contactName, contactMail, contactColor, contactPhon
 
 function renderDetailsTemp(contactName, contactMail, contactColor, contactPhone, bothFirstLetters) {
     return `
-    <div id="backarrow" onclick="closeDetail()"><-</div>
+    <div id="backarrow" onclick="closeAddTask()"><-</div>
     <div class="open-contact-head">
         <div style="background-color: ${contactColor};" class="open-contact-img">${bothFirstLetters}</div>
         <div class="open-contact-head-name">

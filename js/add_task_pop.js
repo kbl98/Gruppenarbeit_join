@@ -11,13 +11,14 @@ async function openAddTask() {
   document.getElementById("close").classList.remove("d-none");
   let bg = document.getElementById("contAddTaskToContact");
   bg.classList.remove("d-none");
-  setTimeout(easein, 500);
+  setTimeout(easein, 50);
   /*selectedContactNames.push()*/
 }
 
 /**function to ease the popup in by changing classnames */
 function easein() {
   let task_popup = document.getElementById("addTaskPopup");
+  let bg = document.getElementById("contAddTaskToContact");
   task_popup.classList.remove("outside");
   task_popup.classList.add("inside");
 }
@@ -27,6 +28,8 @@ function closeTaskCreator() {
   let task_popup = document.getElementById("addTaskPopup");
   let bg = document.getElementById("contAddTaskToContact");
   bg.classList.add("d-none");
+  task_popup.classList.remove("inside");
+  task_popup.classList.add("outside");
 }
 
 /**function to render the possible contacts you can choose the assign from */
