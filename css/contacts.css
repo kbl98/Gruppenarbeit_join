@@ -583,6 +583,75 @@ body {
   }
 }
 
+
+@media (max-width: 1230px) {
+  .cont-new-contact-pup {
+    width: 1000px;
+    height: 500px;
+  }
+  .popup-close {
+    left: 950px;
+    top: 25px;
+  }
+  .cont-create-contact-infos {
+    gap: 5px;
+  }
+  .cont-create-contact-input input {
+    width: 350px;
+  }
+  .create-new-contact-deny {
+    padding: 10px 5px;
+    width: 105px;
+    height: 51px;
+  }
+  .create-new-contact-check {
+    padding: 10px 5px;
+    width: 195px;
+    height: 51px;  
+}
+}
+
+
+@media (max-width: 1030px) {
+  .cont-new-contact-pup {
+    width: 800px;
+    height: 400px;
+  }
+  .popup-close {
+    left: 760px;
+    top: 20px;
+  }
+  .cont-create-contact-infos {
+    gap: 0;
+  }
+  .create-contact-pp {
+    width: 90px;
+    height: 90px;
+}
+  .cont-create-contact-input input {
+    width: 280px;
+  }
+  .cont-create-contact-input {
+    align-items: center;
+  }
+  .create-new-contact-deny {
+    padding: 10px 5px;
+    width: 95px;
+    height: 51px;
+    font-size: 18px;
+  }
+  .create-new-contact-check {
+    padding: 10px 5px;
+    width: 175px;
+    height: 51px;
+    font-size: 18px;  
+  }
+  .cont-create-contact-buttons {
+    gap: 10px;
+  }
+}
+
+
 @media screen and (max-width: 1000px) {
   .outer-cont-contacts-main {
     padding-left: 160px;
@@ -616,5 +685,78 @@ body {
   .cont-open-contact {
     padding-left: 20px;
   }
+  .cont-open-contact {
+    padding-right: 20px;
+  }
 }
 
+
+@media (max-width: 590px) {
+  .open-contact-head {
+    column-gap: 40px;
+  }
+}
+
+
+@media (max-width: 550px) {
+  .open-contact-head-name {
+    width: 250px;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .contact-edit-info {
+    text-align: right;
+  }
+}
+
+
+@media (max-width: 410px) {
+  .open-contact-head-name h2 {
+    font-size: 40px;
+  }
+.open-contact-head-name {
+  width: 200px;
+  }
+}
+
+
+@media (max-width: 370px) {
+  .inner-cont-contacts {
+    padding: 0;
+    margin-right: 5px;
+}
+}
+
+
+@media (max-width: 355px) {
+  .open-contact-head {
+    column-gap: 20px;
+  }
+  .open-contact-img {
+    height: 60px;
+    width: 60px;
+    font-size: 25px;
+  }
+  .open-contact-head-name h2 {
+    font-size: 35px;
+  }
+  .open-contact-head-name {
+    width: 160px;
+    }
+}
+
+
+@media (max-width: 340px) {
+  .contact-img {
+    margin: 0;
+  }
+}
+
+
+@media (max-width: 300px) {
+  .cont-contact {
+    padding-right: 0;
+  }
+}
