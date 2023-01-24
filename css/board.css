@@ -226,7 +226,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     padding: 50px;
-    gap: 25px;
+    gap: 45px;
 }
 
 .popup-close {
@@ -277,6 +277,8 @@ body {
     font-weight: 700;
     font-size: 21px;
     gap: 10px;
+    overflow: auto;
+    width: 80%;
 }
 
 .popup-date {
@@ -427,7 +429,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
 }
 
 .contPopupEditTaskBoard span {
