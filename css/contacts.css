@@ -337,7 +337,7 @@ body {
 .cont-create-contact-infos {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 60px;
 }
 
 .create-contact-pp {
@@ -367,6 +367,7 @@ body {
 
 .cont-create-contact-buttons {
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -568,8 +569,8 @@ body {
     height: 500px;
   }
   .cont-create-contact-infos {
-    gap: 20px;
-   width:90%;
+    gap: 30px;
+    width:90%;
   }
   .cont-create-contact-input input {
     width:100%;
@@ -591,7 +592,6 @@ body {
   }
   .cont-create-contact-buttons{
     width:100%;
-    justify-content: space-between;
     gap:unset;
   }
   .cont-new-contact-pup{
@@ -663,7 +663,7 @@ body {
     top: 25px;
   }
   .cont-create-contact-infos {
-    gap: 5px;
+    gap: 25px;
   }
   .cont-create-contact-input input {
     width: 350px;
@@ -691,7 +691,7 @@ body {
     top: 20px;
   }
   .cont-create-contact-infos {
-    gap: 0;
+    gap: 20px;
   }
   .create-contact-pp {
     width: 90px;

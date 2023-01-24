@@ -267,4 +267,13 @@ async function createTask() {
   };
   await saveAllTasks(task);
   clearTask();
+  showInfo();
+}
+
+
+function showInfo() {
+  document.getElementById('info').classList.remove('d-none');
+  setTimeout(function() {
+    document.getElementById('info').classList.add('d-none');
+  },3800);
 }

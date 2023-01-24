@@ -348,7 +348,6 @@ function openEditContactTemp(contactName, contactMail, contactColor, contactPhon
         <div class="cont-left-contact-pup">
             <img src="./assets/img/contacts_logo.png" alt="">
             <h2>Edit Contact</h2>
-            <span>Tasks are better with a team!</span>
             <div></div>
         </div>
 
