@@ -404,9 +404,6 @@ textarea {
     text-align: center;
     margin-bottom: 20px;
   }
-  /* .addTaskRight {
-    height: 500px !important;
-  } */
   .imageLine {
     height: 0;
     width: 0;
@@ -416,16 +413,27 @@ textarea {
     margin: 0;
   }
   .ccButtons {
-    position: relative;
+    position: absolute;
     justify-content: space-between;
-    margin-top: 0px;
-    margin-bottom: 80px;
+    top: -130px;
+    right: 5px;
+    z-index: 999;
   }
   .ccButtons button {
     height: 50px;
   }
   .ccButtons div {
     height: 50px;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .ccButtons button {
+    font-size: 16px;
+  }
+  .ccButtons div {
+    font-size: 16px;
   }
 }
 
@@ -485,18 +493,18 @@ textarea {
 .addTask h1 {
   font-size: 45px;
 }
-.ccButtons button {
-  height: 40px;
-  font-size: 16px;
-  width: 130px;
-}
 .ccButtons img {
-  height: 12px;
+  height: 11px;
+  width: 11px;
   margin-left: 5px;
 }
+.ccButtons button {
+  width: 115px;
+  font-size: 14px;
+  margin-left: 10px;
+}
 .ccButtons div {
-  height: 40px;
-  font-size: 16px;
+  font-size: 14px;
 }
 .addTaskRight {
   align-items: center;
