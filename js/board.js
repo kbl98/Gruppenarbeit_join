@@ -240,18 +240,47 @@ function closeBoardTask() {
 
 
 function editPopupTask(color, category, title, description, date, priority, priorityColor, progress, index) {
-    let openPopup = document.getElementById('boardPopupTask');
+    let { titleId, descriptionId, dateId, formId, closeEditPopup, closePopup } = getEditPopupVariables();
     let currentTask = loadedBoard[index];
     let prioIndex = getPrioIndexEdit(currentTask);
-    openPopup.innerHTML = editPopupTaskTemp(color, category, title, description, date, priority, priorityColor, progress, index);
+    closePopup.classList.add('d-none');
+    closeEditPopup.classList.remove('d-none');
+    titleId.value = (`${title}`);
+    descriptionId.innerHTML = `${description}`;
+    dateId.value = (`${date}`);
+    formId.setAttribute("onsubmit", "saveEditPopupBoard('"+ index +"');return false;");
+    addContactLoop(index);
     datepicker();
     addPrio(prioIndex);
 }
 
 
+async function saveEditPopupBoard(index) {
+    let { titleValue, descriptionValue, dateValue, prioValue, assignedToValue } = getnewValuesFromEdit();
+    loadedBoard[index].title = titleValue;
+    loadedBoard[index].description = descriptionValue;
+    loadedBoard[index].contactNames = assignedToValue;
+    loadedBoard[index].date = dateValue;
+    loadedBoard[index].prio = prioValue;
+    await boardSaveToBackend();
+    closeEditTask();
+    initBoard();
+}
+
+
+function closeEditTask() {
+    let closeEditPopup = document.getElementById('boardPopupTaskEdit');
+    closeEditPopup.classList.add('d-none');
+    resetVariables();
+}
+
+
 function closeEditTaskBoard() {
+    let closeEditPopup = document.getElementById('boardPopupTaskEdit');
+    closeEditPopup.classList.add('d-none');
     let closePopup = document.getElementById('boardPopupTask');
-    closePopup.classList.add('d-none');
+    closePopup.classList.remove('d-none');
+    resetVariables();
 }
 
 
@@ -263,10 +292,48 @@ function addTaskBoard(param) {
 }
 
 
-
 function closeAddTaskBoard() {
     let addTaskId = document.getElementById('popupAddTaskBoard');
     addTaskId.classList.add('d-none');
+}
+
+
+function addContactLoop(index) {
+    let contacts = loadedBoard[index]['contactNames'];
+    for (let i = 0; i < contacts.length; i++) {
+        addContact(i);
+    }
+}
+
+
+function setAssignedToContacts(index) {
+    let letters = loadedBoard[index]['letters'];
+    document.getElementById('addedContacts').innerHTML = '';
+    for (let i = 0; i < letters.length; i++) {
+        const letter = letters[i]['bothLetters'];
+        document.getElementById('addedContacts').innerHTML += `<div class="firstLetters" style="background-color: ${letters[i]['color']};">${letter}</div>`;
+    }
+}
+
+
+function getnewValuesFromEdit() {
+    let titleValue = document.getElementById('titleInput').value;
+    let descriptionValue = document.getElementById('descriptionTextarea').value;
+    let dateValue = document.getElementById('datepicker').value;
+    let prioValue = selectedPrio;
+    let assignedToValue = selectedContactNames;
+    return { titleValue, descriptionValue, dateValue, prioValue, assignedToValue };
+}
+
+
+function getEditPopupVariables() {
+    let titleId = document.getElementById('titleInput');
+    let descriptionId = document.getElementById('descriptionTextarea');
+    let dateId = document.getElementById('datepicker');
+    let formId = document.getElementById('popupEditFormId');
+    let closeEditPopup = document.getElementById('boardPopupTaskEdit');
+    let closePopup = document.getElementById('boardPopupTask');
+    return { titleId, descriptionId, dateId, formId, closeEditPopup, closePopup };
 }
 
 
@@ -454,7 +521,7 @@ function openBoardTaskTemp(color, category, title, description, date, priority, 
                 alt=""></button>
         <!--Head area-->
         <h2 style="background-color: ${color};" class="task-head">${category}</h2>
-        <span class="popup-task-titel">${title}n</span>
+        <span class="popup-task-titel">${title}</span>
         <span class="popup-task-description">${description}</span>
         <!--Date-->
         <div class="cont-popup-details">
@@ -482,59 +549,5 @@ function openTaskAssignedToTemp(contact, bothFirstLetters, nameColor) {
         <div style="background-color: ${nameColor};" class="popup-assigned">${bothFirstLetters}</div>
         <span>${contact}</span>
     </div>
-    `;
-}
-
-
-function editPopupTaskTemp(color, category, title, description, date, priority, assignedTo, progress, index, urgent, medium, low) {
-    return `
-    <form onsubmit="openBoardTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${assignedTo}', '${progress}', '${index}')" class="contPopupEditTaskBoard" style="overflow: hidden;">
-        <!-- title -->
-        <div class="column title">
-            <span>Title</span>
-            <input value="${title}" required placeholder="Enter a title" type="text" onkeyup="addTitle()" id="titleInput">
-        </div>
-        <!-- description -->
-        <div class="column description">
-            <span>Description</span>
-            <textarea required placeholder="Enter a Description" type="text" onkeyup="addDescription()"
-                id="descriptionTextarea">${description}</textarea>
-        </div>
-        <!-- due date -->
-        <div class="column">
-            <span>Due date</span>
-            <input value="${date}" type="text" required placeholder="dd/mm/yyyy" id="datepicker"
-                pattern="\d{1,2}\/\d{1,2}\/\d{4}"
-                style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;">
-        </div>
-        <!-- prio -->
-        <div class="column">
-            <span>Prio</span>
-            <div class="prioButtons">
-                <div onclick="addPrio(0)" id="prioButton0" style="background-color:white;">Urgent <img
-                        id="prioImage0" src="assets/img/urgent_newTask.svg"></div>
-                <div onclick="addPrio(1)" id="prioButton1" style="background-color:white;">Medium <img
-                        id="prioImage1" src="assets/img/medium_newTask.svg"></div>
-                <div onclick="addPrio(2)" id="prioButton2" style="background-color:white;">Low <img
-                        id="prioImage2" src="assets/img/low_newTask.svg"></div>
-            </div>
-        </div>
-        <div class="column contacts">
-            <span>Assigned to</span>
-            <div class="selectField" id="selectFieldContact" onclick="openCloseContacts()">
-                <div class="selectContact" id="selectContact">
-                    <input id="contact" required placeholder="Select contacts to assign">
-                    <div id="contactImage"><img class="paddingRight" src="assets/img/arrow_drop.svg"></div>
-                </div>
-                <div class="d-none" id="openedContacts" onclick="notOpenCloseContacts(event)">
-                </div>
-            </div>
-            <div id="addedContacts"></div>
-        </div>
-        <button type="submit" class="create-new-contact-check">
-            OK <img src="./assets/img/contact_check.png" alt="">
-        </button>
-        <img onclick="closeEditTaskBoard()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
-    </form>
     `;
 }

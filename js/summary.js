@@ -70,7 +70,8 @@ function renderSummary() {
   let num_Urgent = document.getElementById("num-urgent");
   getAllUrgentTasks();
   num_Urgent.innerHTML = urgent_tasks.length;
-  createUrgentBox();
+  sortAllTasks();
+  createDeadlineBox();
   greetCurrentUser();
 }
 
@@ -165,6 +166,27 @@ function createUrgentBox() {
 }
 }
 
+/**function to render all urgent tasks on summary*/
+function createDeadlineBox() {
+  let urgenttasks_container = document.getElementById("deadline-container-box");
+  urgenttasks_container.innerHTML = "";
+  if(all_tasks.length==0){
+    urgenttasks_container.innerHTML = generateUrgentNullHTML();
+  }else{
+  for (let i = 0; i < all_tasks.length; i++) {
+    let isOver=compareIfOver(all_tasks[i]["date"]);
+    console.log(all_tasks[i]["date"]);
+    console.log(isOver);
+    if(!isOver){
+    let taskdate = constructDate(all_tasks[i]["date"]);
+    console.log(taskdate);
+    urgenttasks_container.innerHTML += generateUrgentHTML(i, taskdate);
+    break
+    }
+  }
+}
+}
+
 
 /**function to sort the tasks referring to their date */
 function sortAllUrgentTasks() {
@@ -181,6 +203,21 @@ function sortAllUrgentTasks() {
   console.log(urgent_tasks)
 }
 
+
+/**function to sort the tasks referring to their date */
+function sortAllTasks() {
+  let dates = [];
+  for (let i = 0; i < all_tasks.length; i++) {
+    dates.push(all_tasks[i]["date"]);
+  }
+  dates.sort(compareDate);
+  let tasksSorted = [];
+  for (let i = 0; i < dates.length; i++) {
+    tasksSorted.push(all_tasks.find((t) => t["date"] == dates[i]));
+  }
+ all_tasks = tasksSorted;
+  console.log(all_tasks)
+}
 
 /**
  * function to check if urgent task is already over
