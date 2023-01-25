@@ -35,9 +35,6 @@ async function loadContactsFromBackend() {
     if (!loadedContacts) {
         loadedContacts = [];
     };
-
-    console.log('Alle Kontakte', loadedContacts);
-    console.log('Alle Anfangsbuchstaben', letters);
 }
 
 
@@ -320,7 +317,7 @@ function openNewContactTemp() {
                 <form onsubmit="createNewContact();return false" class="cont-create-contact-input">
                     <input id="newContactNameValue" required placeholder="Vorname Nachname" pattern="[A-ZÄÜÖ][a-zäüö]* +[A-ZÄÜÖ][a-zäüö]*"  type="text" />
                     <input id="newContactMailValue" required placeholder="Email" type="email" />
-                    <input id="newContactPhoneValue" required placeholder="Phone" type="tel" />
+                    <input id="newContactPhoneValue" required placeholder="Phone" type="number" />
                     <div class="cont-create-contact-buttons">
                         <button type="reset" onclick="closeNewContact()" class="create-new-contact-deny">
                             Cancel <img src="./assets/img/contact_add_task.png" alt="">
@@ -358,7 +355,7 @@ function openEditContactTemp(contactName, contactMail, contactColor, contactPhon
                 <form onsubmit="editContactSave('${contactName}', '${contactMail}', '${contactPhone}');return false" class="cont-create-contact-input">
                     <input id="editContactNameValue" required value="${contactName}"  type="name" placeholder="Vorname Nachname" pattern="[A-ZÄÜÖ][a-zäüö]* +[A-ZÄÜÖ][a-zäüö]*" >
                     <input id="editContactMailValue" required value="${contactMail}" placeholder="Email" type="email">
-                    <input id="editContactPhoneValue" required value="${contactPhone}" placeholder="Phone" type="tel">
+                    <input id="editContactPhoneValue" required value="${contactPhone}" placeholder="Phone" type="number">
                     <div class="cont-create-contact-buttons">
                         <button type="submit" class="create-new-contact-check"> Save </button>
                     </div>
