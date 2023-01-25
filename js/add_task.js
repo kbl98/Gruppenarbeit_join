@@ -263,6 +263,7 @@ async function createTask() {
     date: selectedDate,
     prio: selectedPrio,
     subtasks: selectedSubtasks,
+    letters: selectedLetters,
     progress: 'todo'
   };
   await saveAllTasks(task);

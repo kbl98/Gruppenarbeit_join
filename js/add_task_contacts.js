@@ -81,7 +81,7 @@ function resetSelect(index, index2, i) {
 
 
 function select(contactID, i) {
-  document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`;
+  document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`; //macht Häkchen neben Kontakt
   selectedContactNames.push(contactID.innerHTML);
   selectedLetters.push(firstLetters[i]);
   document.getElementById('addedContacts').innerHTML = '';
