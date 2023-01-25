@@ -10,28 +10,38 @@ body {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
 
 .main-content-container {
   padding-top: 90px;
-  width: 100%;
+  max-width: 1440px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 232px;
+  padding-left: 355px;
 }
 
 #heading {
-  font-size: 25px;
-  padding-top: 80px;
-  padding-left: 100px;
-  padding-right: 200px;
+  font-size: px;
+  padding-top: 81px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+#blueline-head{
+  width: 0px;
+height: 59px;
+border: 3px solid #29ABE2;
+
+}
+#heading h1{
+  font-size:61px;
+  margin:unset;
+  padding-right:60px;
 }
 
 #subhead {
@@ -39,45 +49,44 @@ body {
 }
 
 .heading-add {
-  margin-left: 40px;
-  margin-bottom: 28px;
+  font-size:27px;
+  margin-left: 30px;
 }
 
 #task-container {
   display: flex;
-  width: 100%;
+  width:100%;
   justify-content: space-between;
-  padding-bottom: 50px;
-  height: 100%;
-  padding-left: 100px;
+  height: 550px;
+  margin-top: 87px;
 }
 
 #task-overview {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 70%;
+  width: 580px;
   height: 100%;
 }
 
 .greet-container {
-  width: 30%;
-  font-size: 50px;
+  width: 505px;
   display: flex;
   font-weight: bold;
-  justify-content: center;
+  justify-content:flex-start;
   align-items: flex-start;
   flex-direction: column;
-  margin-left: 60px;
-  padding-right: 100px;
+  margin-left: 67px;
+  padding-top:202px;
 }
 
 #greeting {
   text-align: left;
+  font-size:47px;
 }
 
 #greet-name {
-  font-size: 50px;
+  font-size: 64px;
   font-weight: bold;
   color: rgb(40, 171, 226);
 }
@@ -86,20 +95,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 30%;
+  height: 170px;
 }
 
 .progress {
-  height: 100%;
-  width: 30%;
-  border-radius: 10px;
+  height:170px;
+  width: 170px;
+  border-radius: 30px;
   background-color: white;
   color: rgb(43, 54, 71);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding-top: 21.5px;
+  padding-bottom: 21.5px;
+
   transition: all 100ms ease-in-out;
 }
 
@@ -112,9 +123,8 @@ body {
 }
 
 .progress span {
-  font-size: 50px;
-  font-weight: bold;
-  padding: 20px;
+  font-size: 64px;
+  font-weight: 600;
 }
 
 .progress p {
@@ -122,15 +132,16 @@ body {
 }
 
 .important-container {
-  height: 30%;
-  border-radius: 10px;
+  height: 170px;
+  border-radius: 30px;
   background-color: white;
   color: rgb(43, 54, 71);
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 100ms ease-in-out;
-  padding: 30px;
+  padding-left: 75px;
+  padding-right: 75px;
 }
 
 .important-container:hover {
@@ -152,12 +163,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: solid 2px rgb(245, 246, 247);
-  width: 55%;
+  width: 130px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  padding-top:auto;
+  padding-bottom:auto;
+  margin-right:62px;
 }
 
 #num-urgent {
@@ -168,12 +181,21 @@ body {
   padding-right: 20px;
 }
 
+#grey-line{
+  width: 0px;
+height: 102.02px;
+border: 2px solid #D1D1D1;
+}
+
+
 #deadline-container-box {
-  width: 75%;
+  width: 314px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-left:61px;
+  padding-right:75px;
 }
 
 .deadline-container {
@@ -181,18 +203,22 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
   height: 100px;
   text-align: center;
+  width:178px;
 }
 
 .deadline {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 21px;
+}
+
+.deadline-container p{
+  font-size:16px;
 }
 
 .todos-container {
-  height: 30%;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -203,19 +229,31 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left:32.5px;
 }
 
 .todo {
-  padding: 30px;
+  padding-top: 24px;
+  padding-bottom:24px;
   height: 100%;
-  width: 45%;
-  border-radius: 10px;
+  width: 272.5px;
+  border-radius: 30px;
   background-color: white;
   color: rgb(43, 54, 71);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   transition: all 100ms ease-in-out;
+}
+
+.todo span{
+  font-size: 64px;
+  font-weight:600;
+}
+
+.todo p{
+  font-weight:400;
+  font-size:21px;
 }
 
 .todo:hover {
@@ -231,13 +269,13 @@ body {
   font-size: 50px;
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1300px) {
   .main-content-container {
     width: 100%;
-    padding-right: 40px;
+    padding-left:250px;
   }
 
-  #heading {
+  /*#heading {
     font-size: 22px;
   }
 
@@ -248,12 +286,12 @@ body {
   .progress p {
     text-align: center;
     font-size: 16px;
-  }
+  }*/
 
 }
 
 @media screen and (max-width: 1170px) {
-  #heading {
+ /* #heading {
     padding-left: 60px;
   }
   #task-overview {
@@ -263,13 +301,12 @@ body {
 
   #task-container {
     padding-left: 60px;
-  }
+  }*/
 
   h1 {
     font-size: 45px;
   }
-  .greet-container {
-    padding: 1%;
+  #greeting{
     font-size: 45px;
   }
 
@@ -279,6 +316,7 @@ body {
 
 }
 @media screen and (max-width: 1100px) {
+
   #heading {
     font-size: 20px;
     padding-top: 60px;
@@ -289,8 +327,7 @@ body {
     font-size: 40px !important;
   }
 
-  .greet-container {
-    padding: 1%;
+  #greeting{
     font-size: 40px;
   }
 
@@ -371,6 +408,9 @@ body {
     margin-bottom: 15px;
   }
 
+  #blueline-head{
+    transform: rotate(90deg);
+  }
   .main-content-container {
     padding-left: 20px !important;
     padding-right: 20px;

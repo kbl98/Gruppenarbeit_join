@@ -32,6 +32,7 @@
         <div id="subhead">Kanban Management Tool</div>
         <div id="heading">
             <h1>Summary</h1>
+            <div id="blueline-head"></div>
             <div class="heading-add">Everything is a nutshell</div>
         </div>
 
@@ -42,15 +43,15 @@
                 <div class="progress-container" >
                     <div class="progress box-shadow" id="on-board" onclick="getToBoard()">
                         <span id="num-board">3</span>
-                        <p>Tasks in Board</p>
+                        <p>Tasks in<br>Board</p>
                     </div>
                     <div class="progress box-shadow" id="in-progress" onclick="getToBoard()">
                         <span id="num-progress">2</span>
-                        <p>Tasks in Progress</p>
+                        <p>Tasks in<br>Progress</p>
                     </div>
                     <div class="progress box-shadow" id="at-feedback" onclick="getToBoard()">
                         <span id="num-feedback">1</span>
-                        <p>Awaiting Feedback</p>
+                        <p>Awaiting<br>Feedback</p>
                     </div>
                 </div>
 <!-------------------------------------urgent-tasks------------------------------------------->
@@ -62,6 +63,7 @@
                         <p>Urgent</p>
                     </div>
                 </div>
+                <div id="grey-line"></div>
                     <div id="deadline-container-box">
                     <div id="" class="deadline-container" onclick="getToBoard()">
                         <span id="" class="deadline">15.Januar 2023, 15 Uhr</span>

@@ -4,11 +4,16 @@ body {
   height: 100vh;
   width: 100%;
   margin: 0;
+ 
+  font-family: "Inter";
+}
+
+.all-container{
   background-color: rgb(246, 247, 248);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Inter";
+  height:100vh;
 }
 
 #start-pic {
@@ -59,12 +64,19 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 600px;
-  height: 500px;
+  width: 652px;
   background-color: white;
   border-radius: 16px;
   box-shadow: 0px 2px 8px 0px rgba(128, 128, 128, 0.103);
-  padding: 20px;
+  padding-top:35px;
+  padding-bottom:35px;
+  padding-left: 115px;
+  padding-right: 115px;
+}
+
+h1{
+  font-size:61px;
+  margin:unset;
 }
 
 input {
@@ -72,7 +84,7 @@ input {
   border-radius: 4px;
   height: 35px;
   width: 450px;
-  margin-bottom: 20px;
+  margin-bottom: 49px;
 }
 
 form {
@@ -80,19 +92,16 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 80px;
-  padding-right: 80px;
+  
 }
 
-h1 {
-  margin-bottom: 28px;
-  font-size: 50px;
-}
+
 
 #blue-line {
-  height: 32px;
-  width: 70px;
-  border-top: solid 2px rgb(40, 171, 226);
+  width: 150px;
+  border-top: solid 3px rgb(40, 171, 226);
+  margin-top:24px;
+  margin-bottom:35px;
 }
 .mail-input {
   background-image: url("../assets/img/email-icon.svg");
@@ -120,6 +129,9 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   width: 300px;
+  margin-top:6px;
+  margin-left:43.5px;
+  margin-right:43.5px;
 }
 
 #passwordreg-toggle{
@@ -143,9 +155,10 @@ cursor: pointer;
 
 #btn-box {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-  width: 300px;
+  justify-content: center;
+  margin-top: 35px;
+  width: 342px;
+  gap:20px;
 }
 
 .login-btn {
@@ -156,7 +169,8 @@ cursor: pointer;
   padding: 12px;
   font-size: 16px;
   border: transparent;
-  min-width: 100px;
+  min-width: 145px;
+  height:51px;
 }
 
 .login-btn:hover {
@@ -170,13 +184,15 @@ cursor: pointer;
   border: solid 1px rgb(43, 54, 71);
   border-radius: 5px;
   cursor: pointer;
-  width: 100px;
-  height: 40px;
+  width: 145px;
+  height: 51px;
   display: flex;
   align-items: center;
-  padding-right: 10px;
-  padding-left: 10px;
   font-size: 16px;
+  padding:auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #guest-btn:hover {
