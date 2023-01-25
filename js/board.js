@@ -217,6 +217,12 @@ function openBoardTask(color, category, title, description, date, priority, assi
 }
 
 
+function closeBoardTask() {
+    let closePopup = document.getElementById('boardPopupTask');
+    closePopup.classList.add('d-none');
+}
+
+
 /**
  * render assigned to names in openBoardTask()
  * 
@@ -233,13 +239,15 @@ function openTaskAssignedTo(assignedTo) {
 }
 
 
-function closeBoardTask() {
-    let closePopup = document.getElementById('boardPopupTask');
-    closePopup.classList.add('d-none');
-}
-
-
-function editPopupTask(color, category, title, description, date, priority, priorityColor, progress, index) {
+/**
+ * opens and render popup window to edit task
+ * 
+ * @param {string} title includes current task title
+ * @param {string} description includes current task description
+ * @param {string} date includes current task date example "22/10/2022"
+ * @param {number} index includes index number of current task
+ */
+function editPopupTask(title, description, date, index) {
     let { titleId, descriptionId, dateId, formId, closeEditPopup, closePopup } = getEditPopupVariables();
     let currentTask = loadedBoard[index];
     let prioIndex = getPrioIndexEdit(currentTask);
@@ -255,6 +263,10 @@ function editPopupTask(color, category, title, description, date, priority, prio
 }
 
 
+/**
+ * 
+ * @param {number} index includes index number of current task
+ */
 async function saveEditPopupBoard(index) {
     let { titleValue, descriptionValue, dateValue, prioValue, assignedToValue } = getnewValuesFromEdit();
     loadedBoard[index].title = titleValue;
@@ -263,19 +275,19 @@ async function saveEditPopupBoard(index) {
     loadedBoard[index].date = dateValue;
     loadedBoard[index].prio = prioValue;
     await boardSaveToBackend();
-    closeEditTask();
+    closeEditedTask();
     initBoard();
 }
 
 
-function closeEditTask() {
+function closeEditedTask() {
     let closeEditPopup = document.getElementById('boardPopupTaskEdit');
     closeEditPopup.classList.add('d-none');
     resetVariables();
 }
 
 
-function closeEditTaskBoard() {
+function cancleEditTask() {
     let closeEditPopup = document.getElementById('boardPopupTaskEdit');
     closeEditPopup.classList.add('d-none');
     let closePopup = document.getElementById('boardPopupTask');
@@ -284,6 +296,10 @@ function closeEditTaskBoard() {
 }
 
 
+/**
+ * 
+ * @param {string} param includes onclicked progress as parameter
+ */
 function addTaskBoard(param) {
     let addTaskId = document.getElementById('popupAddTaskBoard');
     let formId = document.getElementById('popupAddTastBoardForm');
@@ -298,6 +314,11 @@ function closeAddTaskBoard() {
 }
 
 
+/**
+ * add all current assignedTo contacts for edit popup
+ * 
+ * @param {number} index includes index number of current task
+ */
 function addContactLoop(index) {
     let contacts = loadedBoard[index]['contactNames'];
     for (let i = 0; i < contacts.length; i++) {
@@ -306,16 +327,10 @@ function addContactLoop(index) {
 }
 
 
-function setAssignedToContacts(index) {
-    let letters = loadedBoard[index]['letters'];
-    document.getElementById('addedContacts').innerHTML = '';
-    for (let i = 0; i < letters.length; i++) {
-        const letter = letters[i]['bothLetters'];
-        document.getElementById('addedContacts').innerHTML += `<div class="firstLetters" style="background-color: ${letters[i]['color']};">${letter}</div>`;
-    }
-}
-
-
+/**
+ * 
+ * @returns all new values from edited Task
+ */
 function getnewValuesFromEdit() {
     let titleValue = document.getElementById('titleInput').value;
     let descriptionValue = document.getElementById('descriptionTextarea').value;
@@ -337,6 +352,11 @@ function getEditPopupVariables() {
 }
 
 
+/**
+ * 
+ * @param {array} currentTask includes current task array
+ * @returns priority index number
+ */
 function getPrioIndexEdit(currentTask) {
     let prio = currentTask['prio'];
     let prioIndex;
@@ -353,6 +373,10 @@ function getPrioIndexEdit(currentTask) {
 }
 
 
+/**
+ * 
+ * @param {string} param includes onclicked progress as parameter
+ */
 async function createTaskBoard(param) {
     if (param == 'undefined') {
         param = 'todo'
@@ -517,7 +541,7 @@ function openBoardTaskTemp(color, category, title, description, date, priority, 
     <div class="cont-popup-board-task">
         <!--buttons-->
         <img onclick="closeBoardTask()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
-        <button onclick="editPopupTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${priorityColor}', '${progress}', '${index}')" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
+        <button onclick="editPopupTask('${title}', '${description}', '${date}', '${index}')" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
                 alt=""></button>
         <!--Head area-->
         <h2 style="background-color: ${color};" class="task-head">${category}</h2>
