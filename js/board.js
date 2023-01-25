@@ -11,11 +11,9 @@ async function initBoard() {
     await getCurrentUserFromStorage();
     await loadTasks();
     await loadContacts();
-    renderAllContacts()
     renderBoard();
     setUserImg();
     checkForColor();
-    addPrio(0);
     datepicker();
 }
 
@@ -100,8 +98,8 @@ function renderSearchedTasks(contactProgress, progressId, search) {
     let length = loadedBoard.length - 1;
     for (let i = length; i >= 0; i--) {
         const currentProgress = loadedBoard[i]['progress'];
-        let contactTitel = loadedBoard[i]['title'];
-        let contactDescription = loadedBoard[i]['description'];
+        let contactTitel = loadedBoard[i]['title'].toLowerCase();
+        let contactDescription = loadedBoard[i]['description'].toLowerCase();
         if (currentProgress.includes(contactProgress) && contactTitel.includes(search) || contactDescription.includes(search)) {
             renderBoardFiltered(i, progressId);
         }
@@ -247,7 +245,9 @@ function openTaskAssignedTo(assignedTo) {
  * @param {string} date includes current task date example "22/10/2022"
  * @param {number} index includes index number of current task
  */
-function editPopupTask(title, description, date, index) {
+async function editPopupTask(title, description, date, index) {
+    let id = 'w3-include-html-edit-task';
+    await includeHTMLForBoard(id);
     let { titleId, descriptionId, dateId, formId, closeEditPopup, closePopup } = getEditPopupVariables();
     let currentTask = loadedBoard[index];
     let prioIndex = getPrioIndexEdit(currentTask);
@@ -256,9 +256,11 @@ function editPopupTask(title, description, date, index) {
     titleId.value = (`${title}`);
     descriptionId.innerHTML = `${description}`;
     dateId.value = (`${date}`);
-    formId.setAttribute("onsubmit", "saveEditPopupBoard('"+ index +"');return false;");
+    formId.setAttribute("onsubmit", "saveEditPopupBoard('" + index + "');return false;");
+    renderAllContacts();
     addContactLoop(index);
     datepicker();
+    renderAllContacts();
     addPrio(prioIndex);
 }
 
@@ -284,6 +286,7 @@ function closeEditedTask() {
     let closeEditPopup = document.getElementById('boardPopupTaskEdit');
     closeEditPopup.classList.add('d-none');
     resetVariables();
+    document.getElementById('includeHTMLEdit').innerHTML = '';
 }
 
 
@@ -293,6 +296,7 @@ function cancleEditTask() {
     let closePopup = document.getElementById('boardPopupTask');
     closePopup.classList.remove('d-none');
     resetVariables();
+    document.getElementById('includeHTMLEdit').innerHTML = '';
 }
 
 
@@ -300,15 +304,20 @@ function cancleEditTask() {
  * 
  * @param {string} param includes onclicked progress as parameter
  */
-function addTaskBoard(param) {
+async function addTaskBoard(param) {
+    let id = 'w3-include-html-add-task';
+    await includeHTMLForBoard(id);
     let addTaskId = document.getElementById('popupAddTaskBoard');
     let formId = document.getElementById('popupAddTastBoardForm');
     addTaskId.classList.remove('d-none');
-    formId.setAttribute("onsubmit", "createTaskBoard('"+ param +"');return false;");
+    formId.setAttribute("onsubmit", "createTaskBoard('" + param + "');return false;");
+    renderAllContacts();
+    datepicker();
 }
 
 
 function closeAddTaskBoard() {
+    document.getElementById('includeHTMLAdd').innerHTML = '';
     let addTaskId = document.getElementById('popupAddTaskBoard');
     addTaskId.classList.add('d-none');
 }
@@ -322,7 +331,68 @@ function closeAddTaskBoard() {
 function addContactLoop(index) {
     let contacts = loadedBoard[index]['contactNames'];
     for (let i = 0; i < contacts.length; i++) {
-        addContact(i);
+        let contact = loadedBoard[index]['contactNames'][i];
+        let contactId = getContactId(contact);
+        addContactBoard(contactId);
+    }
+}
+
+
+/**
+ * function to add/delete a existing contact to/from the array ""selectedContactNames"
+ * 
+ * @param {number} i - number to get the correct contact
+ */
+function addContactBoard(i) {
+    let contactID = document.getElementById('contact' + i);
+    let index = selectedContactNames.indexOf(contactID.innerHTML);
+    let index2 = selectedLetters.findIndex(obj => obj.bothLetters == firstLetters[i]['bothLetters']);
+    if (index > -1) {
+        resetSelectBoard(index, index2, i);
+    } else {
+        selectBoard(contactID, i);
+    };
+    if (!(selectedContactNames == '')) {
+        document.getElementById('contact').value = 'Contacts selected';
+    } else {
+        document.getElementById('contact').value = '';
+    }
+}
+
+
+function resetSelectBoard(index, index2, i) {
+    document.getElementById('contactButton' + i).innerHTML = '';
+    selectedContactNames.splice(index, 1);
+    selectedLetters.splice(index2, 1);
+    document.getElementById('addedContacts').innerHTML = '';
+    for (let x = 0; x < selectedLetters.length; x++) {
+        const selectedLetter = selectedLetters[x]['bothLetters'];
+        document.getElementById('addedContacts').innerHTML += `<div class="firstLetters" style="background-color: ${selectedLetters[x]['color']};">${selectedLetter}</div>`;
+    }
+}
+
+
+function getContactId(contact) {
+    let contactId;
+    for (let i = 0; i < allContacts.length; i++) {
+        let currentContact = allContacts[i].name;
+        if (currentContact.includes(contact)) {
+            contactId = i
+            break;
+        }
+    }
+    return contactId;
+}
+
+
+function selectBoard(contactID, i) {
+    document.getElementById('contactButton' + i).innerHTML = `<img src="assets/img/button_rectangle.svg">`; //macht Häkchen neben Kontakt
+    selectedContactNames.push(contactID.innerHTML);
+    selectedLetters.push(firstLetters[i]);
+    document.getElementById('addedContacts').innerHTML = '';
+    for (let x = 0; x < selectedLetters.length; x++) {
+        const selectedLetter = selectedLetters[x]['bothLetters'];
+        document.getElementById('addedContacts').innerHTML += `<div class="firstLetters" style="background-color: ${selectedLetters[x]['color']};">${selectedLetter}</div>`;
     }
 }
 
@@ -413,9 +483,9 @@ function showDivWithTransition() {
                 setTimeout(function () {
                     div.style.display = "none";
                 }, 1000);
-            }, 5000);
-        }, 1000);
-    }, 1000);
+            }, 2000);
+        }, 100);
+    }, 100);
 }
 
 
@@ -514,6 +584,21 @@ function checkForColor() {
             let randomColor = getRandomColor();
             let newObjekt = { name: name, email: email, phone: phone, color: randomColor };
             loadedContacts.splice(i, 1, newObjekt);
+        }
+    }
+}
+
+
+async function includeHTMLForBoard(id) {
+    let includeElements = document.querySelectorAll(`[${id}]`);
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute(`${id}`); // "includes/header.html"
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
         }
     }
 }

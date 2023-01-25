@@ -278,7 +278,7 @@ body {
     font-size: 21px;
     gap: 10px;
     overflow: auto;
-    width: 80%;
+    width: 100%;
 }
 
 .popup-date {
@@ -438,4 +438,8 @@ body {
 
 #descriptionTextarea {
     height: 100px;
+}
+
+.newSubtask {
+    padding-bottom: unset !important;
 }
