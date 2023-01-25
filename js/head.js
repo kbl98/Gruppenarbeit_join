@@ -3,6 +3,7 @@ function logout() {
   document.getElementById("popup-logout").classList.add("d-none");
   resetUser();
   unstoreSession();
+  deleteRemember();
   window.location.href = "login.html";
 }
 
@@ -61,4 +62,13 @@ function createUserPic() {
     return `${part1}`;
         }
     }
+}
+
+
+function locateToLegalNote() {
+  window.location.href = "legalnotice.html";
+}
+
+function locateToHelp() {
+  window.location.href = "help.html";
 }

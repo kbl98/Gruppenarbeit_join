@@ -25,6 +25,8 @@
 <!------------------------------------templates nav and head--------------------------------->
         <div w3-include-html="assets/templates/nav.html"></div>
         <div w3-include-html="assets/templates/head.html"></div>
+<!-----------------------------------popmessage---------------------------------------------->
+
 
 <!------------------------------------summary of tasks--------------------------------------->
       <div id="summary-container" class="main-content-container">
@@ -48,6 +50,9 @@
                     <div class="progress box-shadow" id="in-progress" onclick="getToBoard()">
                         <span id="num-progress">2</span>
                         <p>Tasks in<br>Progress</p>
+                        <div id="popmessage" class="small" onmouseenter="raise()" onmouseleave="toSmall()">
+    
+                        </div>
                     </div>
                     <div class="progress box-shadow" id="at-feedback" onclick="getToBoard()">
                         <span id="num-feedback">1</span>

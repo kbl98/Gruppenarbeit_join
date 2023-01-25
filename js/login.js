@@ -94,6 +94,7 @@ async function getUsers() {
     document.getElementById("password-login").value=pw;
     removeJustRegistrated();
   }
+  rememberToForm();
 }
 
 
@@ -104,6 +105,7 @@ async function getUsers() {
 async function getCurrentUser() {
   let logname = document.getElementById("mail-login");
   let logpassword = document.getElementById("password-login");
+  
   current_user = users.find(
     (u) => u.password == logpassword.value && u.email == logname.value
   );
@@ -113,6 +115,7 @@ async function getCurrentUser() {
   } else {
     removeTrys();
     setCurrentUserToLocal(current_user);
+    checkRemember(logname.value,logpassword.value);
     window.location.href = "summary.html";
   }
 }
@@ -538,6 +541,39 @@ function removeTrys(){
   sessionStorage.removeItem("trynumber");
 }
 
+
+function checkRemember(logname,logpassword){
+  if (document.getElementById("rememberme").checked==true){
+    setRemember(logname,logpassword);
+  }
+  }
+
+  function setRemember(logname,logpassword){
+    localStorage.setItem("current_logname",logname);
+    localStorage.setItem("current_password",logpassword);
+    
+  }
+
+  function getRememberName(){
+    return localStorage.getItem("current_logname");
+   
+  }
+
+  function getRememberPW(){
+   return localStorage.getItem("current_password");
+  }
+
+  function deleteRemember(){
+      localStorage.removeItem("current_logname");
+      localStorage.removeItem("current_password");
+  }
+
+  function rememberToForm(){
+    if(getRememberName()){
+      document.getElementById("mail-login").value=getRememberName();
+      document.getElementById("password-login").value=getRememberPW();
+    }
+  }
 
 
 

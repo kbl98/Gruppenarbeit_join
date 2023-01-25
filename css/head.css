@@ -16,14 +16,14 @@
   height: 90px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
   z-index: 10;
-  font-size:21px;
-  font-weight:400;
-  max-width:1208;
-  padding-left:116px;
+  font-size: 21px;
+  font-weight: 400;
+  max-width: 1208;
+  padding-left: 116px;
 }
 
-#head p{
-  margin:unset;
+#head p {
+  margin: unset;
 }
 
 #user-container {
@@ -80,25 +80,42 @@
   margin-top: 90px;
 }
 
-#popup-logout p {
-  z-index: 3;
-  margin-right: 50px;
+.logout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   padding: 20px;
   background-color: rgb(43, 54, 71);
+}
+
+#popup-logout p {
+  z-index: 3;
+  margin-right: 50px;
+  margin-bottom: 2px;
   text-align: center;
   color: white;
   display: flex;
   align-items: flex-end;
-  font-size: 20px;
+  font-size: 16px;
   justify-content: flex-end;
   cursor: pointer;
+  font-weight: 400;
+}
+
+#popup-logout p:hover {
+  color: #a7a9ac;
 }
 
 #logo-head-mobil {
   display: none;
+}
+
+.menuPopMobil {
+  display: none !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -110,9 +127,14 @@
 @media screen and (max-width: 1000px) {
   #head {
     left: 160px;
+    height: 80px;
   }
 }
 @media screen and (max-width: 850px) {
+  .menuPopMobil {
+    display: unset !important;
+  }
+
   #popup-logout {
     margin-top: 70px;
   }

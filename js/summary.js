@@ -423,7 +423,7 @@ function timeGreet(){
 
 function handleMediaSize(){
   let session=sessionStorage.getItem("session");
-  if (window.innerWidth < 850){
+  if (window.innerWidth < 1100){
     if(!session){
   showGreet()
   setTimeout(resizeElements,2000)
@@ -440,11 +440,22 @@ function handleMediaSize(){
 
 function resizeElements(){
   let greetcontainer=document.getElementById("greet-container");
-  if(greetcontainer.classList.contains("d-none") && window.innerWidth>850){
+  if(greetcontainer.classList.contains("d-none") && window.innerWidth>1100){
       greetcontainer.classList.remove("d-none")
     }
-    if(!greetcontainer.classList.contains("d-none") && window.innerWidth<=850){
+    if(!greetcontainer.classList.contains("d-none") && window.innerWidth<=1100){
       greetcontainer.classList.add("d-none")
   }
+}
+
+
+function raise(){
+  document.getElementById("popmessage").classList.remove("small");
+  document.getElementById("popmessage").classList.add("big");
+}
+
+function toSmall(){
+  document.getElementById("popmessage").classList.add("small");
+  document.getElementById("popmessage").classList.remove("big");
 }
 

@@ -127,7 +127,7 @@ form {
 
 .help-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 300px;
   margin-top:6px;
   margin-left:43.5px;
@@ -136,6 +136,23 @@ form {
 
 #passwordreg-toggle{
 cursor: pointer;
+}
+
+.container-rember{
+  display:flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+#rememberme{
+  width:16px;
+  height:16px;
+  margin-right:10px;
+  margin-left:0;
+  margin-bottom: 0;
+  margin-top: 0;
+  cursor: pointer;
 }
 
 .password-toggle {
@@ -398,6 +415,14 @@ button {
   #forgot-head {
     text-align: center;
   }
+
+  .container-rember {
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left:10px;
+}
 
   #new-password {
     margin-left: 10px;

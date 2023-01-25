@@ -39,25 +39,27 @@
           placeholder="Passwort"
         />
         <div class="help-container">
-          <p
+          <!--<p
             id="passwordlog-toggle"
             class="password-toggle"
             onclick="togglePassword('password-login','passwordlog-toggle')"
           >
             Passwort zeigen
-          </p>
+          </p>-->
+          <div class="container-rember">
+            <input id="rememberme" type="checkbox"><p>Remember me</p> 
+          </div>
           <a id="new-password" href="forgot_password.html"
             >Passwort vergessen</a
           >
         </div>
         <div id="btn-box">
           <button id="login-btn" class="login-btn">LogIn</button>
-
           <div id="guest-btn" onclick="guestLogin()">Guest LogIn</div>
         </div>
       </form>
     </div>
-    </div>
+  </div>
       <!--------------------------popup-------------------------------------------------------->
       <div id="popup-trys" class="d-none popup-user">
         <p class="popup-user-p">Nutzer nicht bekannt!<br>Bitte registrieren...</p>
