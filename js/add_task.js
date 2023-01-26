@@ -232,14 +232,18 @@ function resetContent() {
   document.getElementById('datepicker').value = '';
   document.getElementById('newSubtasks').innerHTML = '';
   document.getElementById('newSubtaskInput').value = '';
- 
+  document.getElementById('contact').value = '';
 }
 
 /**
  * function to close the opened-categories-field
  */
 function closeCategories() {
-  document.getElementById('selectField').style.height = '53px';
+  if ($(window).width() > 720) {
+    document.getElementById('selectField').style.height = '53px';
+  } else {
+    document.getElementById('selectField').style.height = '43px';
+  }
   document.getElementById('openedCategories').classList.add('d-none');
 }
 
@@ -247,7 +251,12 @@ function closeCategories() {
  * function to close the opened-contacts-field
  */
 function closeContacts() {
-  document.getElementById('selectFieldContact').style.height = '53px';
+  if ($(window).width() > 720) {
+    document.getElementById('selectFieldContact').style.height = '53px';
+  } else {
+    document.getElementById('selectFieldContact').style.height = '43px';
+
+  }
   document.getElementById('openedContacts').classList.add('d-none');
 }
 

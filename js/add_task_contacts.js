@@ -104,7 +104,7 @@ function openCloseContacts() {
     }
     document.getElementById('openedContacts').classList.add('d-none');
   } else {
-    document.getElementById('selectFieldContact').style.height = '147px';
+    document.getElementById('selectFieldContact').setAttribute('style', 'height: 147px !important;')
     setTimeout(function () {
       document.getElementById('openedContacts').classList.remove('d-none');
     }, 150)

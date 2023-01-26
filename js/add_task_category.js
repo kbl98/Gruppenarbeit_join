@@ -104,17 +104,27 @@ function openCloseCategories() {
     document.getElementById('selectField').style.height = '53px';
     } else {
       document.getElementById('selectField').style.height = '43px';
-
     }
     document.getElementById('openedCategories').classList.add('d-none');
   } else {
-    document.getElementById('selectField').style.height = '192px';
+    document.getElementById('selectField').setAttribute('style', 'height: 192px !important;');
     setTimeout(function () {
       document.getElementById('openedCategories').classList.remove('d-none');
     }, 150)
   }
   disableInput();
 }
+
+
+// function checkMediaQuery() {
+//   if ((window.innerWidth == 715) || (window.innerWidth == 725)) {
+//     console.log('bigscreen');
+//     openCloseCategories();
+//   }
+// }
+
+
+// window.addEventListener('resize', checkMediaQuery);
 
 
 /**
