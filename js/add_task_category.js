@@ -100,7 +100,12 @@ function acceptNewCategory() {
  */
 function openCloseCategories() {
   if (document.getElementById('selectField').style.height == '192px') {
-    document.getElementById('selectField').style.height = '51px';
+    if ($(window).width() > 720) {
+    document.getElementById('selectField').style.height = '53px';
+    } else {
+      document.getElementById('selectField').style.height = '43px';
+
+    }
     document.getElementById('openedCategories').classList.add('d-none');
   } else {
     document.getElementById('selectField').style.height = '192px';

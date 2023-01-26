@@ -97,7 +97,11 @@ function select(contactID, i) {
  */
 function openCloseContacts() {
   if (document.getElementById('selectFieldContact').style.height == '147px') {
-    document.getElementById('selectFieldContact').style.height = '51px';
+    if ($(window).width() > 720) {
+      document.getElementById('selectFieldContact').style.height = '53px';
+    } else {
+      document.getElementById('selectFieldContact').style.height = '43px';
+    }
     document.getElementById('openedContacts').classList.add('d-none');
   } else {
     document.getElementById('selectFieldContact').style.height = '147px';

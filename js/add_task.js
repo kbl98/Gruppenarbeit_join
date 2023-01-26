@@ -239,7 +239,7 @@ function resetContent() {
  * function to close the opened-categories-field
  */
 function closeCategories() {
-  document.getElementById('selectField').style.height = '51px';
+  document.getElementById('selectField').style.height = '53px';
   document.getElementById('openedCategories').classList.add('d-none');
 }
 
@@ -247,7 +247,7 @@ function closeCategories() {
  * function to close the opened-contacts-field
  */
 function closeContacts() {
-  document.getElementById('selectFieldContact').style.height = '51px';
+  document.getElementById('selectFieldContact').style.height = '53px';
   document.getElementById('openedContacts').classList.add('d-none');
 }
 

@@ -13,6 +13,9 @@ body {
   font-size: 61px;
   margin-bottom: 50px;
 }
+.aboutHeadline {
+  display: none;
+}
 .addTask {
   display: flex;
   justify-content: space-between;
@@ -21,7 +24,7 @@ body {
   left: calc(232px + 10%);
   max-height: calc(100vH - 90px);
   width: calc(100% - 232px - 10% - 10%);
-  padding-top: 50px;
+  padding-top: 80px;
 }
 .column {
   display: flex;
@@ -76,7 +79,7 @@ body {
 
 /* fields */
 input{
-  height: 49px;
+  height: 51px;
   padding: 0 21px 0 21px;
   font-size: 21px;
   border: 1px solid #D1D1D1;
@@ -88,12 +91,14 @@ input::placeholder {
 textarea:focus, input:focus, select:focus {
   outline: none;
 }
-
+form span {
+  font-weight: 500;
+}
 
 /* DESCRIPTION */
 textarea {
   width: 422px;
-  height: 80.81px;
+  height: 119px;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   font-family: arial;
@@ -109,7 +114,6 @@ textarea::placeholder {
 
 /* CATEGORY */
 .selectField {
-  height: 51px;
   font-size: 21px;
   border-radius: 10px;
   border: 1px solid #D1D1D1;
@@ -120,7 +124,7 @@ textarea::placeholder {
   z-index: 800;
 }
 .selectCategory {
-  height: 49px;
+  height: 51px;
   position: sticky;
   top: 0;
   display: flex;
@@ -301,7 +305,7 @@ textarea::placeholder {
 
 /* middle */
 .imageLine {
-  height: 450px;
+  height: 500px;
   width: 10px;
   margin-top: 120px;
 }
@@ -318,13 +322,16 @@ textarea::placeholder {
 /* BUTTONS CLEAR CREATE */
 .ccButtons {
   display: flex;
-  margin-top: 50px;
+  justify-content: flex-end;
+  margin-top: 160px;
+  
 }
 .ccButtons div {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 61px;
+  width: 130px;
   font-size: 21px;
   border-radius: 10px;
   border: 1px solid #2a3647;
@@ -333,7 +340,11 @@ textarea::placeholder {
   cursor: pointer;
 }
 .ccButtons button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 61px;
+  width: 177px;
   font-size: 21px;
   border-radius: 10px;
   border: 1px solid #2a3647;
@@ -417,6 +428,7 @@ textarea {
   .addTask {
     left: 5%;
     width: calc(100% - 5% - 5%);
+    padding-top: 30px;
   }
   .info {
     left: calc(50% - 163px);
@@ -424,7 +436,7 @@ textarea {
 }
 
 
-@media (max-width: 690px) {
+@media (max-width: 720px) {
   .addTask {
     display: flex;
     flex-direction: column;
@@ -436,12 +448,28 @@ textarea {
     width: 100%;
     padding-top: 20px;
   }
+  input {
+    height: 41px;
+  }
+  textarea {
+    height: 93px;
+  }
+  .prioButtons div {
+    height: 41px;
+  }
+  .selectCategory {
+    height: 41px;
+  }
   #newSubtasks {
     margin-bottom: 70px;
   }
   .addTask h1 {
-    font-size: 55px;
-    text-align: center;
+    font-size: 47px;
+    margin-bottom: 20px;
+  }
+  .aboutHeadline {
+    display: flex;
+    font-size: 16px;
     margin-bottom: 20px;
   }
   .imageLine {
@@ -454,25 +482,20 @@ textarea {
   }
   .ccButtons {
     position: absolute;
-    top: -130px;
+    top: -240px;
     right: 5px;
     z-index: 900;
   }
   .ccButtons button {
-    height: 50px;
+    height: 51px;
+    width: 124px;
   }
   .ccButtons div {
-    height: 50px;
+    height: 51px;
+    width: 100px;
   }
-}
-
-
-@media (max-width: 380px) {
-  .ccButtons button {
-    font-size: 16px;
-  }
-  .ccButtons div {
-    font-size: 16px;
+  .ccButtons t {
+    display: none;
   }
 }
 
@@ -533,15 +556,16 @@ textarea {
   .ccButtons img {
     height: 11px;
     width: 11px;
-    margin-left: 5px;
+    margin: 0 0 0 4px;
   }
   .ccButtons button {
-    width: 115px;
-    font-size: 14px;
+    width: 90px;
+    font-size: 16px;
     margin-left: 10px;
   }
   .ccButtons div {
-    font-size: 14px;
+    font-size: 16px;
+    width: 80px;
   }
   .addTaskRight {
     align-items: center;
