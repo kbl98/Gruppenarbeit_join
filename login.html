@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/login.css" />
     <script src="js/mini_backend.js"></script>
   </head>
-  <body onload="getUsers()">
+  <body onload="getUsers(),remberValueInLogin()">
     <img id="start-pic" class="logo-small" src="assets/img/logo_main.svg" />
     <div class="all-container">
     <div id="newuser-container">
@@ -31,13 +31,16 @@
           type="email"
           placeholder="E-mail"
         />
+        <div id="password-cont">
+          <img id="eyelock" src="../assets/img/password-icon.svg" onclick="getValueLogin('password-login')">
         <input
           id="password-login"
           class="password-input"
           required
           type="password"
           placeholder="Passwort"
-        />
+         />
+      </div>
         <div class="help-container">
           <!--<p
             id="passwordlog-toggle"

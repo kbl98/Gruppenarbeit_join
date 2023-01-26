@@ -74,6 +74,10 @@ async function getUsers() {
   await downloadFromServer();
   users = JSON.parse(backend.getItem("users")) || [];
   loadedContacts = JSON.parse(backend.getItem("contacts")) || [];
+  
+}
+
+function remberValueInLogin(){
   rememberToForm();
   let email=getJustRegistratedEmail();
   let pw=getJustRegistratedPW();
@@ -83,7 +87,6 @@ async function getUsers() {
     removeJustRegistrated();
   }
 }
-
 
 /**
  * function to find the logged User 
@@ -577,11 +580,72 @@ function checkRemember(logname,logpassword){
 
 
   function rememberToForm(){
+    let namevalue=getRememberName();
+    let pwvalue=getRememberPW();
     if(getRememberName()){
-      document.getElementById("mail-login").value=getRememberName();
-      document.getElementById("password-login").value=getRememberPW();
+      document.getElementById("mail-login").value=namevalue;
+      document.getElementById("password-login").value=pwvalue;
     }
   }
 
+  function getValueLogin(id){
+    changePic(id);
+    checkValuePic();
+    
+  }
+
+  function changePic(id){
+    let eye=document.getElementById("eyelock");
+    if(eye.getAttribute("src")=="../assets/img/password-icon.svg"){
+    eye.setAttribute("src","../assets/img/eyeopen.svg");
+    }else if(eye.getAttribute("src")=="../assets/img/eyeopen.svg"){
+    eye.setAttribute("src","../assets/img/eyeclosed.svg");
+    } else{
+  eye.setAttribute("src","../assets/img/password-icon.svg")
+    }
+    setTypePassword(id);
+  }
+
+  function setTypePassword(id){
+    let eye=document.getElementById("eyelock").getAttribute("src");
+    if (eye=="../assets/img/eyeopen.svg"){
+        document.getElementById(id).setAttribute("type","text");
+    }else{
+      document.getElementById(id).setAttribute("type","password")
+    }
+  }
+
+  function checkValuePic(){
+    let eye=document.getElementById("eyelock").getAttribute("src");
+    if(eye=="../assets/img/password-icon.svg"){
+      renderValueLogin();
+    }
+  }
+
+  function cleanLogin(){
+    document.getElementById("mail-login").value="";
+    document.getElementById("password-login").value="";
+  }
+
+  function renderValueLogin(){
+    let name=getRememberName();
+    let pw=getRememberPW();
+    if(name && isNoValue()){
+      document.getElementById("mail-login").value=name;
+      document.getElementById("password-login").value=pw;
+    }
+  }
+
+  function isNoValue(){
+    if( document.getElementById("mail-login").value=="" ||
+    document.getElementById("password-login").value==""){
+      return true
+    }
+  }
+
+ 
+
+
+  
 
 
