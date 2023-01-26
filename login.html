@@ -23,8 +23,8 @@
     <div id="login-container">
       <h1>Log In</h1>
       <div id="blue-line"></div>
-      <form onsubmit="getCurrentUser();return false">
-        <input
+      <form onsubmit="getCurrentUser();return false" onclick="cleanLogin('mail-login','password-login')">
+        <input onclick="event.stopPropagation()"
           id="mail-login"
           class="mail-input"
           required
@@ -32,8 +32,8 @@
           placeholder="E-mail"
         />
         <div id="password-cont">
-          <img id="eyelock" src="../assets/img/password-icon.svg" onclick="getValueLogin('password-login')">
-        <input
+          <img id="eyelock" src="../assets/img/password-icon.svg" onclick="event.stopPropagation(); getValueLogin('password-login')">
+        <input onclick="event.stopPropagation()"
           id="password-login"
           class="password-input"
           required
@@ -50,15 +50,15 @@
             Passwort zeigen
           </p>-->
           <div class="container-rember">
-            <input id="rememberme" type="checkbox"><p>Remember me</p> 
+            <input id="rememberme" type="checkbox" onclick="event.stopPropagation()"><p>Remember me</p> 
           </div>
-          <a id="new-password" href="forgot_password.html"
+          <a id="new-password" href="forgot_password.html" onclick="event.stopPropagation()"
             >Passwort vergessen</a
           >
         </div>
         <div id="btn-box">
-          <button id="login-btn" class="login-btn">LogIn</button>
-          <div id="guest-btn" onclick="guestLogin()">Guest LogIn</div>
+          <button onclick="event.stopPropagation()" id="login-btn" class="login-btn">LogIn</button>
+          <div id="guest-btn" onclick="event.stopPropagation();guestLogin()">Guest LogIn</div>
         </div>
       </form>
     </div>

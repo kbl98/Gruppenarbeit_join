@@ -622,9 +622,12 @@ function checkRemember(logname,logpassword){
     }
   }
 
-  function cleanLogin(){
-    document.getElementById("mail-login").value="";
-    document.getElementById("password-login").value="";
+  function cleanLogin(id1,id2,id3=defaultValue){
+    document.getElementById(id1).value="";
+    document.getElementById(id2).value="";
+    if(id3){
+      document.getElementById(id3).value="";
+    }
   }
 
   function renderValueLogin(){
@@ -642,6 +645,9 @@ function checkRemember(logname,logpassword){
       return true
     }
   }
+
+
+
 
  
 

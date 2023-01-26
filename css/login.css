@@ -4,16 +4,16 @@ body {
   height: 100vh;
   width: 100%;
   margin: 0;
- 
+
   font-family: "Inter";
 }
 
-.all-container{
+.all-container {
   background-color: rgb(246, 247, 248);
   display: flex;
   align-items: center;
   justify-content: center;
-  height:100vh;
+  height: 100vh;
 }
 
 #start-pic {
@@ -68,15 +68,15 @@ body {
   background-color: white;
   border-radius: 16px;
   box-shadow: 0px 2px 8px 0px rgba(128, 128, 128, 0.103);
-  padding-top:35px;
-  padding-bottom:35px;
+  padding-top: 35px;
+  padding-bottom: 35px;
   padding-left: 115px;
   padding-right: 115px;
 }
 
-h1{
-  font-size:61px;
-  margin:unset;
+h1 {
+  font-size: 61px;
+  margin: unset;
 }
 
 input {
@@ -92,16 +92,13 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
-
-
 
 #blue-line {
   width: 150px;
   border-top: solid 3px rgb(40, 171, 226);
-  margin-top:24px;
-  margin-bottom:35px;
+  margin-top: 24px;
+  margin-bottom: 35px;
 }
 .mail-input {
   background-image: url("../assets/img/email-icon.svg");
@@ -125,49 +122,48 @@ form {
   margin-top: 40px;
 }
 
-#password-cont{
-display:flex;
-position:relative;
-width:100%;
+#password-cont {
+  display: flex;
+  position: relative;
+  width: 100%;
 }
 
-
-#password-login{
-  padding-left:10px;
+#password-login {
+  padding-left: 10px;
 }
 
-#eyelock{
-  position:absolute;
-  left:90%;
-  top:10%;
-  cursor:pointer;
+#eyelock {
+  position: absolute;
+  left: 90%;
+  top: 10%;
+  cursor: pointer;
 }
 
 .help-container {
   display: flex;
   justify-content: space-between;
   width: 300px;
-  margin-top:6px;
-  margin-left:43.5px;
-  margin-right:43.5px;
+  margin-top: 6px;
+  margin-left: 43.5px;
+  margin-right: 43.5px;
 }
 
-#passwordreg-toggle{
-cursor: pointer;
+#passwordreg-toggle {
+  cursor: pointer;
 }
 
-.container-rember{
-  display:flex;
+.container-rember {
+  display: flex;
   font-size: 14px;
   align-items: center;
   justify-content: center;
 }
 
-#rememberme{
-  width:16px;
-  height:16px;
-  margin-right:10px;
-  margin-left:0;
+#rememberme {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  margin-left: 0;
   margin-bottom: 0;
   margin-top: 0;
   cursor: pointer;
@@ -193,7 +189,7 @@ cursor: pointer;
   justify-content: center;
   margin-top: 35px;
   width: 342px;
-  gap:20px;
+  gap: 20px;
 }
 
 .login-btn {
@@ -205,7 +201,7 @@ cursor: pointer;
   font-size: 16px;
   border: transparent;
   min-width: 145px;
-  height:51px;
+  height: 51px;
 }
 
 .login-btn:hover {
@@ -224,7 +220,7 @@ cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 16px;
-  padding:auto;
+  padding: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,7 +374,6 @@ button {
   text-align: center;
 }
 
-
 @media screen and (max-width: 700px) {
   .start {
     opacity: 1;
@@ -417,19 +412,19 @@ button {
 
   #login-container {
     width: 400px !important;
-    padding-right:50px;
-    padding-left:50px;
+    padding-right: 50px;
+    padding-left: 50px;
   }
 
   form {
-    width:100%;
+    width: 100%;
     padding-left: 0;
     padding-right: 0;
     align-items: flex-start;
     margin-top: 20px;
   }
 
-  #passwordreg-toggle{
+  #passwordreg-toggle {
     font-size: 14px;
     padding: 10px;
     margin-top: 0;
@@ -447,28 +442,28 @@ button {
     font-size: 14px;
     align-items: center;
     justify-content: flex-start;
-    margin-left:10px;
+    margin-left: 10px;
     margin-top: 31px;
-}
+  }
 
-#password-login{
-  margin-bottom:unset!important;
-}
+  #password-login {
+    margin-bottom: unset !important;
+  }
 
   #new-password {
     margin-left: 10px;
     font-size: 12px;
-    cursor:pointer;
+    cursor: pointer;
   }
 
   .help-container {
     flex-direction: column-reverse;
-    margin-left:0;
+    margin-left: 0;
   }
 
   #login-btn {
-    width:180px;
-    height:51px;
+    width: 180px;
+    height: 51px;
   }
 
   #btn-box {
@@ -484,8 +479,8 @@ button {
   }
 
   #guest-btn {
-    width:180px;
-    height:51px;
+    width: 180px;
+    height: 51px;
   }
 
   #popup-mail-p {
@@ -498,11 +493,10 @@ button {
     transform: scale(0.8);
   }
 
-  #blue-line{
-    width:88px;
+  #blue-line {
+    width: 88px;
   }
 }
-
 
 @media screen and (max-width: 480px) {
   h1 {
