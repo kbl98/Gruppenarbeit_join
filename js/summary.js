@@ -22,8 +22,8 @@ async function initSum() {
   }
   await getCurrentUserFromStorage();
   setUserImg();
-  renderSummary();
   handleMediaSize();
+  renderSummary();
   storeSession();
   console.log(all_tasks)
 }
@@ -421,14 +421,15 @@ function timeGreet(){
 }
 
 
-function handleMediaSize(){
+async function handleMediaSize(){
   let session=sessionStorage.getItem("session");
   if (window.innerWidth < 1100){
     if(!session){
-  showGreet()
+  /*showGreet()*/
   setTimeout(resizeElements,2000)
 }
   else{
+    closeGreetOnMobil();
     resizeElements()
   }
   }

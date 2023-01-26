@@ -3,7 +3,6 @@ function logout() {
   document.getElementById("popup-logout").classList.add("d-none");
   resetUser();
   unstoreSession();
-  deleteRemember();
   window.location.href = "login.html";
 }
 

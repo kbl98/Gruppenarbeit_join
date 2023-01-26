@@ -87,6 +87,7 @@ async function getUsers() {
   if (!loadedContacts) {
       loadedContacts = [];
   };
+  rememberToForm();
   let email=getJustRegistratedEmail();
   let pw=getJustRegistratedPW();
   if(pw){
@@ -94,8 +95,11 @@ async function getUsers() {
     document.getElementById("password-login").value=pw;
     removeJustRegistrated();
   }
-  rememberToForm();
+  
 }
+
+
+
 
 
 
@@ -115,6 +119,7 @@ async function getCurrentUser() {
   } else {
     removeTrys();
     setCurrentUserToLocal(current_user);
+    deleteRemember();
     checkRemember(logname.value,logpassword.value);
     window.location.href = "summary.html";
   }
