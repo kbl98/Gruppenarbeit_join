@@ -25,8 +25,8 @@ async function initSum() {
   handleMediaSize();
   renderSummary();
   storeSession();
-  console.log(all_tasks)
 }
+
 
 function storeSession(){
   sessionStorage.setItem("session",true)
@@ -155,16 +155,15 @@ function createUrgentBox() {
   }else{
   for (let i = 0; i < urgent_tasks.length; i++) {
     let isOver=compareIfOver(urgent_tasks[i]["date"]);
-    console.log(urgent_tasks[i]["date"]);
     if(!isOver){
     let taskdate = constructDate(urgent_tasks[i]["date"]);
-    console.log(taskdate);
     urgenttasks_container.innerHTML += generateUrgentHTML(i, taskdate);
     break
     }
   }
 }
 }
+
 
 /**function to render all urgent tasks on summary*/
 function createDeadlineBox() {
@@ -175,11 +174,8 @@ function createDeadlineBox() {
   }else{
   for (let i = 0; i < all_tasks.length; i++) {
     let isOver=compareIfOver(all_tasks[i]["date"]);
-    console.log(all_tasks[i]["date"]);
-    console.log(isOver);
     if(!isOver){
     let taskdate = constructDate(all_tasks[i]["date"]);
-    console.log(taskdate);
     urgenttasks_container.innerHTML += generateUrgentHTML(i, taskdate);
     break
     }
@@ -200,7 +196,6 @@ function sortAllUrgentTasks() {
     urgentSorted.push(urgent_tasks.find((t) => t["date"] == dates[i]));
   }
   urgent_tasks = urgentSorted;
-  console.log(urgent_tasks)
 }
 
 
@@ -216,8 +211,8 @@ function sortAllTasks() {
     tasksSorted.push(all_tasks.find((t) => t["date"] == dates[i]));
   }
  all_tasks = tasksSorted;
-  console.log(all_tasks)
 }
+
 
 /**
  * function to check if urgent task is already over
@@ -226,7 +221,6 @@ function sortAllTasks() {
   */
 function compareIfOver(date){
   let isOver=false;
-  console.log(date);
   let today=new Date();
   if ((date.getTime()-today.getTime())<0 ){
    isOver=true;
@@ -345,7 +339,6 @@ function getPartOfDay() {
   let greet;
   let date = new Date();
   let time = date.getHours();
-  console.log(time)
   if (time < 11 && time > 0) {
     greet = "Good Morning,";
   }
@@ -390,6 +383,7 @@ function hover(id, src) {
   document.getElementById(id).setAttribute("src", src);
 }
 
+
 /**
  * function to change img-src on unhover
  * @param {string} id -Parameter is id of img where source changes
@@ -425,13 +419,12 @@ async function handleMediaSize(){
   let session=sessionStorage.getItem("session");
   if (window.innerWidth < 1100){
     if(!session){
-  /*showGreet()*/
   setTimeout(resizeElements,2000)
-}
+    }
   else{
     closeGreetOnMobil();
     resizeElements()
-  }
+    }
   }
   else{
     showGreet()
@@ -449,11 +442,13 @@ function resizeElements(){
   }
 }
 
+/**functions for chat-pop */
 
 function raise(){
   document.getElementById("popmessage").classList.remove("small");
   document.getElementById("popmessage").classList.add("big");
 }
+
 
 function toSmall(){
   document.getElementById("popmessage").classList.add("small");

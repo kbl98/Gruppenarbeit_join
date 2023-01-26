@@ -6,6 +6,8 @@ function logout() {
   window.location.href = "login.html";
 }
 
+
+/**function to remove session */
 function unstoreSession(){
   sessionStorage.removeItem("session")
 }
@@ -33,6 +35,7 @@ function resetUser() {
   localStorage.removeItem("current_user");
 }
 
+
 /**function to set the user color as background head pic */
 function setUserImg() {
   if (current_user["img"]) {
@@ -47,13 +50,13 @@ function setUserImg() {
   }
 }
 
+
 /**function to create first letters to head pic */
 function createUserPic() {
   let name_part = current_user["username"].split(" ");
   for (let i = 0; i < name_part.length; i++) {
     let part1 = name_part[i].charAt(0).toUpperCase();
     let part2;
-    console.log(name_part)
     if (name_part[1]) {
       part2 = name_part[1].charAt(0).toUpperCase();
       return `${part1}${part2}`
@@ -63,10 +66,14 @@ function createUserPic() {
     }
 }
 
+/**
+ * functions for locate to 
+*/
 
 function locateToLegalNote() {
   window.location.href = "legalnotice.html";
 }
+
 
 function locateToHelp() {
   window.location.href = "help.html";

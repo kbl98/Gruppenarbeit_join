@@ -72,14 +72,8 @@ function showLogin() {
 async function getUsers() {
   await setBackend();
   await downloadFromServer();
-  users = JSON.parse(backend.getItem("users"));
-  if (!users) {
-    users = [];
-  }
-  loadedContacts = JSON.parse(backend.getItem("contacts"));
-  if (!loadedContacts) {
-      loadedContacts = [];
-  };
+  users = JSON.parse(backend.getItem("users")) || [];
+  loadedContacts = JSON.parse(backend.getItem("contacts")) || [];
   rememberToForm();
   let email=getJustRegistratedEmail();
   let pw=getJustRegistratedPW();
@@ -89,10 +83,6 @@ async function getUsers() {
     removeJustRegistrated();
   }
 }
-
-
-
-
 
 
 /**
@@ -192,12 +182,7 @@ async function sign() {
   let email = document.getElementById("mail-registration").value;
   let password = document.getElementById("password-registration").value;
   let color=getRandomColor();
-  let newUser = {
-    username: username,
-    email: email,
-    password: password,
-    color:color
-  };
+  let newUser = {username: username,email: email,password: password,color:color};
   let isNewUser = await checknewUser(newUser);
   if (isNewUser) {
     await saveUser(newUser);
@@ -205,9 +190,7 @@ async function sign() {
     if(isNewContact){
     await createNewContactFromUser(newUser)
     }
-    username = "";
-    email = "";
-    password = "";
+    cleanValue(username,email,password);
     setJustRegistratedToSessStore(newUser)
     window.location.href = "login.html";
   } else {
@@ -215,20 +198,35 @@ async function sign() {
   }
 }
 
+
+function cleanValue(username,email,password){
+  username = "";
+  email = "";
+  password = "";
+}
+
+
+/**
+ * function to set a new user to local store
+ * @param {string} newUser -Parameter is name of user,who wants to registrate
+ */
 function setJustRegistratedToSessStore(newUser){
   sessionStorage.setItem("just_reg_email",newUser["email"]);
   sessionStorage.setItem("just_reg_pw",newUser["password"]);
 }
+
 
 function removeJustRegistrated(){
   sessionStorage.removeItem("just_reg_email");
   sessionStorage.removeItem("just_reg_pw");
 }
 
+
 function getJustRegistratedEmail(){
   let email=sessionStorage.getItem("just_reg_email");
   return email
 }
+
 
 function getJustRegistratedPW(){
   let pw=sessionStorage.getItem("just_reg_pw");
@@ -281,6 +279,7 @@ async function checkifContact(newUser) {
     return isNewContact;
   }
 
+
 /**
  * functions creates a contact from userdates
  * @param {string} newUser - Parameter is name of registrating user
@@ -309,6 +308,7 @@ function getRandomColor() {
   return color;
 }
 
+
 /**
  * function saves all contacts to backend
  */
@@ -317,7 +317,6 @@ async function saveContactsToBackend() {
     let contactAsText = JSON.stringify(loadedContacts);
     await backend.setItem("contacts", contactAsText);
 }
-
 
 
 /**
@@ -373,6 +372,7 @@ function openPopupMail() {
   }
 }
 
+
 /**
 *function to change classname of popup 
 */
@@ -381,6 +381,7 @@ function popupPassChange(){
     popup.classList.remove("d-none");
     setTimeout(changeClass2, 100);
 }
+
 
 /**
 *function to change classname of popup 
@@ -488,10 +489,12 @@ function locateToLogin() {
   window.location.href = "login.html";
 }
 
+
 /**function to change window */
 function locateToSignin() {
   window.location.href = "registration.html";
 }
+
 
 /**function to count on session Storage*/
 function getNumberOfTry(){
@@ -502,6 +505,7 @@ function getNumberOfTry(){
     return 0
   }
 }
+
 
 /**function to count Trys of Login */
 function tryOneMore(){
@@ -516,6 +520,7 @@ function tryOneMore(){
 }
 }
 
+
 /**
  * functions to give warning about trys 
  */
@@ -524,6 +529,7 @@ function tryOneMore(){
   popup.classList.remove("d-none");
   setTimeout(locateToSignin,1000)
 }
+
 
 function openInfoTrysOneMore(){
   let popup=document.getElementById("popup-try-again");
@@ -536,6 +542,7 @@ function removeTrys(){
   sessionStorage.removeItem("trynumber");
 }
 
+
 /**
  * functions for remember me 
  */
@@ -546,25 +553,28 @@ function checkRemember(logname,logpassword){
   }
   }
 
+
   function setRemember(logname,logpassword){
     localStorage.setItem("current_logname",logname);
     localStorage.setItem("current_password",logpassword);
-    
   }
+
 
   function getRememberName(){
     return localStorage.getItem("current_logname");
-   
   }
+
 
   function getRememberPW(){
    return localStorage.getItem("current_password");
   }
 
+
   function deleteRemember(){
       localStorage.removeItem("current_logname");
       localStorage.removeItem("current_password");
   }
+
 
   function rememberToForm(){
     if(getRememberName()){
