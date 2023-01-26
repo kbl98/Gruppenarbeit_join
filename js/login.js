@@ -36,14 +36,7 @@ function backgroundOpacity(){
  *function to wait some time before moving logo and getting login-box 
  */
 async function getLogin() {
-  
   setTimeout(moveLogo, 500)
-  
-  /*await setBackend();
-  await downloadFromServer();*/
-  /*users = JSON.parse(backend.getItem("users")) || [];*/
-  /*users=JSON.parse(backend.getItem("users")) || [];*/
- 
   getUsers();
   console.log(users);
 }
@@ -95,7 +88,6 @@ async function getUsers() {
     document.getElementById("password-login").value=pw;
     removeJustRegistrated();
   }
-  
 }
 
 
@@ -109,13 +101,11 @@ async function getUsers() {
 async function getCurrentUser() {
   let logname = document.getElementById("mail-login");
   let logpassword = document.getElementById("password-login");
-  
   current_user = users.find(
     (u) => u.password == logpassword.value && u.email == logname.value
   );
   if (!current_user) {
     tryOneMore();
-    /*window.location.href = "registration.html";*/
   } else {
     removeTrys();
     setCurrentUserToLocal(current_user);
@@ -546,6 +536,9 @@ function removeTrys(){
   sessionStorage.removeItem("trynumber");
 }
 
+/**
+ * functions for remember me 
+ */
 
 function checkRemember(logname,logpassword){
   if (document.getElementById("rememberme").checked==true){
