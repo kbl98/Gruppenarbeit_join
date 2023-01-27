@@ -660,3 +660,14 @@ function openTaskAssignedToTemp(contact, bothFirstLetters, nameColor) {
     </div>
     `;
 }
+
+
+/**
+ * Functions for delete Tasks from here
+ */
+
+async function deleteTask(){
+    loadedBoard.splice(currentDragElement,1);
+    renderBoard();
+    await boardSaveToBackend();
+}

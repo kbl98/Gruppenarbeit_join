@@ -88,6 +88,20 @@ body {
     height: 15px;
 }
 
+/* Trash*/
+
+#trash{
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.trash-img{
+    height:50px;
+    width:50px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
 .cont-todo {
     display: flex;
     justify-content: space-between;

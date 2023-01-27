@@ -516,7 +516,8 @@ function tryOneMore(){
   n++;
   if(n<3){
   sessionStorage.setItem("trynumber",n);
-  openInfoTrysOneMore()
+  passwordWrong();
+  /*openInfoTrysOneMore()*/
 }else{
   removeTrys();
   openInfoTrys();
@@ -646,6 +647,28 @@ function checkRemember(logname,logpassword){
     }
   }
 
+
+  function passwordWrong(){
+    let info=document.getElementById("new-password");
+    info.innerHTML="Passwort falsch";
+    info.style.color="red";
+    info.onclick = onclickReaction(false);
+    setTimeout(cleanPassword,1000)
+  }
+
+
+  function cleanPassword(){
+    document.getElementById("password-login").value="";
+    let info=document.getElementById("new-password");
+    info.innerHTML="Passwort vergessen";
+    info.style.color="rgb(40, 171, 226)";
+    info.onclick = onclickReaction(true);
+  }
+  
+
+  function onclickReaction(react){
+        return react;
+  }
 
 
 
