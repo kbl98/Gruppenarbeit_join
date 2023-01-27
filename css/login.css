@@ -92,6 +92,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 450px;
 }
 
 #blue-line {
@@ -125,7 +126,6 @@ form {
 #password-cont {
   display: flex;
   position: relative;
-  width: 100%;
 }
 
 #password-login {
@@ -134,7 +134,7 @@ form {
 
 #eyelock {
   position: absolute;
-  left: 90%;
+  left: 91%;
   top: 10%;
   cursor: pointer;
 }
@@ -374,6 +374,12 @@ button {
   text-align: center;
 }
 
+@media screen and (max-width: 900px) {
+  #login-container {
+    width: 450px;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .start {
     opacity: 1;
@@ -411,6 +417,7 @@ button {
   }
 
   #login-container {
+    height: 70vh;
     width: 400px !important;
     padding-right: 50px;
     padding-left: 50px;
@@ -431,6 +438,10 @@ button {
     margin-bottom: 0;
     font-size: 12px;
     cursor: pointer;
+  }
+
+  #password-cont {
+    width: 100%;
   }
 
   #forgot-head {
@@ -496,6 +507,10 @@ button {
   #blue-line {
     width: 88px;
   }
+
+  #eyelock {
+    top: 20%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -517,6 +532,13 @@ button {
     padding-right: 0;
     align-items: flex-start;
     width: 100%;
+  }
+
+  #eyelock {
+    position: absolute;
+    left: 87%;
+    top: 20%;
+    cursor: pointer;
   }
 }
 
