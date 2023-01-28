@@ -180,6 +180,7 @@ function createDeadlineBox() {
     break
     }
   }
+  urgenttasks_container.innerHTML = generateUrgentNullHTML();
 }
 }
 
@@ -240,7 +241,7 @@ function generateUrgentHTML(i, taskdate) {
 function generateUrgentNullHTML(){
   return `<div class="deadline-container" onclick="getToBoard()">
   <span class="deadline"></span>
-  <p><b>No urgent-deadline</b></p>
+  <p><b>No upcoming Deadline</b></p>
 </div>`;
 }
 

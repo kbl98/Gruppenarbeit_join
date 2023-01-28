@@ -429,37 +429,63 @@ function newPassword() {
  */
 function generateResetPassword() {
   return `
-    <h1>Reset your password</h1>
-    <div id="blue-line"></div>
-    <p>Change your account password</p>
+  <h1>Reset your password</h1>
+  <div id="blue-line"></div>
+  <p>Change your account password</p>
 
-    <form onsubmit="set_new_password();return false">
+  <form
+    onsubmit="set_new_password();return false"
+    onclick="cleanLogin('reseted-password','reseted-password2')"
+  >
+    <div id="password-cont">
+      <img
+        id="eyelock"
+        src="../assets/img/password-icon.svg"
+        onclick="event.stopPropagation();changePic('reseted-password','eyelock')"
+      />
       <input
+        onclick="event.stopPropagation()"
         id="reseted-password"
         class="password-input"
         required
         type="password"
-        placeholder="Passwort"
+        placeholder="Password"
+      />
+    </div>
+    <div id="password-cont">
+      <img
+        id="eyelock2"
+        src="../assets/img/password-icon.svg"
+        onclick="event.stopPropagation();changePic('reseted-password2','eyelock2')"
       />
       <input
+        onclick="event.stopPropagation()"
         id="reseted-password2"
         class="password-input"
         required
         type="password"
-        placeholder="Passwort"
+        placeholder="Confirm password"
       />
-      <div class="help-container">
-        <p
-          id="passwordreg-toggle"
-          onclick="togglePassword('reseted-password','passwordreg-toggle');togglePassword('reseted-password2','passwordreg-toggle')"
-        >
-          Passwort zeigen
-        </p>
-      </div>
-      <div id="btn-box">
-        <button id="sign-btn" class="login-btn">Continue</button>
-      </div>
-    </form>`;
+    </div>
+    <div id="confirm-info" class="d-none">Passwörter ungleich</div>
+    <!-- <div class="help-container">
+    <p
+      id="passwordreg-toggle"
+      onclick="togglePassword('reseted-password','passwordreg-toggle');togglePassword('reseted-password2','passwordreg-toggle')"
+    >
+     Passwort zeigen
+    </p>
+  </div>-->
+    <div id="btn-box">
+      <button
+        id="sign-btn"
+        class="login-btn"
+        onclick="event.stopPropagation()"
+      >
+        Continue
+      </button>
+    </div>
+  </form>`;
 }
 
 
@@ -479,6 +505,9 @@ async function set_new_password() {
     await saveUsers();
     popupPassChange();
    
+  }else{
+    showWarnPW();
+    setTimeout(clearWarn,1000)
   }
 }
 
@@ -589,14 +618,14 @@ function checkRemember(logname,logpassword){
     }
   }
 
-  function getValueLogin(id){
-    changePic(id);
+  function getValueLogin(id,id_pic){
+    changePic(id,id_pic);
     checkValuePic();
     
   }
 
-  function changePic(id){
-    let eye=document.getElementById("eyelock");
+  function changePic(id,id_pic){
+    let eye=document.getElementById(id_pic);
     if(eye.getAttribute("src")=="../assets/img/password-icon.svg"){
     eye.setAttribute("src","../assets/img/eyeopen.svg");
     }else if(eye.getAttribute("src")=="../assets/img/eyeopen.svg"){
@@ -604,11 +633,11 @@ function checkRemember(logname,logpassword){
     } else{
   eye.setAttribute("src","../assets/img/password-icon.svg")
     }
-    setTypePassword(id);
+    setTypePassword(id,id_pic);
   }
 
-  function setTypePassword(id){
-    let eye=document.getElementById("eyelock").getAttribute("src");
+  function setTypePassword(id,id_pic){
+    let eye=document.getElementById(id_pic).getAttribute("src");
     if (eye=="../assets/img/eyeopen.svg"){
         document.getElementById(id).setAttribute("type","text");
     }else{
@@ -623,7 +652,7 @@ function checkRemember(logname,logpassword){
     }
   }
 
-  function cleanLogin(id1,id2,id3=defaultValue){
+  function cleanLogin(id1,id2,id3=""){
     document.getElementById(id1).value="";
     document.getElementById(id2).value="";
     if(id3){
@@ -670,6 +699,14 @@ function checkRemember(logname,logpassword){
         return react;
   }
 
+  function showWarnPW(){
+    document.getElementById("confirm-info").classList.remove("d-none");
+  }
+
+  function clearWarn(){
+    document.getElementById("confirm-info").classList.add("d-none");
+    cleanLogin("reseted-password","reseted-password2");
+  }
 
 
  

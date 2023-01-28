@@ -74,9 +74,14 @@ body {
   padding-right: 115px;
 }
 
+login-container h1{
+  text-align: center;
+}
+
 h1 {
   font-size: 61px;
   margin: unset;
+  text-align: center;
 }
 
 input {
@@ -137,6 +142,20 @@ form {
   left: 91%;
   top: 10%;
   cursor: pointer;
+}
+
+#eyelock2 {
+  position: absolute;
+  left: 91%;
+  top: 10%;
+  cursor: pointer;
+}
+
+#confirm-info{
+  color:red;
+  font-size:12px;
+  width: 100%;
+  margin-top: -40px;
 }
 
 .help-container {
@@ -557,5 +576,9 @@ button {
 
   #sign-in {
     font-size: 14px;
+  }
+
+  login-container h1{
+    font-size:30px;
   }
 }

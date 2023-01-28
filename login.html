@@ -32,7 +32,7 @@
           placeholder="E-mail"
         />
         <div id="password-cont">
-          <img id="eyelock" src="../assets/img/password-icon.svg" onclick="event.stopPropagation(); getValueLogin('password-login')">
+          <img id="eyelock" src="../assets/img/password-icon.svg" onclick="event.stopPropagation(); getValueLogin('password-login','eyelock')">
         <input onclick="event.stopPropagation()"
           id="password-login"
           class="password-input"
@@ -50,7 +50,7 @@
             Passwort zeigen
           </p>-->
           <div class="container-rember">
-            <input id="rememberme" type="checkbox" onclick="event.stopPropagation()"><p>Remember me</p> 
+            <input id="rememberme" type="checkbox" checked="true" onclick="event.stopPropagation()"><p>Remember me</p> 
           </div>
           <a id="new-password" href="forgot_password.html" onclick="event.stopPropagation()"
             >Passwort vergessen</a
