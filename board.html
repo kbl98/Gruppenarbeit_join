@@ -54,6 +54,7 @@
     <div class="cont-board-side">
         <!--contains head area "board // search-bar // add task"-->
         <div class="cont-head">
+            <div class="mobile-header" id="subhead">Kanban Management Tool</div>
             <h1 class="header-board">Board</h1>
             <div class="cont-find-task">
                 <div class="find-task">
@@ -65,10 +66,11 @@
                     </div>
                 </div>
                 <button onclick="addTaskBoard()" class="add-task">
-                    Add task <img class="add-task-plus-img" src="./assets/img/board_add_task_plus.png" alt="">
+                    <span>Add task</span> 
+                    <img class="add-task-plus-img" src="./assets/img/board_add_task_plus.png" alt="">
                 </button>
     <!--------------------------------Trash-------------------------------------------------------------------------->
-                <div id="trash" class="add-task" ondrop="deleteTask()" ondragover="allowDrop(event)">
+                <div id="trash" class="add-task trash" ondrop="deleteTask()" ondragover="allowDrop(event)">
                     <img class="trash-img" src="./assets/img/trash.png" alt="">
                 </div>
 
@@ -88,7 +90,7 @@
                         src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
-                <div ondrop="drop('todo')" ondragover="allowDrop(event)" id="todo">
+                <div class="hidden-auto" ondrop="drop('todo')" ondragover="allowDrop(event)" id="todo">
 
                 </div>
             </div>
@@ -101,7 +103,7 @@
                         src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
-                <div ondrop="drop('in Process')" ondragover="allowDrop(event)" id="inProcess">
+                <div class="hidden-auto" ondrop="drop('in Process')" ondragover="allowDrop(event)" id="inProcess">
 
                 </div>
             </div>
@@ -114,7 +116,7 @@
                         src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
-                <div ondrop="drop('awaiting Feedback')" ondragover="allowDrop(event)" id="awaitingFeedback">
+                <div class="hidden-auto" ondrop="drop('awaiting Feedback')" ondragover="allowDrop(event)" id="awaitingFeedback">
 
                 </div>
             </div>
@@ -127,7 +129,7 @@
                         src="./assets/img/board_add_task_button.png" alt="">
                 </div>
 
-                <div ondrop="drop('done')" ondragover="allowDrop(event)" id="done">
+                <div class="hidden-auto" ondrop="drop('done')" ondragover="allowDrop(event)" id="done">
 
                 </div>
             </div>

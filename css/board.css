@@ -90,14 +90,14 @@ body {
 
 /* Trash*/
 
-#trash{
-    padding-left:20px;
-    padding-right:20px;
+#trash {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.trash-img{
-    height:50px;
-    width:50px;
+.trash-img {
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     border-radius: 30px;
 }
@@ -105,7 +105,14 @@ body {
 .cont-todo {
     display: flex;
     justify-content: space-between;
-    column-gap: 50px;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.hidden-auto {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
 }
 
 .todo-head {
@@ -354,7 +361,8 @@ body {
 #inProcess,
 #awaitingFeedback,
 #done {
-    height: 500px;
+    min-height: 200px;
+    max-height: 550px;
 }
 
 .add-task-button {
@@ -456,4 +464,200 @@ body {
 
 .newSubtask {
     padding-bottom: unset !important;
+}
+
+.mobile-header {
+    position: absolute;
+    top: -50px;
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
+    .add-task {
+        font-size: 16px;
+    }
+
+    .cont-head {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .cont-todo {
+        justify-content: center;
+    }
+
+    .cont-child-todo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .todo-head {
+        width: unset;
+        justify-content: space-between;
+    }
+
+    .todo-tasks {
+        width: unset;
+        text-align: start;
+    }
+
+    .add-task span {
+        display: none;
+    }
+
+    .add-task-plus-img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .add-task {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cont-find-task {
+        align-items: center;
+    }
+
+    .trash-img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media (max-width: 850px) {
+    .cont-board-side {
+        left: 100px;
+    }
+
+    .mobile-header {
+        display: unset;
+    }
+
+    .popup-board-task-bgr {
+        background-color: unset;
+    }
+
+    .cont-popup-board-task, .contPopupEditTaskBoard {
+        position: absolute;
+        top: 70px;
+        bottom: 70px;
+        right: 0;
+        left: 0;
+        height: unset;
+        width: unset;
+        border-radius: unset;
+        background-color: rgb(246, 247, 248);
+        padding: 20px;
+        padding-top: 50px;
+        gap: 30px;
+    }
+
+    .column {
+        margin-bottom: unset !important;
+    }
+
+    .firstLetters {
+        margin: 5px 5px 5px 0 !important;
+    }
+
+    .popup-edit-button {
+        top: unset;
+        bottom: 40px;
+        right: 40px;
+        left: unset;
+    }
+
+    .popup-priority {
+        font-size: unset !important;
+    }
+
+    .popup-details {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cont-board-side {
+        left: 50px;
+        right: 50px;
+    }
+
+    .add-task {
+        position: absolute;
+        right: 50px;
+        top: 10px;
+    }
+
+    .trash {
+        right: 0px !important;
+    }
+
+    .header-board {
+        font-size: 40px;
+    }
+
+    .add-task-plus-img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .trash-img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .add-task {
+        height: 40px;
+        width: 40px;
+    }
+
+    .find-task {
+        width: 230px;
+        padding: unset;
+    }
+
+    .find-task-input {
+        width: 180px;
+    }
+}
+
+@media (max-width: 350px) {
+    .header-board {
+        font-size: 30px;
+    }
+
+    .add-task {
+        top: 0;
+    }
+
+    .find-task {
+        width: 200px;
+    }
+
+    .find-task-input {
+        width: 150px;
+    }
+
+    .add-task-plus-img {
+        height: 10px;
+        width: 10px;
+    }
+
+    .trash-img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .add-task {
+        height: 30px;
+        width: 30px;
+    }
 }

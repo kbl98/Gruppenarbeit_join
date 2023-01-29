@@ -166,6 +166,7 @@
   }
 
   #head {
+    position: fixed;
     height: 70px;
     width: 100%;
     left: 0;

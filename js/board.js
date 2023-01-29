@@ -1,7 +1,7 @@
 let loadedBoard = [];
 let loadedContacts = [];
 let currentDragElement;
-
+let allradySet = false;
 
 
 async function initBoard() {
@@ -12,9 +12,17 @@ async function initBoard() {
     await loadTasks();
     await loadContacts();
     renderBoard();
-    setUserImg();
+    setUserImgTest();
     checkForColor();
     datepicker();
+}
+
+
+function setUserImgTest() {
+    if (!allradySet) {
+        setUserImg();
+        allradySet = true;
+    }
 }
 
 
@@ -666,8 +674,8 @@ function openTaskAssignedToTemp(contact, bothFirstLetters, nameColor) {
  * Functions for delete Tasks from here
  */
 
-async function deleteTask(){
-    loadedBoard.splice(currentDragElement,1);
+async function deleteTask() {
+    loadedBoard.splice(currentDragElement, 1);
     renderBoard();
     await boardSaveToBackend();
 }
