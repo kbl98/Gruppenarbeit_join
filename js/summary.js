@@ -180,9 +180,7 @@ function createDeadlineBox() {
     break
     }
   }
-  urgenttasks_container.innerHTML = generateUrgentNullHTML();
-}
-}
+}}
 
 
 /**function to sort the tasks referring to their date */
@@ -456,3 +454,111 @@ function toSmall(){
   document.getElementById("popmessage").classList.remove("big");
 }
 
+/**functions for container-move in js */
+
+function moveVertical(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.add("verticaldown");
+}
+}
+
+function removeVertical(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+  todos[i].classList.remove("verticaldown");
+}
+}
+
+function moveVertivalup(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.add("verticalup");
+}
+}
+
+function removeVertivalup(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.remove("verticalup");
+}
+}
+
+function moveHorizLeft(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.add("horizonleft");
+}
+}
+
+function removeHorizLeft(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.remove("horizonleft");
+}
+}
+
+function moveHorizonRight(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.add("horizonright");
+}
+}
+
+function removeHorizonRight(classn){
+  let todos=document.getElementsByClassName(classn);
+  for (let i=0;i<todos.length;i++){
+    todos[i].classList.remove("horizonright");
+}
+}
+
+function hoverProgress(){
+  moveVertical("important-container");
+  moveVertical("todo");
+}
+
+function unhoverProgress(){
+  removeVertical("important-container");
+  removeVertical("todo");
+}
+
+
+function hoverImportant(){
+  moveVertivalup("progress");
+  moveVertical("todo");
+}
+
+function unhoverImportant(){
+  removeVertivalup("progress");
+  removeVertical("todo");
+}
+
+
+/*function hoverTaskCont(){
+  let tc=document.getElementById("task-overview");
+  tc.style.width="600px";
+  tc.style.height="110%"
+}
+
+function unhoverTaskCont(){
+  let tc=document.getElementById("task-overview");
+  tc.style.width="580px";
+  tc.style.height="100%";
+}
+
+
+function hoverEvent(){
+  let moveble=document.getElementsByClassName("move");
+  for(let i=0;i<moveble.length;i++){
+moveble[i].addEventListener("mouseover",(event) =>{
+  let tc=document.getElementById("task-overview");
+  tc.style.width="600px";
+  tc.style.height="110%"
+})
+moveble[i].addEventListener("mouseleave",(event)=>{
+  let tc=document.getElementById("task-overview");
+  tc.style.width="580px";
+  tc.style.height="100%";
+})
+  }
+}*/

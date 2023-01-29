@@ -42,25 +42,25 @@
 
 <!----------------------------overview of tasks on board----------------------------------->
             <div id="task-overview">
-                <div class="progress-container" >
+                <div class="progress-container move" id="progress-cont" >
                     <div class="progress box-shadow" id="on-board" onclick="getToBoard()">
                         <span id="num-board">3</span>
                         <p>Tasks in<br>Board</p>
                     </div>
-                    <div class="progress box-shadow" id="in-progress" onclick="getToBoard()">
+                    <div class="progress box-shadow move" id="in-progress" onclick="getToBoard()">
                         <span id="num-progress">2</span>
                         <p>Tasks in<br>Progress</p>
                         <!--<div id="popmessage" class="small" onmouseenter="raise()" onmouseleave="toSmall()">
     
                         </div>-->
                     </div>
-                    <div class="progress box-shadow" id="at-feedback" onclick="getToBoard()">
+                    <div class="progress box-shadow move" id="at-feedback" onclick="getToBoard()">
                         <span id="num-feedback">1</span>
                         <p>Awaiting<br>Feedback</p>
                     </div>
                 </div>
 <!-------------------------------------urgent-tasks------------------------------------------->
-                <div class="important-container box-shadow" onclick="getToBoard()">
+                <div id="important" class="important-container box-shadow move" onclick="getToBoard()" >
                     <div id="urgent-box">
                     <img src="assets/img/urgent_arrow.svg">
                     <div class="urgent-container" >
@@ -79,14 +79,14 @@
 <!----------------------------container for todos and dones-------------------------------->
                 </div>
                 <div class="todos-container">
-                    <div class="todo box-shadow" onclick="getToBoard()" onmouseover="hover('img-todo','assets/img/todoreverse.svg')" onmouseout="unhover('img-todo','assets/img/todo.svg')">
+                    <div id="todos" class="todo box-shadow move" onclick="getToBoard()" onmouseover="hover('img-todo','assets/img/todoreverse.svg')" onmouseout="unhover('img-todo','assets/img/todo.svg')">
                         <img id="img-todo" src="assets/img/todo.svg">
                         <div class="column">
                         <span id="num-do" class="bold">1</span>
                         <p>to do</p>
                         </div>
                     </div>
-                    <div class="todo box-shadow" onclick="getToBoard()" onmouseover="hover('img-done','assets/img/donereverse.svg')" onmouseout="unhover('img-done','assets/img/done.svg')">
+                    <div id="done"class="todo box-shadow move" onclick="getToBoard()" onmouseover="hover('img-done','assets/img/donereverse.svg')" onmouseout="unhover('img-done','assets/img/done.svg')">
                         <img id="img-done" src="assets/img/done.svg">
                         <div class="column">
                         <span id="num-done" class="bold">1</span>

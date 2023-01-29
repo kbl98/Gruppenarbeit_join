@@ -67,6 +67,7 @@ body {
   justify-content: space-between;
   width: 580px;
   height: 100%;
+  transition: all 175ms ease-in-out;
 }
 
 .greet-container {
@@ -112,8 +113,8 @@ body {
   flex-direction: column;
   padding-top: 21.5px;
   padding-bottom: 21.5px;
-
   transition: all 100ms ease-in-out;
+  transform:translateY(0);
 }
 
 .progress:hover {
@@ -144,6 +145,8 @@ body {
   transition: all 100ms ease-in-out;
   padding-left: 75px;
   padding-right: 75px;
+  transition: all 100ms ease-in-out;
+  transform:translateY(0) translateX(0)
 }
 
 .important-container:hover {
@@ -152,6 +155,10 @@ body {
   transform: scale(1.05);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   cursor: pointer;
+}
+
+.important-container:hover .todo{
+  transform: translateY(-10px);
 }
 
 .urgent-container {
@@ -245,6 +252,7 @@ body {
   justify-content: center;
   align-items: center;
   transition: all 100ms ease-in-out;
+  transform:translateY(0) translateX(0)
 }
 
 .todo span {
@@ -263,6 +271,120 @@ body {
   color: white;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/*#on-board{
+  transition: all 175ms ease-in-out;
+  margin-left:0;
+  margin-right:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+
+ #on-board:hover{
+  margin-left:0;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+
+#in-progress{
+  transition: all 175ms ease-in-out;
+  margin-left:0;
+  margin-right:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+
+#in-progress:hover{
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:0;
+  margin-bottom:0px;
+}
+
+#at-feedback{
+  transition: all 175ms ease-in-out;
+  margin-left:0;
+  margin-right:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+
+#at-feedback:hover{
+  margin-left:10px;
+  margin-right:0;
+  margin-top:0;
+  margin-bottom:0px;
+}
+
+#important{
+  transition: all 175ms ease-in-out;
+  margin-left:0;
+  margin-right:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+
+#important:hover{
+  margin-left:0;
+  margin-right:0;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+
+#todos{
+  transition: all 175ms ease-in-out;
+  margin-left:0;
+  margin-right:0px;
+  margin-top:0;
+  margin-bottom:0px;
+}
+
+
+#todos:hover{
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#done{
+  transition: all 175ms ease-in-out;
+  margin-left:0;
+  margin-right:0px;
+  margin-top:0;
+  margin-bottom:0px;
+}
+
+
+#done:hover{
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+*/
+.verticaldown{
+  transform:translateY(+20px)
+}
+
+.verticalup{
+  transform:translateY(-20px)
+}
+
+.horizonleft{
+  transform: translateX(20px);
+}
+
+.horizonright{
+  transform:translateX(-20px)
 }
 
 .bold {
