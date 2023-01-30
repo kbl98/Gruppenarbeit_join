@@ -493,8 +493,8 @@ textarea {
     margin: 0;
   }
   .ccButtons {
-    position: absolute;
-    top: -240px;
+    position: fixed;
+    top: -150px;
     right: 5px;
     z-index: 900;
   }
