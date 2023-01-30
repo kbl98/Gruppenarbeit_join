@@ -440,7 +440,7 @@ function generateResetPassword() {
     <div id="password-cont">
       <img
         id="eyelock"
-        src="../assets/img/password-icon.svg"
+        src="assets/img/password-icon.svg"
         onclick="event.stopPropagation();changePic('reseted-password','eyelock')"
       />
       <input
@@ -455,7 +455,7 @@ function generateResetPassword() {
     <div id="password-cont">
       <img
         id="eyelock2"
-        src="../assets/img/password-icon.svg"
+        src="assets/img/password-icon.svg"
         onclick="event.stopPropagation();changePic('reseted-password2','eyelock2')"
       />
       <input
