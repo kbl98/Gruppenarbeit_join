@@ -180,6 +180,9 @@ function createDeadlineBox() {
     break
     }
   }
+  if(urgenttasks_container.innerHTML==""){
+    urgenttasks_container.innerHTML = generateUrgentOverHTML();
+  }
 }}
 
 
@@ -240,6 +243,14 @@ function generateUrgentNullHTML(){
   return `<div class="deadline-container" onclick="getToBoard()">
   <span class="deadline"></span>
   <p><b>No upcoming Deadline</b></p>
+</div>`;
+}
+
+
+function generateUrgentOverHTML(){
+  return `<div class="deadline-container" onclick="getToBoard()">
+  <span class="deadline"></span>
+  <p><b>Upcoming Deadline over</b></p>
 </div>`;
 }
 

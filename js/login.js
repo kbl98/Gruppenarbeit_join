@@ -618,7 +618,15 @@ function checkRemember(logname,logpassword){
     }
   }
 
-  function getValueLogin(id,id_pic){
+
+  /**functions for password-field */
+
+  /**
+   * functions for toggle value of password-input
+   * @param {string} id -parameter is id of input-field
+   * @param {string} id_pic -parameter is id of img in input-field
+   */
+    function getValueLogin(id,id_pic){
     changePic(id,id_pic);
     checkValuePic();
     
