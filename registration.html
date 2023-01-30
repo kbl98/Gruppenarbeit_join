@@ -37,6 +37,8 @@
             type="name"
             placeholder="Vorname Nachname"
             pattern="[A-ZÄÜÖ][a-zäüö]* +[A-ZÄÜÖ][a-zäüö]*"
+            oninvalid="this.setCustomValidity('Please enter 1 firstname and 1 lastname with first letter capital!')"
+            oninput="setCustomValidity('')"
           />
           <input
             onclick="event.stopPropagation()"

@@ -510,7 +510,8 @@ body {
   position: absolute;
   right: 10px;
   top: 10px;
-  font-size: 30px;
+  font-size: 16px;
+  font-weight: 400;
   z-index: 16 !important;
   cursor: pointer;
 }
@@ -820,9 +821,18 @@ body {
   }
   .edit-contact-img {
     margin-top: -60px;
-}
+  }
+
 }
 
+@media (max-width: 720px) {
+  #close-taskpop {
+    left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    }
+
+}
 
 @media (max-width: 600px) {
   .cont-open-contact {
