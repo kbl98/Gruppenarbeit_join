@@ -634,19 +634,19 @@ function checkRemember(logname,logpassword){
 
   function changePic(id,id_pic){
     let eye=document.getElementById(id_pic);
-    if(eye.getAttribute("src")=="../assets/img/password-icon.svg"){
-    eye.setAttribute("src","../assets/img/eyeopen.svg");
-    }else if(eye.getAttribute("src")=="../assets/img/eyeopen.svg"){
-    eye.setAttribute("src","../assets/img/eyeclosed.svg");
+    if(eye.getAttribute("src")=="assets/img/password-icon.svg"){
+    eye.setAttribute("src","assets/img/eyeopen.svg");
+    }else if(eye.getAttribute("src")=="assets/img/eyeopen.svg"){
+    eye.setAttribute("src","assets/img/eyeclosed.svg");
     } else{
-  eye.setAttribute("src","../assets/img/password-icon.svg")
+  eye.setAttribute("src","assets/img/password-icon.svg")
     }
     setTypePassword(id,id_pic);
   }
 
   function setTypePassword(id,id_pic){
     let eye=document.getElementById(id_pic).getAttribute("src");
-    if (eye=="../assets/img/eyeopen.svg"){
+    if (eye=="assets/img/eyeopen.svg"){
         document.getElementById(id).setAttribute("type","text");
     }else{
       document.getElementById(id).setAttribute("type","password")
@@ -655,7 +655,7 @@ function checkRemember(logname,logpassword){
 
   function checkValuePic(){
     let eye=document.getElementById("eyelock").getAttribute("src");
-    if(eye=="../assets/img/password-icon.svg"){
+    if(eye=="assets/img/password-icon.svg"){
       renderValueLogin();
     }
   }
