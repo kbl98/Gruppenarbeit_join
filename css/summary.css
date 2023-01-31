@@ -804,6 +804,16 @@ body {
 }
 
 @media screen and (max-width: 300px) {
+
+  #task-container{
+    height:45vh;
+  }
+
+  .main-content-container{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
   .todo {
     width: 120px;
   }
