@@ -479,11 +479,18 @@ body {
 
 /* CSS for addTak Popup*/
 
+#head-addtask-pop{
+  margin-bottom:80px;
+}
+
 #contAddTaskToContact {
   position: absolute;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  /* height: 100vh; */
-  background-color: #a8a8a849;
+  height: 100vh; 
+  background-color: #a8a8a8ec;
   top: 0;
   left: 0;
   z-index: 13 !important;
@@ -496,6 +503,8 @@ body {
   background-color: white;
   transition: all 175ms ease-in-out;
   top:20%;
+  left:232px;
+  background-color:rgb(246,247,248);
 }
 
 .outside {
@@ -745,6 +754,12 @@ body {
     font-size:14px;
     padding: 2px;
   }
+
+  #addTaskPopup{
+    width: 75%;
+    left:130px;
+    width:720px;
+  }
 }
 
 
@@ -823,14 +838,61 @@ body {
     margin-top: -60px;
   }
 
+
+
+  #contAddTaskToContact {
+    position: absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; 
+    background-color:white;
+    top: 80px;
+    left: 0;
+    z-index: 13 !important;
+  }
+
+  #addTaskPopup{
+    width: 100%;
+    left:0;
+    background-color:rgb(246,247,248);
+    border-radius: unset;
+    padding-top:10px;
+  }
 }
 
 @media (max-width: 720px) {
   #close-taskpop {
-    left: 10px;
+    right: 10px;
     font-size: 14px;
     font-weight: 400;
     }
+
+   #ccButtons-pop{
+    position: absolute;
+    top:-70px;
+   }
+
+   #form-task-mobil{
+    width:100%;
+    height:100%;
+    align-items: flex-start;
+   }
+
+   #head-addtask-pop{
+    margin-bottom:40px;
+   }
+
+   #contAddTaskToContact {
+    width:100%;
+    height:100%;
+    align-items: flex-start;
+   }
+
+   #temp-task{
+width:100%;
+   }
 
 }
 
