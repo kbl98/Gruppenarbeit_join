@@ -472,6 +472,72 @@ body {
     display: none;
 }
 
+.addtask-deny {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid #2a3647;
+    border-radius: 10px;
+    gap: 5px;
+    background-color: unset;
+    font-weight: 400;
+    font-size: 21px;
+    cursor: pointer;
+    transition: ease-in-out 150ms;
+}
+
+.addtask-deny img {
+    transition: ease-in-out 150ms;
+    transform: rotate(45deg);
+    filter: brightness(0);
+}
+
+.addtask-deny:hover {
+    border-color: #29abe2;
+    color: #29abe2;
+    box-shadow: 2px 2px 10px gray;
+    scale: 1.01;
+}
+
+.addtask-deny:hover img {
+    filter: brightness(1);
+}
+
+.addtask-check {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    width: 208px;
+    height: 61px;
+    background: #2a3647;
+    border-radius: 10px;
+    gap: 5px;
+    color: white;
+    font-weight: 700;
+    font-size: 21px;
+    cursor: pointer;
+    border: unset;
+    transition: ease-in-out 150ms;
+}
+
+.addtask-check:hover {
+    background-color: #29abe2;
+    box-shadow: 2px 2px 10px gray;
+    scale: 1.01;
+}
+
+.addtask-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 
 @media (max-width: 1200px) {
     .add-task {
@@ -482,6 +548,17 @@ body {
         flex-direction: column;
         align-items: flex-start;
         row-gap: 20px;
+    }
+
+    .contPopupAddTaskBoard {
+        height: 86vh;
+        width: 100vw;
+        border-radius: unset;
+        box-shadow: none;
+    }
+
+    .popupAddTaskBoardMain {
+        justify-content: space-evenly;
     }
 }
 
@@ -542,10 +619,12 @@ body {
     }
 
     .popup-board-task-bgr {
+        z-index: 22;
         background-color: unset;
     }
 
-    .cont-popup-board-task, .contPopupEditTaskBoard {
+    .cont-popup-board-task,
+    .contPopupEditTaskBoard {
         position: absolute;
         top: 70px;
         bottom: 70px;
@@ -581,6 +660,39 @@ body {
 
     .popup-details {
         max-height: 250px;
+    }
+
+    .popupBoardButtonsPosition {
+        top: -63px;
+        bottom: unset;
+        right: 20px;
+    }
+
+    .popup-close {
+        filter: unset !important;
+    }
+
+    .dividingBar {
+        display: none;
+    }
+
+    .popupAddTaskBoardMain {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .popupAddTaskBoardLeft {
+        margin-bottom: 20px;
+    }
+
+    .addtask-deny {
+        display: none;
+    }
+
+    .contPopupAddTaskBoard {
+        padding: 20px;
+        gap: 10px;
+        z-index: 10;
     }
 }
 
@@ -626,6 +738,13 @@ body {
 
     .find-task-input {
         width: 180px;
+    }
+
+    .addtask-check {
+        width: 140px;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 }
 
