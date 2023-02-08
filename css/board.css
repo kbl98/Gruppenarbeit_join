@@ -192,6 +192,32 @@ body {
     border-radius: 100px;
 }
 
+.progressbar{
+    margin-top:10px;
+    width:80%;
+    height:15px;
+    display:flex;
+    justify-content: flex-start;
+    border:solid 1px black;
+    border-radius: 15px;
+}
+
+.progress-subtasks{
+    background-color: rgb(21, 138, 188);
+    border-radius: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.progress-numb{
+    color:rgb(196, 194, 194);
+    font-size:10px;
+}
+
+
+
 .task-footer {
     display: flex;
     justify-content: space-between;
@@ -223,6 +249,7 @@ body {
 }
 
 .popup-board-task-bgr {
+    overflow: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,7 +265,7 @@ body {
 .cont-popup-board-task {
     z-index: 11;
     position: relative;
-    height: 820px;
+    min-height: 820px;
     width: 620px;
     background-color: white;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -539,6 +566,25 @@ body {
     gap: 20px;
 }
 
+#subtask-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cont-subtask{
+    display:flex;
+    align-items: center;
+    
+}
+
+.check{
+    margin-right:10px;
+    cursor: pointer;
+}
+
+
 
 @media (max-width: 1200px) {
     .add-task {
@@ -564,7 +610,7 @@ body {
     }
 
     .popup-board-task-bgr {
-        top: 70px;
+
     }
 
     .popupAddTaskBoardMain {

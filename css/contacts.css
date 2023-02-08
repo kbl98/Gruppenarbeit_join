@@ -5,7 +5,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-
 * {
   font-weight: 700;
   font-family: "Inter";
@@ -280,7 +279,6 @@ body {
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
-  
 }
 
 .cont-new-contact-pup {
@@ -479,17 +477,17 @@ body {
 
 /* CSS for addTak Popup*/
 
-#head-addtask-pop{
-  margin-bottom:80px;
+#head-addtask-pop {
+  margin-bottom: 80px;
 }
 
 #contAddTaskToContact {
   position: absolute;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   background-color: #a8a8a8ec;
   top: 0;
   left: 0;
@@ -502,9 +500,9 @@ body {
   z-index: 15;
   background-color: white;
   transition: all 175ms ease-in-out;
-  top:20%;
-  left:232px;
-  background-color:rgb(246,247,248);
+  top: 20%;
+  left: 232px;
+  background-color: rgb(246, 247, 248);
 }
 
 .outside {
@@ -525,32 +523,32 @@ body {
   cursor: pointer;
 }
 #newContactNameValue {
-  background-image: url('../assets/img/ImageHuman.svg');
+  background-image: url("../assets/img/ImageHuman.svg");
   background-repeat: no-repeat;
   background-position: 95% 50%;
 }
 #newContactMailValue {
-  background-image: url('../assets/img/ImageLetter.svg');
+  background-image: url("../assets/img/ImageLetter.svg");
   background-repeat: no-repeat;
   background-position: 95% 50%;
 }
 #newContactPhoneValue {
-  background-image: url('../assets/img/ImagePhone.svg');
+  background-image: url("../assets/img/ImagePhone.svg");
   background-repeat: no-repeat;
   background-position: 95% 50%;
 }
 #editContactNameValue {
-  background-image: url('../assets/img/ImageHuman.svg');
+  background-image: url("../assets/img/ImageHuman.svg");
   background-repeat: no-repeat;
   background-position: 95% 50%;
 }
 #editContactMailValue {
-  background-image: url('../assets/img/ImageLetter.svg');
+  background-image: url("../assets/img/ImageLetter.svg");
   background-repeat: no-repeat;
   background-position: 95% 50%;
 }
 #editContactPhoneValue {
-  background-image: url('../assets/img/ImagePhone.svg');
+  background-image: url("../assets/img/ImagePhone.svg");
   background-repeat: no-repeat;
   background-position: 95% 50%;
 }
@@ -579,8 +577,8 @@ body {
   h2 {
     font-size: 35px;
   }
-  .cont-right-contact-pup{
-    width:60%
+  .cont-right-contact-pup {
+    width: 60%;
   }
   .cont-new-contact-pup {
     width: 980px;
@@ -588,44 +586,43 @@ body {
   }
   .cont-create-contact-infos {
     gap: 30px;
-    width:90%;
+    width: 90%;
   }
   .cont-create-contact-input input {
-    width:100%;
+    width: 100%;
   }
-  .cont-create-contact-input{
-    width:70%;
+  .cont-create-contact-input {
+    width: 70%;
   }
   .create-contact-pp {
     width: 90px;
     height: auto;
   }
-  .create-new-contact-deny{
-    font-size:18px;
-    width:33%;
+  .create-new-contact-deny {
+    font-size: 18px;
+    width: 33%;
   }
   .create-new-contact-check {
-    font-size:18px;
-    width:57%;
+    font-size: 18px;
+    width: 57%;
   }
-  .cont-create-contact-buttons{
-    width:100%;
-    gap:unset;
+  .cont-create-contact-buttons {
+    width: 100%;
+    gap: unset;
   }
-  .cont-new-contact-pup{
-    width:90%;
+  .cont-new-contact-pup {
+    width: 90%;
   }
-  .cont-left-contact-pup h2{
-    font-size: 50px;;
+  .cont-left-contact-pup h2 {
+    font-size: 50px;
   }
-  .popup-close{
-    left:95%;
+  .popup-close {
+    left: 95%;
   }
-  .cont-left-contact-pup{
-    width:40%;
+  .cont-left-contact-pup {
+    width: 40%;
   }
 }
-
 
 @media screen and (max-width: 1150px) {
   .outer-cont-contacts-main {
@@ -670,7 +667,6 @@ body {
   }
 }
 
-
 @media (max-width: 1230px) {
   .cont-new-contact-pup {
     width: 1000px;
@@ -694,10 +690,9 @@ body {
   .create-new-contact-check {
     padding: 10px 5px;
     width: 195px;
-    height: 51px;  
+    height: 51px;
   }
 }
-
 
 @media (max-width: 1030px) {
   .cont-new-contact-pup {
@@ -731,13 +726,12 @@ body {
     padding: 10px 5px;
     width: 175px;
     height: 51px;
-    font-size: 18px;  
+    font-size: 18px;
   }
   .cont-create-contact-buttons {
     gap: 10px;
   }
 }
-
 
 @media screen and (max-width: 1000px) {
   .outer-cont-contacts-main {
@@ -750,18 +744,17 @@ body {
     font-size: 14px;
     padding: 2px;
   }
-  .create-new-contact-deny{
-    font-size:14px;
+  .create-new-contact-deny {
+    font-size: 14px;
     padding: 2px;
   }
 
-  #addTaskPopup{
+  #addTaskPopup {
     width: 75%;
-    left:130px;
-    width:720px;
+    left: 130px;
+    width: 720px;
   }
 }
-
 
 @media screen and (max-width: 850px) {
   .cont-contacts-head {
@@ -783,52 +776,52 @@ body {
     padding-left: 20px;
   }
   #addTaskPopup {
-    top:0;
+    top: 0;
   }
-  .cont-new-contact-pup{
+  .cont-new-contact-pup {
     height: 75%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
   }
-  .cont-left-contact-pup{
+  .cont-left-contact-pup {
     width: 100%;
     height: 40%;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 0;
   }
-  .cont-left-contact-pup img{
+  .cont-left-contact-pup img {
     display: none;
   }
   .cont-right-contact-pup {
     width: 100%;
     height: 60%;
   }
-  .cont-create-contact-infos{
+  .cont-create-contact-infos {
     flex-direction: column;
     height: 100%;
     justify-content: flex-start;
   }
-  .create-contact-pp{
-    margin-top:-60px;
+  .create-contact-pp {
+    margin-top: -60px;
   }
-  .contact-new-contact{
+  .contact-new-contact {
     z-index: 12;
     top: 80px;
   }
-  .new-contact-pup-bgr{
-    z-index:13;
+  .new-contact-pup-bgr {
+    z-index: 13;
   }
   .popup-close {
     left: 90%;
     filter: invert(1);
   }
-  .create-new-contact-deny{
+  .create-new-contact-deny {
     display: none;
   }
-  .cont-create-contact-buttons{
+  .cont-create-contact-buttons {
     justify-content: center;
   }
   .cont-create-contact-buttons img {
@@ -838,27 +831,25 @@ body {
     margin-top: -60px;
   }
 
-
-
   #contAddTaskToContact {
     position: absolute;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh; 
-    background-color:white;
+    height: 100vh;
+    background-color: white;
     top: 80px;
     left: 0;
     z-index: 13 !important;
   }
 
-  #addTaskPopup{
+  #addTaskPopup {
     width: 100%;
-    left:0;
-    background-color:rgb(246,247,248);
+    left: 0;
+    background-color: rgb(246, 247, 248);
     border-radius: unset;
-    padding-top:10px;
+    padding-top: 10px;
   }
 }
 
@@ -867,33 +858,32 @@ body {
     right: 10px;
     font-size: 14px;
     font-weight: 400;
-    }
+  }
 
-   #ccButtons-pop{
+  #ccButtons-pop {
     position: absolute;
-    top:-70px;
-   }
+    top: -70px;
+  }
 
-   #form-task-mobil{
-    width:100%;
-    height:100%;
+  #form-task-mobil {
+    width: 100%;
+    height: 100%;
     align-items: flex-start;
-   }
+  }
 
-   #head-addtask-pop{
-    margin-bottom:40px;
-   }
+  #head-addtask-pop {
+    margin-bottom: 40px;
+  }
 
-   #contAddTaskToContact {
-    width:100%;
-    height:100%;
+  #contAddTaskToContact {
+    width: 100%;
+    height: 100%;
     align-items: flex-start;
-   }
+  }
 
-   #temp-task{
-width:100%;
-   }
-
+  #temp-task {
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -904,7 +894,6 @@ width:100%;
     width: 220px;
   }
 }
-
 
 @media (max-width: 545px) {
   .create-new-contact-check {
@@ -919,7 +908,6 @@ width:100%;
     font-size: 40px;
   }
 }
-
 
 @media (max-width: 415px) {
   .create-new-contact-check {
@@ -936,7 +924,6 @@ width:100%;
     row-gap: 10px;
   }
 }
-
 
 @media (max-width: 380px) {
   .inner-cont-contacts {
@@ -970,16 +957,14 @@ width:100%;
   }
   .open-contact-head-name {
     width: 175px;
+  }
 }
-}
-
 
 @media (max-width: 340px) {
   .cont-contact {
     padding-right: 5px;
   }
 }
-
 
 @media (max-width: 320px) {
   .cont-left-contact-pup h2 {
@@ -1019,12 +1004,11 @@ width:100%;
   }
 }
 
-
 @media (max-width: 310px) {
   .contact-img {
     margin: 0;
   }
   .cont-create-contact-input input {
     width: 260px;
-}
+  }
 }

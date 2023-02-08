@@ -47,7 +47,7 @@ async function getLogin() {
  */
 async function setBackend() {
   setURL(
-    "https://gruppe-430.developerakademie.net/smallest_backend_ever-master"
+    "https://dr-katja-becker-lindhorst.developerakademie.net/smallest_backend_ever-master"
   );
 }
 
@@ -707,9 +707,11 @@ function checkRemember(logname,logpassword){
         return react;
   }
 
+  
   function showWarnPW(){
     document.getElementById("confirm-info").classList.remove("d-none");
   }
+
 
   function clearWarn(){
     document.getElementById("confirm-info").classList.add("d-none");

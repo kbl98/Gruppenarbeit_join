@@ -169,6 +169,8 @@ function renderBoardFiltered(index, id) {
     let assignedToId = document.getElementById(`assignedTo${id}${index}`);
     assignedToId.innerHTML = '';
     renderAssignedTo(assignedToLength, assignedTo, assignedToId);
+
+    showProgressSubtasks(task,index);
 }
 
 
@@ -614,10 +616,15 @@ async function includeHTMLForBoard(id) {
 
 function renderBoardTemp(color, category, title, description, date, priority, assignedTo, progress, index) {
     return `
-    <div draggable="true" ondragstart="dragStart(${index})" onclick="openBoardTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${assignedTo}', '${progress}', '${index}')" class="todo-tasks">
+    <div draggable="true" ondragstart="dragStart(${index})" onclick="openBoardTask('${color}', '${category}', '${title}', '${description}', '${date}', '${priority}', '${assignedTo}', '${progress}', '${index}');renderSubtasks(${index})" class="todo-tasks">
         <h2 style="background-color: ${color};" class="task-head">${category}</h2>
         <span class="task-titel">${title}</span> <br><br>
         <span class="task-description">${description}</span>
+
+        <div id="progressbar${index}" class="progressbar">
+        <div class="progress-subtasks" id="progress-subtasks${index}"><span class="progress-numb" id="progress-numb${index}">0/2 done</span></div>
+        </div>
+
         <div class="task-footer">
             <div id="assignedTo${progress}${index}" class="cont-assigned">
 
@@ -633,7 +640,7 @@ function openBoardTaskTemp(color, category, title, description, date, priority, 
     return `
     <div class="cont-popup-board-task">
         <!--buttons-->
-        <img onclick="closeBoardTask()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
+        <img onclick="saveOpenedTask()" class="popup-close" src="./assets/img/board_popup_close.png" alt="">
         <button onclick="editPopupTask('${title}', '${description}', '${date}', '${index}')" class="popup-edit-button"><img src="./assets/img/board_popup_edit.png"
                 alt=""></button>
         <!--Head area-->
@@ -656,9 +663,15 @@ function openBoardTaskTemp(color, category, title, description, date, priority, 
         <!--Assigned To-->
         <span id="openTaskAssignedTo" class="popup-details">Assigned To:</span>
 
+        <div id="subtask-container"></div>
+
+
     </div>
     `;
 }
+
+
+
 
 function openTaskAssignedToTemp(contact, bothFirstLetters, nameColor) {
     return `
@@ -679,3 +692,67 @@ async function deleteTask() {
     renderBoard();
     await boardSaveToBackend();
 }
+
+
+/**function calculate subtasks */
+
+function showProgressSubtasks(task,index){
+    let number_subtasks=task["subtasks"].length;
+    if(number_subtasks>0){
+    let array_done_subt=task["subtasks"].filter((s)=>s["state"]=="done");
+    let numb_done=array_done_subt.length;
+    let width_done=100*(numb_done/number_subtasks)
+    let width_progress=document.getElementById("progress-subtasks"+index);
+    width_progress.style.width=width_done+"%";
+    document.getElementById("progress-numb"+index).innerHTML=`${numb_done}/${number_subtasks}`
+    checkNoSubtasksDone(width_done,width_progress)
+    }else{
+        document.getElementById("progressbar"+index).classList.add("d-none")
+    }
+}
+
+
+function checkNoSubtasksDone(width_done,width_progress){
+    if(width_done==0){
+        width_progress.style.width="100%";
+        width_progress.style.backgroundColor="white";
+        width_progress.style.border="transparent";
+    }
+}
+
+
+function renderSubtasks(index){
+    for (let i=0;i<loadedBoard[index]["subtasks"].length;i++){
+    document.getElementById("subtask-container").innerHTML+=`
+    <div class=cont-subtask>
+    <input class="check" id="check${index}${i}"type="checkbox" onclick="checkSubtask(${index},${i})">
+    <span> ${loadedBoard[index]["subtasks"][i]["name"]}</span>
+    `
+    setCheckValue(index,i)
+    }
+}
+
+
+function setCheckValue(index,i){
+    if(loadedBoard[index]["subtasks"][i]["state"]=="done"){
+        document.getElementById("check"+index+i).setAttribute("checked","true")
+    }
+}
+
+
+function checkSubtask(index,i){
+    let value_checkbox=document.getElementById("check"+index+i);
+    if (value_checkbox.checked){
+        loadedBoard[index]["subtasks"][i]["state"]="done";
+    }else{
+        loadedBoard[index]["subtasks"][i]["state"]="todo";
+    }
+}
+
+
+async function saveOpenedTask(){
+    await boardSaveToBackend();
+    closeBoardTask();
+    initBoard();
+}
+

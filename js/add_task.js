@@ -178,7 +178,8 @@ function showSubtask (i, newSubtask) {
  * @param {number} i - number to checkmark the correct subtask 
  */
 function checkmark(i) {
-  let newSubtask = allSubtasks[i];
+  let newSubtask ={"name":allSubtasks[i],
+  "state":"todo"};
   let index = selectedSubtasks.indexOf(newSubtask);
   if (index == -1) {
     document.getElementById('checkbox' + i).src = 'assets/img/subtask_ok.png';
