@@ -250,13 +250,21 @@ async function createNewContact() {
 
 
 function getRandomColor() {
-    let letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    let luminosity = 0;
+    while (luminosity < 128) {
+      color = '#';
+      for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
+      } // berechne die Helligkeit (luminosity) der Farbe
+      let r = parseInt(color.substring(1, 3), 16);
+      let g = parseInt(color.substring(3, 5), 16);
+      let b = parseInt(color.substring(5, 7), 16);
+      luminosity = (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
     }
     return color;
-}
+  }
 
 
 function showDivWithTransition() {
