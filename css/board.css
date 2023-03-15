@@ -198,12 +198,12 @@ body {
     height:15px;
     display:flex;
     justify-content: flex-start;
-    border:solid 1px black;
+    border: none;
     border-radius: 15px;
 }
 
 .progress-subtasks{
-    background-color: rgb(21, 138, 188);
+    background-color: rgb(67, 198, 255);
     border-radius: 15px;
     display:flex;
     justify-content: center;
@@ -212,7 +212,7 @@ body {
 }
 
 .progress-numb{
-    color:rgb(196, 194, 194);
+    color:rgb(255, 255, 255);
     font-size:10px;
 }
 
@@ -249,7 +249,6 @@ body {
 }
 
 .popup-board-task-bgr {
-    overflow: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -598,15 +597,15 @@ body {
     }
 
     .contPopupAddTaskBoard {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: unset;
-        width: 100vw;
-        border-radius: unset;
-        box-shadow: none;
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: unset !important;
+        width: 100vw !important;
+        border-radius: unset !important;
+        box-shadow: none !important;
     }
 
     .popupAddTaskBoardMain {
@@ -715,9 +714,9 @@ body {
     }
 
     .popupBoardButtonsPosition {
-        top: -63px;
+        top: 70px;
         bottom: unset;
-        right: 20px;
+        right: 80px;
     }
 
     .popup-close {
@@ -736,6 +735,7 @@ body {
 
     .popupAddTaskBoardLeft {
         margin-bottom: 20px;
+        margin-top: 50px;
     }
 
     .addtask-deny {
@@ -743,9 +743,9 @@ body {
     }
 
     .contPopupAddTaskBoard {
-        padding: 20px;
-        gap: 10px;
-        z-index: 10;
+        padding: 20px !important;
+        gap: 10px !important;
+        z-index: 10 !important;
     }
 }
 

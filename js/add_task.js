@@ -6,7 +6,7 @@ let allSubtasks = [];
 let selectedSubtasks = [];
 let subtaskImageSrc = [];
 
-  
+
 async function init() {
   await includeHTML();
   await loadTasks();
@@ -75,11 +75,11 @@ function addDescription() {
  * function to open the jquery-datepicker 
  */
 function datepicker() {
-  $( function() {
-    $( "#datepicker" ).datepicker({
+  $(function () {
+    $("#datepicker").datepicker({
       dateFormat: 'dd/mm/yy',
       minDate: 0
-    
+
     });
   });
 }
@@ -103,11 +103,11 @@ function addPrio(i) {
   let id = document.getElementById('prioButton' + i);
   let colors = ['#ff3d00', '#ffa800', '#7ae229'];
   let prios = ['urgent', 'medium', 'low'];
-    changePrioColors();
-    id.style.backgroundColor = colors[i];
-    id.style.color = 'white';
-    document.getElementById('prioImage' + i).style.filter = 'brightness(0) invert(1)';
-    selectedPrio = prios[i];
+  changePrioColors();
+  id.style.backgroundColor = colors[i];
+  id.style.color = 'white';
+  document.getElementById('prioImage' + i).style.filter = 'brightness(0) invert(1)';
+  selectedPrio = prios[i];
 
 }
 
@@ -148,7 +148,7 @@ function addNewSubtask() {
  * 
  * @param {String} newSubtask - a subtask in the array "allSubtasks"
  */
-function changeImage (newSubtask) {
+function changeImage(newSubtask) {
   subtaskImageSrc = "assets/img/subtask_rectangle.svg";
   if (selectedSubtasks.includes(newSubtask)) {
     subtaskImageSrc = "assets/img/subtask_ok.png";
@@ -162,8 +162,8 @@ function changeImage (newSubtask) {
  * @param {number} i - number to checkmark the correct subtask
  * @param {String} newSubtask - subtask which was written in the inputfield
  */
-function showSubtask (i, newSubtask) {
- return `
+function showSubtask(i, newSubtask) {
+  return `
   <div class="newSubtasks">
     <img src=${subtaskImageSrc} class="paddingRight" id="checkbox${i}" onclick="checkmark(${i})"><span class="newSubtask">${newSubtask}</span>
   </div>
@@ -177,8 +177,10 @@ function showSubtask (i, newSubtask) {
  * @param {number} i - number to checkmark the correct subtask 
  */
 function checkmark(i) {
-  let newSubtask ={"name":allSubtasks[i],
-  "state":"todo"};
+  let newSubtask = {
+    "name": allSubtasks[i],
+    "state": "todo"
+  };
   let index = selectedSubtasks.indexOf(newSubtask);
   if (index == -1) {
     document.getElementById('checkbox' + i).src = 'assets/img/subtask_ok.png';
@@ -226,7 +228,7 @@ function resetContent() {
   closeCategories();
   closeContacts();
   for (let i = 0; i < allContacts.length; i++) {
-    document.getElementById('contactButton'+i).innerHTML = '';
+    document.getElementById('contactButton' + i).innerHTML = '';
   }
   document.getElementById('addedContacts').innerHTML = '';
   document.getElementById('datepicker').value = '';
@@ -281,13 +283,23 @@ async function createTask() {
   };
   await saveAllTasks(task);
   clearTask();
+  closeTaskCreator();
   showInfo();
 }
 
 
 function showInfo() {
-  document.getElementById('info').classList.remove('d-none');
-  setTimeout(function() {
-    document.getElementById('info').classList.add('d-none');
-  },3800);
+  setTimeout(function () {
+    var div = document.querySelector('.cont-success-message');
+    div.style.display = "flex";
+    setTimeout(function () {
+      div.style.transform = "translateY(0)";
+      setTimeout(function () {
+        div.style.transform = "translateY(200%)";
+        setTimeout(function () {
+          div.style.display = "none";
+        }, 1000);
+      }, 2000);
+    }, 100);
+  }, 100);
 }
